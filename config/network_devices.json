@@ -1,0 +1,650 @@
+{
+  "policy": "Large sites use three distinct firewall vendors; smaller sites use two distinct vendors. Sites use Internet IPsec VPN plus selected direct critical tunnels.",
+  "sites": [
+    {
+      "site": "USHQ",
+      "router": {
+        "hostname": "USHQ-RTR-01",
+        "vendor": "Cisco IOS-XE"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "USHQ-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "USHQ-FW-01",
+          "vendor": "Palo Alto"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "USHQ-FW-02",
+          "vendor": "Fortinet"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "USHQ-FW-03",
+          "vendor": "Cisco Secure Firewall"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "USNO",
+      "router": {
+        "hostname": "USNO-RTR-01",
+        "vendor": "Juniper Junos"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "USNO-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "USNO-FW-01",
+          "vendor": "Fortinet"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "USNO-FW-02",
+          "vendor": "Cisco Secure Firewall"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "USNO-FW-03",
+          "vendor": "Juniper SRX"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "USCP",
+      "router": {
+        "hostname": "USCP-RTR-01",
+        "vendor": "Cisco IOS-XE"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "USCP-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "USCP-FW-01",
+          "vendor": "Cisco Secure Firewall"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "USCP-FW-02",
+          "vendor": "Juniper SRX"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "USCP-FW-03",
+          "vendor": "Palo Alto"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "USVA",
+      "router": {
+        "hostname": "USVA-RTR-01",
+        "vendor": "Juniper Junos"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "USVA-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "USVA-FW-01",
+          "vendor": "Juniper SRX"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "USVA-FW-02",
+          "vendor": "Palo Alto"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "USVA-FW-03",
+          "vendor": "Fortinet"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "USTX",
+      "router": {
+        "hostname": "USTX-RTR-01",
+        "vendor": "Cisco IOS-XE"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "USTX-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "USTX-FW-01",
+          "vendor": "Palo Alto"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "USTX-FW-02",
+          "vendor": "Fortinet"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "USTX-FW-03",
+          "vendor": "Cisco Secure Firewall"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "USOH",
+      "router": {
+        "hostname": "USOH-RTR-01",
+        "vendor": "Juniper Junos"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "USOH-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "USOH-FW-01",
+          "vendor": "Fortinet"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "USOH-FW-02",
+          "vendor": "Cisco Secure Firewall"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "USOH-FW-03",
+          "vendor": "Juniper SRX"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "USCA",
+      "router": {
+        "hostname": "USCA-RTR-01",
+        "vendor": "Cisco IOS-XE"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "USCA-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "USCA-FW-01",
+          "vendor": "Cisco Secure Firewall"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "USCA-FW-02",
+          "vendor": "Juniper SRX"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "USCA-FW-03",
+          "vendor": "Palo Alto"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "CATO",
+      "router": {
+        "hostname": "CATO-RTR-01",
+        "vendor": "Juniper Junos"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "CATO-FW-01",
+        "direct_critical_tunnels": false
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "CATO-FW-01",
+          "vendor": "Juniper SRX"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "CATO-FW-02",
+          "vendor": "Palo Alto"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side"
+      ]
+    },
+    {
+      "site": "UKLO",
+      "router": {
+        "hostname": "UKLO-RTR-01",
+        "vendor": "Cisco IOS-XE"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "UKLO-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "UKLO-FW-01",
+          "vendor": "Palo Alto"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "UKLO-FW-02",
+          "vendor": "Fortinet"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "UKLO-FW-03",
+          "vendor": "Cisco Secure Firewall"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "IEDU",
+      "router": {
+        "hostname": "IEDU-RTR-01",
+        "vendor": "Juniper Junos"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "IEDU-FW-01",
+        "direct_critical_tunnels": false
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "IEDU-FW-01",
+          "vendor": "Fortinet"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "IEDU-FW-02",
+          "vendor": "Cisco Secure Firewall"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side"
+      ]
+    },
+    {
+      "site": "DEFR",
+      "router": {
+        "hostname": "DEFR-RTR-01",
+        "vendor": "Cisco IOS-XE"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "DEFR-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "DEFR-FW-01",
+          "vendor": "Cisco Secure Firewall"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "DEFR-FW-02",
+          "vendor": "Juniper SRX"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "DEFR-FW-03",
+          "vendor": "Palo Alto"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "NLAM",
+      "router": {
+        "hostname": "NLAM-RTR-01",
+        "vendor": "Juniper Junos"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "NLAM-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "NLAM-FW-01",
+          "vendor": "Juniper SRX"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "NLAM-FW-02",
+          "vendor": "Palo Alto"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "NLAM-FW-03",
+          "vendor": "Fortinet"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "PLWA",
+      "router": {
+        "hostname": "PLWA-RTR-01",
+        "vendor": "Cisco IOS-XE"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "PLWA-FW-01",
+        "direct_critical_tunnels": false
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "PLWA-FW-01",
+          "vendor": "Palo Alto"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "PLWA-FW-02",
+          "vendor": "Fortinet"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side"
+      ]
+    },
+    {
+      "site": "AUSY",
+      "router": {
+        "hostname": "AUSY-RTR-01",
+        "vendor": "Juniper Junos"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "AUSY-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "AUSY-FW-01",
+          "vendor": "Fortinet"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "AUSY-FW-02",
+          "vendor": "Cisco Secure Firewall"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "AUSY-FW-03",
+          "vendor": "Juniper SRX"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "AUME",
+      "router": {
+        "hostname": "AUME-RTR-01",
+        "vendor": "Cisco IOS-XE"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "AUME-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "AUME-FW-01",
+          "vendor": "Cisco Secure Firewall"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "AUME-FW-02",
+          "vendor": "Juniper SRX"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "AUME-FW-03",
+          "vendor": "Palo Alto"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "AUPE",
+      "router": {
+        "hostname": "AUPE-RTR-01",
+        "vendor": "Juniper Junos"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "AUPE-FW-01",
+        "direct_critical_tunnels": false
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "AUPE-FW-01",
+          "vendor": "Juniper SRX"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "AUPE-FW-02",
+          "vendor": "Palo Alto"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side"
+      ]
+    },
+    {
+      "site": "SGSI",
+      "router": {
+        "hostname": "SGSI-RTR-01",
+        "vendor": "Cisco IOS-XE"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "SGSI-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "SGSI-FW-01",
+          "vendor": "Palo Alto"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "SGSI-FW-02",
+          "vendor": "Fortinet"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "SGSI-FW-03",
+          "vendor": "Cisco Secure Firewall"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "JPTY",
+      "router": {
+        "hostname": "JPTY-RTR-01",
+        "vendor": "Juniper Junos"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "JPTY-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "JPTY-FW-01",
+          "vendor": "Fortinet"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "JPTY-FW-02",
+          "vendor": "Cisco Secure Firewall"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "JPTY-FW-03",
+          "vendor": "Juniper SRX"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    },
+    {
+      "site": "NZAK",
+      "router": {
+        "hostname": "NZAK-RTR-01",
+        "vendor": "Cisco IOS-XE"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "NZAK-FW-01",
+        "direct_critical_tunnels": false
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "NZAK-FW-01",
+          "vendor": "Cisco Secure Firewall"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "NZAK-FW-02",
+          "vendor": "Juniper SRX"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side"
+      ]
+    },
+    {
+      "site": "BRSP",
+      "router": {
+        "hostname": "BRSP-RTR-01",
+        "vendor": "Juniper Junos"
+      },
+      "vpn": {
+        "model": "Internet IPsec",
+        "primary_termination": "BRSP-FW-01",
+        "direct_critical_tunnels": true
+      },
+      "firewall_layers": [
+        {
+          "role": "perimeter",
+          "hostname": "BRSP-FW-01",
+          "vendor": "Juniper SRX"
+        },
+        {
+          "role": "internal_segmentation",
+          "hostname": "BRSP-FW-02",
+          "vendor": "Palo Alto"
+        },
+        {
+          "role": "engineering_ot_boundary",
+          "hostname": "BRSP-FW-03",
+          "vendor": "Fortinet"
+        }
+      ],
+      "zeek_sensors": [
+        "edge/vpn trusted side",
+        "east-west segmentation",
+        "engineering/OT boundary"
+      ]
+    }
+  ]
+}

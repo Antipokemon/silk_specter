@@ -1,0 +1,7 @@
+canonical_user,username,upn,domain,employee_id,badge_id,account_type,home_site,department,privileged
+rpatel,US\rpatel,rpatel@us.asteron.local,US,E104882,B-104882,user,USHQ,Infrastructure,false
+rpatel,US\adm-rpatel,adm-rpatel@us.asteron.local,US,E104882,B-104882,admin,USHQ,Infrastructure,true
+mreed,US\mreed,mreed@us.asteron.local,US,E108211,B-108211,user,USVA,Engineering,false
+svc-webdeploy,US\svc-webdeploy,svc-webdeploy@us.asteron.local,US,,,service,USHQ,IT,false
+svc-appdeploy,US\svc-appdeploy,svc-appdeploy@us.asteron.local,US,,,service,USHQ,IT,false
+svc-engsync,US\svc-engsync,svc-engsync@us.asteron.local,US,,,service,USVA,IT,false

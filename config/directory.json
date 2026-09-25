@@ -1,0 +1,82 @@
+{
+  "forest": "ASTERON.LOCAL",
+  "domains": {
+    "ASTERON.LOCAL": {
+      "role": "forest root",
+      "dc_sites": [
+        "USHQ",
+        "USNO",
+        "USCP"
+      ]
+    },
+    "US.ASTERON.LOCAL": {
+      "regional_hubs": [
+        "USHQ",
+        "USNO",
+        "USCP"
+      ],
+      "local_dc_sites": [
+        "USVA",
+        "USTX",
+        "USOH",
+        "USCA"
+      ],
+      "rodc_sites": []
+    },
+    "EU.ASTERON.LOCAL": {
+      "regional_hubs": [
+        "NLAM",
+        "DEFR"
+      ],
+      "local_dc_sites": [
+        "UKLO"
+      ],
+      "rodc_sites": [
+        "IEDU",
+        "PLWA"
+      ]
+    },
+    "AU.ASTERON.LOCAL": {
+      "regional_hubs": [
+        "AUSY"
+      ],
+      "local_dc_sites": [
+        "AUME"
+      ],
+      "rodc_sites": [
+        "AUPE"
+      ]
+    },
+    "APAC.ASTERON.LOCAL": {
+      "regional_hubs": [
+        "SGSI"
+      ],
+      "local_dc_sites": [
+        "JPTY"
+      ],
+      "rodc_sites": [
+        "NZAK"
+      ]
+    },
+    "LATAM.ASTERON.LOCAL": {
+      "regional_hubs": [
+        "BRSP"
+      ],
+      "local_dc_sites": [],
+      "rodc_sites": []
+    }
+  },
+  "admin_model": {
+    "paw": true,
+    "jump_hosts": true,
+    "normal_login": "username/password",
+    "privileged_login": "CAC/certificate",
+    "network_device_sources": [
+      "NOC management",
+      "COOP management",
+      "regional management",
+      "PAW",
+      "jump host"
+    ]
+  }
+}

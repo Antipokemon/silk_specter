@@ -1,0 +1,14 @@
+tactic,malicious_observations
+Reconnaissance,100
+Initial Access,50
+Execution,98
+Persistence,96
+Privilege Escalation,40
+Credential Access,90
+Discovery,191
+Lateral Movement,91
+Command and Control,140
+Collection,78
+Collection / Staging,85
+Exfiltration,7
+Defense Evasion / Cleanup,30

@@ -1,0 +1,5 @@
+index=asteron_easy sourcetype=bro:conn:json
+| bin _time span=10m
+| stats dc('id.resp_h') as unique_destinations dc('id.resp_p') as unique_ports values('id.resp_h') as destinations by _time 'id.orig_h'
+| where unique_destinations>=5 OR unique_ports>=5
+| eval finding_title="Internal Reconnaissance Fan-Out", severity="medium"

@@ -1,0 +1,26 @@
+Answer,Number
+asteron_easy,E001
+bro:conn:json,E002
+XmlWinEventLog,E003
+XmlWinEventLog:Security,E004
+linux_audit,E005
+syslog,E006
+aws:cloudtrail,E007
+gitlab:audit,E008
+ms:defender:eventhub;trellix:epo,E009
+pacs:access,E010
+199.45.154.125,E011
+Censys,E012
+23.20.77.81,E013
+USHQ-WEB-02,E014
+/bin/sh,E015
+svc-webdeploy,E016
+WebPlatformDeployment,E017
+svc-appdeploy,E018
+svc-engsync,E019
+USVA-ENG-APP-01,E020
+sync-update.example,E021
+734003200,E022
+engsync.exe,E023
+Internet Scanner Activity Against Public Service,E024
+USHQ-WEB-02>USHQ-APP-07>USVA-ENG-APP-01,E025

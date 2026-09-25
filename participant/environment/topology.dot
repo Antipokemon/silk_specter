@@ -1,0 +1,6 @@
+digraph AsteronEasy {
+rankdir=LR; graph [fontname="Arial", labelloc=t, label="Asteron Easy — U.S. Logical Topology"]; node [shape=box,fontname="Arial"];
+Internet [shape=ellipse]; AWS [label="AWS Services\nGitLab / Web / Cloud"]; USHQ [label="USHQ 10.44.0.0/16\nHQ / DMZ / Users / Servers"]; USNO [label="USNO 10.45.0.0/16\nNOC / SOC / Mgmt"]; USCP [label="USCP 10.46.0.0/16\nCOOP"]; USVA [label="USVA 10.47.0.0/16\nWater / Engineering"]; USTX [label="USTX 10.48.0.0/16\nWater"]; USOH [label="USOH 10.49.0.0/16\nPower"]; USCA [label="USCA 10.50.0.0/16\nPower"];
+Internet -> USHQ [label="public services / VPN"]; Internet -> USNO [label="VPN"]; Internet -> USCP [label="VPN"]; Internet -> USVA [label="VPN"]; Internet -> USTX [label="VPN"]; Internet -> USOH [label="VPN"]; Internet -> USCA [label="VPN"];
+USHQ -> AWS [dir=both,label="service connectivity"]; USNO -> AWS [dir=both,label="security / admin"]; USHQ -> USVA [dir=both,label="critical dependency tunnel"]; USNO -> USVA [dir=both,label="regional VPN"]; USNO -> USTX [dir=both,label="regional VPN"]; USNO -> USOH [dir=both,label="regional VPN"]; USNO -> USCA [dir=both,label="regional VPN"]; USCP -> USHQ [dir=both,label="COOP standby"]; USCP -> USNO [dir=both,label="COOP standby"];
+}

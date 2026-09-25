@@ -1,0 +1,4 @@
+ip,public_classification,provider_or_org,network,scenario_role,research_note,snapshot_date
+199.45.154.125,known internet measurement scanner,Censys,199.45.154.0/24,benign external scan,Censys publishes this /24 as scanner infrastructure,2026-09-24
+23.20.77.81,cloud provider address,Amazon Web Services,23.20.0.0/14,synthetic actor source,Only provider ownership is public fact; malicious attribution is fictional exercise ground truth,2026-09-24
+50.19.77.200,cloud provider address,Amazon Web Services,50.19.0.0/16,synthetic exfil destination,Only provider ownership is public fact; malicious attribution is fictional exercise ground truth,2026-09-24

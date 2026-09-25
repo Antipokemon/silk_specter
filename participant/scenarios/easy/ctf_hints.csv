@@ -1,0 +1,51 @@
+HintNumber,Number,Hint,HintCost
+1,E001,`tstats` can summarize indexed metadata without searching raw events. Try returning values of `sourcetype` grouped by `index`.,2
+2,E001,Try: `| tstats values(sourcetype) where index=* by index`,4
+1,E002,Use the same metadata-discovery approach from E001 and look for a sourcetype whose name describes connection telemetry.,2
+2,E002,"After identifying the exercise index, try `| tstats count where index=<index> by sourcetype` and inspect the `bro:*:json` results.",4
+1,E003,"Use `tstats` to list the sourcetypes associated with USHQ-APP-07. In this environment, native Windows Security and Sysmon share the same sourcetype and are distinguished by `source`.",2
+2,E003,Try `| tstats count where index=asteron_easy host=USHQ-APP-07 by sourcetype source | search sourcetype=XmlWinEventLog`.,4
+1,E004,Windows Security and Sysmon share `sourcetype=XmlWinEventLog`; use `source` to identify the underlying Windows channel.,3
+2,E004,Try `| tstats count where index=asteron_easy host=USHQ-APP-07 sourcetype=XmlWinEventLog by source`.,5
+1,E005,Start with `tstats` against the web host and inspect the Linux-oriented sourcetypes.,2
+2,E005,`auditd` records normally come from `/var/log/audit/audit.log`; inspect the metadata associated with that source.,4
+1,E006,Sysmon for Linux writes XML-formatted events through the Linux logging pipeline. Do not assume its sourcetype contains the word `sysmon`.,3
+2,E006,"Inspect the sourcetypes for `USHQ-WEB-02`, then sample the raw events for `Linux-Sysmon`.",5
+1,E007,"Use `tstats` to inventory sourcetypes, then look for an AWS source associated with API auditing.",2
+2,E007,CloudTrail is the AWS service that records control-plane API calls.,4
+1,E008,Use `tstats` to inventory application-oriented sourcetypes before searching raw events.,2
+2,E008,Look for a sourcetype that explicitly represents GitLab audit activity.,4
+1,E009,Inventory sourcetypes and look for two different endpoint-security vendors rather than assuming one enterprise-wide EDR.,3
+2,E009,The environment uses Microsoft Defender and Trellix.,5
+1,E010,Physical access is collected separately from logical authentication. Search metadata for an access-control/PACS source.,2
+2,E010,Look for a sourcetype containing badge-access records.,4
+1,E011,Start with `bro:http:json` and compare source IPs and user-agent strings that touched the public service.,4
+2,E011,Internet measurement scanners often identify themselves in the HTTP user agent. Search for `CensysInspect`.,7
+1,E012,This question intentionally requires open-source research rather than only Splunk. Research the IP from E011.,4
+2,E012,Check whether the organization publicly documents scanner ranges and scanner user agents.,7
+1,E013,Do not assume the scanner from E011 is the attacker. Look for a later source associated with abnormal application behavior.,4
+2,E013,Correlate WAF activity around `/api/render` with Zeek HTTP source addresses.,7
+1,E014,Follow the destination of the suspicious public-web traffic through the DMZ and then look for host activity immediately afterward.,4
+2,E014,The first compromised endpoint is a Linux system; correlate web telemetry with Linux Sysmon/audit events.,7
+1,E015,Look at Linux Sysmon ProcessCreate events and compare `Image` with `ParentImage`.,4
+2,E015,A web application service unexpectedly launching a general-purpose shell is the key relationship.,7
+1,E016,"Pivot from the compromised web host toward DNS/TLS connections to `git.asteron.example`, then inspect GitLab audit activity.",4
+2,E016,The GitLab audit record contains `author_name` and authentication context.,7
+1,E017,CloudTrail records assumed-role ARNs in `userIdentity.arn`.,4
+2,E017,Group CloudTrail actions by `userIdentity.arn` and `sourceIPAddress`.,7
+1,E018,Look for successful Windows network logons on `USHQ-APP-07` shortly after the Linux/AWS activity.,4
+2,E018,"Windows Event 4624 includes the target account, logon type, and source address.",7
+1,E019,"Follow network activity from USHQ toward the Virginia engineering subnet, then pivot to authentication logs on the destination.",4
+2,E019,The relevant destination is in the `10.47.60.0/24` engineering network.,7
+1,E020,Use Zeek connection metadata and focus on the cross-site remote-management connection.,4
+2,E020,Group matching source/destination tuples by Zeek sensor host to see the same connection on both sides of the tunnel.,7
+1,E021,Start with outbound DNS activity from the engineering host shortly before the large transfer.,4
+2,E021,Correlate the DNS result with the destination seen in `bro:conn:json` and `bro:ssl:json`.,7
+1,E022,Zeek `conn` records contain byte counts for both directions. Determine which side initiated the transfer.,4
+2,E022,"For the suspicious destination, sum `orig_bytes` rather than `resp_bytes`.",7
+1,E023,Network telemetry gives you the source host and destination. Pivot back to Sysmon network-connect telemetry on the source host.,4
+2,E023,Sysmon Event ID 3 records the process image associated with a network connection.,7
+1,E024,A detection firing is not the same thing as malicious activity. Revisit the scanner from E011 and its public attribution.,4
+2,E024,Identify the finding whose trigger is the known Internet measurement scanner rather than the later suspicious source.,7
+1,E025,"Build a timeline with the compromised Linux system, the first Windows authentication, and the later cross-site connection.",5
+2,E025,Use source/destination pairs in Zeek together with Windows 4624 and host process activity to establish the order.,9

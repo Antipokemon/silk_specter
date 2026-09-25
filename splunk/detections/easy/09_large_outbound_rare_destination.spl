@@ -1,0 +1,4 @@
+index=asteron_easy sourcetype=bro:conn:json local_orig=true local_resp=false
+| stats sum(orig_bytes) as bytes_out count as connections values('id.resp_p') as ports by 'id.orig_h' 'id.resp_h'
+| where bytes_out > 500000000
+| eval finding_title="Unusually Large Outbound Transfer to Rare Destination", severity="critical"

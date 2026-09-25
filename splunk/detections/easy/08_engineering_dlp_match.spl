@@ -1,0 +1,3 @@
+index=asteron_easy sourcetype=dlp:events policy="Engineering Sensitive - External Upload"
+| stats values(user) as user values(host) as endpoint values(file) as file sum(bytes) as bytes values(destination) as destination by policy severity action
+| eval finding_title="Engineering Data DLP Policy Match"

@@ -1,0 +1,42 @@
+{
+  "name": "Hard - Global Pre-positioning and Covert Access",
+  "status": "authoring",
+  "difficulty": "hard",
+  "index": "asteron_hard",
+  "start": "2026-04-06T00:00:00Z",
+  "end": "2026-04-10T23:59:59Z",
+  "seed": 76017,
+  "question_target": 150,
+  "scope_sites": [
+    "USHQ",
+    "USNO",
+    "USCP",
+    "USVA",
+    "USTX",
+    "USOH",
+    "USCA",
+    "CATO",
+    "UKLO",
+    "IEDU",
+    "DEFR",
+    "NLAM",
+    "PLWA",
+    "AUSY",
+    "AUME",
+    "AUPE",
+    "SGSI",
+    "JPTY",
+    "NZAK",
+    "BRSP"
+  ],
+  "design_goals": [
+    "global",
+    "heterogeneous-defense-in-depth",
+    "legitimate-mft-abuse",
+    "sparse-notables",
+    "admin-lookalikes",
+    "ot-adjacent-prepositioning"
+  ],
+  "actor": "silk_specter",
+  "campaign_module": "generator/scenarios/hard.py"
+}

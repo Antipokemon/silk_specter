@@ -1,0 +1,3 @@
+index=asteron_easy sourcetype=bro:http:json "CensysInspect"
+| stats earliest(_time) as first_seen latest(_time) as last_seen count values(host) as sensors values('id.resp_h') as destinations by 'id.orig_h' user_agent
+| eval finding_title="Internet Scanner Activity Against Public Service", severity="informational"

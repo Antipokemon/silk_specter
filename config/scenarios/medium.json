@@ -1,0 +1,33 @@
+{
+  "name": "Medium - Multi-Region Intrusion Reconstruction",
+  "status": "authoring",
+  "difficulty": "medium",
+  "index": "asteron_medium",
+  "start": "2026-04-06T00:00:00Z",
+  "end": "2026-04-10T23:59:59Z",
+  "seed": 66017,
+  "question_target": 170,
+  "scope_sites": [
+    "USHQ",
+    "USNO",
+    "USCP",
+    "USVA",
+    "USTX",
+    "USOH",
+    "USCA",
+    "CATO",
+    "UKLO",
+    "DEFR",
+    "NLAM",
+    "AUSY"
+  ],
+  "design_goals": [
+    "multi-region",
+    "multi-vendor",
+    "collection-and-archive-staging",
+    "reduced-notable-coverage",
+    "cross-domain-correlation"
+  ],
+  "actor": "silk_specter",
+  "campaign_module": "generator/scenarios/medium.py"
+}

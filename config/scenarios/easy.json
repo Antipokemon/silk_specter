@@ -1,0 +1,85 @@
+{
+  "name": "Easy - Public Service to Cross-Site Compromise",
+  "index": "asteron_easy",
+  "start": "2026-04-06T00:00:00Z",
+  "end": "2026-04-10T23:59:59Z",
+  "seed": 56017,
+  "scope_sites": [
+    "USHQ",
+    "USNO",
+    "USCP",
+    "USVA",
+    "USTX",
+    "USOH",
+    "USCA"
+  ],
+  "public_vip": "192.0.2.44",
+  "benign_scanner_ip": "199.45.154.125",
+  "actor_initial_ip": "23.20.77.81",
+  "actor_exfil_ip": "50.19.77.200",
+  "actor_exfil_domain": "sync-update.example",
+  "exfil_bytes": 734003200,
+  "hosts": {
+    "USHQ-WEB-02": "10.44.15.22",
+    "USHQ-APP-07": "10.44.30.37",
+    "USHQ-DC-02": "10.44.10.12",
+    "USHQ-DNS-01": "10.44.10.20",
+    "USNO-TEN-01": "10.45.50.31",
+    "USNO-SCCM-01": "10.45.50.40",
+    "USVA-ENG-APP-01": "10.47.60.21",
+    "USVA-FS-01": "10.47.20.31",
+    "USHQ-ZEEK-01": "10.44.6.11",
+    "USVA-ZEEK-01": "10.47.6.11",
+    "USHQ-FW-01": "10.44.2.11",
+    "USHQ-FW-02": "10.44.2.12",
+    "USHQ-FW-03": "10.44.2.13",
+    "USVA-FW-01": "10.47.2.11",
+    "USVA-FW-02": "10.47.2.12",
+    "USVA-FW-03": "10.47.2.13"
+  },
+  "users": {
+    "US\\svc-webdeploy": {
+      "type": "service",
+      "badge_id": ""
+    },
+    "US\\svc-appdeploy": {
+      "type": "service",
+      "badge_id": ""
+    },
+    "US\\svc-engsync": {
+      "type": "service",
+      "badge_id": ""
+    },
+    "US\\adm-rpatel": {
+      "type": "admin",
+      "badge_id": "B-104882"
+    },
+    "US\\rpatel": {
+      "type": "user",
+      "badge_id": "B-104882"
+    },
+    "US\\mreed": {
+      "type": "user",
+      "badge_id": "B-108211"
+    }
+  },
+  "attack_steps": [
+    "reconnaissance",
+    "initial_access",
+    "execution",
+    "persistence",
+    "privilege_escalation",
+    "credential_access",
+    "discovery",
+    "lateral_movement",
+    "command_and_control",
+    "collection",
+    "staging",
+    "exfiltration",
+    "cleanup"
+  ],
+  "status": "validated",
+  "difficulty": "easy",
+  "question_target": 180,
+  "validated_release": "v0.2.3"
+}

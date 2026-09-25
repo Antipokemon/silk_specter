@@ -1,0 +1,35 @@
+{
+  "forest": "ASTERON.LOCAL",
+  "child_domains": [
+    "US.ASTERON.LOCAL",
+    "EU.ASTERON.LOCAL",
+    "AU.ASTERON.LOCAL",
+    "APAC.ASTERON.LOCAL",
+    "LATAM.ASTERON.LOCAL"
+  ],
+  "login_model": {
+    "normal": "username/password",
+    "privileged": "CAC/certificate",
+    "special_services": "CAC/certificate where appropriate",
+    "cloud_vpn": "MFA where applicable"
+  },
+  "account_classes": {
+    "normal": "<username>",
+    "admin": "adm-<username>",
+    "domain_admin": "da-<username>",
+    "service": "svc-<function>",
+    "break_glass": "bg-<nnn>"
+  },
+  "network_device_aaa": [
+    "TACACS+",
+    "RADIUS",
+    "local emergency accounts"
+  ],
+  "admin_sources": [
+    "NOC management",
+    "COOP management",
+    "regional management",
+    "PAWs",
+    "jump hosts"
+  ]
+}

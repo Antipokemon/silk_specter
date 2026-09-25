@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Editor / OS
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Generated release archives / scratch
+*.zip
+*.tar.gz
+*.sha256
+/tmp/
+window_test/
+
+# Large reproducible generated telemetry: keep in release package, not normal Git history.
+dataset/*/raw/
+dataset/*/hec/
+dataset/*/ingest_manifest.csv
+dataset/ground_truth/*.csv
+dataset/ground_truth_events.csv
+
+# Local Splunk validation outputs
+validation/local/
+*.splunk-result.csv

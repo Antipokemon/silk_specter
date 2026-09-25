@@ -1,0 +1,111 @@
+{
+  "aws_service_families": [
+    {
+      "service": "Security Operations",
+      "accounts": [
+        "SecurityOperations",
+        "LogArchive"
+      ]
+    },
+    {
+      "service": "Network Services",
+      "accounts": [
+        "NetworkServices"
+      ]
+    },
+    {
+      "service": "Identity Services",
+      "accounts": [
+        "IdentityServices"
+      ]
+    },
+    {
+      "service": "GitLab / DevSecOps",
+      "accounts": [
+        "GitLab-Dev",
+        "GitLab-Test",
+        "GitLab-Prod"
+      ]
+    },
+    {
+      "service": "Atlassian Collaboration",
+      "accounts": [
+        "Atlassian-Dev",
+        "Atlassian-Test",
+        "Atlassian-Prod"
+      ]
+    },
+    {
+      "service": "Digital / Public Web",
+      "accounts": [
+        "WebPlatform-Dev",
+        "WebPlatform-Test",
+        "WebPlatform-Prod"
+      ]
+    },
+    {
+      "service": "AI / Analytics",
+      "accounts": [
+        "AIPlatform-Dev",
+        "AIPlatform-Test",
+        "AIPlatform-Prod"
+      ]
+    },
+    {
+      "service": "Data Platform",
+      "accounts": [
+        "DataPlatform-Dev",
+        "DataPlatform-Test",
+        "DataPlatform-Prod"
+      ]
+    },
+    {
+      "service": "Observability",
+      "accounts": [
+        "Observability-Dev",
+        "Observability-Test",
+        "Observability-Prod"
+      ]
+    },
+    {
+      "service": "Artifact / Package Services",
+      "accounts": [
+        "Artifacts-Dev",
+        "Artifacts-Test",
+        "Artifacts-Prod"
+      ]
+    },
+    {
+      "service": "Engineering Data Services",
+      "accounts": [
+        "EngineeringData-Dev",
+        "EngineeringData-Test",
+        "EngineeringData-Prod"
+      ]
+    }
+  ],
+  "enterprise_services": [
+    "Active Directory",
+    "DNS",
+    "DHCP",
+    "PKI / CAC",
+    "Tenable",
+    "VDI",
+    "ServiceNow",
+    "Secure File Transfer",
+    "Print",
+    "SCCM/MECM",
+    "WSUS",
+    "Ivanti",
+    "GitLab",
+    "Atlassian",
+    "Microsoft Defender",
+    "Trellix",
+    "Backup",
+    "Monitoring",
+    "Vulnerability Management",
+    "Physical Access Control"
+  ],
+  "dns_policy": "Cloud workloads use cloud DNS unless resolving internal Asteron resources.",
+  "splunk_model": "Single centralized search/indexing location; collection path is intentionally abstracted from participants."
+}

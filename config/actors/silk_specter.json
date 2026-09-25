@@ -1,0 +1,26 @@
+{
+  "id": "silk_specter",
+  "name": "SILK SPECTER",
+  "inspiration": "Volt Typhoon / MITRE ATT&CK G1017",
+  "fictional": true,
+  "methodology": [
+    "external exposure research",
+    "valid-account use",
+    "living-off-the-land",
+    "network and identity discovery",
+    "credential access",
+    "lateral movement",
+    "covert internal routing/proxying",
+    "collection",
+    "staging",
+    "exfiltration",
+    "selective cleanup",
+    "OT-adjacent pre-positioning"
+  ],
+  "scenario_targets": {
+    "easy": 180,
+    "medium": 170,
+    "hard": 150
+  },
+  "research_note": "Keep public-source research/version provenance under research/. Do not claim fictional actions are exact real-world attribution."
+}

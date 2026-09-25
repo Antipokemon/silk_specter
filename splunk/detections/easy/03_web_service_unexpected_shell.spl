@@ -1,0 +1,3 @@
+index=asteron_easy host=USHQ-WEB-02 sourcetype=syslog "Linux-Sysmon" "<EventID>1</EventID>" "<ParentImage>/usr/bin/java</ParentImage>" "<Image>/bin/sh</Image>"
+| stats earliest(_time) as first_seen values(_raw) as evidence by host
+| eval finding_title="Web Service Spawned Unexpected Shell", severity="critical"

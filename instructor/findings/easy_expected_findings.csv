@@ -1,0 +1,12 @@
+finding_id,detection_name,expected_disposition,activity_id,notes
+EF-001,Internet Scanner Activity Against Public Service,benign,EASY-RECON-BENIGN-001,Public Internet measurement scanner
+EF-002,Potential Web Application Exploitation,malicious,EASY-ACCESS-001,Public application exploitation evidence
+EF-003,Web Service Spawned Unexpected Shell,malicious,EASY-ACCESS-001,Web service process creates shell
+EF-004,Internal Reconnaissance Fan-Out,benign,EASY-RECON-BENIGN-002,Tenable scanner instance
+EF-005,Internal Reconnaissance Fan-Out,malicious,EASY-WIN-DISC-001,Actor enumeration instance
+EF-006,AWS Credential Used From Unusual Source,malicious,EASY-AWS-001,Deployment role used from atypical path
+EF-007,Service Account Authentication From Unexpected Network,malicious,EASY-WIN-PIVOT-001,Service account source network mismatch
+EF-008,Cross-Site Service Account Use,malicious,EASY-XSPIVOT-001,Cross-site engineering access
+EF-009,Engineering Data DLP Policy Match,benign,EASY-BENIGN-DLP-001,Approved partner transfer with justification
+EF-010,Engineering Data DLP Policy Match,malicious,EASY-EXFIL-001,Engineering package transfer
+EF-011,Unusually Large Outbound Transfer to Rare Destination,malicious,EASY-EXFIL-001,Easy exfiltration finding
