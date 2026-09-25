@@ -2,23 +2,23 @@
 
 Final target: **500 questions** across one persistent Asteron environment.
 
-| Tier | Target | Training model |
-|---|---:|---|
-| Easy | 180 | discovery-first, 2 hints normally, clearer pivots/notables |
-| Medium | 170 | multi-source/multi-region correlation, 3 hints normally, staging and partial detection coverage |
-| Hard | 150 | global heterogeneous environment, sparse/ambiguous findings, legitimate lookalikes, 3 strategic hints |
-
-Each scenario has `question_bank/<scenario>/questions.csv`, `answers.csv`, `hints.csv`, and `STATUS.md`.
+| Tier | Target | Current | Training model |
+|---|---:|---:|---|
+| Easy | 180 | **180** | discovery-first, 2 progressive hints, clearer pivots/notables |
+| Medium | 170 | 0 | multi-source/multi-region correlation, 3 hints normally, staging and partial detection coverage |
+| Hard | 150 | 0 | global heterogeneous environment, sparse/ambiguous findings, legitimate lookalikes, 3 strategic hints |
 
 ## Authoring rules
 
-1. Telemetry exists before the question is accepted.
-2. Every question has a deterministic answer and instructor-only reference SPL.
-3. Hints teach investigation, not the answer. Easy starts by teaching `tstats` discovery and gradually removes scaffolding.
-4. Participant exports never contain answer, reference SPL, activity IDs, ATT&CK IDs, truth labels, or disposition ground truth.
-5. Answer-bearing telemetry is an API: changing hosts, bytes, usernames, times, destinations, or source/sourcetype may invalidate questions and requires revalidation.
-6. Do not create Medium/Hard answers before their distinct scenario data is authored and validated.
+1. The participant is given the scenario index. Do not spend questions asking them to discover the index.
+2. Data must exist before a question is accepted.
+3. Every question has a deterministic answer and instructor-only reference SPL.
+4. Prefer precise language such as **Windows Security logs**, **DNS records**, **network connection records**, **firewall traffic**, or **endpoint-security alerts** rather than vague terms such as *telemetry*.
+5. Easy is written for newer analysts: early hints explain what a log type/field means, then provide a progressively narrower search approach. Later Easy questions reduce scaffolding and require cross-source pivots.
+6. Participant exports never contain answers, reference SPL, activity IDs, ATT&CK ground truth, or malicious/benign truth labels.
+7. Answer-bearing data is an API: changing hosts, IPs, usernames, times, byte counts, filenames, destinations, source/sourcetype, or parser fields may invalidate questions.
+8. Do not create Medium/Hard answers before their distinct scenario data exists and passes the same parser/CIM validation used for Easy.
 
 ## Current state
 
-Easy contains the 25-question validated starter pool. Medium and Hard intentionally ship with schema-only pools until their distinct campaigns exist.
+Easy contains the complete **180-question** bank tied to the validated Easy dataset. Medium and Hard intentionally remain schema-only until their separate campaigns are authored and validated.

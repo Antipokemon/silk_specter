@@ -1,51 +1,361 @@
 question_id,hint_number,hint,hint_cost
-E001,1,`tstats` can summarize indexed metadata without searching raw events. Try returning values of `sourcetype` grouped by `index`.,2
-E001,2,Try: `| tstats values(sourcetype) where index=* by index`,4
-E002,1,Use the same metadata-discovery approach from E001 and look for a sourcetype whose name describes connection telemetry.,2
-E002,2,"After identifying the exercise index, try `| tstats count where index=<index> by sourcetype` and inspect the `bro:*:json` results.",4
-E003,1,"Use `tstats` to list the sourcetypes associated with USHQ-APP-07. In this environment, native Windows Security and Sysmon share the same sourcetype and are distinguished by `source`.",2
-E003,2,Try `| tstats count where index=asteron_easy host=USHQ-APP-07 by sourcetype source | search sourcetype=XmlWinEventLog`.,4
-E004,1,Windows Security and Sysmon share `sourcetype=XmlWinEventLog`; use `source` to identify the underlying Windows channel.,3
-E004,2,Try `| tstats count where index=asteron_easy host=USHQ-APP-07 sourcetype=XmlWinEventLog by source`.,5
-E005,1,Start with `tstats` against the web host and inspect the Linux-oriented sourcetypes.,2
-E005,2,`auditd` records normally come from `/var/log/audit/audit.log`; inspect the metadata associated with that source.,4
-E006,1,Sysmon for Linux writes XML-formatted events through the Linux logging pipeline. Do not assume its sourcetype contains the word `sysmon`.,3
-E006,2,"Inspect the sourcetypes for `USHQ-WEB-02`, then sample the raw events for `Linux-Sysmon`.",5
-E007,1,"Use `tstats` to inventory sourcetypes, then look for an AWS source associated with API auditing.",2
-E007,2,CloudTrail is the AWS service that records control-plane API calls.,4
-E008,1,Use `tstats` to inventory application-oriented sourcetypes before searching raw events.,2
-E008,2,Look for a sourcetype that explicitly represents GitLab audit activity.,4
-E009,1,Inventory sourcetypes and look for two different endpoint-security vendors rather than assuming one enterprise-wide EDR.,3
-E009,2,The environment uses Microsoft Defender and Trellix.,5
-E010,1,Physical access is collected separately from logical authentication. Search metadata for an access-control/PACS source.,2
-E010,2,Look for a sourcetype containing badge-access records.,4
-E011,1,Start with `bro:http:json` and compare source IPs and user-agent strings that touched the public service.,4
-E011,2,Internet measurement scanners often identify themselves in the HTTP user agent. Search for `CensysInspect`.,7
-E012,1,This question intentionally requires open-source research rather than only Splunk. Research the IP from E011.,4
-E012,2,Check whether the organization publicly documents scanner ranges and scanner user agents.,7
-E013,1,Do not assume the scanner from E011 is the attacker. Look for a later source associated with abnormal application behavior.,4
-E013,2,Correlate WAF activity around `/api/render` with Zeek HTTP source addresses.,7
-E014,1,Follow the destination of the suspicious public-web traffic through the DMZ and then look for host activity immediately afterward.,4
-E014,2,The first compromised endpoint is a Linux system; correlate web telemetry with Linux Sysmon/audit events.,7
-E015,1,Look at Linux Sysmon ProcessCreate events and compare `Image` with `ParentImage`.,4
-E015,2,A web application service unexpectedly launching a general-purpose shell is the key relationship.,7
-E016,1,"Pivot from the compromised web host toward DNS/TLS connections to `git.asteron.example`, then inspect GitLab audit activity.",4
-E016,2,The GitLab audit record contains `author_name` and authentication context.,7
-E017,1,CloudTrail records assumed-role ARNs in `userIdentity.arn`.,4
-E017,2,Group CloudTrail actions by `userIdentity.arn` and `sourceIPAddress`.,7
-E018,1,Look for successful Windows network logons on `USHQ-APP-07` shortly after the Linux/AWS activity.,4
-E018,2,"Windows Event 4624 includes the target account, logon type, and source address.",7
-E019,1,"Follow network activity from USHQ toward the Virginia engineering subnet, then pivot to authentication logs on the destination.",4
-E019,2,The relevant destination is in the `10.47.60.0/24` engineering network.,7
-E020,1,Use Zeek connection metadata and focus on the cross-site remote-management connection.,4
-E020,2,Group matching source/destination tuples by Zeek sensor host to see the same connection on both sides of the tunnel.,7
-E021,1,Start with outbound DNS activity from the engineering host shortly before the large transfer.,4
-E021,2,Correlate the DNS result with the destination seen in `bro:conn:json` and `bro:ssl:json`.,7
-E022,1,Zeek `conn` records contain byte counts for both directions. Determine which side initiated the transfer.,4
-E022,2,"For the suspicious destination, sum `orig_bytes` rather than `resp_bytes`.",7
-E023,1,Network telemetry gives you the source host and destination. Pivot back to Sysmon network-connect telemetry on the source host.,4
-E023,2,Sysmon Event ID 3 records the process image associated with a network connection.,7
-E024,1,A detection firing is not the same thing as malicious activity. Revisit the scanner from E011 and its public attribution.,4
-E024,2,Identify the finding whose trigger is the known Internet measurement scanner rather than the later suspicious source.,7
-E025,1,"Build a timeline with the compromised Linux system, the first Windows authentication, and the later cross-site connection.",5
-E025,2,Use source/destination pairs in Zeek together with Windows 4624 and host process activity to establish the order.,9
+E001,1,A sourcetype is Splunk's label for the format/parser used for a group of events. Start by inventorying sourcetypes in the provided index.,2
+E001,2,"Try `| tstats count where index=<index> by sourcetype`, then count the resulting sourcetypes.",5
+E002,1,"The `host` field identifies the system, device, sensor, or service that produced an event. Use indexed metadata rather than reading every raw event.",2
+E002,2,Try `| tstats dc(host) as host_count where index=<index>`.,5
+E003,1,"Zeek connection records describe who connected to whom, on which ports, and how many bytes moved.",2
+E003,2,List sourcetypes with `tstats` and look for the `bro:*:json` entry whose name describes connections.,5
+E004,1,DNS records show name lookups such as `git.asteron.example` and the IP addresses returned by DNS.,2
+E004,2,List sourcetypes and look for the `bro:*:json` entry whose name is DNS.,5
+E005,1,"HTTP request logs contain fields such as method, host name, URI, user agent, and status code.",2
+E005,2,Inventory sourcetypes and look for the Zeek/Bro HTTP JSON source.,5
+E006,1,"TLS records can show the server name (SNI), TLS version, cipher, and connection identifiers even when content is encrypted.",2
+E006,2,Inventory sourcetypes and look for the Zeek/Bro SSL JSON source.,5
+E007,1,SMB is Windows file sharing. In this exercise the SMB-specific Zeek records are file-access records.,2
+E007,2,Look for the `bro:*:json` sourcetype whose name contains `smb_files`.,5
+E008,1,Windows Security and Windows Sysmon both use the same sourcetype in this exercise; the `source` field identifies the channel.,2
+E008,2,Run `| tstats count where index=<index> by sourcetype source` and inspect the Windows entries.,5
+E009,1,The sourcetype tells you the general XML format. The `source` field tells you which Windows Event Log channel generated the record.,2
+E009,2,Filter to `sourcetype=XmlWinEventLog` and group by `source`.,5
+E010,1,"Sysmon records process creation, network connections, file creation, DNS queries, and other endpoint activity.",2
+E010,2,"Filter to `sourcetype=XmlWinEventLog`, group by `source`, and identify the Sysmon Operational channel.",5
+E011,1,"Linux auditd records include event types such as `SYSCALL`, `EXECVE`, `USER_AUTH`, and `USER_LOGIN`.",2
+E011,2,Inventory sourcetypes and look for the one explicitly named for Linux audit.,5
+E012,1,"CloudTrail records AWS API calls such as `ListBuckets`, `DescribeInstances`, and `GetObject`.",2
+E012,2,Inventory sourcetypes and identify the AWS source whose name is CloudTrail.,5
+E013,1,"VPC Flow Logs describe network conversations in AWS. They are different from CloudTrail, which records API calls.",2
+E013,2,Look for the AWS sourcetype containing `vpcflow`.,5
+E014,1,Application audit records can show which identity performed an action such as downloading a repository.,2
+E014,2,Inventory sourcetypes and find the one explicitly named for GitLab audit activity.,5
+E015,1,"Physical Access Control System (PACS) records are badge/door events, not computer logons.",2
+E015,2,Inventory sourcetypes and look for the access-control/PACS source.,5
+E016,1,Start with HTTP request logs for the public portal. A known scanner identifies itself in the HTTP user-agent string.,2
+E016,2,"Search `sourcetype=bro:http:json` for `CensysInspect`, then inspect `id.orig_h` (the initiating/source IP).",5
+E017,1,Some Internet measurement services identify themselves in the HTTP `user_agent` field. Read the client string before deciding whether a scan is hostile.,2
+E017,2,Filter `bro:http:json` to source IP `199.45.154.125` and inspect `user_agent`; the organization name appears in the string.,5
+E018,1,A user agent is the text an HTTP client sends to identify itself or its software family.,2
+E018,2,Filter the HTTP logs to source IP `199.45.154.125` and display `user_agent`.,5
+E019,1,"In Zeek connection logs, `id.orig_h` is the initiator and `id.resp_h` is the system that answered.",2
+E019,2,Filter `bro:conn:json` to the scanner IP and inspect `id.resp_h`.,5
+E020,1,The HTTP `host` field is the web site name the client requested; it is different from Splunk's metadata `host` field in some datasets.,2
+E020,2,Filter to the scanner and inspect the HTTP field named `host`.,5
+E021,1,Do not reuse the Censys IP just because it appeared first. Compare other external clients repeatedly requesting many portal paths.,2
+E021,2,Group public-portal HTTP requests by `id.orig_h` and compare request counts and URI variety.,5
+E022,1,"Once you know the suspicious IP, count only its HTTP requests during the reconnaissance window before 15:22 UTC.",2
+E022,2,"Use the April 6 14:42–14:54 UTC window with `sourcetype=bro:http:json`, then `| stats count`.",5
+E023,1,HTTP methods describe the operation being requested. Compare the `method` field across the reconnaissance records rather than relying on URI names alone.,2
+E023,2,Filter the reconnaissance window and use `| stats values(method)`.,5
+E024,1,HTTP 404 means the requested resource was not found. Filter the suspicious scanner's requests by `status_code=404`.,2
+E024,2,"After filtering to the reconnaissance window and `status_code=404`, return `values(uri)`.",5
+E025,1,Look for a path that is first tested with GET and later appears with a different HTTP method.,2
+E025,2,Group the suspicious IP's HTTP requests by `uri` and compare the methods seen during reconnaissance with the later POST activity.,5
+E026,1,"In Zeek connection records, `id.resp_p` is the responder/destination port. Inspect that field for the public-portal connections.",2
+E026,2,Filter Zeek connection logs to the suspicious source and portal IP; inspect `id.resp_p`.,5
+E027,1,TLS logs contain a `version` field even when the application content is encrypted.,2
+E027,2,Filter the TLS records to the suspicious IP and portal server name; return `values(version)`.,5
+E028,1,SNI (Server Name Indication) is the host name the client asks for during TLS setup.,2
+E028,2,Filter TLS records to the suspicious source IP and inspect `server_name`.,5
+E029,1,Compare this with the much more identifiable `CensysInspect` string from the benign scan.,2
+E029,2,Filter the reconnaissance sequence and inspect `user_agent`.,5
+E030,1,"In Zeek data, Splunk `host` identifies the Zeek sensor that produced the record; `id.orig_h` and `id.resp_h` are the communicating IP addresses.",2
+E030,2,Filter the suspicious HTTP requests from `23.20.77.81` during 14:42–14:54 UTC and inspect the Splunk `host` field.,5
+E031,1,Earlier reconnaissance used one HTTP method consistently. Focus on the very short window immediately before the first host-side compromise evidence and check whether the method changes.,2
+E031,2,Filter HTTP records from `23.20.77.81` to 15:22:40–15:22:45 UTC and inspect the `method` field.,5
+E032,1,Filter the suspicious source IP to HTTP POST requests near the transition from reconnaissance to compromise.,2
+E032,2,Use `method=POST` and display `uri`.,5
+E033,1,WAF means Web Application Firewall. Its records contain the HTTP request plus the rule that handled it.,2
+E033,2,"Filter `aws:waf` to the suspicious client, `/api/render`, and POST; inspect `terminatingRuleId`.",5
+E034,1,A WAF rule match can be monitored without blocking the request. Use the WAF `action` field to determine what happened.,2
+E034,2,Filter to `terminatingRuleId=AppInputAnomaly` and inspect `action`.,5
+E035,1,HTTP 5xx codes indicate a server-side error. Inspect the response associated with the suspicious POST.,2
+E035,2,Filter Zeek HTTP records to the POST and return `status_code`.,5
+E036,1,Look just after the POST rather than broadening to the entire day. A new hidden-looking path appears.,2
+E036,2,Search 15:22:42–15:23:00 UTC for HTTP activity from the same external IP and inspect `uri`.,5
+E037,1,HTTP status codes indicate whether the request succeeded or failed. Inspect `status_code` for the follow-up request rather than inferring it from the URI.,2
+E037,2,Filter to the hidden path and inspect `status_code`.,5
+E038,1,Pivot from the portal IP `10.44.15.22` into endpoint records at the same time. The affected server is Linux.,2
+E038,2,Search the minute after the suspicious POST for Linux Sysmon/audit activity and identify the host.,5
+E039,1,Sysmon Event ID 11 is the FileCreate event. Confirm the event ID from the record rather than memorizing it blindly.,2
+E039,2,Search the web server logs for the full `.runtime/status` path and extract `<EventID>...</EventID>`.,5
+E040,1,Sysmon file-create records contain a target filename/path. Focus on the event immediately following the suspicious web requests.,2
+E040,2,Search for `.runtime/status` on `USHQ-WEB-02` and inspect the Sysmon `TargetFilename` value.,5
+E041,1,Zeek file records describe files observed in network protocols. They can corroborate the endpoint file-create event.,2
+E041,2,Search `bro:files:json` around 15:23 UTC and inspect `filename`.,5
+E042,1,A SHA-256 hash is a content fingerprint. Zeek calculated one for the transferred file.,2
+E042,2,Filter `bro:files:json` to `filename=.runtime/status` and display `sha256`.,5
+E043,1,The Zeek file record includes both observed bytes and total bytes. Use the complete-file field for this question.,2
+E043,2,Filter to the file and inspect `total_bytes`.,5
+E044,1,"Endpoint-security detections should corroborate other evidence, not replace it. Look at the Trellix event shortly after the file creation.",2
+E044,2,Filter `trellix:epo` to `USHQ-WEB-02` around 15:24 UTC and inspect `threatName`.,5
+E045,1,The detection includes both the parent process and the child process it considered suspicious.,2
+E045,2,Filter to the Trellix web-shell detection and inspect `child_process`.,5
+E046,1,The Linux Sysmon process-create records include the account in a `User` field.,2
+E046,2,"Focus on `USHQ-WEB-02` after compromise, extract the Sysmon `User` value, and compare the suspicious command processes.",5
+E047,1,Process ancestry shows what launched a command. A web application should not normally be the parent of a long discovery sequence.,2
+E047,2,Extract `ParentImage` from the Linux Sysmon ProcessCreate events after compromise.,5
+E048,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E048,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E049,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E049,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E050,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E050,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E051,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E051,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E052,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E052,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E053,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E053,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E054,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E054,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E055,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E055,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E056,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E056,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E057,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E057,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E058,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E058,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E059,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E059,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E060,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E060,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E061,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E061,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E062,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E062,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E063,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E063,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E064,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E064,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E065,1,Linux Sysmon ProcessCreate events record the full command line. Work through the command list and determine what each command is trying to learn.,2
+E065,2,"On `USHQ-WEB-02`, extract `CommandLine` from Sysmon Event ID 1 during the post-compromise discovery window and inspect the resulting list.",5
+E066,1,Look for a new executable launched from the compromised web-service process context after the discovery commands.,2
+E066,2,Search the web host for `asteron-maint-helper` and inspect the Sysmon `Image` value.,5
+E067,1,The image path identifies the program; the command line also shows its arguments.,2
+E067,2,Search for the helper and extract the Sysmon `CommandLine` value.,5
+E068,1,Compare the web-service execution account with the account shown on the maintenance-helper process.,2
+E068,2,Extract the Sysmon `User` value for `asteron-maint-helper`.,5
+E069,1,The suspicious relationship is not just that a root process exists; it is what launched it.,2
+E069,2,Extract `ParentImage` for the maintenance-helper events.,5
+E070,1,Trellix records a human-readable detection name describing why the parent/child relationship is suspicious.,2
+E070,2,Filter Trellix events to the maintenance helper and inspect `threatName`.,5
+E071,1,"Severity is a vendor assessment of importance, not proof by itself. Use it as supporting context.",2
+E071,2,Filter to the helper detection and inspect `severity`.,5
+E072,1,Endpoint products may log what they would have done rather than actually terminating the process.,2
+E072,2,Inspect the Trellix `action` field for this detection.,5
+E073,1,"Count process-create records, not the auditd multipart records or the Trellix alerts that describe the same launches.",2
+E073,2,Use the Linux Sysmon Event ID 1 records containing `asteron-maint-helper` and `| stats count`.,5
+E074,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
+E074,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
+E075,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
+E075,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
+E076,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
+E076,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
+E077,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
+E077,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
+E078,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
+E078,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
+E079,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
+E079,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
+E080,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
+E080,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
+E081,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
+E081,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
+E082,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
+E082,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
+E083,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
+E083,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
+E084,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
+E084,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
+E085,1,"Count unique target paths, not all auditd/Sysmon records generated by each command.",2
+E085,2,"Use the Linux Sysmon process-create records in the 15:44–15:49 UTC window, extract the path after `cat`, then `dc(file)`.",5
+E086,1,The path created during initial access later receives repeated requests across several days.,2
+E086,2,Filter HTTP requests from `23.20.77.81` after 18:00 UTC on April 6 and count by `uri`.,5
+E087,1,Compare the method used for the follow-up check at 15:22 with the later recurring operator requests.,2
+E087,2,Filter to the hidden path after 18:00 UTC and return `values(method)`.,5
+E088,1,The later requests are handled by the normal public-portal rule rather than the anomaly rule seen during initial access.,2
+E088,2,Filter WAF records to the hidden path after 18:00 UTC and inspect `action`.,5
+E089,1,A consistent successful response supports the idea that the path remains usable over time.,2
+E089,2,Filter the recurring path and inspect `status_code`.,5
+E090,1,Look at the host process-create record immediately after each recurring request.,2
+E090,2,"On `USHQ-WEB-02`, inspect Sysmon Event ID 1 records associated with the recurring access times and compare `Image`.",5
+E091,1,The child process looks harmless by itself. The important clue is that the same web-service parent launches it after remote requests.,2
+E091,2,Filter the Sysmon record to `Image=/usr/bin/true` and extract `ParentImage`.,5
+E092,1,"Count only the later POST requests, not the original GET immediately after initial access.",2
+E092,2,"Filter to source `23.20.77.81`, the hidden path, `method=POST`, and the period beginning at 18:00 UTC April 6.",5
+E093,1,"The outbound sessions use TLS, so application content is not needed to identify the requested server name.",2
+E093,2,Start with TLS records from the compromised web server after 16:40 UTC and look for a server name that recurs at regular intervals.,5
+E094,1,TLS SNI gives the name; the same record also contains the responder/destination address.,2
+E094,2,Filter to `server_name=cloud-edge.example` and inspect `id.resp_h`.,5
+E095,1,Do not assume HTTPS just from the server name. Confirm the destination port in connection records.,2
+E095,2,Filter the known internal source IPs to destination `23.20.77.81` and inspect `id.resp_p`.,5
+E096,1,Linux Sysmon Event ID 3 is a network-connection event and includes the process image.,2
+E096,2,"Search `USHQ-WEB-02` Sysmon Event ID 3 records containing `23.20.77.81`, then extract `Image`.",5
+E097,1,The same Sysmon network event that identifies the process also identifies its user.,2
+E097,2,Filter to the web server network events for `23.20.77.81` and extract `User`.,5
+E098,1,Command-and-control (C2) is recurring communication used to maintain operator access. The TLS records identify the server name consistently across the compromised hosts.,2
+E098,2,Filter to `server_name=cloud-edge.example` and run `| stats count`.,5
+E099,1,A beacon interval is the time between repeated connections. Sort chronologically before subtracting timestamps.,2
+E099,2,"Use `streamstats current=f last(_time)` to keep the previous event time, subtract it, then average the resulting intervals.",5
+E100,1,"The same destination appears first from the web server, later from the HQ application server, and finally from the Virginia engineering server.",2
+E100,2,Sort the TLS records by time and deduplicate on `id.orig_h` while preserving the first occurrence of each source IP.,5
+E101,1,"Before an application connects by IP, it commonly resolves the service name through DNS.",3
+E101,2,Filter DNS records from `10.44.15.22` around 16:09 UTC and inspect `query`.,7
+E102,1,The DNS record contains both the requested name and the answer list.,3
+E102,2,Filter to `query=git.asteron.example` and inspect `answers`.,7
+E103,1,Linux Sysmon Event ID 3 connects a network destination to the process that opened it.,3
+E103,2,Search `USHQ-WEB-02` Event ID 3 records for destination `10.100.20.15` and extract `Image`.,7
+E104,1,"GitLab audit records include `author_name`, which identifies the account that performed the action.",3
+E104,2,Filter `gitlab:audit` to `event_type=repository_download` and inspect `author_name`.,7
+E105,1,The audit event contains a nested `details` object. The authentication method is inside it.,3
+E105,2,Use `spath` on `details.auth_method` for the repository-download event.,7
+E106,1,The audit record names the project in `entity_path` and `target_details`.,3
+E106,2,Filter to the repository download and inspect `entity_path`.,7
+E107,1,The event type tells you what action GitLab recorded for the identity.,3
+E107,2,Filter GitLab audit events to `author_name=svc-webdeploy` and inspect `event_type`.,7
+E108,1,Application audit logs can record a different visible source than an internal network sensor because of proxies/NAT/service architecture.,3
+E108,2,Filter to the `svc-webdeploy` GitLab event and inspect `ip_address`.,7
+E109,1,Cloud investigations often start by sorting API calls chronologically for the suspicious identity and source address.,3
+E109,2,"Filter CloudTrail to `svc-webdeploy` from `192.0.2.60`, sort by `_time`, and inspect the first `eventName`.",7
+E110,1,"For an assumed-role session, look under `userIdentity.sessionContext.sessionIssuer` rather than guessing from the API action.",3
+E110,2,Return `values(userIdentity.sessionContext.sessionIssuer.userName)` for the suspicious CloudTrail window.,7
+E111,1,CloudTrail identity data includes the AWS account ID alongside the assumed-role ARN.,3
+E111,2,Filter the suspicious CloudTrail events and display `userIdentity.accountId`.,7
+E112,1,CloudTrail has a `sourceIPAddress` field separate from the user identity.,3
+E112,2,Filter to the `svc-webdeploy` session and inspect `sourceIPAddress`.,7
+E113,1,CloudTrail records the AWS region associated with each API event.,3
+E113,2,Filter the suspicious window and inspect `awsRegion`.,7
+E114,1,The CloudTrail `userAgent` field identifies the client/tool family used to make the API call.,3
+E114,2,Filter the suspicious API window and return `values(userAgent)`.,7
+E115,1,"CloudTrail responses can contain the discovered resource names, not just the API request.",3
+E115,2,Filter to the suspicious `ListBuckets` event and use `spath` on `responseElements.buckets{}.name`.,7
+E116,1,"For S3 `GetObject`, CloudTrail records `bucketName` and `key` in `requestParameters`.",3
+E116,2,"Filter `eventName=GetObject` and `requestParameters.bucketName=asteron-web-config`, then inspect `requestParameters.key`.",7
+E117,1,Use a precise time window so normal AWS activity elsewhere in the five-day dataset does not affect the count.,3
+E117,2,Filter CloudTrail to source `192.0.2.60` from 16:19:00 through 16:22:48 UTC and run `| stats count`.,7
+E118,1,CloudTrail `eventSource` names the AWS service that handled the API call.,3
+E118,2,Filter to `eventName=ListSecrets` and inspect `eventSource`.,7
+E119,1,The SSM `GetParameter` call records the requested parameter name under `requestParameters`.,3
+E119,2,Filter to `eventName=GetParameter` and inspect `requestParameters.name`.,7
+E120,1,There are two `GetObject` calls against the engineering bucket near the end of the burst.,3
+E120,2,"Filter to `eventName=GetObject` and `requestParameters.bucketName=asteron-engineering-prod`, then return the distinct object keys.",7
+E121,1,"The first Windows pivot begins with DCE/RPC traffic. In Zeek, `id.orig_h` is the initiator.",3
+E121,2,"Search `bro:conn:json` around 13:44 UTC, then inspect `id.orig_h` for the initiating address and `id.resp_h`/`id.resp_p` for the destination.",7
+E122,1,Correlate the network destination IP with a Windows successful logon at the same time.,3
+E122,2,Search Windows Security Event 4624 for source IP `10.44.15.22` around 13:44 UTC and identify the receiving `host`.,7
+E123,1,Use the destination side of the DCE/RPC connection that is followed by a logon on USHQ-APP-07.,3
+E123,2,Filter the first pivot connection from `10.44.15.22`; inspect the responder address in `id.resp_h`.,7
+E124,1,"DCE/RPC is a Windows remote-procedure-call protocol family. In Zeek connection records, `id.resp_p` is the destination port; read it from the pivot connection rather than relying on a memorized default.",3
+E124,2,Filter the source/destination pair and inspect `id.resp_p`.,7
+E125,1,Zeek DCE/RPC records can identify the endpoint/interface being contacted. WMI means Windows Management Instrumentation and has recognizable endpoint names.,3
+E125,2,Filter the DCE/RPC records to the pivot pair and inspect `endpoint`.,7
+E126,1,The same DCE/RPC record includes an operation name in addition to the endpoint.,3
+E126,2,Filter to the pivot pair and inspect `operation`.,7
+E127,1,Windows Security Event 4624 is a successful logon. Filter by the known source IP and time.,3
+E127,2,"Search Event 4624 on `USHQ-APP-07` from `10.44.15.22`, then inspect `TargetUserName`.",7
+E128,1,Logon Type 3 represents a network logon rather than someone signing in interactively at the keyboard.,3
+E128,2,Filter the successful `svc-appdeploy` logon and inspect `LogonType`.,7
+E129,1,WMI remote execution is often visible when `cmd.exe` is a child of the WMI Provider Host process.,3
+E129,2,Search Sysmon Process Create events around 13:44 UTC and inspect `ParentImage`.,7
+E130,1,The first command checks the identity and group/token context of the remote session.,3
+E130,2,Filter Sysmon Event ID 1 on `USHQ-APP-07` to the first minute after the logon and inspect `CommandLine`.,7
+E131,1,Defender AlertInfo records contain a human-readable `Title` beneath `properties`.,3
+E131,2,Filter `category=AdvancedHunting-AlertInfo` on `USHQ-APP-07` around 13:45 UTC and inspect `properties.Title`.,7
+E132,1,Severity is stored in the AlertInfo `properties` object.,3
+E132,2,Use `spath` on `properties.Severity` for the WMI AlertInfo record.,7
+E133,1,"The AlertInfo record includes an `AttackTechniques` value. This is an ATT&CK technique identifier, not an event ID.",3
+E133,2,Extract `properties.AttackTechniques` from the WMI alert.,7
+E134,1,Sysmon Process Create events preserve the full Windows command line. Identify what each built-in command is trying to discover.,3
+E134,2,Filter `USHQ-APP-07` Sysmon Event ID 1 to the discovery period and review `CommandLine`.,7
+E135,1,Sysmon Process Create events preserve the full Windows command line. Identify what each built-in command is trying to discover.,3
+E135,2,Filter `USHQ-APP-07` Sysmon Event ID 1 to the discovery period and review `CommandLine`.,7
+E136,1,DNS is useful for converting a hostname discovered in command output into the IP later seen in network logs.,3
+E136,2,Filter the Zeek DNS records to the DC hostname and inspect `answers`.,7
+E137,1,Use the DNS answer rather than inferring the address from the site subnet plan.,3
+E137,2,Filter `bro:dns:json` to the `ushq-fs-03` query and inspect `answers`.,7
+E138,1,This hostname is important later when the intrusion crosses into the Virginia engineering network.,3
+E138,2,Filter the DNS records to `usva-eng-app-01.us.asteron.local` and inspect `answers`.,7
+E139,1,Sysmon Process Create events preserve the full Windows command line. Identify what each built-in command is trying to discover.,3
+E139,2,Filter `USHQ-APP-07` Sysmon Event ID 1 to the discovery period and review `CommandLine`.,7
+E140,1,Sysmon Process Create events preserve the full Windows command line. Identify what each built-in command is trying to discover.,3
+E140,2,Filter `USHQ-APP-07` Sysmon Event ID 1 to the discovery period and review `CommandLine`.,7
+E141,1,Sysmon Process Create events preserve the full Windows command line. Identify what each built-in command is trying to discover.,3
+E141,2,Filter `USHQ-APP-07` Sysmon Event ID 1 to the discovery period and review `CommandLine`.,7
+E142,1,Sysmon Process Create events preserve the full Windows command line. Identify what each built-in command is trying to discover.,3
+E142,2,Filter `USHQ-APP-07` Sysmon Event ID 1 to the discovery period and review `CommandLine`.,7
+E143,1,Sysmon Process Create events preserve the full Windows command line. Identify what each built-in command is trying to discover.,3
+E143,2,Filter `USHQ-APP-07` Sysmon Event ID 1 to the discovery period and review `CommandLine`.,7
+E144,1,Sysmon Process Create events preserve the full Windows command line. Identify what each built-in command is trying to discover.,3
+E144,2,Filter `USHQ-APP-07` Sysmon Event ID 1 to the discovery period and review `CommandLine`.,7
+E145,1,Sysmon Process Create events preserve the full Windows command line. Identify what each built-in command is trying to discover.,3
+E145,2,Filter `USHQ-APP-07` Sysmon Event ID 1 to the discovery period and review `CommandLine`.,7
+E146,1,Start with Windows Security Event 4624 records on Virginia engineering systems around April 8 and look for a network logon tied to the already-compromised HQ application server.,3
+E146,2,Narrow to the suspicious April 8 network logon and inspect `TargetUserName`; compare that account with the service-ticket activity on the domain controller.,7
+E147,1,Windows Event 4769 records a Kerberos service-ticket request. SPN means Service Principal Name; the `ServiceName` field identifies the requested service.,3
+E147,2,Filter 4769 events for `svc-engsync` and inspect `ServiceName`.,7
+E148,1,WinRM means Windows Remote Management. The cross-site WinRM connection originates from the HQ application server compromised on the previous day.,3
+E148,2,"Around 15:14 UTC, filter Zeek connections from the HQ application server toward `10.47.60.21` and inspect `id.orig_h`.",7
+E149,1,Correlate the destination IP with the Windows successful-logon event that follows the network connection.,3
+E149,2,Search Event 4624 from `10.44.30.37` on the Virginia engineering hosts and identify `host`.,7
+E150,1,Use the responder/destination side of the WinRM connection.,3
+E150,2,Filter the HQ application server as `id.orig_h` around 15:14 UTC and inspect `id.resp_h`; the same record also shows the destination port.,7
+E151,1,Use the Zeek connection record for the cross-site source/destination pair and inspect `id.resp_p` to determine the remote-management port.,3
+E151,2,Filter the cross-site source/destination pair and inspect `id.resp_p`.,7
+E152,1,"The remote connection creates a network logon, not an interactive console logon.",3
+E152,2,Filter the `svc-engsync` 4624 event and inspect `LogonType`.,7
+E153,1,The same source/destination tuple appears in a FortiGate traffic event at HQ.,3
+E153,2,Filter FortiGate records to `10.44.30.37 -> 10.47.60.21:5985` and inspect `devname`.,7
+E154,1,The destination site uses a different firewall vendor. Match the same IP/port tuple in Cisco ASA logs.,3
+E154,2,Search `cisco:asa` around 15:14 UTC for both endpoint addresses and identify the Splunk `host`.,7
+E155,1,A site-to-site flow can be seen by sensors on both sides. Matching the Zeek `uid` helps prove it is the same connection.,3
+E155,2,Filter to the exact WinRM tuple and group by `uid`; inspect the `host` values.,7
+E156,1,Windows Event 4624 tells you which authentication package handled the logon.,3
+E156,2,Filter the cross-site 4624 event and inspect `AuthenticationPackageName`.,7
+E157,1,Look for a second Virginia destination using SMB rather than WinRM.,3
+E157,2,Search successful network logons by `svc-engsync` from `10.44.30.37` and identify the file-server host.,7
+E158,1,Filter connections from the compromised HQ application server to the Virginia file server and inspect the responder address. The SMB service can be identified from the connection context.,3
+E158,2,Search the connection from `10.44.30.37` around 14:55 UTC and inspect `id.resp_h`; the same record shows the file-sharing port.,7
+E159,1,"Use the Zeek connection record between the HQ application server and the Virginia file server, then inspect `id.resp_p`.",3
+E159,2,Filter the source/destination pair and inspect `id.resp_p`.,7
+E160,1,CIFS is the Kerberos service class commonly associated with SMB file sharing.,3
+E160,2,Filter 4769 ticket requests for `svc-engsync` and look for the `cifs/` service targeting the Virginia file server.,7
+E161,1,"The Splunk `host` value on a Zeek record identifies the Zeek sensor that produced the record; the SMB fields describe the client, server, path, and action.",3
+E161,2,Filter `bro:smb_files:json` to the Engineering Operations path during 15:25–15:38 UTC and inspect the Splunk `host` field.,7
+E162,1,"In Zeek, `id.orig_h` is the system that initiated the SMB connection.",3
+E162,2,Filter `bro:smb_files:json` to the engineering share and return `values(id.orig_h)`.,7
+E163,1,"The SMB file log has an `action` field describing whether a file was read, written, or otherwise accessed.",3
+E163,2,Filter to the engineering application/file-server pair and inspect `action`.,7
+E164,1,The SMB file record stores the directory/share path separately from the individual file name.,3
+E164,2,Filter the collection window and inspect `path`.,7
+E165,1,Sort the SMB file reads chronologically rather than alphabetically.,3
+E165,2,"Filter to the 15:25–15:38 UTC collection window, sort by `_time`, and inspect the first `name`.",7
+E166,1,Count unique filenames so repeated connection records cannot inflate the answer.,3
+E166,2,Use `dc(name)` over the collection window.,7
+E167,1,"Sort the file reads by time, compare each read with the previous read, then average the differences.",3
+E167,2,Use `streamstats current=f last(_time)` followed by `eval interval=_time-previous` and `stats avg(interval)`.,7
+E168,1,Staging means copying selected data into a local working directory before transfer. Look at Sysmon FileCreate destinations.,3
+E168,2,Filter Sysmon Event ID 11 on `USVA-ENG-APP-01` during staging and identify the common directory prefix in `TargetFilename`.,7
+E169,1,The copy commands are launched through `cmd.exe`; the parent process ties them to the engineering synchronization software.,3
+E169,2,"Filter Sysmon Process Create events to `CommandLine=""cmd.exe /c copy*""` and inspect `ParentImage`.",7
+E170,1,The Sysmon Process Create event records the user associated with `cmd.exe`.,3
+E170,2,Filter the staging copy commands and inspect `User`.,7
+E171,1,Sort file-creation events by time and look at the filename at the end of the target path.,3
+E171,2,"Filter Sysmon Event ID 11 to the outbound staging directory, sort by `_time`, and inspect the first `TargetFilename`.",7
+E172,1,"A single file copy can leave evidence in more than one Windows log source: process creation in Security, process creation in Sysmon, and file creation in Sysmon.",3
+E172,2,"Search the staging window for `cmd.exe /c copy` and the outbound path, then group by `EventCode` and `source`.",7
+E173,1,Use Sysmon FileCreate events and count distinct target paths rather than process events.,3
+E173,2,Filter Event ID 11 to the staging directory during 15:52–16:00 UTC and use `dc(TargetFilename)`.,7
+E174,1,Start just before the large connection from the engineering host. DNS often provides the name that explains the destination IP.,3
+E174,2,Filter DNS records from `10.47.60.21` around 16:17:30 UTC and inspect `query`.,7
+E175,1,The DNS record has the answer immediately before the outbound connection begins.,3
+E175,2,Filter to `query=sync-update.example` and inspect `answers`.,7
+E176,1,"In Zeek, `orig_bytes` is the byte count sent by the connection initiator. The engineering host is the initiator here.",3
+E176,2,Filter to `10.47.60.21 -> 50.19.77.200` and sum `orig_bytes`.,7
+E177,1,Sysmon Event ID 3 links a network connection to the process image that created it.,3
+E177,2,Filter the engineering host's Sysmon Event ID 3 to `DestinationIp=50.19.77.200` and inspect `Image`.,7
+E178,1,DLP stands for Data Loss Prevention. These records identify policy matches involving potentially sensitive files leaving the organization.,3
+E178,2,Filter DLP events on `USVA-ENG-APP-01` going to `sync-update.example` and inspect `policy`.,7
+E179,1,"Cleanup uses `cmd.exe /c del` against files in the staging directory. Count unique paths, not both Security and Sysmon copies of the same command.",3
+E179,2,"Use Sysmon Event ID 1 after 16:22 UTC, filter `CommandLine` for `cmd.exe /c del`, extract the quoted path, and count distinct files.",7
+E180,1,"Build a short timeline of the first compromised server, the first suspicious Windows destination, and the later Virginia engineering destination. Use both host logs and network connections.",3
+E180,2,"The key pivots are: web-host evidence on April 6, a successful logon plus WMI process on April 7, and a `10.44.30.37 -> 10.47.60.21:5985` connection plus Event 4624 on April 8.",7

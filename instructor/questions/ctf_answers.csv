@@ -1,26 +1,181 @@
 Answer,Number
-asteron_easy,E001
-bro:conn:json,E002
-XmlWinEventLog,E003
-XmlWinEventLog:Security,E004
-linux_audit,E005
-syslog,E006
-aws:cloudtrail,E007
-gitlab:audit,E008
-ms:defender:eventhub;trellix:epo,E009
-pacs:access,E010
-199.45.154.125,E011
-Censys,E012
-23.20.77.81,E013
-USHQ-WEB-02,E014
-/bin/sh,E015
-svc-webdeploy,E016
-WebPlatformDeployment,E017
-svc-appdeploy,E018
-svc-engsync,E019
-USVA-ENG-APP-01,E020
-sync-update.example,E021
-734003200,E022
-engsync.exe,E023
-Internet Scanner Activity Against Public Service,E024
-USHQ-WEB-02>USHQ-APP-07>USVA-ENG-APP-01,E025
+36,E001
+750,E002
+bro:conn:json,E003
+bro:dns:json,E004
+bro:http:json,E005
+bro:ssl:json,E006
+bro:smb_files:json,E007
+XmlWinEventLog,E008
+XmlWinEventLog:Security,E009
+XmlWinEventLog:Microsoft-Windows-Sysmon/Operational,E010
+linux_audit,E011
+aws:cloudtrail,E012
+aws:cloudwatchlogs:vpcflow,E013
+gitlab:audit,E014
+pacs:access,E015
+199.45.154.125,E016
+Censys,E017
+Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/),E018
+10.44.15.22,E019
+portal.asteron.example,E020
+23.20.77.81,E021
+20,E022
+GET,E023
+/api/version;/.well-known/security.txt,E024
+/api/render,E025
+443,E026
+TLSv13,E027
+portal.asteron.example,E028
+Mozilla/5.0,E029
+USHQ-ZEEK-01,E030
+POST,E031
+/api/render,E032
+AppInputAnomaly,E033
+COUNT,E034
+500,E035
+/assets/.runtime/status,E036
+200,E037
+USHQ-WEB-02,E038
+11,E039
+/srv/asteron-web/assets/.runtime/status,E040
+.runtime/status,E041
+8b76c4d0f10e9d92f2bc85ca9c5fa006c4944bd169d066204214c882055153fc,E042
+14832,E043
+Web service spawned command shell,E044
+/bin/sh,E045
+www-data,E046
+/usr/bin/java,E047
+id,E048
+uname -a,E049
+ip addr,E050
+ip route,E051
+ss -plant,E052
+ps -ef,E053
+hostname -f,E054
+who,E055
+env,E056
+ls -la /srv/asteron-web,E057
+find /srv/asteron-web -maxdepth 2 -type f,E058
+cat /etc/os-release,E059
+systemctl --type=service --state=running,E060
+df -h,E061
+mount,E062
+getent passwd,E063
+getent group,E064
+journalctl -n 25,E065
+/usr/libexec/asteron-maint-helper,E066
+/usr/libexec/asteron-maint-helper --status,E067
+root,E068
+/usr/bin/java,E069
+Unexpected privilege transition from web service context,E070
+High,E071
+WouldBlock,E072
+8,E073
+/srv/asteron-web/config/deploy.env,E074
+/etc/asteron/web/deployment.conf,E075
+/var/lib/gitlab-runner/config.toml,E076
+/srv/asteron-web/.aws/config,E077
+/srv/asteron-web/.aws/credentials,E078
+/etc/asteron/secrets/app.properties,E079
+/etc/asteron/service-accounts.conf,E080
+/etc/asteron/gitlab/deploy-token,E081
+/etc/asteron/engineering-sync.conf,E082
+/etc/asteron/mft/client.conf,E083
+/srv/asteron-web/config/cloud-role.json,E084
+18,E085
+/assets/.runtime/status,E086
+POST,E087
+ALLOW,E088
+200,E089
+/usr/bin/true,E090
+/usr/bin/java,E091
+12,E092
+cloud-edge.example,E093
+23.20.77.81,E094
+443,E095
+/usr/bin/curl,E096
+www-data,E097
+35,E098
+6900,E099
+10.44.15.22>10.44.30.37>10.47.60.21,E100
+git.asteron.example,E101
+10.100.20.15,E102
+/usr/bin/curl,E103
+svc-webdeploy,E104
+deploy_token,E105
+asteron/web-platform,E106
+repository_download,E107
+192.0.2.60,E108
+GetCallerIdentity,E109
+svc-webdeploy,E110
+111122223333,E111
+192.0.2.60,E112
+us-east-1,E113
+aws-cli/2.15.0,E114
+asteron-engineering-prod,E115
+deploy/appsettings.json,E116
+20,E117
+secretsmanager.amazonaws.com,E118
+/asteron/web/prod/api-endpoint,E119
+exports/engineering-852.json;exports/engineering-073.json,E120
+10.44.15.22,E121
+USHQ-APP-07,E122
+10.44.30.37,E123
+135,E124
+IWbemLevel1Login,E125
+NTLMLogin,E126
+svc-appdeploy,E127
+3,E128
+C:\Windows\System32\wbem\WmiPrvSE.exe,E129
+cmd.exe /c whoami /all,E130
+Suspicious WMI initiated command shell,E131
+Medium,E132
+T1047,E133
+"cmd.exe /c net group ""Domain Admins"" /domain",E134
+cmd.exe /c nltest /dclist:us.asteron.local,E135
+10.44.10.12,E136
+10.44.20.31,E137
+10.47.60.21,E138
+cmd.exe /c net view \\USVA-FS-01,E139
+cmd.exe /c sc query,E140
+cmd.exe /c net localgroup administrators,E141
+cmd.exe /c nltest /domain_trusts,E142
+cmd.exe /c dir \\USHQ-FS-03\Shared,E143
+cmd.exe /c dir \\USVA-FS-01\Engineering,E144
+cmd.exe /c reg query HKLM\SOFTWARE\Asteron,E145
+svc-engsync,E146
+HTTP/USVA-ENG-APP-01.us.asteron.local,E147
+10.44.30.37,E148
+USVA-ENG-APP-01,E149
+10.47.60.21,E150
+5985,E151
+3,E152
+USHQ-FW-02,E153
+USVA-FW-03,E154
+USHQ-ZEEK-01;USVA-ZEEK-01,E155
+Kerberos,E156
+USVA-FS-01,E157
+10.47.20.31,E158
+445,E159
+cifs/usva-fs-01.us.asteron.local,E160
+USVA-ZEEK-01,E161
+10.47.60.21,E162
+SMB2_READ,E163
+\\USVA-FS-01\Engineering\Operations,E164
+regional_engineering_package.pdf,E165
+25,E166
+31,E167
+C:\ProgramData\Asteron\EngineeringSync\outbound\,E168
+C:\Program Files\Asteron\EngineeringSync\engsync.exe,E169
+US\svc-engsync,E170
+regional_engineering_package.pdf,E171
+4688;1;11,E172
+20,E173
+sync-update.example,E174
+50.19.77.200,E175
+734003200,E176
+C:\Program Files\Asteron\EngineeringSync\engsync.exe,E177
+Engineering Sensitive - External Upload,E178
+15,E179
+USHQ-WEB-02>USHQ-APP-07>USVA-ENG-APP-01,E180

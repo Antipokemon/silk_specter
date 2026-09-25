@@ -1,26 +1,181 @@
-Answer,Number
-asteron_easy,E001
-bro:conn:json,E002
-XmlWinEventLog,E003
-XmlWinEventLog:Security,E004
-linux_audit,E005
-syslog,E006
-aws:cloudtrail,E007
-gitlab:audit,E008
-ms:defender:eventhub;trellix:epo,E009
-pacs:access,E010
-199.45.154.125,E011
-Censys,E012
-23.20.77.81,E013
-USHQ-WEB-02,E014
-/bin/sh,E015
-svc-webdeploy,E016
-WebPlatformDeployment,E017
-svc-appdeploy,E018
-svc-engsync,E019
-USVA-ENG-APP-01,E020
-sync-update.example,E021
-734003200,E022
-engsync.exe,E023
-Internet Scanner Activity Against Public Service,E024
-USHQ-WEB-02>USHQ-APP-07>USVA-ENG-APP-01,E025
+question_id,answer,answer_type
+E001,36,numeric
+E002,750,numeric
+E003,bro:conn:json,exact
+E004,bro:dns:json,exact
+E005,bro:http:json,exact
+E006,bro:ssl:json,exact
+E007,bro:smb_files:json,exact
+E008,XmlWinEventLog,exact
+E009,XmlWinEventLog:Security,exact
+E010,XmlWinEventLog:Microsoft-Windows-Sysmon/Operational,exact
+E011,linux_audit,exact
+E012,aws:cloudtrail,exact
+E013,aws:cloudwatchlogs:vpcflow,exact
+E014,gitlab:audit,exact
+E015,pacs:access,exact
+E016,199.45.154.125,exact
+E017,Censys,case_insensitive
+E018,Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/),exact
+E019,10.44.15.22,exact
+E020,portal.asteron.example,exact
+E021,23.20.77.81,exact
+E022,20,numeric
+E023,GET,exact
+E024,/api/version;/.well-known/security.txt,set
+E025,/api/render,exact
+E026,443,numeric
+E027,TLSv13,exact
+E028,portal.asteron.example,exact
+E029,Mozilla/5.0,exact
+E030,USHQ-ZEEK-01,exact
+E031,POST,exact
+E032,/api/render,exact
+E033,AppInputAnomaly,exact
+E034,COUNT,exact
+E035,500,numeric
+E036,/assets/.runtime/status,exact
+E037,200,numeric
+E038,USHQ-WEB-02,exact
+E039,11,numeric
+E040,/srv/asteron-web/assets/.runtime/status,exact
+E041,.runtime/status,exact
+E042,8b76c4d0f10e9d92f2bc85ca9c5fa006c4944bd169d066204214c882055153fc,case_insensitive
+E043,14832,numeric
+E044,Web service spawned command shell,case_insensitive
+E045,/bin/sh,exact
+E046,www-data,exact
+E047,/usr/bin/java,exact
+E048,id,exact
+E049,uname -a,exact
+E050,ip addr,exact
+E051,ip route,exact
+E052,ss -plant,exact
+E053,ps -ef,exact
+E054,hostname -f,exact
+E055,who,exact
+E056,env,exact
+E057,ls -la /srv/asteron-web,exact
+E058,find /srv/asteron-web -maxdepth 2 -type f,exact
+E059,cat /etc/os-release,exact
+E060,systemctl --type=service --state=running,exact
+E061,df -h,exact
+E062,mount,exact
+E063,getent passwd,exact
+E064,getent group,exact
+E065,journalctl -n 25,exact
+E066,/usr/libexec/asteron-maint-helper,exact
+E067,/usr/libexec/asteron-maint-helper --status,exact
+E068,root,exact
+E069,/usr/bin/java,exact
+E070,Unexpected privilege transition from web service context,case_insensitive
+E071,High,case_insensitive
+E072,WouldBlock,exact
+E073,8,numeric
+E074,/srv/asteron-web/config/deploy.env,exact
+E075,/etc/asteron/web/deployment.conf,exact
+E076,/var/lib/gitlab-runner/config.toml,exact
+E077,/srv/asteron-web/.aws/config,exact
+E078,/srv/asteron-web/.aws/credentials,exact
+E079,/etc/asteron/secrets/app.properties,exact
+E080,/etc/asteron/service-accounts.conf,exact
+E081,/etc/asteron/gitlab/deploy-token,exact
+E082,/etc/asteron/engineering-sync.conf,exact
+E083,/etc/asteron/mft/client.conf,exact
+E084,/srv/asteron-web/config/cloud-role.json,exact
+E085,18,numeric
+E086,/assets/.runtime/status,exact
+E087,POST,exact
+E088,ALLOW,exact
+E089,200,numeric
+E090,/usr/bin/true,exact
+E091,/usr/bin/java,exact
+E092,12,numeric
+E093,cloud-edge.example,exact
+E094,23.20.77.81,exact
+E095,443,numeric
+E096,/usr/bin/curl,exact
+E097,www-data,exact
+E098,35,numeric
+E099,6900,numeric
+E100,10.44.15.22>10.44.30.37>10.47.60.21,ordered_sequence
+E101,git.asteron.example,exact
+E102,10.100.20.15,exact
+E103,/usr/bin/curl,exact
+E104,svc-webdeploy,exact
+E105,deploy_token,exact
+E106,asteron/web-platform,exact
+E107,repository_download,exact
+E108,192.0.2.60,exact
+E109,GetCallerIdentity,exact
+E110,svc-webdeploy,exact
+E111,111122223333,exact
+E112,192.0.2.60,exact
+E113,us-east-1,exact
+E114,aws-cli/2.15.0,exact
+E115,asteron-engineering-prod,exact
+E116,deploy/appsettings.json,exact
+E117,20,numeric
+E118,secretsmanager.amazonaws.com,exact
+E119,/asteron/web/prod/api-endpoint,exact
+E120,exports/engineering-852.json;exports/engineering-073.json,set
+E121,10.44.15.22,exact
+E122,USHQ-APP-07,exact
+E123,10.44.30.37,exact
+E124,135,numeric
+E125,IWbemLevel1Login,exact
+E126,NTLMLogin,exact
+E127,svc-appdeploy,exact
+E128,3,numeric
+E129,C:\Windows\System32\wbem\WmiPrvSE.exe,case_insensitive
+E130,cmd.exe /c whoami /all,case_insensitive
+E131,Suspicious WMI initiated command shell,case_insensitive
+E132,Medium,case_insensitive
+E133,T1047,exact
+E134,"cmd.exe /c net group ""Domain Admins"" /domain",case_insensitive
+E135,cmd.exe /c nltest /dclist:us.asteron.local,case_insensitive
+E136,10.44.10.12,exact
+E137,10.44.20.31,exact
+E138,10.47.60.21,exact
+E139,cmd.exe /c net view \\USVA-FS-01,case_insensitive
+E140,cmd.exe /c sc query,case_insensitive
+E141,cmd.exe /c net localgroup administrators,case_insensitive
+E142,cmd.exe /c nltest /domain_trusts,case_insensitive
+E143,cmd.exe /c dir \\USHQ-FS-03\Shared,case_insensitive
+E144,cmd.exe /c dir \\USVA-FS-01\Engineering,case_insensitive
+E145,cmd.exe /c reg query HKLM\SOFTWARE\Asteron,case_insensitive
+E146,svc-engsync,exact
+E147,HTTP/USVA-ENG-APP-01.us.asteron.local,case_insensitive
+E148,10.44.30.37,exact
+E149,USVA-ENG-APP-01,exact
+E150,10.47.60.21,exact
+E151,5985,numeric
+E152,3,numeric
+E153,USHQ-FW-02,exact
+E154,USVA-FW-03,exact
+E155,USHQ-ZEEK-01;USVA-ZEEK-01,set
+E156,Kerberos,exact
+E157,USVA-FS-01,exact
+E158,10.47.20.31,exact
+E159,445,numeric
+E160,cifs/usva-fs-01.us.asteron.local,case_insensitive
+E161,USVA-ZEEK-01,exact
+E162,10.47.60.21,exact
+E163,SMB2_READ,exact
+E164,\\USVA-FS-01\Engineering\Operations,exact
+E165,regional_engineering_package.pdf,exact
+E166,25,numeric
+E167,31,numeric
+E168,C:\ProgramData\Asteron\EngineeringSync\outbound\,case_insensitive
+E169,C:\Program Files\Asteron\EngineeringSync\engsync.exe,case_insensitive
+E170,US\svc-engsync,case_insensitive
+E171,regional_engineering_package.pdf,exact
+E172,4688;1;11,set
+E173,20,numeric
+E174,sync-update.example,exact
+E175,50.19.77.200,exact
+E176,734003200,numeric
+E177,C:\Program Files\Asteron\EngineeringSync\engsync.exe,case_insensitive
+E178,Engineering Sensitive - External Upload,case_insensitive
+E179,15,numeric
+E180,USHQ-WEB-02>USHQ-APP-07>USVA-ENG-APP-01,ordered_sequence

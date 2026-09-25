@@ -1,8 +1,11 @@
 # Easy question bank status
 
-- Status: **validated baseline**
-- Current authored questions: 25
-- Target: 180
-- Hints: 2+ per current question; final Easy target is generally 2 hints/question with occasional third hints where needed.
-- Answers and instructor reference SPL are authoritative in `questions.csv` / `answers.csv`.
-- Do not change answer-bearing telemetry without updating the question bank and rerunning Splunk validation.
+- Status: **complete against the validated Easy dataset**
+- Authored questions: **180 / 180**
+- The exercise index is provided to the participant; there are **no index-discovery questions**.
+- Hints: **2 progressive hints per question**. Early questions explain log types/fields in plain language; later questions require increasingly independent correlation.
+- `question_bank/easy/questions.csv` is the canonical instructor question master, including answers and reference SPL.
+- `question_bank/easy/answers.csv` and `question_bank/easy/hints.csv` are canonical companion files.
+- `instructor/questions/*` and `participant/scenarios/easy/ctf_*.csv` are synchronized exports of this bank.
+- Participant exports contain no answers or reference SPL.
+- Do not change answer-bearing Easy data without updating/revalidating affected questions.
