@@ -3,32 +3,32 @@ E001,1,A sourcetype is Splunk's label for the format/parser used for a group of 
 E001,2,"Try `| tstats count where index=<index> by sourcetype`, then count the resulting sourcetypes.",5
 E002,1,"The `host` field identifies the system, device, sensor, or service that produced an event. Use indexed metadata rather than reading every raw event.",2
 E002,2,Try `| tstats dc(host) as host_count where index=<index>`.,5
-E003,1,"Zeek connection records describe who connected to whom, on which ports, and how many bytes moved.",2
-E003,2,List sourcetypes with `tstats` and look for the `bro:*:json` entry whose name describes connections.,5
-E004,1,DNS records show name lookups such as `git.asteron.example` and the IP addresses returned by DNS.,2
-E004,2,List sourcetypes and look for the `bro:*:json` entry whose name is DNS.,5
-E005,1,"HTTP request logs contain fields such as method, host name, URI, user agent, and status code.",2
-E005,2,Inventory sourcetypes and look for the Zeek/Bro HTTP JSON source.,5
-E006,1,"TLS records can show the server name (SNI), TLS version, cipher, and connection identifiers even when content is encrypted.",2
-E006,2,Inventory sourcetypes and look for the Zeek/Bro SSL JSON source.,5
-E007,1,SMB is Windows file sharing. In this exercise the SMB-specific Zeek records are file-access records.,2
-E007,2,Look for the `bro:*:json` sourcetype whose name contains `smb_files`.,5
-E008,1,Windows Security and Windows Sysmon both use the same sourcetype in this exercise; the `source` field identifies the channel.,2
-E008,2,Run `| tstats count where index=<index> by sourcetype source` and inspect the Windows entries.,5
-E009,1,The sourcetype tells you the general XML format. The `source` field tells you which Windows Event Log channel generated the record.,2
-E009,2,Filter to `sourcetype=XmlWinEventLog` and group by `source`.,5
-E010,1,"Sysmon records process creation, network connections, file creation, DNS queries, and other endpoint activity.",2
-E010,2,"Filter to `sourcetype=XmlWinEventLog`, group by `source`, and identify the Sysmon Operational channel.",5
-E011,1,"Linux auditd records include event types such as `SYSCALL`, `EXECVE`, `USER_AUTH`, and `USER_LOGIN`.",2
-E011,2,Inventory sourcetypes and look for the one explicitly named for Linux audit.,5
-E012,1,"CloudTrail records AWS API calls such as `ListBuckets`, `DescribeInstances`, and `GetObject`.",2
-E012,2,Inventory sourcetypes and identify the AWS source whose name is CloudTrail.,5
-E013,1,"VPC Flow Logs describe network conversations in AWS. They are different from CloudTrail, which records API calls.",2
-E013,2,Look for the AWS sourcetype containing `vpcflow`.,5
-E014,1,Application audit records can show which identity performed an action such as downloading a repository.,2
-E014,2,Inventory sourcetypes and find the one explicitly named for GitLab audit activity.,5
-E015,1,"Physical Access Control System (PACS) records are badge/door events, not computer logons.",2
-E015,2,Inventory sourcetypes and look for the access-control/PACS source.,5
+E003,1,Windows Security and Sysmon share the same `XmlWinEventLog` sourcetype here. The `source` field tells you which Windows channel an event came from.,2
+E003,2,Run `| tstats count where index=<index> sourcetype=XmlWinEventLog by source` and return the two channel names.,5
+E004,1,"Zeek connection records describe network conversations: source/destination IPs, ports, protocol, duration, and byte counts.",2
+E004,2,Inventory only `bro:*` sourcetypes and look for the one whose name refers to connections.,5
+E005,1,"AWS CloudTrail records API activity—who called an AWS API, from where, and which service handled it.",2
+E005,2,List the `aws:*` sourcetypes and identify the one named for CloudTrail.,5
+E006,1,A Windows EventCode identifies the kind of Security event. Count each EventCode instead of opening events one at a time.,2
+E006,2,"Filter to `source=XmlWinEventLog:Security`, then use `| stats count by EventCode | sort - count`.",5
+E007,1,"Sysmon uses numeric event IDs for activity such as process creation, network connections, file creation, and DNS queries.",2
+E007,2,"Filter to the Sysmon Operational `source`, count by `EventCode`, and sort from highest to lowest.",5
+E008,1,The Splunk `host` field identifies which system produced each event. Domain controllers normally generate many Security events.,2
+E008,2,Use `tstats` with the Windows Security source and group by `host`; sort by count descending.,5
+E009,1,"In native Zeek connection JSON, `id.resp_p` is the port on the responding/destination system.",2
+E009,2,"Search `bro:conn:json`, then `| stats count by 'id.resp_p' | sort - count`.",5
+E010,1,The Zeek DNS `query` field contains the name a system tried to resolve.,2
+E010,2,"Search `bro:dns:json`, count by `query`, and sort by the largest count.",5
+E011,1,"CloudTrail's `eventSource` identifies the AWS service that handled an API call, such as EC2, S3, IAM, or STS.",2
+E011,2,"Search `aws:cloudtrail`, then `| stats count by eventSource | sort - count`.",5
+E012,1,WSUS client events contain a `status` field showing where each update is in its lifecycle.,2
+E012,2,"Search `wsus:client`, count by `status`, and sort from most to least common.",5
+E013,1,TACACS records network-device administration authentication/authorization. The `result` field shows whether the attempt was accepted or denied.,2
+E013,2,Search `sourcetype=tacacs` and compare `| stats count by result`.,5
+E014,1,Defender Event Hub records include a `category` field. Device activity and alert/evidence records are separate categories.,2
+E014,2,"Search `ms:defender:eventhub`, count by `category`, and sort descending.",5
+E015,1,PACS means Physical Access Control System. Its `site` field identifies the Asteron location where a badge event occurred.,2
+E015,2,"Search `pacs:access`, use `| stats count by site`, and sort descending.",5
 E016,1,Start with HTTP request logs for the public portal. A known scanner identifies itself in the HTTP user-agent string.,2
 E016,2,"Search `sourcetype=bro:http:json` for `CensysInspect`, then inspect `id.orig_h` (the initiating/source IP).",5
 E017,1,Some Internet measurement services identify themselves in the HTTP `user_agent` field. Read the client string before deciding whether a scan is hostile.,2
