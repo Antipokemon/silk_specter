@@ -19,13 +19,6 @@ venv/
 /tmp/
 window_test/
 
-# Large reproducible generated telemetry: keep in release package, not normal Git history.
-dataset/*/raw/
-dataset/*/hec/
-dataset/*/ingest_manifest.csv
-dataset/ground_truth/*.csv
-dataset/ground_truth_events.csv
-
 # Local Splunk validation outputs
 validation/local/
 *.splunk-result.csv
