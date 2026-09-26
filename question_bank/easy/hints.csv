@@ -1,34 +1,34 @@
 question_id,hint_number,hint,hint_cost
-E001,1,A sourcetype is Splunk's label for the format/parser used for a group of events. Start by inventorying sourcetypes in the provided index.,2
-E001,2,"Try `| tstats count where index=<index> by sourcetype`, then count the resulting sourcetypes.",5
-E002,1,"The `host` field identifies the system, device, sensor, or service that produced an event. Use indexed metadata rather than reading every raw event.",2
-E002,2,Try `| tstats dc(host) as host_count where index=<index>`.,5
-E003,1,Windows Security and Sysmon share the same `XmlWinEventLog` sourcetype here. The `source` field tells you which Windows channel an event came from.,2
-E003,2,Run `| tstats count where index=<index> sourcetype=XmlWinEventLog by source` and return the two channel names.,5
-E004,1,"Zeek connection records describe network conversations: source/destination IPs, ports, protocol, duration, and byte counts.",2
-E004,2,Inventory only `bro:*` sourcetypes and look for the one whose name refers to connections.,5
-E005,1,"AWS CloudTrail records API activity—who called an AWS API, from where, and which service handled it.",2
-E005,2,List the `aws:*` sourcetypes and identify the one named for CloudTrail.,5
-E006,1,A Windows EventCode identifies the kind of Security event. Count each EventCode instead of opening events one at a time.,2
-E006,2,"Filter to `source=XmlWinEventLog:Security`, then use `| stats count by EventCode | sort - count`.",5
-E007,1,"Sysmon uses numeric event IDs for activity such as process creation, network connections, file creation, and DNS queries.",2
-E007,2,"Filter to the Sysmon Operational `source`, count by `EventCode`, and sort from highest to lowest.",5
-E008,1,The Splunk `host` field identifies which system produced each event. Domain controllers normally generate many Security events.,2
-E008,2,Use `tstats` with the Windows Security source and group by `host`; sort by count descending.,5
-E009,1,"In native Zeek connection JSON, `id.resp_p` is the port on the responding/destination system.",2
-E009,2,"Search `bro:conn:json`, then `| stats count by 'id.resp_p' | sort - count`.",5
-E010,1,The Zeek DNS `query` field contains the name a system tried to resolve.,2
-E010,2,"Search `bro:dns:json`, count by `query`, and sort by the largest count.",5
-E011,1,"CloudTrail's `eventSource` identifies the AWS service that handled an API call, such as EC2, S3, IAM, or STS.",2
-E011,2,"Search `aws:cloudtrail`, then `| stats count by eventSource | sort - count`.",5
-E012,1,WSUS client events contain a `status` field showing where each update is in its lifecycle.,2
-E012,2,"Search `wsus:client`, count by `status`, and sort from most to least common.",5
-E013,1,TACACS records network-device administration authentication/authorization. The `result` field shows whether the attempt was accepted or denied.,2
-E013,2,Search `sourcetype=tacacs` and compare `| stats count by result`.,5
-E014,1,Defender Event Hub records include a `category` field. Device activity and alert/evidence records are separate categories.,2
-E014,2,"Search `ms:defender:eventhub`, count by `category`, and sort descending.",5
-E015,1,PACS means Physical Access Control System. Its `site` field identifies the Asteron location where a badge event occurred.,2
-E015,2,"Search `pacs:access`, use `| stats count by site`, and sort descending.",5
+E001,1,Splunk stores the parsed event time in a standard field that begins with an underscore.,2
+E001,2,Run a simple search such as `index=<index> | head 1 | table _time` and look at the field name.,5
+E002,1,"Splunk uses indexed metadata to record which system, device, sensor, or service produced an event.",2
+E002,2,Try `| tstats count where index=<index> by host | head 5` and note the field being grouped.,5
+E003,1,The `source` field tells you which Windows Event Log channel supplied the XML event.,2
+E003,2,Use `| tstats count where index=<index> sourcetype=XmlWinEventLog by source` and identify the Security and Sysmon Operational channels.,5
+E004,1,"Zeek connection records contain the two endpoint IP addresses, ports, protocol, state, duration, and byte counts for a network conversation.",2
+E004,2,List the `bro:*` sourcetypes and look for the connection-log name.,5
+E005,1,"AWS CloudTrail records API activity: who called an AWS API, from where, and which service handled it.",2
+E005,2,List `aws:*` sourcetypes and identify the one named for CloudTrail.,5
+E006,1,EventCode 4624 is a successful Windows logon. Its EventData includes fields describing the account that received the logon.,2
+E006,2,Search a 4624 event and table account-related fields; the target-account name field is the one requested.,5
+E007,1,Sysmon Event ID 1 describes a newly created process and includes both the executable path and the command used to launch it.,2
+E007,2,"Search the Sysmon Operational source for EventCode 1 and inspect `Image`, `CommandLine`, and parent-process fields.",5
+E008,1,Sysmon Event ID 3 describes a network connection made by a process.,2
+E008,2,Search an EventCode 3 record and inspect the fields beginning with `Source` and `Destination`.,5
+E009,1,Zeek calls the connection initiator the originator and the other endpoint the responder.,2
+E009,2,Inspect one `bro:conn:json` event and look at the `id.orig_*` and `id.resp_*` fields.,5
+E010,1,A Zeek DNS event records the name requested as well as any returned answers.,2
+E010,2,Inspect one `bro:dns:json` event and compare the field holding the requested name with `answers`.,5
+E011,1,CloudTrail separates the AWS service from the operation performed by that service.,2
+E011,2,Inspect a CloudTrail event and compare `eventSource` with the field containing values such as `DescribeInstances` or `GetObject`.,5
+E012,1,CloudTrail `eventSource` values look like service DNS names such as `ec2.amazonaws.com` or `s3.amazonaws.com`.,2
+E012,2,Search one CloudTrail event and table `eventSource` and `eventName` side by side.,5
+E013,1,"TACACS records contain the user, managed device, source address, service, and the outcome of the request.",2
+E013,2,Search one `tacacs` event and inspect the key/value pair whose value is `PASS` or `FAIL`.,5
+E014,1,The Defender Event Hub stream carries several record families in the same sourcetype.,2
+E014,2,Search `ms:defender:eventhub` and inspect the field whose values begin with `AdvancedHunting-`.,5
+E015,1,Physical Access Control System (PACS) records identify both the credential used and the physical Asteron location.,2
+E015,2,Inspect one `pacs:access` record and table the identity/location fields alongside `reader` and `result`.,5
 E016,1,Start with HTTP request logs for the public portal. A known scanner identifies itself in the HTTP user-agent string.,2
 E016,2,"Search `sourcetype=bro:http:json` for `CensysInspect`, then inspect `id.orig_h` (the initiating/source IP).",5
 E017,1,Some Internet measurement services identify themselves in the HTTP `user_agent` field. Read the client string before deciding whether a scan is hostile.,2
@@ -39,8 +39,8 @@ E019,1,"In Zeek connection logs, `id.orig_h` is the initiator and `id.resp_h` is
 E019,2,Filter `bro:conn:json` to the scanner IP and inspect `id.resp_h`.,5
 E020,1,The HTTP `host` field is the web site name the client requested; it is different from Splunk's metadata `host` field in some datasets.,2
 E020,2,Filter to the scanner and inspect the HTTP field named `host`.,5
-E021,1,Do not reuse the Censys IP just because it appeared first. Compare other external clients repeatedly requesting many portal paths.,2
-E021,2,Group public-portal HTTP requests by `id.orig_h` and compare request counts and URI variety.,5
+E021,1,Do not reuse the known measurement-scanner address. Look for a different client that touches several unusual portal paths in a short period.,2
+E021,2,"Within the 14:42–14:54 UTC portal activity, group clients that request `/api/version`, `/.well-known/security.txt`, and `/api/render` by `id.orig_h`.",5
 E022,1,"Once you know the suspicious IP, count only its HTTP requests during the reconnaissance window before 15:22 UTC.",2
 E022,2,"Use the April 6 14:42–14:54 UTC window with `sourcetype=bro:http:json`, then `| stats count`.",5
 E023,1,HTTP methods describe the operation being requested. Compare the `method` field across the reconnaissance records rather than relying on URI names alone.,2
@@ -143,8 +143,8 @@ E071,1,"Severity is a vendor assessment of importance, not proof by itself. Use 
 E071,2,Filter to the helper detection and inspect `severity`.,5
 E072,1,Endpoint products may log what they would have done rather than actually terminating the process.,2
 E072,2,Inspect the Trellix `action` field for this detection.,5
-E073,1,"Count process-create records, not the auditd multipart records or the Trellix alerts that describe the same launches.",2
-E073,2,Use the Linux Sysmon Event ID 1 records containing `asteron-maint-helper` and `| stats count`.,5
+E073,1,Count only Linux Sysmon process-create records for the maintenance helper launched by the Java process during the privilege transition.,2
+E073,2,"On USHQ-WEB-02 around 15:38–15:41 UTC, filter Event ID 1 to the maintenance-helper image and Java parent, then use `stats count`.",5
 E074,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
 E074,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
 E075,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
@@ -167,8 +167,8 @@ E083,1,The actor uses ordinary `cat` commands to read configuration and secret-b
 E083,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
 E084,1,The actor uses ordinary `cat` commands to read configuration and secret-bearing files. List those command lines before deciding which path answers the question.,2
 E084,2,"Search Linux Sysmon ProcessCreate records on `USHQ-WEB-02` from 15:44–15:49 UTC, extract `CommandLine`, and keep commands beginning with `cat`.",5
-E085,1,"Count unique target paths, not all auditd/Sysmon records generated by each command.",2
-E085,2,"Use the Linux Sysmon process-create records in the 15:44–15:49 UTC window, extract the path after `cat`, then `dc(file)`.",5
+E085,1,Focus on the process-create event whose command line reads the AWS credentials file.,3
+E085,2,"Search `USHQ-WEB-02` around 15:45 UTC for `cat /srv/asteron-web/.aws/credentials`, then inspect the `User` field in that Linux Sysmon record.",7
 E086,1,The path created during initial access later receives repeated requests across several days.,2
 E086,2,Filter HTTP requests from `23.20.77.81` after 18:00 UTC on April 6 and count by `uri`.,5
 E087,1,Compare the method used for the follow-up check at 15:22 with the later recurring operator requests.,2
@@ -177,8 +177,8 @@ E088,1,The later requests are handled by the normal public-portal rule rather th
 E088,2,Filter WAF records to the hidden path after 18:00 UTC and inspect `action`.,5
 E089,1,A consistent successful response supports the idea that the path remains usable over time.,2
 E089,2,Filter the recurring path and inspect `status_code`.,5
-E090,1,Look at the host process-create record immediately after each recurring request.,2
-E090,2,"On `USHQ-WEB-02`, inspect Sysmon Event ID 1 records associated with the recurring access times and compare `Image`.",5
+E090,1,"Look for the Linux Sysmon process-create event that follows each recurring runtime-path request, rather than counting every process on the host.",2
+E090,2,"On USHQ-WEB-02, isolate Event ID 1 records for `www-data` with command line `/usr/bin/true` during the recurring-access period, then inspect `Image`.",5
 E091,1,The child process looks harmless by itself. The important clue is that the same web-service parent launches it after remote requests.,2
 E091,2,Filter the Sysmon record to `Image=/usr/bin/true` and extract `ParentImage`.,5
 E092,1,"Count only the later POST requests, not the original GET immediately after initial access.",2
@@ -193,8 +193,8 @@ E096,1,Linux Sysmon Event ID 3 is a network-connection event and includes the pr
 E096,2,"Search `USHQ-WEB-02` Sysmon Event ID 3 records containing `23.20.77.81`, then extract `Image`.",5
 E097,1,The same Sysmon network event that identifies the process also identifies its user.,2
 E097,2,Filter to the web server network events for `23.20.77.81` and extract `User`.,5
-E098,1,Command-and-control (C2) is recurring communication used to maintain operator access. The TLS records identify the server name consistently across the compromised hosts.,2
-E098,2,Filter to `server_name=cloud-edge.example` and run `| stats count`.,5
+E098,1,Command-and-control (C2) here is the recurring TLS communication to the same external service from the compromised hosts.,2
+E098,2,"Filter TLS records to `server_name=cloud-edge.example`, destination 23.20.77.81, and the three known compromised source IPs before counting.",5
 E099,1,A beacon interval is the time between repeated connections. Sort chronologically before subtracting timestamps.,2
 E099,2,"Use `streamstats current=f last(_time)` to keep the previous event time, subtract it, then average the resulting intervals.",5
 E100,1,"The same destination appears first from the web server, later from the HQ application server, and finally from the Virginia engineering server.",2
@@ -329,10 +329,10 @@ E164,1,The SMB file record stores the directory/share path separately from the i
 E164,2,Filter the collection window and inspect `path`.,7
 E165,1,Sort the SMB file reads chronologically rather than alphabetically.,3
 E165,2,"Filter to the 15:25–15:38 UTC collection window, sort by `_time`, and inspect the first `name`.",7
-E166,1,Count unique filenames so repeated connection records cannot inflate the answer.,3
-E166,2,Use `dc(name)` over the collection window.,7
-E167,1,"Sort the file reads by time, compare each read with the previous read, then average the differences.",3
-E167,2,Use `streamstats current=f last(_time)` followed by `eval interval=_time-previous` and `stats avg(interval)`.,7
+E166,1,The expanded collection sequence is a regular series of SMB file reads. This question gives you the exact event time.,3
+E166,2,"Search `bro:smb_files:json` around 15:37:24 UTC for the engineering source and file server, then inspect `name`.",7
+E167,1,You only need the timestamps of the two named file-read events; unrelated SMB activity should not enter the calculation.,3
+E167,2,Filter to those two filenames and use `stats range(_time)` to get their separation in seconds.,7
 E168,1,Staging means copying selected data into a local working directory before transfer. Look at Sysmon FileCreate destinations.,3
 E168,2,Filter Sysmon Event ID 11 on `USVA-ENG-APP-01` during staging and identify the common directory prefix in `TargetFilename`.,7
 E169,1,The copy commands are launched through `cmd.exe`; the parent process ties them to the engineering synchronization software.,3
@@ -343,8 +343,8 @@ E171,1,Sort file-creation events by time and look at the filename at the end of 
 E171,2,"Filter Sysmon Event ID 11 to the outbound staging directory, sort by `_time`, and inspect the first `TargetFilename`.",7
 E172,1,"A single file copy can leave evidence in more than one Windows log source: process creation in Security, process creation in Sysmon, and file creation in Sysmon.",3
 E172,2,"Search the staging window for `cmd.exe /c copy` and the outbound path, then group by `EventCode` and `source`.",7
-E173,1,Use Sysmon FileCreate events and count distinct target paths rather than process events.,3
-E173,2,Filter Event ID 11 to the staging directory during 15:52–16:00 UTC and use `dc(TargetFilename)`.,7
+E173,1,Sysmon Event ID 11 is FileCreate. Use the exact time and staging-directory path to isolate one file creation.,3
+E173,2,Search USVA-ENG-APP-01 EventCode 11 around 15:57:42 UTC and inspect `TargetFilename`.,7
 E174,1,Start just before the large connection from the engineering host. DNS often provides the name that explains the destination IP.,3
 E174,2,Filter DNS records from `10.47.60.21` around 16:17:30 UTC and inspect `query`.,7
 E175,1,The DNS record has the answer immediately before the outbound connection begins.,3
@@ -355,7 +355,7 @@ E177,1,Sysmon Event ID 3 links a network connection to the process image that cr
 E177,2,Filter the engineering host's Sysmon Event ID 3 to `DestinationIp=50.19.77.200` and inspect `Image`.,7
 E178,1,DLP stands for Data Loss Prevention. These records identify policy matches involving potentially sensitive files leaving the organization.,3
 E178,2,Filter DLP events on `USVA-ENG-APP-01` going to `sync-update.example` and inspect `policy`.,7
-E179,1,"Cleanup uses `cmd.exe /c del` against files in the staging directory. Count unique paths, not both Security and Sysmon copies of the same command.",3
-E179,2,"Use Sysmon Event ID 1 after 16:22 UTC, filter `CommandLine` for `cmd.exe /c del`, extract the quoted path, and count distinct files.",7
+E179,1,Cleanup uses `cmd.exe /c del` against files in the outbound staging directory.,3
+E179,2,Search the Sysmon process-create event around 16:25:46 UTC and extract the filename from `CommandLine`.,7
 E180,1,"Build a short timeline of the first compromised server, the first suspicious Windows destination, and the later Virginia engineering destination. Use both host logs and network connections.",3
 E180,2,"The key pivots are: web-host evidence on April 6, a successful logon plus WMI process on April 7, and a `10.44.30.37 -> 10.47.60.21:5985` connection plus Event 4624 on April 8.",7

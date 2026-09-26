@@ -1,19 +1,19 @@
 Answer,Number
-36,E001
-750,E002
+_time,E001
+host,E002
 XmlWinEventLog:Security;XmlWinEventLog:Microsoft-Windows-Sysmon/Operational,E003
 bro:conn:json,E004
 aws:cloudtrail,E005
-4624,E006
-1,E007
-USVA-DC-01,E008
-443,E009
-wsus.asteron.example,E010
-ec2.amazonaws.com,E011
-Installed,E012
-PASS,E013
-AdvancedHunting-DeviceEvents,E014
-USVA,E015
+TargetUserName,E006
+CommandLine,E007
+SourceIp;DestinationIp,E008
+id.orig_h;id.resp_h;id.resp_p,E009
+query,E010
+eventName,E011
+eventSource,E012
+result,E013
+category,E014
+badge_id;site,E015
 199.45.154.125,E016
 Censys,E017
 Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/),E018
@@ -83,7 +83,7 @@ WouldBlock,E072
 /etc/asteron/engineering-sync.conf,E082
 /etc/asteron/mft/client.conf,E083
 /srv/asteron-web/config/cloud-role.json,E084
-18,E085
+root,E085
 /assets/.runtime/status,E086
 POST,E087
 ALLOW,E088
@@ -164,18 +164,18 @@ USVA-ZEEK-01,E161
 SMB2_READ,E163
 \\USVA-FS-01\Engineering\Operations,E164
 regional_engineering_package.pdf,E165
-25,E166
+industrial_gateway_inventory.xlsx,E166
 31,E167
 C:\ProgramData\Asteron\EngineeringSync\outbound\,E168
 C:\Program Files\Asteron\EngineeringSync\engsync.exe,E169
 US\svc-engsync,E170
 regional_engineering_package.pdf,E171
 4688;1;11,E172
-20,E173
+engineering_applications.xlsx,E173
 sync-update.example,E174
 50.19.77.200,E175
 734003200,E176
 C:\Program Files\Asteron\EngineeringSync\engsync.exe,E177
 Engineering Sensitive - External Upload,E178
-15,E179
+network_device_inventory.xlsx,E179
 USHQ-WEB-02>USHQ-APP-07>USVA-ENG-APP-01,E180

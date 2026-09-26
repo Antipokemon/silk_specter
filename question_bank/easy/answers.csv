@@ -1,19 +1,19 @@
 question_id,answer,answer_type
-E001,36,numeric
-E002,750,numeric
+E001,_time,exact
+E002,host,exact
 E003,XmlWinEventLog:Security;XmlWinEventLog:Microsoft-Windows-Sysmon/Operational,set
 E004,bro:conn:json,exact
 E005,aws:cloudtrail,exact
-E006,4624,numeric
-E007,1,numeric
-E008,USVA-DC-01,exact
-E009,443,numeric
-E010,wsus.asteron.example,exact
-E011,ec2.amazonaws.com,exact
-E012,Installed,exact
-E013,PASS,exact
-E014,AdvancedHunting-DeviceEvents,exact
-E015,USVA,exact
+E006,TargetUserName,exact
+E007,CommandLine,exact
+E008,SourceIp;DestinationIp,set
+E009,id.orig_h;id.resp_h;id.resp_p,set
+E010,query,exact
+E011,eventName,exact
+E012,eventSource,exact
+E013,result,exact
+E014,category,exact
+E015,badge_id;site,set
 E016,199.45.154.125,exact
 E017,Censys,case_insensitive
 E018,Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/),exact
@@ -83,7 +83,7 @@ E081,/etc/asteron/gitlab/deploy-token,exact
 E082,/etc/asteron/engineering-sync.conf,exact
 E083,/etc/asteron/mft/client.conf,exact
 E084,/srv/asteron-web/config/cloud-role.json,exact
-E085,18,numeric
+E085,root,exact
 E086,/assets/.runtime/status,exact
 E087,POST,exact
 E088,ALLOW,exact
@@ -164,18 +164,18 @@ E162,10.47.60.21,exact
 E163,SMB2_READ,exact
 E164,\\USVA-FS-01\Engineering\Operations,exact
 E165,regional_engineering_package.pdf,exact
-E166,25,numeric
+E166,industrial_gateway_inventory.xlsx,exact
 E167,31,numeric
 E168,C:\ProgramData\Asteron\EngineeringSync\outbound\,case_insensitive
 E169,C:\Program Files\Asteron\EngineeringSync\engsync.exe,case_insensitive
 E170,US\svc-engsync,case_insensitive
 E171,regional_engineering_package.pdf,exact
 E172,4688;1;11,set
-E173,20,numeric
+E173,engineering_applications.xlsx,exact
 E174,sync-update.example,exact
 E175,50.19.77.200,exact
 E176,734003200,numeric
 E177,C:\Program Files\Asteron\EngineeringSync\engsync.exe,case_insensitive
 E178,Engineering Sensitive - External Upload,case_insensitive
-E179,15,numeric
+E179,network_device_inventory.xlsx,exact
 E180,USHQ-WEB-02>USHQ-APP-07>USVA-ENG-APP-01,ordered_sequence
