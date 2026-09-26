@@ -1,5 +1,7 @@
 # Load Asteron data into Splunk with rootless Podman
 
+For the complete workflow that starts with scenario/time/noise configuration and regenerates both background activity and the simulated APT evidence, see [`GENERATE_AND_LOAD.md`](GENERATE_AND_LOAD.md). This document focuses on the Splunk ingest portion.
+
 Validated lab assumptions:
 
 - Splunk container name: `splunk`

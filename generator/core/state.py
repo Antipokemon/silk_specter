@@ -83,7 +83,7 @@ class EventStore:
     def write(self, outdir: Path):
         outdir.mkdir(parents=True,exist_ok=True)
         groups=defaultdict(list)
-        for e in sorted(self.events,key=lambda x:(x.time,x.event_id)):
+        for e in sorted(self.events,key=lambda x:x.time):
             groups[(e.host,e.source,e.sourcetype)].append(e)
         manifest=[]
         rawdir=outdir/'raw'; rawdir.mkdir(exist_ok=True)
@@ -107,7 +107,7 @@ class EventStore:
         hecdir=outdir/'hec'; hecdir.mkdir(exist_ok=True)
         hecfile=hecdir/'events.jsonl'
         with hecfile.open('w',encoding='utf-8',newline='\n') as f:
-            for e in sorted(self.events,key=lambda x:(x.time,x.event_id)):
+            for e in sorted(self.events,key=lambda x:x.time):
                 dt=datetime.fromisoformat(e.time.replace('Z','+00:00'))
                 envelope={
                     'time':dt.timestamp(),
@@ -131,6 +131,18 @@ class EventStore:
                 w=csv.DictWriter(f,fieldnames=fields); w.writeheader()
                 for e in sorted(self.events,key=lambda x:x.time):
                     d=asdict(e); d.pop('raw'); w.writerow({k:d[k] for k in fields})
+        # Regenerate the expected sourcetype counts every time the corpus is rebuilt.
+        # This file is user-facing validation data and must never drift from the
+        # generated raw/HEC corpus when background volume changes.
+        st_counts=defaultdict(int)
+        for e in self.events:
+            st_counts[e.sourcetype]+=1
+        with (outdir/'expected_counts.csv').open('w',newline='',encoding='utf-8') as f:
+            w=csv.DictWriter(f,fieldnames=['sourcetype','expected_count'])
+            w.writeheader()
+            for sourcetype in sorted(st_counts):
+                w.writerow({'sourcetype':sourcetype,'expected_count':st_counts[sourcetype]})
+
         summary={
             'scenario':self.scenario,'events':len(self.events),'files':len(manifest),
             'sourcetypes':sorted({e.sourcetype for e in self.events}),

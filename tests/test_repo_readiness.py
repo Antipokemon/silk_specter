@@ -24,7 +24,7 @@ class RepoReadinessTests(unittest.TestCase):
         with (ROOT/'question_bank/easy/answers.csv').open() as f: ans=list(csv.DictReader(f))
         with (ROOT/'question_bank/easy/hints.csv').open() as f: hints=list(csv.DictReader(f))
         qids={q['question_id'] for q in qs}
-        self.assertEqual(qids,{a['Number'] for a in ans})
+        self.assertEqual(qids,{a['question_id'] for a in ans})
         hinted={h['question_id'] for h in hints}
         self.assertTrue(qids <= hinted)
 
@@ -42,7 +42,7 @@ class RepoReadinessTests(unittest.TestCase):
         l=NetworkLedger(); l.add_flow(f); l.observe('test','zeek'); l.observe('test','firewall'); l.require_observations('test',{'zeek','firewall'})
 
     def test_required_repo_docs_exist(self):
-        for fn in ['AGENTS.md','README.md','docs/SPLUNK_LOAD.md','docs/NETWORK_PURPOSE_AND_LAYOUT.md','docs/TA_COMPATIBILITY.md','docs/SCENARIO_AUTHORING.md','docs/QUESTION_BANK.md']:
+        for fn in ['AGENTS.md','README.md','docs/GENERATE_AND_LOAD.md','docs/SPLUNK_LOAD.md','docs/NETWORK_PURPOSE_AND_LAYOUT.md','docs/TA_COMPATIBILITY.md','docs/SCENARIO_AUTHORING.md','docs/QUESTION_BANK.md']:
             self.assertTrue((ROOT/fn).exists(),fn)
 
 if __name__=='__main__': unittest.main()

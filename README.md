@@ -1,62 +1,54 @@
-# SILK SPECTER  — Asteron CTF framework
+# SILK SPECTER v3 / Asteron CTF framework — v0.3.0
 
-A synthetic Splunk investigation environment for defensive-cyber training.
-Participants investigate a realistic intrusion across a fictional multinational
-critical-infrastructure enterprise — **Asteron Utilities Group, Inc.** — using
-only Splunk search skills, data discovery, and cross-source correlation.
+Repository-ready source of truth for the Asteron Utilities Group, Inc. synthetic Splunk investigation/CTF environment.
 
-The scenario follows **SILK SPECTER**, a threat actor whose tradecraft is
-inspired by publicly documented Volt Typhoon (G1017) behavior.  All evidence is
-inert, synthetic telemetry; no malware, live exploits, or operational tooling
-is included.
+## What is validated now
 
----
+The **Easy** SILK SPECTER scenario is the current validated baseline. It regenerates the v0.2.3-compatible corpus:
 
-## How it works
+- 56,844 events
+- 36 sourcetypes
+- 750 hosts/devices/services
+- 1,096 malicious/campaign observations
+- default UTC window April 6–10, 2026
+- 25 validated starter questions, target 180
 
-The generator (`generator/generate.py`) produces source-native log lines that
-match the installed Splunk technology add-ons (Windows Event Log, Sysmon,
-Zeek/Corelight, Cisco ASA, Palo Alto, FortiGate, Juniper, AWS CloudTrail,
-Microsoft Defender, Tenable, etc.).  The same generator adds enterprise
-background noise so learners discover threat signals rather than being handed
-sourcetypes.
+The user confirmed v0.2.3 passed the target Splunk TA/CIM validation checks. v0.3.0 preserves those generator contracts while adding repository/scenario/time-window infrastructure.
 
-Configuration drives everything — site topology, domain model, network
-placement, service map, actor profile, and scenario scope/timing — so the
-same platform can serve multiple actors and difficulty tiers.
+**Medium and Hard are intentionally marked `authoring`.** Their environment scope/config/question schemas exist, but their distinct campaign paths and 170/150-question pools have not yet completed Splunk validation. The generator refuses to ship them until that gate is cleared.
 
-Three difficulty tiers (Easy, Medium, Hard) share the environment model but
-differ in attack scope, detection coverage, and investigative complexity.
-Each tier ships to its own Splunk index.
+## Start here
 
-## Scenario status
-
-`make status` shows which scenarios are ready:
-
-| Scenario | Status  | Questions |
-|----------|---------|-----------|
-| Easy     | Validated | 25 / 180  |
-| Medium   | Authoring | — / 170   |
-| Hard     | Authoring | — / 150   |
-
-Only **Easy** is Splunk-validated and generation-ready. The generator refuses
-to emit Medium or Hard data until their telemetry and question banks complete
-full laboratory validation.
-
-## Quick start
+1. Read [`AGENTS.md`](AGENTS.md) before changing generated data.
+2. Review [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md).
+3. Review [`docs/NETWORK_PURPOSE_AND_LAYOUT.md`](docs/NETWORK_PURPOSE_AND_LAYOUT.md).
+4. Run validation:
 
 ```bash
-# 1. Run local tests
-make validate
-
-# 2. Generate the Easy corpus
-make generate-easy
-
-# 3. Load into a local Splunk lab (Podman-based)
-make splunk-load
+python3 -m unittest discover -s tests -v
 ```
 
-Custom time windows are supported:
+5. Regenerate Easy:
+
+```bash
+python3 generator/generate.py \
+  --scenario easy \
+  --output dataset/easy \
+  --background-events 5000 \
+  --enterprise-background-events 45000
+```
+
+6. Load to the rootless Podman Splunk lab:
+
+```bash
+./scripts/load_to_splunk.sh easy asteron_easy_v030
+```
+
+The load workflow includes an interactive `splunk login` step. Full manual commands are in [`docs/SPLUNK_LOAD.md`](docs/SPLUNK_LOAD.md).
+
+## Scenario windows
+
+Each scenario owns a UTC start/end range in `config/scenarios/`. Easy event placement is relative to that window rather than hard-coded to April dates. Example shifted test build:
 
 ```bash
 python3 generator/generate.py \
@@ -66,52 +58,31 @@ python3 generator/generate.py \
   --output /tmp/easy-shifted
 ```
 
-Shifted windows move both raw log timestamps and HEC `_time` together.
+Raw payload timestamps and Splunk HEC `_time` shift together.
 
-## Repository layout
+## Git model
 
-```
-config/               Environment topology, actors, scenario config
-generator/            Event generators and source-native renderers
-splunk/               Index configs, ingest scripts, detection searches, TA helper
-question_bank/        Questions, answers, and hints per scenario
-instructor/           Ground-truth evidence, reference SPL, answer keys
-participant/          Participant-facing briefs, environment docs, exports
-docs/                 Architecture, authoring guide, load workflow, network map
-tests/                Local validation test suite
-scripts/              Load, status, and release-packaging helpers
+The repo is intended to be committed directly:
+
+```bash
+git init
+git add .
+git commit -m "baseline: validated Asteron Easy generator and CTF framework"
 ```
 
-Generated data (`dataset/<scenario>/`) is reproducible and excluded from Git
-by default.  Release packages include it for immediate Splunk loading.
+Generated scenario data is version-controlled with the generator so a commit represents one internally consistent CTF state. Git LFS is recommended for large raw/HEC files once installed. See `docs/GENERATE_AND_LOAD.md` for the regeneration/commit contract.
 
-## Key make targets
+## Important documents
 
-| Target            | Command                                      |
-|-------------------|----------------------------------------------|
-| `validate`        | Run local test suite (`python3 -m unittest`)  |
-| `generate-easy`   | Generate Easy corpus with default noise levels |
-| `splunk-load`     | Load generated data into a Podman Splunk lab   |
-| `status`          | Print scenario status for all tiers            |
+- `docs/GENERATE_AND_LOAD.md` — user runbook: generate background + APT data, validate, and load Splunk
+- `AGENTS.md` — engineering handoff and non-regression contract
+- `docs/TA_COMPATIBILITY.md` — validated source/sourcetype/payload contracts
+- `docs/SPLUNK_LOAD.md` — full Podman/Splunk ingest workflow
+- `docs/SCENARIO_AUTHORING.md` — Easy/Medium/Hard and new-APT authoring rules
+- `docs/QUESTION_BANK.md` — 500-question architecture/hint rules
+- `docs/NETWORK_PURPOSE_AND_LAYOUT.md` — enterprise purpose/topology/site segmentation
+- `VALIDATION.md` — validated Easy corpus details
 
-## Key documents
+## Safety/realism boundary
 
-| File                                                    | Covers                                    |
-|---------------------------------------------------------|-------------------------------------------|
-| `AGENTS.md`                                             | Engineering contract and non-regression rules |
-| `docs/TA_COMPATIBILITY.md`                              | Source/sourcetype/payload compatibility     |
-| `docs/SPLUNK_LOAD.md`                                   | Splunk ingest workflow and lab setup        |
-| `docs/SCENARIO_AUTHORING.md`                            | Difficulty tiers and new-actor authoring    |
-| `docs/QUESTION_BANK.md`                                 | Question architecture and hint philosophy   |
-| `docs/NETWORK_PURPOSE_AND_LAYOUT.md`                    | Enterprise topology and site segmentation   |
-| `VALIDATION.md`                                         | Validated corpus details and test coverage  |
-
-Read `AGENTS.md` before modifying generators, renderers, or scenario
-configuration — it preserves hard-won TA-compatibility contracts.
-
-## Safety boundary
-
-All infrastructure, identities, and attack evidence are synthetic.  The
-project represents defensive telemetry and investigation practice; it must
-not ship live exploit payloads, malware, operational credential theft, or
-real exfiltration tooling.
+All infrastructure, victim identities, and attack evidence are synthetic. The project represents defensive telemetry and investigation evidence; it must not ship live exploit payloads, malware, operational credential theft, or real exfiltration tooling.

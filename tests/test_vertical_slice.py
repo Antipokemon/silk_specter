@@ -66,11 +66,11 @@ class VerticalSliceTests(unittest.TestCase):
         hint_counts={i:0 for i in ids}
         for h in self.hints: hint_counts[h['question_id']]+=1
         self.assertTrue(all(v>=2 for v in hint_counts.values()))
-        self.assertEqual(len(self.questions),25)
+        self.assertEqual(len(self.questions),180)
 
-    def test_first_questions_are_discovery(self):
-        self.assertTrue(all(q['category']=='discovery' for q in self.questions[:10]))
-        self.assertIn('tstats',self.hints[0]['hint'])
+    def test_first_questions_are_environment_familiarization(self):
+        self.assertTrue(all(q['category']=='environment_familiarization' for q in self.questions[:15]))
+        self.assertFalse(any(q['category']=='discovery' for q in self.questions[:15]))
 
     def test_attack_network_path_observable(self):
         activities={r['activity_id'] for r in self.truth if r['sourcetype'].startswith('bro:')}
@@ -101,7 +101,11 @@ class VerticalSliceTests(unittest.TestCase):
         p=ROOT/'dataset/easy/hec/events.jsonl'
         rows=[json.loads(x) for x in p.read_text(encoding='utf-8').splitlines() if x.strip()]
         self.assertEqual(len(rows),self.manifest['events'])
-        self.assertEqual(len(rows),56844)
+        # Background volume is intentionally configurable. Reconcile the generated
+        # stream against the generated validation metadata instead of a fixed total.
+        with (ROOT/'dataset/easy/expected_counts.csv').open() as f:
+            expected=sum(int(r['expected_count']) for r in csv.DictReader(f))
+        self.assertEqual(len(rows),expected)
         self.assertTrue(all({'time','host','source','sourcetype','event'} <= set(r) for r in rows))
         self.assertFalse(any('truth_label' in r or 'activity_id' in r for r in rows))
 
@@ -123,9 +127,16 @@ class VerticalSliceTests(unittest.TestCase):
         self.assertFalse(any(r.get('sourcetype') in legacy for r in hec))
 
     def test_expanded_easy_scale(self):
-        self.assertEqual(self.manifest['events'],56844)
+        # Keep minimum environment richness, but allow benign/noise volume to grow.
+        self.assertGreaterEqual(self.manifest['events'],56844)
         self.assertGreaterEqual(self.manifest['hosts'],700)
         self.assertGreaterEqual(len(self.manifest['sourcetypes']),36)
+
+    def test_expected_counts_reconcile(self):
+        with (ROOT/'dataset/easy/expected_counts.csv').open() as f:
+            rows=list(csv.DictReader(f))
+        self.assertEqual(sum(int(r['expected_count']) for r in rows),self.manifest['events'])
+        self.assertEqual({r['sourcetype'] for r in rows},set(self.manifest['sourcetypes']))
 
     def test_easy_campaign_has_full_lifecycle_activity(self):
         required={

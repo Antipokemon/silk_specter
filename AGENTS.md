@@ -430,37 +430,17 @@ Instructor material may contain the evidence graph, techniques, truth labels, di
 
 ---
 
-## 13. Generating data
+## 13. Generation workflow contract
 
-Validated Easy default:
+User-facing generation, noise/timeframe configuration, regeneration, and Splunk implementation steps live in `docs/GENERATE_AND_LOAD.md`. Do not make `AGENTS.md` the only place an operator can learn how to build/load the exercise.
 
-```bash
-python3 generator/generate.py \
-  --scenario easy \
-  --output dataset/easy \
-  --background-events 5000 \
-  --enterprise-background-events 45000
-```
+Engineering requirements:
 
-or:
-
-```bash
-make generate-easy
-```
-
-The generator clears stale raw shards before writing a new corpus.
-
-`generator/generate.py --scenario medium` and `--scenario hard` intentionally refuse to generate while their status is `authoring`. This is a quality gate, not a bug.
-
-To enable a new scenario:
-
-1. implement its distinct campaign module;
-2. add detections/findings;
-3. author initial question pool;
-4. add scenario-specific tests;
-5. generate and load a fresh Splunk index;
-6. verify installed TA fields and relevant CIM data models;
-7. set config status to `validated` only after runtime checks pass.
+- `generator/generate.py --scenario <name>` must load `config/scenarios/<name>.json` by default.
+- `start`/`end` come from the scenario config unless explicitly overridden by CLI.
+- a generation run rebuilds background + scenario campaign evidence together; it does not append to an old corpus.
+- generation must refresh raw shards, HEC, ingest manifest, `manifest.json`, `expected_counts.csv`, and scenario ground truth consistently.
+- Medium/Hard must remain quality-gated while status is `authoring`.
 
 ---
 
@@ -501,26 +481,17 @@ Do not reload corrected events into the old index. Already indexed events retain
 
 ---
 
-## 15. Splunk load workflow
+## 15. Splunk load workflow contract
 
-Full instructions: `docs/SPLUNK_LOAD.md`.
+The operator runbook is `docs/GENERATE_AND_LOAD.md`; detailed manual ingest commands are in `docs/SPLUNK_LOAD.md`.
 
-Preferred command:
+Engineering requirements:
 
-```bash
-./scripts/load_to_splunk.sh easy asteron_easy_v030
-```
-
-The workflow must include interactive CLI authentication:
-
-```bash
-podman exec -it --user splunk splunk \
-  /opt/splunk/bin/splunk login
-```
-
-Do not put credentials in `-auth user:password` commands or repository files.
-
-The validated environment uses container name `splunk`; Splunk administrative CLI commands run as OS user `splunk`. The copied source data is temporary and may be removed after successful indexing.
+- load only validated scenarios;
+- use a fresh index for every regenerated/corrected corpus;
+- the helper workflow must include interactive `splunk login`;
+- never put Splunk credentials in repository files or command-line `-auth` arguments;
+- validate runtime extraction/CIM against the installed vendor TAs after parser-affecting changes.
 
 ---
 
@@ -537,7 +508,7 @@ git status
 git commit -m "baseline: validated Asteron Easy generator and CTF framework"
 ```
 
-`.gitignore` excludes bulky reproducible raw/HEC datasets and event-level ground truth from normal Git history. The source generator/configs/tests/question masters/docs are the version-controlled source of truth.
+`Generated scenario telemetry and ground-truth artifacts are version-controlled alongside the generator so a commit represents one internally consistent CTF state. Git LFS is recommended for large raw/HEC files. Do not commit a generator/config change without regenerating and committing all affected dataset metadata/output in the same change.
 
 Before committing a generator change:
 
