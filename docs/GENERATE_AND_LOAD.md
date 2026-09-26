@@ -41,6 +41,10 @@ The Easy file currently contains values such as:
   "start": "2026-04-06T00:00:00Z",
   "end": "2026-04-10T23:59:59Z",
   "seed": 56017,
+  "generation": {
+    "background_events": 5000,
+    "enterprise_background_events": 45000
+  },
   "status": "validated"
 }
 ```
@@ -63,7 +67,13 @@ config/scenarios/easy.json
 
 If you run the generator with no `--scenario`, `easy` is the default and the same Easy config is loaded.
 
-If `--start` and `--end` are omitted, the `start` and `end` values from the scenario JSON are used automatically.
+If `--start` and `--end` are omitted, the `start` and `end` values from the scenario JSON are used automatically. The generator also reads `generation.background_events` and `generation.enterprise_background_events` from the same scenario file when the matching CLI overrides are omitted.
+
+The precedence is:
+
+```text
+explicit CLI override > scenario JSON > internal fallback
+```
 
 The configured window controls both Splunk `_time` metadata and the timestamps embedded inside generated source-native records. The generator hard-fails if a generated event falls outside the declared scenario window.
 
@@ -106,12 +116,10 @@ This is equivalent to:
 ```bash
 python3 generator/generate.py \
   --scenario easy \
-  --output dataset/easy \
-  --background-events 5000 \
-  --enterprise-background-events 45000
+  --output dataset/easy
 ```
 
-The timeframe still comes from `config/scenarios/easy.json`; it does not need to be repeated on the command line.
+The timeframe, seed, and default background volumes all come from `config/scenarios/easy.json`; they do not need to be repeated on the command line.
 
 ## 4. Generate more background/noise
 
@@ -124,7 +132,7 @@ The two user-facing volume controls are:
 --enterprise-background-events
 ```
 
-The default Easy baseline uses:
+The default Easy baseline is defined in `config/scenarios/easy.json` as:
 
 ```text
 5,000 basic/background events

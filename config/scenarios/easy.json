@@ -4,6 +4,10 @@
   "start": "2026-04-06T00:00:00Z",
   "end": "2026-04-10T23:59:59Z",
   "seed": 56017,
+  "generation": {
+    "background_events": 5000,
+    "enterprise_background_events": 45000
+  },
   "scope_sites": [
     "USHQ",
     "USNO",

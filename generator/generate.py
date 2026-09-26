@@ -15,6 +15,9 @@ from background import add_enterprise_background, add_defender_detection_backgro
 from corroboration import add_attack_corroboration
 from attack_expansion import add_attack_expansion
 
+DEFAULT_BACKGROUND_EVENTS = 5000
+DEFAULT_ENTERPRISE_BACKGROUND_EVENTS = 45000
+
 CFG=json.loads((ROOT/'config/scenarios/easy.json').read_text())
 CTX=ScenarioContext.from_dict('easy', CFG)
 SITES=json.loads((ROOT/'config/sites.json').read_text())['sites']
@@ -27,6 +30,16 @@ def syslog_stamp(dt): return dt.astimezone(timezone.utc).strftime('%b %d %H:%M:%
 def uuidg(name): return '{'+str(uuid.uuid5(uuid.NAMESPACE_DNS,'asteron:'+name))+'}'
 def zuid(name): return 'C'+uuid.uuid5(uuid.NAMESPACE_DNS,'zeek:'+name).hex[:17]
 def at(day,hour=0,minute=0,second=0,microsecond=0): return CTX.at(day,hour,minute,second,microsecond)
+
+def resolve_generation_counts(cfg, background_override=None, enterprise_background_override=None):
+    generation = cfg.get('generation', {})
+    background = generation.get('background_events', DEFAULT_BACKGROUND_EVENTS) if background_override is None else background_override
+    enterprise = generation.get('enterprise_background_events', DEFAULT_ENTERPRISE_BACKGROUND_EVENTS) if enterprise_background_override is None else enterprise_background_override
+    background = int(background)
+    enterprise = int(enterprise)
+    if background < 0 or enterprise < 0:
+        raise ValueError('Generation event counts must be non-negative integers')
+    return background, enterprise
 
 def add_attack(store):
     H=CFG['hosts']; pub=CFG['public_vip']; scanner=CFG['benign_scanner_ip']; actor=CFG['actor_initial_ip']; exfil=CFG['actor_exfil_ip']
@@ -191,12 +204,15 @@ def main():
     ap.add_argument('--start',help='Override scenario UTC start (ISO-8601). Event chronology remains relative to day 0.')
     ap.add_argument('--end',help='Override scenario UTC end (ISO-8601). Must contain the scenario timeline.')
     ap.add_argument('--output',help='Output directory; default dataset/<scenario>')
-    ap.add_argument('--background-events',type=int,default=5000,help='Legacy/basic background events')
-    ap.add_argument('--enterprise-background-events',type=int,default=45000,help='Expanded source-diverse enterprise background events')
+    ap.add_argument('--background-events',type=int,default=None,help='Override scenario generation.background_events')
+    ap.add_argument('--enterprise-background-events',type=int,default=None,help='Override scenario generation.enterprise_background_events')
     args=ap.parse_args()
 
     CTX=load_scenario(ROOT,args.scenario,args.start,args.end)
     CFG=CTX.config
+    background_events, enterprise_background_events = resolve_generation_counts(
+        CFG, args.background_events, args.enterprise_background_events
+    )
     if CTX.status != 'validated':
         raise SystemExit(
             f"Scenario {args.scenario!r} is status={CTX.status!r}. "
@@ -204,9 +220,9 @@ def main():
             "Author and validate it before changing status to validated."
         )
     store=EventStore(args.scenario)
-    add_background(store,args.background_events)
+    add_background(store,background_events)
     scoped_sites=[SITE_BY_CODE[c] for c in CFG['scope_sites']]
-    add_enterprise_background(store,args.enterprise_background_events,scoped_sites,seed=CFG['seed']+1,campaign_start=CTX.start,campaign_end=CTX.end)
+    add_enterprise_background(store,enterprise_background_events,scoped_sites,seed=CFG['seed']+1,campaign_start=CTX.start,campaign_end=CTX.end)
     add_defender_detection_background(store,scoped_sites,alert_count=180,seed=CFG['seed']+11,campaign_start=CTX.start,campaign_end=CTX.end)
     if args.scenario == 'easy':
         add_attack(store)
@@ -218,6 +234,10 @@ def main():
         CTX.require_in_window(parse_utc(event.time))
     summary=store.write(out)
     summary['window_start']=CFG['start']; summary['window_end']=CFG['end']; summary['status']=CTX.status
+    summary['generation']={
+        'background_events': background_events,
+        'enterprise_background_events': enterprise_background_events,
+    }
     (out/'manifest.json').write_text(json.dumps(summary,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(summary,indent=2))
 

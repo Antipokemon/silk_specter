@@ -28,15 +28,21 @@ The user confirmed v0.2.3 passed the target Splunk TA/CIM validation checks. v0.
 python3 -m unittest discover -s tests -v
 ```
 
-5. Regenerate Easy:
+5. Regenerate Easy using the timeframe, seed, and default generation volumes from `config/scenarios/easy.json`:
+
+```bash
+make generate-easy
+```
+
+Equivalent direct command:
 
 ```bash
 python3 generator/generate.py \
   --scenario easy \
-  --output dataset/easy \
-  --background-events 5000 \
-  --enterprise-background-events 45000
+  --output dataset/easy
 ```
+
+`--background-events` and `--enterprise-background-events` remain available as explicit one-run overrides.
 
 6. Load to the rootless Podman Splunk lab:
 

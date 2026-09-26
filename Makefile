@@ -1,8 +1,11 @@
 PYTHON ?= python3
 SCENARIO ?= easy
 INDEX ?= asteron_easy_v030
-BACKGROUND_EVENTS ?= 5000
-ENTERPRISE_BACKGROUND_EVENTS ?= 45000
+BACKGROUND_EVENTS ?=
+ENTERPRISE_BACKGROUND_EVENTS ?=
+
+BACKGROUND_OVERRIDE = $(if $(strip $(BACKGROUND_EVENTS)),--background-events $(BACKGROUND_EVENTS),)
+ENTERPRISE_BACKGROUND_OVERRIDE = $(if $(strip $(ENTERPRISE_BACKGROUND_EVENTS)),--enterprise-background-events $(ENTERPRISE_BACKGROUND_EVENTS),)
 
 .PHONY: validate generate generate-easy splunk-load clean-generated status
 
@@ -13,7 +16,7 @@ generate:
 	$(PYTHON) generator/generate.py --scenario $(SCENARIO)
 
 generate-easy:
-	$(PYTHON) generator/generate.py --scenario easy --output dataset/easy --background-events $(BACKGROUND_EVENTS) --enterprise-background-events $(ENTERPRISE_BACKGROUND_EVENTS)
+	$(PYTHON) generator/generate.py --scenario easy --output dataset/easy $(BACKGROUND_OVERRIDE) $(ENTERPRISE_BACKGROUND_OVERRIDE)
 
 splunk-load:
 	./scripts/load_to_splunk.sh easy $(INDEX)
