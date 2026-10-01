@@ -1,19 +1,19 @@
 ctf_id,Number,Question,StartTime,EndTime,BasePoints,AdditionalBonusPoints,AdditionalBonusInstructions,Subject,ChallengeID
 silk_specter_easy,1,"When viewing events in Splunk, which field represents the event timestamp?",,,20,0,,environment_familiarization,E001
 silk_specter_easy,2,"Which Splunk metadata field identifies the system, device, sensor, or service that produced an event?",,,20,0,,environment_familiarization,E002
-silk_specter_easy,3,Windows Security and Sysmon are both stored as Windows Event Log XML in this exercise. What two `source` values distinguish those channels?,,,30,0,,environment_familiarization,E003
+silk_specter_easy,3,Windows Security and Sysmon are both stored as Windows Event Log XML in this exercise. What two `source` values distinguish those channels? Answer format example: value1;value2 (use semicolons between values; spaces around separators are optional; order does not matter).,,,30,0,,environment_familiarization,E003
 silk_specter_easy,4,Which sourcetype contains Zeek connection records that show source and destination IP addresses and ports?,,,25,0,,environment_familiarization,E004
 silk_specter_easy,5,Which sourcetype contains AWS API audit events such as `DescribeInstances` and `GetObject`?,,,25,0,,environment_familiarization,E005
 silk_specter_easy,6,"In Windows Security successful-logon events (EventCode 4624), which field contains the account name that logged on?",,,25,0,,environment_familiarization,E006
 silk_specter_easy,7,"In Sysmon Event ID 1 process-creation events, which field contains the full command line?",,,25,0,,environment_familiarization,E007
-silk_specter_easy,8,"In Sysmon Event ID 3 network-connection events, which two fields contain the source and destination IP addresses?",,,30,0,,environment_familiarization,E008
-silk_specter_easy,9,"In Zeek connection records, which three fields identify the originating IP address, responding IP address, and responding port?",,,30,0,,environment_familiarization,E009
+silk_specter_easy,8,"In Sysmon Event ID 3 network-connection events, which two fields contain the source and destination IP addresses? Answer format example: value1;value2 (use semicolons between values; spaces around separators are optional; order does not matter).",,,30,0,,environment_familiarization,E008
+silk_specter_easy,9,"In Zeek connection records, which three fields identify the originating IP address, responding IP address, and responding port? Answer format example: value1;value2 (use semicolons between values; spaces around separators are optional; order does not matter).",,,30,0,,environment_familiarization,E009
 silk_specter_easy,10,"In Zeek DNS records, which field contains the DNS name that was queried?",,,25,0,,environment_familiarization,E010
 silk_specter_easy,11,"In AWS CloudTrail records, which field names the API operation that was called?",,,25,0,,environment_familiarization,E011
 silk_specter_easy,12,"In AWS CloudTrail records, which field identifies the AWS service that handled the API call?",,,25,0,,environment_familiarization,E012
 silk_specter_easy,13,"In TACACS records, which field shows whether the authentication or authorization attempt succeeded or failed?",,,25,0,,environment_familiarization,E013
 silk_specter_easy,14,"In Microsoft Defender Event Hub records, which field distinguishes DeviceEvents, AlertInfo, and AlertEvidence records?",,,25,0,,environment_familiarization,E014
-silk_specter_easy,15,"In physical badge-access records, which two fields identify the badge and the Asteron site where it was used?",,,30,0,,environment_familiarization,E015
+silk_specter_easy,15,"In physical badge-access records, which two fields identify the badge and the Asteron site where it was used? Answer format example: value1;value2 (use semicolons between values; spaces around separators are optional; order does not matter).",,,30,0,,environment_familiarization,E015
 silk_specter_easy,16,What external IP performed the clearly identifiable Internet measurement scan of the public portal?,,,45,0,,external_scanning,E016
 silk_specter_easy,17,What organization identifies itself in the HTTP user-agent used by the scanner at 199.45.154.125?,,,45,0,,external_scanning,E017
 silk_specter_easy,18,What HTTP user-agent string identifies the known Internet measurement scanner?,,,50,0,,external_scanning,E018
@@ -22,7 +22,7 @@ silk_specter_easy,20,What public web host name was the scanner requesting?,,,45,
 silk_specter_easy,21,What later external IP performed the repeated suspicious reconnaissance of the public portal?,,,50,0,,recon,E021
 silk_specter_easy,22,How many Zeek HTTP requests are in the suspicious reconnaissance sequence from 23.20.77.81 before the initial-access POST?,,,55,0,,recon,E022
 silk_specter_easy,23,Which HTTP method was used throughout that reconnaissance sequence?,,,45,0,,recon,E023
-silk_specter_easy,24,Which two reconnaissance paths returned HTTP 404 responses?,,,55,0,,recon,E024
+silk_specter_easy,24,Which two reconnaissance paths returned HTTP 404 responses? Answer format example: value1;value2 (use semicolons between values; spaces around separators are optional; order does not matter).,,,55,0,,recon,E024
 silk_specter_easy,25,Which URI appears during reconnaissance and is later used in the suspicious POST associated with initial access?,,,60,0,,recon,E025
 silk_specter_easy,26,Which destination TCP port was used for the public-portal reconnaissance?,,,40,0,,recon,E026
 silk_specter_easy,27,Which TLS version was used by the suspicious reconnaissance sessions?,,,45,0,,recon,E027
@@ -98,7 +98,7 @@ silk_specter_easy,96,Which process on the Linux web server opens the recurring o
 silk_specter_easy,97,Which user account owns the Linux process making those outbound connections?,,,55,0,,command_and_control,E097
 silk_specter_easy,98,How many TLS sessions to `cloud-edge.example` are in the recurring command-and-control (C2) sequence?,,,70,0,,command_and_control,E098
 silk_specter_easy,99,"What is the average interval, in seconds, between consecutive TLS sessions to `cloud-edge.example`?",,,75,0,,command_and_control,E099
-silk_specter_easy,100,"As the intrusion progresses, what is the ordered sequence of internal source IPs that connect to `cloud-edge.example`?",,,80,0,,command_and_control,E100
+silk_specter_easy,100,"As the intrusion progresses, what is the ordered sequence of internal source IPs that connect to `cloud-edge.example`? Answer format example: value1>value2>value3 (use > between values; spaces around separators are optional; order matters).",,,80,0,,command_and_control,E100
 silk_specter_easy,101,Which DNS name does the compromised web server resolve before connecting to GitLab?,,,60,0,,gitlab,E101
 silk_specter_easy,102,What IP address did DNS return for `git.asteron.example`?,,,60,0,,gitlab,E102
 silk_specter_easy,103,Which process on USHQ-WEB-02 connects to the GitLab IP?,,,65,0,,gitlab,E103
@@ -118,7 +118,7 @@ silk_specter_easy,116,Which S3 object is retrieved from the `asteron-web-config`
 silk_specter_easy,117,How many CloudTrail API calls are in the concentrated cloud-discovery burst from 16:19:00 through 16:22:48 UTC?,,,70,0,,cloud,E117
 silk_specter_easy,118,Which AWS event source is correctly associated with the `ListSecrets` call?,,,60,0,,cloud,E118
 silk_specter_easy,119,Which SSM Parameter Store name is requested during cloud discovery?,,,65,0,,cloud,E119
-silk_specter_easy,120,Which two S3 object keys are retrieved from `asteron-engineering-prod` during the cloud-discovery burst?,,,75,0,,cloud,E120
+silk_specter_easy,120,Which two S3 object keys are retrieved from `asteron-engineering-prod` during the cloud-discovery burst? Answer format example: value1;value2 (use semicolons between values; spaces around separators are optional; order does not matter).,,,75,0,,cloud,E120
 silk_specter_easy,121,What source IP initiates the first suspicious Windows-management connection to USHQ-APP-07?,,,65,0,,lateral_movement,E121
 silk_specter_easy,122,Which Windows host receives that first pivot?,,,65,0,,lateral_movement,E122
 silk_specter_easy,123,What IP address belongs to USHQ-APP-07 in the pivot traffic?,,,55,0,,lateral_movement,E123
@@ -153,7 +153,7 @@ silk_specter_easy,151,Which TCP port is used for the WinRM connection to USVA-EN
 silk_specter_easy,152,What Windows logon type is recorded when `svc-engsync` reaches USVA-ENG-APP-01?,,,60,0,,lateral_movement,E152
 silk_specter_easy,153,Which HQ firewall records the outbound cross-site connection?,,,60,0,,lateral_movement,E153
 silk_specter_easy,154,Which Virginia firewall records the same cross-site connection on the remote side?,,,60,0,,lateral_movement,E154
-silk_specter_easy,155,Which two Zeek sensors observe the same cross-site WinRM connection?,,,70,0,,lateral_movement,E155
+silk_specter_easy,155,Which two Zeek sensors observe the same cross-site WinRM connection? Answer format example: value1;value2 (use semicolons between values; spaces around separators are optional; order does not matter).,,,70,0,,lateral_movement,E155
 silk_specter_easy,156,Which authentication package is recorded for the `svc-engsync` network logon on USVA-ENG-APP-01?,,,55,0,,lateral_movement,E156
 silk_specter_easy,157,Which Virginia file server is accessed from the compromised HQ application server?,,,70,0,,lateral_movement,E157
 silk_specter_easy,158,What IP address belongs to USVA-FS-01 in the suspicious SMB traffic?,,,60,0,,lateral_movement,E158
@@ -170,7 +170,7 @@ silk_specter_easy,168,Which local directory is used to stage selected engineerin
 silk_specter_easy,169,Which process is the parent of the `cmd.exe` copy commands used for staging?,,,70,0,,staging,E169
 silk_specter_easy,170,Which account runs the staging copy commands?,,,65,0,,staging,E170
 silk_specter_easy,171,Which file is copied first into the staging directory?,,,65,0,,staging,E171
-silk_specter_easy,172,Which three Windows event IDs provide process/file corroboration for each staging copy operation?,,,70,0,,staging,E172
+silk_specter_easy,172,Which three Windows event IDs provide process/file corroboration for each staging copy operation? Answer format example: value1;value2 (use semicolons between values; spaces around separators are optional; order does not matter).,,,70,0,,staging,E172
 silk_specter_easy,173,"At 15:57:42 UTC, which file is created in the outbound staging directory?",,,70,0,,staging,E173
 silk_specter_easy,174,What DNS name is resolved immediately before the large outbound engineering transfer?,,,80,0,,exfiltration,E174
 silk_specter_easy,175,What IP address does `sync-update.example` resolve to?,,,80,0,,exfiltration,E175
@@ -178,4 +178,4 @@ silk_specter_easy,176,How many bytes are sent from the engineering host to 50.19
 silk_specter_easy,177,Which Windows process opens the connection to 50.19.77.200?,,,85,0,,exfiltration,E177
 silk_specter_easy,178,Which DLP policy generates the high-severity alert for the external engineering upload?,,,85,0,,exfiltration,E178
 silk_specter_easy,179,"At 16:25:46 UTC, which staged file is deleted during the cleanup sequence?",,,75,0,,cleanup,E179
-silk_specter_easy,180,"What is the ordered host path from the public Linux foothold, through the first Windows application server, to the Virginia engineering application host?",,,100,0,,reconstruction,E180
+silk_specter_easy,180,"What is the ordered host path from the public Linux foothold, through the first Windows application server, to the Virginia engineering application host? Answer format example: value1>value2>value3 (use > between values; spaces around separators are optional; order matters).",,,100,0,,reconstruction,E180
