@@ -11,9 +11,11 @@
 
 ## Medium
 
-- Status: **authoring**
-- Scenario config/time window/site scope exists.
-- Distinct attack path, detection pack, generated corpus, and 170-question bank are not yet authored/validated.
+- Status: **authoring** (runtime validation pending)
+- Distinct multi-region campaign is implemented across UKLO, DEFR, NLAM, and AUSY.
+- Current campaign includes valid-account VPN access, native-tool credential access, cross-region WMI, GitLab/AWS collection, SMB collection, deliberate archive staging, HTTPS exfiltration, cleanup, and benign administrative/transfer lookalikes.
+- Validation builds can be generated with `--allow-authoring` and loaded with `ALLOW_AUTHORING=1` without falsely changing the scenario to validated.
+- The 170-question bank remains intentionally empty until the generated telemetry passes Splunk TA/CIM runtime checks.
 
 ## Hard
 

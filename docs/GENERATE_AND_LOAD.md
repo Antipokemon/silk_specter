@@ -405,6 +405,18 @@ The participant should receive the assigned Splunk index and scenario briefing; 
 
 ## 12. Medium and Hard
 
-The repository contains the shared framework/configuration scaffolding for Medium and Hard, but they are not currently validated campaigns.
+Medium now has a distinct campaign implementation, but remains `authoring` until runtime Splunk TA/CIM validation and its 170-question bank are complete. Hard remains an authoring scaffold.
 
-Do not change their `status` to `validated` merely to bypass the generator/load guard. Their separate attack paths, data, question pools, detections, and runtime TA/CIM validation must be completed first.
+Generate a Medium validation corpus without changing its quality gate:
+
+```bash
+python3 generator/generate.py --scenario medium --allow-authoring
+```
+
+Load an authoring-status Medium validation corpus only when you explicitly intend to validate it:
+
+```bash
+ALLOW_AUTHORING=1 ./scripts/load_to_splunk.sh medium asteron_medium_v001
+```
+
+Do not change Medium/Hard `status` to `validated` merely to bypass the generator/load guard. Runtime parsing/CIM checks, evidence review, question-bank coverage, and detection validation still have to pass first.

@@ -14,6 +14,7 @@ from renderers import windows, linux, zeek, network_devices, apps
 from background import add_enterprise_background, add_defender_detection_background
 from corroboration import add_attack_corroboration
 from attack_expansion import add_attack_expansion
+from scenarios.medium import build_campaign as build_medium_campaign
 
 DEFAULT_BACKGROUND_EVENTS = 5000
 DEFAULT_ENTERPRISE_BACKGROUND_EVENTS = 45000
@@ -162,7 +163,7 @@ def random_business_utc(rng, site_code, start_date, day_offset):
 
 def add_background(store, count):
     rng=random.Random(CFG['seed'])
-    H=CFG['hosts']; sites=CFG['scope_sites']; start=CTX.start
+    sites=CFG['scope_sites']; start=CTX.start
     user_hosts=[]
     for site in sites:
         sec=int(SITE_BY_CODE[site]['cidr'].split('.')[1]);
@@ -170,7 +171,9 @@ def add_background(store, count):
     services=[('microsoft.com',443),('servicenow.asteron.example',443),('git.asteron.example',443),('print.asteron.example',445),('wsus.asteron.example',8531)]
     for i in range(count):
         host,ip,site=rng.choice(user_hosts); day=rng.randrange(CTX.days); dt=random_business_utc(rng,site,start,day)
-        campaign_end=CTX.end
+        campaign_start=CTX.start; campaign_end=CTX.end
+        while dt < campaign_start:
+            dt += timedelta(days=1)
         while dt > campaign_end:
             dt -= timedelta(days=1)
         kind=rng.choices(['zeek','winlogon','winproc','firewall','badge'],[45,20,15,15,5])[0]
@@ -206,6 +209,7 @@ def main():
     ap.add_argument('--output',help='Output directory; default dataset/<scenario>')
     ap.add_argument('--background-events',type=int,default=None,help='Override scenario generation.background_events')
     ap.add_argument('--enterprise-background-events',type=int,default=None,help='Override scenario generation.enterprise_background_events')
+    ap.add_argument('--allow-authoring', action='store_true', help='Allow an authoring-status scenario to generate a validation build without marking it validated')
     args=ap.parse_args()
 
     CTX=load_scenario(ROOT,args.scenario,args.start,args.end)
@@ -213,11 +217,11 @@ def main():
     background_events, enterprise_background_events = resolve_generation_counts(
         CFG, args.background_events, args.enterprise_background_events
     )
-    if CTX.status != 'validated':
+    if CTX.status != 'validated' and not args.allow_authoring:
         raise SystemExit(
             f"Scenario {args.scenario!r} is status={CTX.status!r}. "
             "Its distinct campaign path/question bank has not completed Splunk TA/CIM validation. "
-            "Author and validate it before changing status to validated."
+            "Use --allow-authoring only to generate a validation build; do not mark it validated until Splunk TA/CIM checks pass."
         )
     store=EventStore(args.scenario)
     add_background(store,background_events)
@@ -228,6 +232,11 @@ def main():
         add_attack(store)
         add_attack_corroboration(store,CFG)
         add_attack_expansion(store,CFG)
+    elif args.scenario == 'medium':
+        build_medium_campaign(store, CTX, {'sites': scoped_sites, 'config': CFG})
+    elif args.scenario == 'hard':
+        from scenarios.hard import build_campaign as build_hard_campaign
+        build_hard_campaign(store, CTX, {'sites': scoped_sites, 'config': CFG})
     out=Path(args.output or ROOT/'dataset'/args.scenario); out.parent.mkdir(parents=True,exist_ok=True)
     # Hard fail if any event escapes the declared scenario window.
     for event in store.events:
