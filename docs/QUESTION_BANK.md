@@ -6,7 +6,7 @@ Final target: **500 questions** across one persistent Asteron environment.
 |---|---:|---:|---|
 | Easy | 180 | **180** | discovery-first, 2 progressive hints, clearer pivots/notables |
 | Medium | 170 | **170** | multi-source/multi-region correlation, 3 hints normally, staging and partial detection coverage |
-| Hard | 150 | 0 | global heterogeneous environment, sparse/ambiguous findings, legitimate lookalikes, 3 strategic hints |
+| Hard | 150 | **150** | global heterogeneous environment, sparse/ambiguous findings, legitimate lookalikes, 3 strategic hints |
 
 ## Authoring rules
 
@@ -22,4 +22,4 @@ Final target: **500 questions** across one persistent Asteron environment.
 
 ## Current state
 
-Easy contains the complete **180-question** validated bank. Medium now contains **170 authored questions** tied to committed static attack evidence and remains authoring-gated until runtime Splunk validation. Hard remains schema-only.
+Easy contains the complete **180-question** validated bank. Medium now contains **170 authored questions** tied to committed static attack evidence and remains authoring-gated until runtime Splunk validation. Hard now contains **150 authored questions** tied to committed static evidence and remains authoring-gated until runtime Splunk validation.

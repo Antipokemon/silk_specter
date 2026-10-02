@@ -38,5 +38,23 @@
     "ot-adjacent-prepositioning"
   ],
   "actor": "silk_specter",
-  "campaign_module": "generator/scenarios/hard.py"
+  "campaign_module": "generator/scenarios/hard.py",
+  "generation": {
+    "background_events": 9000,
+    "enterprise_background_events": 80000
+  },
+  "campaign": {
+    "actor_initial_ip": "103.27.186.44",
+    "vpn_public_ip": "198.51.100.61",
+    "approved_vendor_ip": "103.27.186.41",
+    "approved_mft_ip": "54.66.211.17",
+    "approved_mft_host": "mft.apac-grid-services.example",
+    "hosts": {
+      "SGSI-NET-JMP-02": "10.60.50.22",
+      "JPTY-HIST-MGMT-01": "10.61.80.14",
+      "JPTY-ENG-FS-01": "10.61.60.31",
+      "NZAK-MFT-GW-02": "10.62.20.27"
+    }
+  },
+  "static_campaign": "scenario_data/hard/attack_events.jsonl"
 }

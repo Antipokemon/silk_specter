@@ -1,0 +1,8 @@
+finding_id,detection_name,expected_disposition,activity_id,notes
+HF-001,Vendor VPN Source Without Matching Change,benign,HARD-BENIGN-VPN-001,Authorized vendor session; validate against CHG0064821
+HF-002,Vendor VPN Source Without Matching Change,malicious,HARD-ACCESS-001,Same valid account but source lacks matching approved change
+HF-003,Portproxy To Cross-Region OT Management,malicious,HARD-PROXY-001,Unauthorized 8443 to JPTY OT-management WinRM forwarding
+HF-004,Cross-Region WinRM To OT Management,malicious,HARD-LATERAL-001,"Correlate endpoint, Zeek, and JPTY boundary firewall"
+HF-005,Native Archive Staging On OT-Adjacent Host,malicious,HARD-STAGE-001,PowerShell Compress-Archive on historian management host
+HF-006,Approved MFT Destination Without Matching Change,benign,HARD-BENIGN-MFT-001,Approved transfer tied to CHG0065127
+HF-007,Approved MFT Destination Without Matching Change,malicious,HARD-EXFIL-001,Approved destination abused with staged campaign artifact and no matching change

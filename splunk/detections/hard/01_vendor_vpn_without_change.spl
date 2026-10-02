@@ -1,0 +1,3 @@
+index=<index> sourcetype=radius:auth host=SGSI-RADIUS-01 result=Access-Accept
+| eval detection_name="Vendor VPN Source Without Matching Change"
+| stats earliest(_time) as first_seen values(user) as user values(nas) as nas by calling_station detection_name

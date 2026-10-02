@@ -410,3 +410,20 @@ The repository contains the shared framework/configuration scaffolding for Mediu
 Medium now uses committed static answer-bearing events from `scenario_data/medium/attack_events.jsonl`; the generator only loads those events and surrounds them with generated background activity. To build a validation corpus while Medium remains `authoring`, use `python3 generator/generate.py --scenario medium --allow-authoring`. To load that authoring corpus intentionally, use `ALLOW_AUTHORING=1 ./scripts/load_to_splunk.sh medium <fresh_index>`.
 
 Do not change Medium/Hard `status` to `validated` merely to bypass the generator/load guard. Runtime TA/CIM validation and answer verification must complete first.
+
+
+## Hard validation corpus
+
+Hard answer-bearing APT events are static under `scenario_data/hard/attack_events.jsonl`. Generate only surrounding background/noise plus those committed records:
+
+```bash
+python3 generator/generate.py --scenario hard --allow-authoring
+```
+
+Load to a fresh validation index only explicitly:
+
+```bash
+ALLOW_AUTHORING=1 ./scripts/load_to_splunk.sh hard asteron_hard_v001
+```
+
+Do not mark Hard validated until TA/CIM parsing, sparse detections, and all 150 answers have been verified in Splunk.

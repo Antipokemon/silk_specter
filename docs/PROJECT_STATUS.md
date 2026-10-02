@@ -19,6 +19,6 @@
 
 - Status: **authoring**
 - Scenario config/time window/all-site scope exists.
-- Distinct global pre-positioning path, MFT-abuse exfiltration, detection pack, generated corpus, and 150-question bank are not yet authored/validated.
+- Static global pre-positioning path, 150-question bank, three-hint coverage, legitimate lookalikes, MFT-abuse exfiltration, and a 5-search sparse detection pack are authored. Runtime Splunk TA/CIM and answer validation are still pending.
 
 Do not change Medium/Hard `status` to `validated` until runtime Splunk TA/CIM checks pass.

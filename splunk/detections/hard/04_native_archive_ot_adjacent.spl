@@ -1,0 +1,3 @@
+index=<index> host=JPTY-HIST-MGMT-01 "Compress-Archive" "diag_cache_20260407.zip"
+| eval detection_name="Native Archive Staging On OT-Adjacent Host"
+| table _time host User Image CommandLine detection_name

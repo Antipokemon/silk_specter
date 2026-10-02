@@ -1,0 +1,451 @@
+question_id,hint_number,hint,hint_cost
+H001,1,Start from the evidence family named in the question and constrain the time window.,4
+H001,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H001,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H002,1,Start from the evidence family named in the question and constrain the time window.,4
+H002,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H002,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H003,1,Start from the evidence family named in the question and constrain the time window.,4
+H003,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H003,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H004,1,Start from the evidence family named in the question and constrain the time window.,4
+H004,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H004,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H005,1,Start from the evidence family named in the question and constrain the time window.,4
+H005,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H005,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H006,1,Start from the evidence family named in the question and constrain the time window.,4
+H006,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H006,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H007,1,Start from the evidence family named in the question and constrain the time window.,4
+H007,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H007,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H008,1,Start from the evidence family named in the question and constrain the time window.,4
+H008,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H008,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H009,1,Start from the evidence family named in the question and constrain the time window.,4
+H009,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H009,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H010,1,Start from the evidence family named in the question and constrain the time window.,4
+H010,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H010,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H011,1,Start from the evidence family named in the question and constrain the time window.,4
+H011,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H011,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H012,1,Start from the evidence family named in the question and constrain the time window.,4
+H012,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H012,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H013,1,Start from the evidence family named in the question and constrain the time window.,4
+H013,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H013,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H014,1,Start from the evidence family named in the question and constrain the time window.,4
+H014,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H014,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H015,1,Start from the evidence family named in the question and constrain the time window.,4
+H015,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H015,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H016,1,Start from the evidence family named in the question and constrain the time window.,4
+H016,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H016,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H017,1,Start from the evidence family named in the question and constrain the time window.,4
+H017,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H017,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H018,1,Start from the evidence family named in the question and constrain the time window.,4
+H018,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H018,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H019,1,Start from the evidence family named in the question and constrain the time window.,4
+H019,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H019,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H020,1,Start from the evidence family named in the question and constrain the time window.,4
+H020,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H020,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H021,1,Start from the evidence family named in the question and constrain the time window.,4
+H021,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H021,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H022,1,Start from the evidence family named in the question and constrain the time window.,4
+H022,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H022,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H023,1,Start from the evidence family named in the question and constrain the time window.,4
+H023,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H023,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H024,1,Start from the evidence family named in the question and constrain the time window.,4
+H024,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H024,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H025,1,Start from the evidence family named in the question and constrain the time window.,4
+H025,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H025,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H026,1,Start from the evidence family named in the question and constrain the time window.,4
+H026,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H026,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H027,1,Start from the evidence family named in the question and constrain the time window.,4
+H027,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H027,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H028,1,Start from the evidence family named in the question and constrain the time window.,4
+H028,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H028,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H029,1,Start from the evidence family named in the question and constrain the time window.,4
+H029,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H029,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H030,1,Start from the evidence family named in the question and constrain the time window.,4
+H030,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H030,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H031,1,Start from the evidence family named in the question and constrain the time window.,4
+H031,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H031,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H032,1,Start from the evidence family named in the question and constrain the time window.,4
+H032,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H032,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H033,1,Start from the evidence family named in the question and constrain the time window.,4
+H033,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H033,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H034,1,Start from the evidence family named in the question and constrain the time window.,4
+H034,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H034,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H035,1,Start from the evidence family named in the question and constrain the time window.,4
+H035,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H035,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H036,1,Start from the evidence family named in the question and constrain the time window.,4
+H036,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H036,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H037,1,Start from the evidence family named in the question and constrain the time window.,4
+H037,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H037,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H038,1,Start from the evidence family named in the question and constrain the time window.,4
+H038,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H038,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H039,1,Start from the evidence family named in the question and constrain the time window.,4
+H039,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H039,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H040,1,Start from the evidence family named in the question and constrain the time window.,4
+H040,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H040,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H041,1,Start from the evidence family named in the question and constrain the time window.,4
+H041,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H041,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H042,1,Start from the evidence family named in the question and constrain the time window.,4
+H042,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H042,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H043,1,Start from the evidence family named in the question and constrain the time window.,4
+H043,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H043,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H044,1,Start from the evidence family named in the question and constrain the time window.,4
+H044,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H044,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H045,1,Start from the evidence family named in the question and constrain the time window.,4
+H045,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H045,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H046,1,Start from the evidence family named in the question and constrain the time window.,4
+H046,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H046,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H047,1,Start from the evidence family named in the question and constrain the time window.,4
+H047,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H047,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H048,1,Start from the evidence family named in the question and constrain the time window.,4
+H048,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H048,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H049,1,Start from the evidence family named in the question and constrain the time window.,4
+H049,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H049,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H050,1,Start from the evidence family named in the question and constrain the time window.,4
+H050,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H050,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H051,1,Start from the evidence family named in the question and constrain the time window.,4
+H051,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H051,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H052,1,Start from the evidence family named in the question and constrain the time window.,4
+H052,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H052,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H053,1,Start from the evidence family named in the question and constrain the time window.,4
+H053,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H053,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H054,1,Start from the evidence family named in the question and constrain the time window.,4
+H054,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H054,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H055,1,Start from the evidence family named in the question and constrain the time window.,4
+H055,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H055,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H056,1,Start from the evidence family named in the question and constrain the time window.,4
+H056,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H056,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H057,1,Start from the evidence family named in the question and constrain the time window.,4
+H057,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H057,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H058,1,Start from the evidence family named in the question and constrain the time window.,4
+H058,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H058,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H059,1,Start from the evidence family named in the question and constrain the time window.,4
+H059,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H059,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H060,1,Start from the evidence family named in the question and constrain the time window.,4
+H060,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H060,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H061,1,Start from the evidence family named in the question and constrain the time window.,4
+H061,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H061,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H062,1,Start from the evidence family named in the question and constrain the time window.,4
+H062,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H062,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H063,1,Start from the evidence family named in the question and constrain the time window.,4
+H063,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H063,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H064,1,Start from the evidence family named in the question and constrain the time window.,4
+H064,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H064,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H065,1,Start from the evidence family named in the question and constrain the time window.,4
+H065,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H065,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H066,1,Start from the evidence family named in the question and constrain the time window.,4
+H066,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H066,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H067,1,Start from the evidence family named in the question and constrain the time window.,4
+H067,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H067,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H068,1,Start from the evidence family named in the question and constrain the time window.,4
+H068,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H068,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H069,1,Start from the evidence family named in the question and constrain the time window.,4
+H069,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H069,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H070,1,Start from the evidence family named in the question and constrain the time window.,4
+H070,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H070,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H071,1,Start from the evidence family named in the question and constrain the time window.,4
+H071,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H071,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H072,1,Start from the evidence family named in the question and constrain the time window.,4
+H072,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H072,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H073,1,Start from the evidence family named in the question and constrain the time window.,4
+H073,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H073,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H074,1,Start from the evidence family named in the question and constrain the time window.,4
+H074,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H074,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H075,1,Start from the evidence family named in the question and constrain the time window.,4
+H075,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H075,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H076,1,Start from the evidence family named in the question and constrain the time window.,4
+H076,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H076,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H077,1,Start from the evidence family named in the question and constrain the time window.,4
+H077,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H077,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H078,1,Start from the evidence family named in the question and constrain the time window.,4
+H078,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H078,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H079,1,Start from the evidence family named in the question and constrain the time window.,4
+H079,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H079,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H080,1,Start from the evidence family named in the question and constrain the time window.,4
+H080,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H080,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H081,1,Start from the evidence family named in the question and constrain the time window.,4
+H081,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H081,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H082,1,Start from the evidence family named in the question and constrain the time window.,4
+H082,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H082,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H083,1,Start from the evidence family named in the question and constrain the time window.,4
+H083,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H083,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H084,1,Start from the evidence family named in the question and constrain the time window.,4
+H084,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H084,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H085,1,Start from the evidence family named in the question and constrain the time window.,4
+H085,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H085,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H086,1,Start from the evidence family named in the question and constrain the time window.,4
+H086,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H086,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H087,1,Start from the evidence family named in the question and constrain the time window.,4
+H087,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H087,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H088,1,Start from the evidence family named in the question and constrain the time window.,4
+H088,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H088,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H089,1,Start from the evidence family named in the question and constrain the time window.,4
+H089,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H089,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H090,1,Start from the evidence family named in the question and constrain the time window.,4
+H090,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H090,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H091,1,Start from the evidence family named in the question and constrain the time window.,4
+H091,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H091,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H092,1,Start from the evidence family named in the question and constrain the time window.,4
+H092,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H092,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H093,1,Start from the evidence family named in the question and constrain the time window.,4
+H093,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H093,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H094,1,Start from the evidence family named in the question and constrain the time window.,4
+H094,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H094,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H095,1,Start from the evidence family named in the question and constrain the time window.,4
+H095,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H095,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H096,1,Start from the evidence family named in the question and constrain the time window.,4
+H096,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H096,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H097,1,Start from the evidence family named in the question and constrain the time window.,4
+H097,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H097,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H098,1,Start from the evidence family named in the question and constrain the time window.,4
+H098,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H098,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H099,1,Start from the evidence family named in the question and constrain the time window.,4
+H099,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H099,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H100,1,Start from the evidence family named in the question and constrain the time window.,4
+H100,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H100,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H101,1,Start from the evidence family named in the question and constrain the time window.,4
+H101,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H101,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H102,1,Start from the evidence family named in the question and constrain the time window.,4
+H102,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H102,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H103,1,Start from the evidence family named in the question and constrain the time window.,4
+H103,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H103,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H104,1,Start from the evidence family named in the question and constrain the time window.,4
+H104,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H104,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H105,1,Start from the evidence family named in the question and constrain the time window.,4
+H105,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H105,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H106,1,Start from the evidence family named in the question and constrain the time window.,4
+H106,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H106,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H107,1,Start from the evidence family named in the question and constrain the time window.,4
+H107,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H107,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H108,1,Start from the evidence family named in the question and constrain the time window.,4
+H108,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H108,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H109,1,Start from the evidence family named in the question and constrain the time window.,4
+H109,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H109,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H110,1,Start from the evidence family named in the question and constrain the time window.,4
+H110,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H110,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H111,1,Start from the evidence family named in the question and constrain the time window.,4
+H111,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H111,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H112,1,Start from the evidence family named in the question and constrain the time window.,4
+H112,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H112,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H113,1,Start from the evidence family named in the question and constrain the time window.,4
+H113,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H113,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H114,1,Start from the evidence family named in the question and constrain the time window.,4
+H114,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H114,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H115,1,Start from the evidence family named in the question and constrain the time window.,4
+H115,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H115,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H116,1,Start from the evidence family named in the question and constrain the time window.,4
+H116,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H116,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H117,1,Start from the evidence family named in the question and constrain the time window.,4
+H117,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H117,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H118,1,Start from the evidence family named in the question and constrain the time window.,4
+H118,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H118,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H119,1,Start from the evidence family named in the question and constrain the time window.,4
+H119,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H119,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H120,1,Start from the evidence family named in the question and constrain the time window.,4
+H120,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H120,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H121,1,Start from the evidence family named in the question and constrain the time window.,4
+H121,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H121,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H122,1,Start from the evidence family named in the question and constrain the time window.,4
+H122,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H122,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H123,1,Start from the evidence family named in the question and constrain the time window.,4
+H123,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H123,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H124,1,Start from the evidence family named in the question and constrain the time window.,4
+H124,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H124,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H125,1,Start from the evidence family named in the question and constrain the time window.,4
+H125,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H125,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H126,1,Start from the evidence family named in the question and constrain the time window.,4
+H126,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H126,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H127,1,Start from the evidence family named in the question and constrain the time window.,4
+H127,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H127,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H128,1,Start from the evidence family named in the question and constrain the time window.,4
+H128,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H128,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H129,1,Start from the evidence family named in the question and constrain the time window.,4
+H129,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H129,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H130,1,Start from the evidence family named in the question and constrain the time window.,4
+H130,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H130,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H131,1,Start from the evidence family named in the question and constrain the time window.,4
+H131,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H131,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H132,1,Start from the evidence family named in the question and constrain the time window.,4
+H132,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H132,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H133,1,Start from the evidence family named in the question and constrain the time window.,4
+H133,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H133,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H134,1,Start from the evidence family named in the question and constrain the time window.,4
+H134,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H134,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H135,1,Start from the evidence family named in the question and constrain the time window.,4
+H135,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H135,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H136,1,Start from the evidence family named in the question and constrain the time window.,4
+H136,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H136,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H137,1,Start from the evidence family named in the question and constrain the time window.,4
+H137,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H137,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H138,1,Start from the evidence family named in the question and constrain the time window.,4
+H138,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H138,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H139,1,Start from the evidence family named in the question and constrain the time window.,4
+H139,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H139,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H140,1,Start from the evidence family named in the question and constrain the time window.,4
+H140,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H140,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H141,1,Start from the evidence family named in the question and constrain the time window.,4
+H141,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H141,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H142,1,Start from the evidence family named in the question and constrain the time window.,4
+H142,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H142,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H143,1,Start from the evidence family named in the question and constrain the time window.,4
+H143,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H143,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H144,1,Start from the evidence family named in the question and constrain the time window.,4
+H144,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H144,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H145,1,Start from the evidence family named in the question and constrain the time window.,4
+H145,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H145,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H146,1,Start from the evidence family named in the question and constrain the time window.,4
+H146,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H146,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H147,1,Start from the evidence family named in the question and constrain the time window.,4
+H147,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H147,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H148,1,Start from the evidence family named in the question and constrain the time window.,4
+H148,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H148,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H149,1,Start from the evidence family named in the question and constrain the time window.,4
+H149,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H149,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+H150,1,Start from the evidence family named in the question and constrain the time window.,4
+H150,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+H150,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15

@@ -15,6 +15,7 @@ from background import add_enterprise_background, add_defender_detection_backgro
 from corroboration import add_attack_corroboration
 from attack_expansion import add_attack_expansion
 from scenarios.medium import build_campaign as build_medium_campaign
+from scenarios.hard import build_campaign as build_hard_campaign
 
 DEFAULT_BACKGROUND_EVENTS = 5000
 DEFAULT_ENTERPRISE_BACKGROUND_EVENTS = 45000
@@ -233,12 +234,8 @@ def main():
         add_attack_expansion(store,CFG)
     elif args.scenario == 'medium':
         build_medium_campaign(store, CTX, {'config': CFG, 'sites': scoped_sites})
-    elif args.scenario == 'medium':
-        build_medium_campaign(store, CTX, {'config': CFG, 'sites': scoped_sites})
-    elif args.scenario == 'medium':
-        build_medium_campaign(store, CTX, {'config': CFG, 'sites': scoped_sites})
-    elif args.scenario == 'medium':
-        build_medium_campaign(store, CTX, {'config': CFG, 'sites': scoped_sites})
+    elif args.scenario == 'hard':
+        build_hard_campaign(store, CTX, {'config': CFG, 'sites': scoped_sites})
     out=Path(args.output or ROOT/'dataset'/args.scenario); out.parent.mkdir(parents=True,exist_ok=True)
     # Hard fail if any event escapes the declared scenario window.
     for event in store.events:

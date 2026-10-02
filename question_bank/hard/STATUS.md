@@ -1,6 +1,9 @@
-# Hard question bank status
+# Hard question-bank status
 
 - Status: **authoring**
-- Target questions: 150
-- No questions are marked validated yet because the distinct Hard campaign dataset has not completed Splunk TA/CIM validation.
-- Keep this pool empty rather than inventing answers before the supporting telemetry exists.
+- Target questions: **150**
+- Current authored questions: **150**
+- Every Hard question has three strategic hints.
+- Answers are tied to committed static evidence in `scenario_data/hard/attack_events.jsonl`.
+- Hard intentionally uses sparse findings, legitimate administrative/MFT lookalikes, cross-region/OT-adjacent correlation, and approved-destination abuse.
+- Do not mark Hard validated until Splunk TA/CIM parsing and every answer/reference search have been runtime-verified.

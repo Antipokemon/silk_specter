@@ -1,1 +1,451 @@
-question_id,hint_number,hint,hint_cost
+ctf_id,Number,HintNumber,Hint,HintCost
+silk_specter_hard,1,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,1,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,1,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,2,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,2,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,2,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,3,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,3,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,3,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,4,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,4,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,4,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,5,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,5,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,5,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,6,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,6,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,6,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,7,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,7,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,7,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,8,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,8,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,8,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,9,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,9,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,9,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,10,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,10,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,10,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,11,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,11,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,11,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,12,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,12,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,12,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,13,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,13,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,13,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,14,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,14,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,14,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,15,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,15,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,15,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,16,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,16,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,16,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,17,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,17,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,17,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,18,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,18,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,18,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,19,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,19,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,19,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,20,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,20,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,20,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,21,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,21,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,21,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,22,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,22,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,22,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,23,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,23,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,23,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,24,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,24,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,24,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,25,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,25,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,25,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,26,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,26,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,26,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,27,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,27,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,27,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,28,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,28,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,28,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,29,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,29,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,29,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,30,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,30,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,30,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,31,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,31,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,31,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,32,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,32,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,32,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,33,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,33,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,33,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,34,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,34,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,34,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,35,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,35,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,35,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,36,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,36,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,36,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,37,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,37,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,37,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,38,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,38,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,38,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,39,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,39,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,39,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,40,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,40,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,40,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,41,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,41,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,41,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,42,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,42,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,42,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,43,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,43,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,43,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,44,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,44,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,44,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,45,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,45,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,45,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,46,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,46,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,46,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,47,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,47,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,47,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,48,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,48,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,48,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,49,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,49,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,49,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,50,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,50,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,50,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,51,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,51,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,51,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,52,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,52,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,52,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,53,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,53,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,53,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,54,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,54,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,54,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,55,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,55,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,55,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,56,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,56,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,56,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,57,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,57,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,57,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,58,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,58,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,58,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,59,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,59,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,59,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,60,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,60,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,60,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,61,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,61,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,61,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,62,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,62,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,62,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,63,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,63,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,63,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,64,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,64,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,64,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,65,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,65,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,65,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,66,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,66,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,66,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,67,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,67,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,67,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,68,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,68,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,68,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,69,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,69,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,69,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,70,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,70,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,70,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,71,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,71,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,71,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,72,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,72,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,72,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,73,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,73,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,73,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,74,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,74,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,74,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,75,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,75,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,75,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,76,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,76,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,76,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,77,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,77,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,77,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,78,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,78,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,78,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,79,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,79,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,79,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,80,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,80,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,80,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,81,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,81,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,81,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,82,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,82,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,82,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,83,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,83,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,83,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,84,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,84,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,84,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,85,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,85,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,85,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,86,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,86,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,86,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,87,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,87,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,87,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,88,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,88,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,88,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,89,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,89,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,89,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,90,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,90,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,90,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,91,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,91,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,91,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,92,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,92,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,92,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,93,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,93,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,93,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,94,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,94,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,94,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,95,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,95,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,95,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,96,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,96,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,96,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,97,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,97,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,97,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,98,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,98,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,98,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,99,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,99,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,99,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,100,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,100,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,100,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,101,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,101,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,101,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,102,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,102,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,102,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,103,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,103,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,103,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,104,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,104,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,104,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,105,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,105,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,105,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,106,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,106,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,106,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,107,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,107,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,107,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,108,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,108,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,108,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,109,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,109,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,109,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,110,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,110,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,110,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,111,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,111,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,111,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,112,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,112,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,112,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,113,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,113,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,113,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,114,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,114,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,114,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,115,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,115,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,115,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,116,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,116,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,116,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,117,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,117,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,117,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,118,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,118,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,118,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,119,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,119,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,119,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,120,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,120,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,120,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,121,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,121,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,121,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,122,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,122,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,122,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,123,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,123,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,123,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,124,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,124,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,124,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,125,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,125,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,125,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,126,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,126,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,126,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,127,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,127,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,127,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,128,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,128,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,128,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,129,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,129,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,129,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,130,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,130,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,130,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,131,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,131,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,131,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,132,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,132,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,132,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,133,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,133,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,133,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,134,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,134,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,134,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,135,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,135,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,135,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,136,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,136,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,136,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,137,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,137,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,137,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,138,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,138,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,138,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,139,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,139,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,139,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,140,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,140,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,140,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,141,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,141,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,141,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,142,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,142,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,142,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,143,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,143,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,143,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,144,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,144,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,144,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,145,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,145,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,145,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,146,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,146,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,146,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,147,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,147,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,147,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,148,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,148,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,148,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,149,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,149,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,149,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,150,1,Start from the evidence family named in the question and constrain the time window.,4
+silk_specter_hard,150,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
+silk_specter_hard,150,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15

@@ -1,0 +1,151 @@
+Answer,Number
+103.27.186.44,H001
+APAC\svc-netmaint,H002
+SGSI-RADIUS-01,H003
+SGSI-FW-01,H004
+EAP-TLS,H005
+198.51.100.61,H006
+10.60.50.22,H007
+APAC-VENDOR-VPN,H008
+57422,H009
+SGSI-NET-JMP-02,H010
+103.27.186.41,H011
+CHG0064821,H012
+APAC\adm-ntan,H013
+103.27.186.41,H014
+CHG0064899,H015
+SGSI firewall certificate renewal,H016
+no,H017
+APAC\svc-netmaint,H018
+103.27.186.44,H019
+ServiceNow change control,H020
+APAC\svc-netmaint,H021
+whoami /all,H022
+ipconfig /all,H023
+arp -a,H024
+net view \\JPTY-HIST-MGMT-01,H025
+C:\Windows\System32\whoami.exe;C:\Windows\System32\ipconfig.exe;C:\Windows\System32\arp.exe;C:\Windows\System32\net.exe,H026
+C:\Windows\System32\cmd.exe,H027
+1;4688,H028
+SGSI-NET-JMP-02,H029
+4,H030
+C:\Windows\System32\netsh.exe,H031
+8443,H032
+10.60.50.22,H033
+10.61.80.14,H034
+5985,H035
+WinRM,H036
+CHG0064807,H037
+9443,H038
+SGSI-NET-JMP-02,H039
+bro:conn:json;cisco:asa,H040
+JPTY-HIST-MGMT-01,H041
+APAC\svc-histmaint,H042
+10.60.50.22,H043
+3,H044
+Negotiate,H045
+C:\Windows\System32\wsmprovhost.exe,H046
+5985,H047
+JPTY-ZEEK-01,H048
+JPTY-FW-03,H049
+T1021.006,H050
+JPTY-HIST-MGMT-01,H051
+sc query type= service state= all,H052
+reg query HKLM\SOFTWARE\Asteron\Historian /s,H053
+netstat -ano,H054
+schtasks /query /fo LIST /v,H055
+hist-backup.jpty.asteron.local,H056
+10.61.70.18,H057
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe,H058
+4,H059
+APAC\svc-histmaint,H060
+10.61.60.31,H061
+\\JPTY-ENG-FS-01\OT-Support$\Maintenance,H062
+historian_endpoints.xlsx;remote_access_matrix.pdf;substation_maint_windows.xlsx;relay_inventory.csv;vpn_backup.conf,H063
+5,H064
+vpn_backup.conf,H065
+10.61.80.14,H066
+445,H067
+C:\ProgramData\Microsoft\Diagnostics\cache\,H068
+Copy-Item,H069
+*.xlsx;*.pdf;*.csv;*.conf,H070
+Compress-Archive,H071
+C:\ProgramData\Microsoft\Diagnostics\cache\diag_cache_20260407.zip,H072
+Optimal,H073
+APAC\svc-histmaint,H074
+C:\Windows\System32\wsmprovhost.exe,H075
+JPTY-HIST-MGMT-01,H076
+3,H077
+T1560.001,H078
+T1074.001,H079
+diag_cache_20260407.zip,H080
+NZAK-MFT-GW-02,H081
+10.61.80.14,H082
+svc-transferops,H083
+publickey,H084
+55318,H085
+1013,H086
+/usr/bin/rsync,H087
+--remove-source-files,H088
+syslog;linux_audit,H089
+/srv/mft/outbound/apac-maint/,H090
+/usr/bin/tar,H091
+/srv/mft/outbound/apac-maint/APAC_Historian_Diagnostics_20260408.tgz,H092
+diag_cache_20260407.zip,H093
+/srv/mft/outbound/apac-maint,H094
+svc-transferops,H095
+/bin/bash,H096
+32118,H097
+31422,H098
+syslog;linux_audit,H099
+T1560.001,H100
+APAC\svc-transferops,H101
+APAC_Historian_Diagnostics_20260408.tgz,H102
+mft.apac-grid-services.example,H103
+tx-hard-7f31c2,H104
+187442921,H105
+success,H106
+APAC\mtanaka,H107
+CHG0065127,H108
+relay_vendor_package_20260408.zip,H109
+no matching approved change,H110
+10.62.20.27,H111
+54.66.211.17,H112
+443,H113
+51377,H114
+mft.apac-grid-services.example,H115
+187442921,H116
+NZAK-FW-01,H117
+cisco:asa,H118
+allow,H119
+Approved Partner Engineering Transfer,H120
+C:\Windows\System32\netsh.exe,H121
+8443,H122
+SGSI-NET-JMP-02,H123
+C:\ProgramData\Microsoft\Diagnostics\cache\diag_cache_20260407.zip,H124
+JPTY-HIST-MGMT-01,H125
+/usr/bin/rm,H126
+NZAK-MFT-GW-02,H127
+svc-transferops,H128
+/srv/mft/outbound/apac-maint/APAC_Historian_Diagnostics_20260408.tgz,H129
+T1070.004,H130
+Vendor VPN Source Without Matching Change,H131
+Portproxy To Cross-Region OT Management,H132
+Cross-Region WinRM To OT Management,H133
+Native Archive Staging On OT-Adjacent Host,H134
+Approved MFT Destination Without Matching Change,H135
+5,H136
+Vendor VPN Source Without Matching Change,H137
+Approved MFT Destination Without Matching Change,H138
+credential discovery,H139
+ServiceNow change control,H140
+SGSI>JPTY>NZAK,H141
+SGSI-NET-JMP-02>JPTY-HIST-MGMT-01>NZAK-MFT-GW-02,H142
+APAC\svc-histmaint;APAC\svc-transferops,H143
+APAC\svc-netmaint,H144
+diag_cache_20260407.zip,H145
+APAC_Historian_Diagnostics_20260408.tgz,H146
+mft.apac-grid-services.example,H147
+HARD-OT-PREP-001,H148
+HARD-EXFIL-001,H149
+staging lineage;compromised account context;missing approved change,H150

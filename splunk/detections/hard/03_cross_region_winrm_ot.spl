@@ -1,0 +1,3 @@
+index=<index> (host=JPTY-HIST-MGMT-01 OR host=JPTY-ZEEK-01) ("svc-histmaint" OR "5985")
+| eval detection_name="Cross-Region WinRM To OT Management"
+| stats values(host) values(sourcetype) values(source) by detection_name

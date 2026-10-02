@@ -1,0 +1,3 @@
+index=<index> host=SGSI-NET-JMP-02 source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" "netsh interface portproxy" "10.61.80.14"
+| eval detection_name="Portproxy To Cross-Region OT Management"
+| table _time host User Image CommandLine detection_name

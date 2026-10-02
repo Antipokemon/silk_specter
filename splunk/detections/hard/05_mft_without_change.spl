@@ -1,0 +1,3 @@
+index=<index> sourcetype=mft:transfer destination="mft.apac-grid-services.example" status=success
+| eval detection_name="Approved MFT Destination Without Matching Change"
+| table _time user source_host file_name bytes destination transfer_id detection_name
