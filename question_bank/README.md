@@ -1,13 +1,18 @@
-# Question banks
+# Canonical question banks
 
-The project target is 500 questions total:
+This directory is the only committed question/answer/hint source.
 
-- Easy: **180 / 180 complete**
-- Medium: 0 / 170 (schema only; campaign not yet authored/validated)
-- Hard: 0 / 150 (schema only; campaign not yet authored/validated)
+| Track | Questions | Hints | Status |
+|---|---:|---:|---|
+| Easy | 180 | 360 | validated |
+| Medium | 170 | 510 | runtime validation pending |
+| Hard | 150 | 450 | runtime validation pending |
 
-Each scenario has `questions.csv`, `answers.csv`, `hints.csv`, and `STATUS.md`.
+Each track contains:
 
-The scenario index is supplied to participants. Easy therefore begins with log/source discovery **inside the provided index**, not index discovery. Questions intended for newer analysts use precise descriptions of the data being searched and explain unfamiliar fields in early hints.
+- `questions.csv` — CTF runtime fields plus subject and instructor reference metadata
+- `answers.csv` — answer and answer type
+- `hints.csv` — progressive hints
+- `STATUS.md` — track-specific status
 
-Participant exports are generated separately and must never include answers or reference SPL.
+The registration/import app should consume these files directly. Do not maintain parallel copies in `instructor/` or `participant/`.

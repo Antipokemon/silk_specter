@@ -133,12 +133,18 @@ class GenerationConfigTests(unittest.TestCase):
         self.assertIn("$(BACKGROUND_OVERRIDE)", target)
         self.assertIn("$(ENTERPRISE_BACKGROUND_OVERRIDE)", target)
 
-    def test_easy_attack_generation_calls_are_still_present(self):
+    def test_all_tracks_use_static_campaign_loaders(self):
         source = (ROOT / "generator/generate.py").read_text(encoding="utf-8")
 
-        self.assertIn("add_attack(store)", source)
-        self.assertIn("add_attack_corroboration(store,CFG)", source)
-        self.assertIn("add_attack_expansion(store,CFG)", source)
+        self.assertIn("build_easy_campaign(store", source)
+        self.assertIn("build_medium_campaign(store", source)
+        self.assertIn("build_hard_campaign(store", source)
+        self.assertNotIn("add_attack(store)", source)
+
+        for track in ("easy", "medium", "hard"):
+            cfg = json.loads((ROOT / f"config/scenarios/{track}.json").read_text(encoding="utf-8"))
+            static = ROOT / cfg["static_campaign"]
+            self.assertTrue(static.is_file(), track)
 
 
 if __name__ == "__main__":

@@ -8,9 +8,15 @@ class VerticalSliceTests(unittest.TestCase):
     def setUpClass(cls):
         cls.cfg=json.loads((ROOT/'config/scenarios/easy.json').read_text())
         cls.manifest=json.loads((ROOT/'dataset/easy/manifest.json').read_text())
-        with (ROOT/'dataset/ground_truth_events.csv').open() as f: cls.truth=list(csv.DictReader(f))
-        with (ROOT/'instructor/questions/easy_questions.csv').open() as f: cls.questions=list(csv.DictReader(f))
-        with (ROOT/'instructor/questions/easy_hints.csv').open() as f: cls.hints=list(csv.DictReader(f))
+        cls.truth=[json.loads(line) for line in (ROOT/'scenario_data/easy/attack_events.jsonl').read_text(encoding='utf-8').splitlines() if line.strip()]
+        with (ROOT/'question_bank/easy/questions.csv').open() as f: cls.questions=list(csv.DictReader(f))
+        with (ROOT/'question_bank/easy/hints.csv').open() as f: cls.hints=list(csv.DictReader(f))
+        hec_text=(ROOT/'dataset/easy/hec/events.jsonl').read_text(encoding='utf-8')
+        cls.easy_lfs_materialized=not hec_text.startswith('version https://git-lfs.github.com/spec/v1')
+
+    def require_easy_dataset(self):
+        if not self.easy_lfs_materialized:
+            self.skipTest('Easy LFS dataset is not materialized; run git lfs pull or make generate-easy')
 
     def test_20_sites(self):
         sites=json.loads((ROOT/'config/sites.json').read_text())['sites']
@@ -26,6 +32,7 @@ class VerticalSliceTests(unittest.TestCase):
             self.assertLessEqual(t,end)
 
     def test_participant_raw_has_no_ground_truth_labels(self):
+        self.require_easy_dataset()
         banned=['EASY-ACCESS','EASY-EXFIL','truth_label','attack_event','mitre_technique','question_tags','synthetic=true']
         for p in (ROOT/'dataset/easy/raw').glob('*.log'):
             data=p.read_text(errors='ignore')
@@ -42,6 +49,7 @@ class VerticalSliceTests(unittest.TestCase):
         self.assertTrue(required.issubset(set(self.manifest['sourcetypes'])))
 
     def test_sysmon_windows_and_linux_present(self):
+        self.require_easy_dataset()
         raws='\n'.join(p.read_text(errors='ignore') for p in (ROOT/'dataset/easy/raw').glob('*.log'))
         self.assertIn('Microsoft-Windows-Sysmon',raws)
         self.assertIn('Linux-Sysmon',raws)
@@ -61,16 +69,16 @@ class VerticalSliceTests(unittest.TestCase):
             self.assertNotIn('asteron_hard',s,p.name)
 
     def test_questions_unique_and_hinted(self):
-        ids=[q['question_id'] for q in self.questions]
+        ids=[q['Number'] for q in self.questions]
         self.assertEqual(len(ids),len(set(ids)))
         hint_counts={i:0 for i in ids}
-        for h in self.hints: hint_counts[h['question_id']]+=1
+        for h in self.hints: hint_counts[h['Number']]+=1
         self.assertTrue(all(v>=2 for v in hint_counts.values()))
         self.assertEqual(len(self.questions),180)
 
     def test_first_questions_are_environment_familiarization(self):
-        self.assertTrue(all(q['category']=='environment_familiarization' for q in self.questions[:15]))
-        self.assertFalse(any(q['category']=='discovery' for q in self.questions[:15]))
+        self.assertTrue(all(q['Subject']=='environment_familiarization' for q in self.questions[:15]))
+        self.assertFalse(any(q['Subject']=='discovery' for q in self.questions[:15]))
 
     def test_attack_network_path_observable(self):
         activities={r['activity_id'] for r in self.truth if r['sourcetype'].startswith('bro:')}
@@ -79,6 +87,7 @@ class VerticalSliceTests(unittest.TestCase):
 
 
     def test_eventrecordid_monotonic_by_channel(self):
+        self.require_easy_dataset()
         import collections
         pat_time=re.compile(r'<TimeCreated SystemTime="([^"]+)"')
         pat_id=re.compile(r'<EventRecordID>(\d+)</EventRecordID>')
@@ -98,6 +107,7 @@ class VerticalSliceTests(unittest.TestCase):
             self.assertEqual(len(ids),len(set(ids)),key)
 
     def test_hec_ingest_stream_count_and_metadata(self):
+        self.require_easy_dataset()
         p=ROOT/'dataset/easy/hec/events.jsonl'
         rows=[json.loads(x) for x in p.read_text(encoding='utf-8').splitlines() if x.strip()]
         self.assertEqual(len(rows),self.manifest['events'])
@@ -110,6 +120,7 @@ class VerticalSliceTests(unittest.TestCase):
         self.assertFalse(any('truth_label' in r or 'activity_id' in r for r in rows))
 
     def test_hec_ingest_stream_time_bounds(self):
+        self.require_easy_dataset()
         p=ROOT/'dataset/easy/hec/events.jsonl'
         start=datetime.fromisoformat(self.cfg['start'].replace('Z','+00:00')).timestamp()
         end=datetime.fromisoformat(self.cfg['end'].replace('Z','+00:00')).timestamp()
@@ -119,6 +130,7 @@ class VerticalSliceTests(unittest.TestCase):
             self.assertLessEqual(float(r['time']),end)
 
     def test_corelight_zeek_sourcetype_metadata(self):
+        self.require_easy_dataset()
         expected={'bro:conn:json','bro:dns:json','bro:http:json','bro:ssl:json','bro:smb_files:json'}
         self.assertTrue(expected.issubset(set(self.manifest['sourcetypes'])))
         legacy={'zeek:conn','zeek:dns','zeek:http','zeek:tls','zeek:ssl','zeek:smb_files'}

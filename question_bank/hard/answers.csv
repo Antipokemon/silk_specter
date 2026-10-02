@@ -1,151 +1,151 @@
-ctf_id,Number,Answer
-silk_specter_hard,1,103.27.186.44
-silk_specter_hard,2,APAC\svc-netmaint
-silk_specter_hard,3,SGSI-RADIUS-01
-silk_specter_hard,4,SGSI-FW-01
-silk_specter_hard,5,EAP-TLS
-silk_specter_hard,6,198.51.100.61
-silk_specter_hard,7,10.60.50.22
-silk_specter_hard,8,APAC-VENDOR-VPN
-silk_specter_hard,9,57422
-silk_specter_hard,10,SGSI-NET-JMP-02
-silk_specter_hard,11,103.27.186.41
-silk_specter_hard,12,CHG0064821
-silk_specter_hard,13,APAC\adm-ntan
-silk_specter_hard,14,103.27.186.41
-silk_specter_hard,15,CHG0064899
-silk_specter_hard,16,SGSI firewall certificate renewal
-silk_specter_hard,17,no
-silk_specter_hard,18,APAC\svc-netmaint
-silk_specter_hard,19,103.27.186.44
-silk_specter_hard,20,ServiceNow change control
-silk_specter_hard,21,APAC\svc-netmaint
-silk_specter_hard,22,whoami /all
-silk_specter_hard,23,ipconfig /all
-silk_specter_hard,24,arp -a
-silk_specter_hard,25,net view \\JPTY-HIST-MGMT-01
-silk_specter_hard,26,C:\Windows\System32\whoami.exe;C:\Windows\System32\ipconfig.exe;C:\Windows\System32\arp.exe;C:\Windows\System32\net.exe
-silk_specter_hard,27,C:\Windows\System32\cmd.exe
-silk_specter_hard,28,1;4688
-silk_specter_hard,29,SGSI-NET-JMP-02
-silk_specter_hard,30,4
-silk_specter_hard,31,C:\Windows\System32\netsh.exe
-silk_specter_hard,32,8443
-silk_specter_hard,33,10.60.50.22
-silk_specter_hard,34,10.61.80.14
-silk_specter_hard,35,5985
-silk_specter_hard,36,WinRM
-silk_specter_hard,37,CHG0064807
-silk_specter_hard,38,9443
-silk_specter_hard,39,SGSI-NET-JMP-02
-silk_specter_hard,40,bro:conn:json;cisco:asa
-silk_specter_hard,41,JPTY-HIST-MGMT-01
-silk_specter_hard,42,APAC\svc-histmaint
-silk_specter_hard,43,10.60.50.22
-silk_specter_hard,44,3
-silk_specter_hard,45,Negotiate
-silk_specter_hard,46,C:\Windows\System32\wsmprovhost.exe
-silk_specter_hard,47,5985
-silk_specter_hard,48,JPTY-ZEEK-01
-silk_specter_hard,49,JPTY-FW-03
-silk_specter_hard,50,T1021.006
-silk_specter_hard,51,JPTY-HIST-MGMT-01
-silk_specter_hard,52,sc query type= service state= all
-silk_specter_hard,53,reg query HKLM\SOFTWARE\Asteron\Historian /s
-silk_specter_hard,54,netstat -ano
-silk_specter_hard,55,schtasks /query /fo LIST /v
-silk_specter_hard,56,hist-backup.jpty.asteron.local
-silk_specter_hard,57,10.61.70.18
-silk_specter_hard,58,C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-silk_specter_hard,59,4
-silk_specter_hard,60,APAC\svc-histmaint
-silk_specter_hard,61,10.61.60.31
-silk_specter_hard,62,\\JPTY-ENG-FS-01\OT-Support$\Maintenance
-silk_specter_hard,63,historian_endpoints.xlsx;remote_access_matrix.pdf;substation_maint_windows.xlsx;relay_inventory.csv;vpn_backup.conf
-silk_specter_hard,64,5
-silk_specter_hard,65,vpn_backup.conf
-silk_specter_hard,66,10.61.80.14
-silk_specter_hard,67,445
-silk_specter_hard,68,C:\ProgramData\Microsoft\Diagnostics\cache\
-silk_specter_hard,69,Copy-Item
-silk_specter_hard,70,*.xlsx;*.pdf;*.csv;*.conf
-silk_specter_hard,71,Compress-Archive
-silk_specter_hard,72,C:\ProgramData\Microsoft\Diagnostics\cache\diag_cache_20260407.zip
-silk_specter_hard,73,Optimal
-silk_specter_hard,74,APAC\svc-histmaint
-silk_specter_hard,75,C:\Windows\System32\wsmprovhost.exe
-silk_specter_hard,76,JPTY-HIST-MGMT-01
-silk_specter_hard,77,3
-silk_specter_hard,78,T1560.001
-silk_specter_hard,79,T1074.001
-silk_specter_hard,80,diag_cache_20260407.zip
-silk_specter_hard,81,NZAK-MFT-GW-02
-silk_specter_hard,82,10.61.80.14
-silk_specter_hard,83,svc-transferops
-silk_specter_hard,84,publickey
-silk_specter_hard,85,55318
-silk_specter_hard,86,1013
-silk_specter_hard,87,/usr/bin/rsync
-silk_specter_hard,88,--remove-source-files
-silk_specter_hard,89,syslog;linux_audit
-silk_specter_hard,90,/srv/mft/outbound/apac-maint/
-silk_specter_hard,91,/usr/bin/tar
-silk_specter_hard,92,/srv/mft/outbound/apac-maint/APAC_Historian_Diagnostics_20260408.tgz
-silk_specter_hard,93,diag_cache_20260407.zip
-silk_specter_hard,94,/srv/mft/outbound/apac-maint
-silk_specter_hard,95,svc-transferops
-silk_specter_hard,96,/bin/bash
-silk_specter_hard,97,32118
-silk_specter_hard,98,31422
-silk_specter_hard,99,syslog;linux_audit
-silk_specter_hard,100,T1560.001
-silk_specter_hard,101,APAC\svc-transferops
-silk_specter_hard,102,APAC_Historian_Diagnostics_20260408.tgz
-silk_specter_hard,103,mft.apac-grid-services.example
-silk_specter_hard,104,tx-hard-7f31c2
-silk_specter_hard,105,187442921
-silk_specter_hard,106,success
-silk_specter_hard,107,APAC\mtanaka
-silk_specter_hard,108,CHG0065127
-silk_specter_hard,109,relay_vendor_package_20260408.zip
-silk_specter_hard,110,no matching approved change
-silk_specter_hard,111,10.62.20.27
-silk_specter_hard,112,54.66.211.17
-silk_specter_hard,113,443
-silk_specter_hard,114,51377
-silk_specter_hard,115,mft.apac-grid-services.example
-silk_specter_hard,116,187442921
-silk_specter_hard,117,NZAK-FW-01
-silk_specter_hard,118,cisco:asa
-silk_specter_hard,119,allow
-silk_specter_hard,120,Approved Partner Engineering Transfer
-silk_specter_hard,121,C:\Windows\System32\netsh.exe
-silk_specter_hard,122,8443
-silk_specter_hard,123,SGSI-NET-JMP-02
-silk_specter_hard,124,C:\ProgramData\Microsoft\Diagnostics\cache\diag_cache_20260407.zip
-silk_specter_hard,125,JPTY-HIST-MGMT-01
-silk_specter_hard,126,/usr/bin/rm
-silk_specter_hard,127,NZAK-MFT-GW-02
-silk_specter_hard,128,svc-transferops
-silk_specter_hard,129,/srv/mft/outbound/apac-maint/APAC_Historian_Diagnostics_20260408.tgz
-silk_specter_hard,130,T1070.004
-silk_specter_hard,131,Vendor VPN Source Without Matching Change
-silk_specter_hard,132,Portproxy To Cross-Region OT Management
-silk_specter_hard,133,Cross-Region WinRM To OT Management
-silk_specter_hard,134,Native Archive Staging On OT-Adjacent Host
-silk_specter_hard,135,Approved MFT Destination Without Matching Change
-silk_specter_hard,136,5
-silk_specter_hard,137,Vendor VPN Source Without Matching Change
-silk_specter_hard,138,Approved MFT Destination Without Matching Change
-silk_specter_hard,139,credential discovery
-silk_specter_hard,140,ServiceNow change control
-silk_specter_hard,141,SGSI>JPTY>NZAK
-silk_specter_hard,142,SGSI-NET-JMP-02>JPTY-HIST-MGMT-01>NZAK-MFT-GW-02
-silk_specter_hard,143,APAC\svc-histmaint;APAC\svc-transferops
-silk_specter_hard,144,APAC\svc-netmaint
-silk_specter_hard,145,diag_cache_20260407.zip
-silk_specter_hard,146,APAC_Historian_Diagnostics_20260408.tgz
-silk_specter_hard,147,mft.apac-grid-services.example
-silk_specter_hard,148,HARD-OT-PREP-001
-silk_specter_hard,149,HARD-EXFIL-001
-silk_specter_hard,150,staging lineage;compromised account context;missing approved change
+ctf_id,Number,Answer,AnswerType
+silk_specter_hard,1,103.27.186.44,exact
+silk_specter_hard,2,APAC\svc-netmaint,exact
+silk_specter_hard,3,SGSI-RADIUS-01,exact
+silk_specter_hard,4,SGSI-FW-01,exact
+silk_specter_hard,5,EAP-TLS,exact
+silk_specter_hard,6,198.51.100.61,exact
+silk_specter_hard,7,10.60.50.22,exact
+silk_specter_hard,8,APAC-VENDOR-VPN,exact
+silk_specter_hard,9,57422,numeric
+silk_specter_hard,10,SGSI-NET-JMP-02,exact
+silk_specter_hard,11,103.27.186.41,exact
+silk_specter_hard,12,CHG0064821,exact
+silk_specter_hard,13,APAC\adm-ntan,exact
+silk_specter_hard,14,103.27.186.41,exact
+silk_specter_hard,15,CHG0064899,exact
+silk_specter_hard,16,SGSI firewall certificate renewal,exact
+silk_specter_hard,17,no,case_insensitive
+silk_specter_hard,18,APAC\svc-netmaint,exact
+silk_specter_hard,19,103.27.186.44,exact
+silk_specter_hard,20,ServiceNow change control,case_insensitive
+silk_specter_hard,21,APAC\svc-netmaint,exact
+silk_specter_hard,22,whoami /all,exact
+silk_specter_hard,23,ipconfig /all,exact
+silk_specter_hard,24,arp -a,exact
+silk_specter_hard,25,net view \\JPTY-HIST-MGMT-01,exact
+silk_specter_hard,26,C:\Windows\System32\whoami.exe;C:\Windows\System32\ipconfig.exe;C:\Windows\System32\arp.exe;C:\Windows\System32\net.exe,set
+silk_specter_hard,27,C:\Windows\System32\cmd.exe,exact
+silk_specter_hard,28,1;4688,set
+silk_specter_hard,29,SGSI-NET-JMP-02,exact
+silk_specter_hard,30,4,numeric
+silk_specter_hard,31,C:\Windows\System32\netsh.exe,exact
+silk_specter_hard,32,8443,numeric
+silk_specter_hard,33,10.60.50.22,exact
+silk_specter_hard,34,10.61.80.14,exact
+silk_specter_hard,35,5985,numeric
+silk_specter_hard,36,WinRM,case_insensitive
+silk_specter_hard,37,CHG0064807,exact
+silk_specter_hard,38,9443,numeric
+silk_specter_hard,39,SGSI-NET-JMP-02,exact
+silk_specter_hard,40,bro:conn:json;cisco:asa,set
+silk_specter_hard,41,JPTY-HIST-MGMT-01,exact
+silk_specter_hard,42,APAC\svc-histmaint,exact
+silk_specter_hard,43,10.60.50.22,exact
+silk_specter_hard,44,3,numeric
+silk_specter_hard,45,Negotiate,exact
+silk_specter_hard,46,C:\Windows\System32\wsmprovhost.exe,exact
+silk_specter_hard,47,5985,numeric
+silk_specter_hard,48,JPTY-ZEEK-01,exact
+silk_specter_hard,49,JPTY-FW-03,exact
+silk_specter_hard,50,T1021.006,exact
+silk_specter_hard,51,JPTY-HIST-MGMT-01,exact
+silk_specter_hard,52,sc query type= service state= all,exact
+silk_specter_hard,53,reg query HKLM\SOFTWARE\Asteron\Historian /s,exact
+silk_specter_hard,54,netstat -ano,exact
+silk_specter_hard,55,schtasks /query /fo LIST /v,exact
+silk_specter_hard,56,hist-backup.jpty.asteron.local,exact
+silk_specter_hard,57,10.61.70.18,exact
+silk_specter_hard,58,C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe,exact
+silk_specter_hard,59,4,numeric
+silk_specter_hard,60,APAC\svc-histmaint,exact
+silk_specter_hard,61,10.61.60.31,exact
+silk_specter_hard,62,\\JPTY-ENG-FS-01\OT-Support$\Maintenance,exact
+silk_specter_hard,63,historian_endpoints.xlsx;remote_access_matrix.pdf;substation_maint_windows.xlsx;relay_inventory.csv;vpn_backup.conf,set
+silk_specter_hard,64,5,numeric
+silk_specter_hard,65,vpn_backup.conf,exact
+silk_specter_hard,66,10.61.80.14,exact
+silk_specter_hard,67,445,numeric
+silk_specter_hard,68,C:\ProgramData\Microsoft\Diagnostics\cache\,exact
+silk_specter_hard,69,Copy-Item,exact
+silk_specter_hard,70,*.xlsx;*.pdf;*.csv;*.conf,set
+silk_specter_hard,71,Compress-Archive,exact
+silk_specter_hard,72,C:\ProgramData\Microsoft\Diagnostics\cache\diag_cache_20260407.zip,exact
+silk_specter_hard,73,Optimal,exact
+silk_specter_hard,74,APAC\svc-histmaint,exact
+silk_specter_hard,75,C:\Windows\System32\wsmprovhost.exe,exact
+silk_specter_hard,76,JPTY-HIST-MGMT-01,exact
+silk_specter_hard,77,3,numeric
+silk_specter_hard,78,T1560.001,exact
+silk_specter_hard,79,T1074.001,exact
+silk_specter_hard,80,diag_cache_20260407.zip,exact
+silk_specter_hard,81,NZAK-MFT-GW-02,exact
+silk_specter_hard,82,10.61.80.14,exact
+silk_specter_hard,83,svc-transferops,exact
+silk_specter_hard,84,publickey,exact
+silk_specter_hard,85,55318,numeric
+silk_specter_hard,86,1013,numeric
+silk_specter_hard,87,/usr/bin/rsync,exact
+silk_specter_hard,88,--remove-source-files,exact
+silk_specter_hard,89,syslog;linux_audit,set
+silk_specter_hard,90,/srv/mft/outbound/apac-maint/,exact
+silk_specter_hard,91,/usr/bin/tar,exact
+silk_specter_hard,92,/srv/mft/outbound/apac-maint/APAC_Historian_Diagnostics_20260408.tgz,exact
+silk_specter_hard,93,diag_cache_20260407.zip,exact
+silk_specter_hard,94,/srv/mft/outbound/apac-maint,exact
+silk_specter_hard,95,svc-transferops,exact
+silk_specter_hard,96,/bin/bash,exact
+silk_specter_hard,97,32118,numeric
+silk_specter_hard,98,31422,numeric
+silk_specter_hard,99,syslog;linux_audit,set
+silk_specter_hard,100,T1560.001,exact
+silk_specter_hard,101,APAC\svc-transferops,exact
+silk_specter_hard,102,APAC_Historian_Diagnostics_20260408.tgz,exact
+silk_specter_hard,103,mft.apac-grid-services.example,exact
+silk_specter_hard,104,tx-hard-7f31c2,exact
+silk_specter_hard,105,187442921,numeric
+silk_specter_hard,106,success,exact
+silk_specter_hard,107,APAC\mtanaka,exact
+silk_specter_hard,108,CHG0065127,exact
+silk_specter_hard,109,relay_vendor_package_20260408.zip,exact
+silk_specter_hard,110,no matching approved change,case_insensitive
+silk_specter_hard,111,10.62.20.27,exact
+silk_specter_hard,112,54.66.211.17,exact
+silk_specter_hard,113,443,numeric
+silk_specter_hard,114,51377,numeric
+silk_specter_hard,115,mft.apac-grid-services.example,exact
+silk_specter_hard,116,187442921,numeric
+silk_specter_hard,117,NZAK-FW-01,exact
+silk_specter_hard,118,cisco:asa,exact
+silk_specter_hard,119,allow,exact
+silk_specter_hard,120,Approved Partner Engineering Transfer,exact
+silk_specter_hard,121,C:\Windows\System32\netsh.exe,exact
+silk_specter_hard,122,8443,numeric
+silk_specter_hard,123,SGSI-NET-JMP-02,exact
+silk_specter_hard,124,C:\ProgramData\Microsoft\Diagnostics\cache\diag_cache_20260407.zip,exact
+silk_specter_hard,125,JPTY-HIST-MGMT-01,exact
+silk_specter_hard,126,/usr/bin/rm,exact
+silk_specter_hard,127,NZAK-MFT-GW-02,exact
+silk_specter_hard,128,svc-transferops,exact
+silk_specter_hard,129,/srv/mft/outbound/apac-maint/APAC_Historian_Diagnostics_20260408.tgz,exact
+silk_specter_hard,130,T1070.004,exact
+silk_specter_hard,131,Vendor VPN Source Without Matching Change,exact
+silk_specter_hard,132,Portproxy To Cross-Region OT Management,exact
+silk_specter_hard,133,Cross-Region WinRM To OT Management,exact
+silk_specter_hard,134,Native Archive Staging On OT-Adjacent Host,exact
+silk_specter_hard,135,Approved MFT Destination Without Matching Change,exact
+silk_specter_hard,136,5,numeric
+silk_specter_hard,137,Vendor VPN Source Without Matching Change,exact
+silk_specter_hard,138,Approved MFT Destination Without Matching Change,exact
+silk_specter_hard,139,credential discovery,case_insensitive
+silk_specter_hard,140,ServiceNow change control,case_insensitive
+silk_specter_hard,141,SGSI>JPTY>NZAK,ordered_sequence
+silk_specter_hard,142,SGSI-NET-JMP-02>JPTY-HIST-MGMT-01>NZAK-MFT-GW-02,ordered_sequence
+silk_specter_hard,143,APAC\svc-histmaint;APAC\svc-transferops,set
+silk_specter_hard,144,APAC\svc-netmaint,exact
+silk_specter_hard,145,diag_cache_20260407.zip,exact
+silk_specter_hard,146,APAC_Historian_Diagnostics_20260408.tgz,exact
+silk_specter_hard,147,mft.apac-grid-services.example,exact
+silk_specter_hard,148,HARD-OT-PREP-001,exact
+silk_specter_hard,149,HARD-EXFIL-001,exact
+silk_specter_hard,150,staging lineage;compromised account context;missing approved change,set

@@ -1,181 +1,181 @@
-ctf_id,Number,Answer
-silk_specter_easy,1,_time
-silk_specter_easy,2,host
-silk_specter_easy,3,XmlWinEventLog:Security;XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
-silk_specter_easy,4,bro:conn:json
-silk_specter_easy,5,aws:cloudtrail
-silk_specter_easy,6,TargetUserName
-silk_specter_easy,7,CommandLine
-silk_specter_easy,8,SourceIp;DestinationIp
-silk_specter_easy,9,id.orig_h;id.resp_h;id.resp_p
-silk_specter_easy,10,query
-silk_specter_easy,11,eventName
-silk_specter_easy,12,eventSource
-silk_specter_easy,13,result
-silk_specter_easy,14,category
-silk_specter_easy,15,badge_id;site
-silk_specter_easy,16,199.45.154.125
-silk_specter_easy,17,Censys
-silk_specter_easy,18,Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)
-silk_specter_easy,19,10.44.15.22
-silk_specter_easy,20,portal.asteron.example
-silk_specter_easy,21,23.20.77.81
-silk_specter_easy,22,20
-silk_specter_easy,23,GET
-silk_specter_easy,24,/api/version;/.well-known/security.txt
-silk_specter_easy,25,/api/render
-silk_specter_easy,26,443
-silk_specter_easy,27,TLSv13
-silk_specter_easy,28,portal.asteron.example
-silk_specter_easy,29,Mozilla/5.0
-silk_specter_easy,30,USHQ-ZEEK-01
-silk_specter_easy,31,POST
-silk_specter_easy,32,/api/render
-silk_specter_easy,33,AppInputAnomaly
-silk_specter_easy,34,COUNT
-silk_specter_easy,35,500
-silk_specter_easy,36,/assets/.runtime/status
-silk_specter_easy,37,200
-silk_specter_easy,38,USHQ-WEB-02
-silk_specter_easy,39,11
-silk_specter_easy,40,/srv/asteron-web/assets/.runtime/status
-silk_specter_easy,41,.runtime/status
-silk_specter_easy,42,8b76c4d0f10e9d92f2bc85ca9c5fa006c4944bd169d066204214c882055153fc
-silk_specter_easy,43,14832
-silk_specter_easy,44,Web service spawned command shell
-silk_specter_easy,45,/bin/sh
-silk_specter_easy,46,www-data
-silk_specter_easy,47,/usr/bin/java
-silk_specter_easy,48,id
-silk_specter_easy,49,uname -a
-silk_specter_easy,50,ip addr
-silk_specter_easy,51,ip route
-silk_specter_easy,52,ss -plant
-silk_specter_easy,53,ps -ef
-silk_specter_easy,54,hostname -f
-silk_specter_easy,55,who
-silk_specter_easy,56,env
-silk_specter_easy,57,ls -la /srv/asteron-web
-silk_specter_easy,58,find /srv/asteron-web -maxdepth 2 -type f
-silk_specter_easy,59,cat /etc/os-release
-silk_specter_easy,60,systemctl --type=service --state=running
-silk_specter_easy,61,df -h
-silk_specter_easy,62,mount
-silk_specter_easy,63,getent passwd
-silk_specter_easy,64,getent group
-silk_specter_easy,65,journalctl -n 25
-silk_specter_easy,66,/usr/libexec/asteron-maint-helper
-silk_specter_easy,67,/usr/libexec/asteron-maint-helper --status
-silk_specter_easy,68,root
-silk_specter_easy,69,/usr/bin/java
-silk_specter_easy,70,Unexpected privilege transition from web service context
-silk_specter_easy,71,High
-silk_specter_easy,72,WouldBlock
-silk_specter_easy,73,8
-silk_specter_easy,74,/srv/asteron-web/config/deploy.env
-silk_specter_easy,75,/etc/asteron/web/deployment.conf
-silk_specter_easy,76,/var/lib/gitlab-runner/config.toml
-silk_specter_easy,77,/srv/asteron-web/.aws/config
-silk_specter_easy,78,/srv/asteron-web/.aws/credentials
-silk_specter_easy,79,/etc/asteron/secrets/app.properties
-silk_specter_easy,80,/etc/asteron/service-accounts.conf
-silk_specter_easy,81,/etc/asteron/gitlab/deploy-token
-silk_specter_easy,82,/etc/asteron/engineering-sync.conf
-silk_specter_easy,83,/etc/asteron/mft/client.conf
-silk_specter_easy,84,/srv/asteron-web/config/cloud-role.json
-silk_specter_easy,85,root
-silk_specter_easy,86,/assets/.runtime/status
-silk_specter_easy,87,POST
-silk_specter_easy,88,ALLOW
-silk_specter_easy,89,200
-silk_specter_easy,90,/usr/bin/true
-silk_specter_easy,91,/usr/bin/java
-silk_specter_easy,92,12
-silk_specter_easy,93,cloud-edge.example
-silk_specter_easy,94,23.20.77.81
-silk_specter_easy,95,443
-silk_specter_easy,96,/usr/bin/curl
-silk_specter_easy,97,www-data
-silk_specter_easy,98,35
-silk_specter_easy,99,6900
-silk_specter_easy,100,10.44.15.22>10.44.30.37>10.47.60.21
-silk_specter_easy,101,git.asteron.example
-silk_specter_easy,102,10.100.20.15
-silk_specter_easy,103,/usr/bin/curl
-silk_specter_easy,104,svc-webdeploy
-silk_specter_easy,105,deploy_token
-silk_specter_easy,106,asteron/web-platform
-silk_specter_easy,107,repository_download
-silk_specter_easy,108,192.0.2.60
-silk_specter_easy,109,GetCallerIdentity
-silk_specter_easy,110,svc-webdeploy
-silk_specter_easy,111,111122223333
-silk_specter_easy,112,192.0.2.60
-silk_specter_easy,113,us-east-1
-silk_specter_easy,114,aws-cli/2.15.0
-silk_specter_easy,115,asteron-engineering-prod
-silk_specter_easy,116,deploy/appsettings.json
-silk_specter_easy,117,20
-silk_specter_easy,118,secretsmanager.amazonaws.com
-silk_specter_easy,119,/asteron/web/prod/api-endpoint
-silk_specter_easy,120,exports/engineering-852.json;exports/engineering-073.json
-silk_specter_easy,121,10.44.15.22
-silk_specter_easy,122,USHQ-APP-07
-silk_specter_easy,123,10.44.30.37
-silk_specter_easy,124,135
-silk_specter_easy,125,IWbemLevel1Login
-silk_specter_easy,126,NTLMLogin
-silk_specter_easy,127,svc-appdeploy
-silk_specter_easy,128,3
-silk_specter_easy,129,C:\Windows\System32\wbem\WmiPrvSE.exe
-silk_specter_easy,130,cmd.exe /c whoami /all
-silk_specter_easy,131,Suspicious WMI initiated command shell
-silk_specter_easy,132,Medium
-silk_specter_easy,133,T1047
-silk_specter_easy,134,"cmd.exe /c net group ""Domain Admins"" /domain"
-silk_specter_easy,135,cmd.exe /c nltest /dclist:us.asteron.local
-silk_specter_easy,136,10.44.10.12
-silk_specter_easy,137,10.44.20.31
-silk_specter_easy,138,10.47.60.21
-silk_specter_easy,139,cmd.exe /c net view \\USVA-FS-01
-silk_specter_easy,140,cmd.exe /c sc query
-silk_specter_easy,141,cmd.exe /c net localgroup administrators
-silk_specter_easy,142,cmd.exe /c nltest /domain_trusts
-silk_specter_easy,143,cmd.exe /c dir \\USHQ-FS-03\Shared
-silk_specter_easy,144,cmd.exe /c dir \\USVA-FS-01\Engineering
-silk_specter_easy,145,cmd.exe /c reg query HKLM\SOFTWARE\Asteron
-silk_specter_easy,146,svc-engsync
-silk_specter_easy,147,HTTP/USVA-ENG-APP-01.us.asteron.local
-silk_specter_easy,148,10.44.30.37
-silk_specter_easy,149,USVA-ENG-APP-01
-silk_specter_easy,150,10.47.60.21
-silk_specter_easy,151,5985
-silk_specter_easy,152,3
-silk_specter_easy,153,USHQ-FW-02
-silk_specter_easy,154,USVA-FW-03
-silk_specter_easy,155,USHQ-ZEEK-01;USVA-ZEEK-01
-silk_specter_easy,156,Kerberos
-silk_specter_easy,157,USVA-FS-01
-silk_specter_easy,158,10.47.20.31
-silk_specter_easy,159,445
-silk_specter_easy,160,cifs/usva-fs-01.us.asteron.local
-silk_specter_easy,161,USVA-ZEEK-01
-silk_specter_easy,162,10.47.60.21
-silk_specter_easy,163,SMB2_READ
-silk_specter_easy,164,\\USVA-FS-01\Engineering\Operations
-silk_specter_easy,165,regional_engineering_package.pdf
-silk_specter_easy,166,industrial_gateway_inventory.xlsx
-silk_specter_easy,167,31
-silk_specter_easy,168,C:\ProgramData\Asteron\EngineeringSync\outbound\
-silk_specter_easy,169,C:\Program Files\Asteron\EngineeringSync\engsync.exe
-silk_specter_easy,170,US\svc-engsync
-silk_specter_easy,171,regional_engineering_package.pdf
-silk_specter_easy,172,4688;1;11
-silk_specter_easy,173,engineering_applications.xlsx
-silk_specter_easy,174,sync-update.example
-silk_specter_easy,175,50.19.77.200
-silk_specter_easy,176,734003200
-silk_specter_easy,177,C:\Program Files\Asteron\EngineeringSync\engsync.exe
-silk_specter_easy,178,Engineering Sensitive - External Upload
-silk_specter_easy,179,network_device_inventory.xlsx
-silk_specter_easy,180,USHQ-WEB-02>USHQ-APP-07>USVA-ENG-APP-01
+ctf_id,Number,Answer,AnswerType
+silk_specter_easy,1,_time,exact
+silk_specter_easy,2,host,exact
+silk_specter_easy,3,XmlWinEventLog:Security;XmlWinEventLog:Microsoft-Windows-Sysmon/Operational,set
+silk_specter_easy,4,bro:conn:json,exact
+silk_specter_easy,5,aws:cloudtrail,exact
+silk_specter_easy,6,TargetUserName,exact
+silk_specter_easy,7,CommandLine,exact
+silk_specter_easy,8,SourceIp;DestinationIp,set
+silk_specter_easy,9,id.orig_h;id.resp_h;id.resp_p,set
+silk_specter_easy,10,query,exact
+silk_specter_easy,11,eventName,exact
+silk_specter_easy,12,eventSource,exact
+silk_specter_easy,13,result,exact
+silk_specter_easy,14,category,exact
+silk_specter_easy,15,badge_id;site,set
+silk_specter_easy,16,199.45.154.125,exact
+silk_specter_easy,17,Censys,case_insensitive
+silk_specter_easy,18,Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/),exact
+silk_specter_easy,19,10.44.15.22,exact
+silk_specter_easy,20,portal.asteron.example,exact
+silk_specter_easy,21,23.20.77.81,exact
+silk_specter_easy,22,20,numeric
+silk_specter_easy,23,GET,exact
+silk_specter_easy,24,/api/version;/.well-known/security.txt,set
+silk_specter_easy,25,/api/render,exact
+silk_specter_easy,26,443,numeric
+silk_specter_easy,27,TLSv13,exact
+silk_specter_easy,28,portal.asteron.example,exact
+silk_specter_easy,29,Mozilla/5.0,exact
+silk_specter_easy,30,USHQ-ZEEK-01,exact
+silk_specter_easy,31,POST,exact
+silk_specter_easy,32,/api/render,exact
+silk_specter_easy,33,AppInputAnomaly,exact
+silk_specter_easy,34,COUNT,exact
+silk_specter_easy,35,500,numeric
+silk_specter_easy,36,/assets/.runtime/status,exact
+silk_specter_easy,37,200,numeric
+silk_specter_easy,38,USHQ-WEB-02,exact
+silk_specter_easy,39,11,numeric
+silk_specter_easy,40,/srv/asteron-web/assets/.runtime/status,exact
+silk_specter_easy,41,.runtime/status,exact
+silk_specter_easy,42,8b76c4d0f10e9d92f2bc85ca9c5fa006c4944bd169d066204214c882055153fc,case_insensitive
+silk_specter_easy,43,14832,numeric
+silk_specter_easy,44,Web service spawned command shell,case_insensitive
+silk_specter_easy,45,/bin/sh,exact
+silk_specter_easy,46,www-data,exact
+silk_specter_easy,47,/usr/bin/java,exact
+silk_specter_easy,48,id,exact
+silk_specter_easy,49,uname -a,exact
+silk_specter_easy,50,ip addr,exact
+silk_specter_easy,51,ip route,exact
+silk_specter_easy,52,ss -plant,exact
+silk_specter_easy,53,ps -ef,exact
+silk_specter_easy,54,hostname -f,exact
+silk_specter_easy,55,who,exact
+silk_specter_easy,56,env,exact
+silk_specter_easy,57,ls -la /srv/asteron-web,exact
+silk_specter_easy,58,find /srv/asteron-web -maxdepth 2 -type f,exact
+silk_specter_easy,59,cat /etc/os-release,exact
+silk_specter_easy,60,systemctl --type=service --state=running,exact
+silk_specter_easy,61,df -h,exact
+silk_specter_easy,62,mount,exact
+silk_specter_easy,63,getent passwd,exact
+silk_specter_easy,64,getent group,exact
+silk_specter_easy,65,journalctl -n 25,exact
+silk_specter_easy,66,/usr/libexec/asteron-maint-helper,exact
+silk_specter_easy,67,/usr/libexec/asteron-maint-helper --status,exact
+silk_specter_easy,68,root,exact
+silk_specter_easy,69,/usr/bin/java,exact
+silk_specter_easy,70,Unexpected privilege transition from web service context,case_insensitive
+silk_specter_easy,71,High,case_insensitive
+silk_specter_easy,72,WouldBlock,exact
+silk_specter_easy,73,8,numeric
+silk_specter_easy,74,/srv/asteron-web/config/deploy.env,exact
+silk_specter_easy,75,/etc/asteron/web/deployment.conf,exact
+silk_specter_easy,76,/var/lib/gitlab-runner/config.toml,exact
+silk_specter_easy,77,/srv/asteron-web/.aws/config,exact
+silk_specter_easy,78,/srv/asteron-web/.aws/credentials,exact
+silk_specter_easy,79,/etc/asteron/secrets/app.properties,exact
+silk_specter_easy,80,/etc/asteron/service-accounts.conf,exact
+silk_specter_easy,81,/etc/asteron/gitlab/deploy-token,exact
+silk_specter_easy,82,/etc/asteron/engineering-sync.conf,exact
+silk_specter_easy,83,/etc/asteron/mft/client.conf,exact
+silk_specter_easy,84,/srv/asteron-web/config/cloud-role.json,exact
+silk_specter_easy,85,root,exact
+silk_specter_easy,86,/assets/.runtime/status,exact
+silk_specter_easy,87,POST,exact
+silk_specter_easy,88,ALLOW,exact
+silk_specter_easy,89,200,numeric
+silk_specter_easy,90,/usr/bin/true,exact
+silk_specter_easy,91,/usr/bin/java,exact
+silk_specter_easy,92,12,numeric
+silk_specter_easy,93,cloud-edge.example,exact
+silk_specter_easy,94,23.20.77.81,exact
+silk_specter_easy,95,443,numeric
+silk_specter_easy,96,/usr/bin/curl,exact
+silk_specter_easy,97,www-data,exact
+silk_specter_easy,98,35,numeric
+silk_specter_easy,99,6900,numeric
+silk_specter_easy,100,10.44.15.22>10.44.30.37>10.47.60.21,ordered_sequence
+silk_specter_easy,101,git.asteron.example,exact
+silk_specter_easy,102,10.100.20.15,exact
+silk_specter_easy,103,/usr/bin/curl,exact
+silk_specter_easy,104,svc-webdeploy,exact
+silk_specter_easy,105,deploy_token,exact
+silk_specter_easy,106,asteron/web-platform,exact
+silk_specter_easy,107,repository_download,exact
+silk_specter_easy,108,192.0.2.60,exact
+silk_specter_easy,109,GetCallerIdentity,exact
+silk_specter_easy,110,svc-webdeploy,exact
+silk_specter_easy,111,111122223333,exact
+silk_specter_easy,112,192.0.2.60,exact
+silk_specter_easy,113,us-east-1,exact
+silk_specter_easy,114,aws-cli/2.15.0,exact
+silk_specter_easy,115,asteron-engineering-prod,exact
+silk_specter_easy,116,deploy/appsettings.json,exact
+silk_specter_easy,117,20,numeric
+silk_specter_easy,118,secretsmanager.amazonaws.com,exact
+silk_specter_easy,119,/asteron/web/prod/api-endpoint,exact
+silk_specter_easy,120,exports/engineering-852.json;exports/engineering-073.json,set
+silk_specter_easy,121,10.44.15.22,exact
+silk_specter_easy,122,USHQ-APP-07,exact
+silk_specter_easy,123,10.44.30.37,exact
+silk_specter_easy,124,135,numeric
+silk_specter_easy,125,IWbemLevel1Login,exact
+silk_specter_easy,126,NTLMLogin,exact
+silk_specter_easy,127,svc-appdeploy,exact
+silk_specter_easy,128,3,numeric
+silk_specter_easy,129,C:\Windows\System32\wbem\WmiPrvSE.exe,case_insensitive
+silk_specter_easy,130,cmd.exe /c whoami /all,case_insensitive
+silk_specter_easy,131,Suspicious WMI initiated command shell,case_insensitive
+silk_specter_easy,132,Medium,case_insensitive
+silk_specter_easy,133,T1047,exact
+silk_specter_easy,134,"cmd.exe /c net group ""Domain Admins"" /domain",case_insensitive
+silk_specter_easy,135,cmd.exe /c nltest /dclist:us.asteron.local,case_insensitive
+silk_specter_easy,136,10.44.10.12,exact
+silk_specter_easy,137,10.44.20.31,exact
+silk_specter_easy,138,10.47.60.21,exact
+silk_specter_easy,139,cmd.exe /c net view \\USVA-FS-01,case_insensitive
+silk_specter_easy,140,cmd.exe /c sc query,case_insensitive
+silk_specter_easy,141,cmd.exe /c net localgroup administrators,case_insensitive
+silk_specter_easy,142,cmd.exe /c nltest /domain_trusts,case_insensitive
+silk_specter_easy,143,cmd.exe /c dir \\USHQ-FS-03\Shared,case_insensitive
+silk_specter_easy,144,cmd.exe /c dir \\USVA-FS-01\Engineering,case_insensitive
+silk_specter_easy,145,cmd.exe /c reg query HKLM\SOFTWARE\Asteron,case_insensitive
+silk_specter_easy,146,svc-engsync,exact
+silk_specter_easy,147,HTTP/USVA-ENG-APP-01.us.asteron.local,case_insensitive
+silk_specter_easy,148,10.44.30.37,exact
+silk_specter_easy,149,USVA-ENG-APP-01,exact
+silk_specter_easy,150,10.47.60.21,exact
+silk_specter_easy,151,5985,numeric
+silk_specter_easy,152,3,numeric
+silk_specter_easy,153,USHQ-FW-02,exact
+silk_specter_easy,154,USVA-FW-03,exact
+silk_specter_easy,155,USHQ-ZEEK-01;USVA-ZEEK-01,set
+silk_specter_easy,156,Kerberos,exact
+silk_specter_easy,157,USVA-FS-01,exact
+silk_specter_easy,158,10.47.20.31,exact
+silk_specter_easy,159,445,numeric
+silk_specter_easy,160,cifs/usva-fs-01.us.asteron.local,case_insensitive
+silk_specter_easy,161,USVA-ZEEK-01,exact
+silk_specter_easy,162,10.47.60.21,exact
+silk_specter_easy,163,SMB2_READ,exact
+silk_specter_easy,164,\\USVA-FS-01\Engineering\Operations,exact
+silk_specter_easy,165,regional_engineering_package.pdf,exact
+silk_specter_easy,166,industrial_gateway_inventory.xlsx,exact
+silk_specter_easy,167,31,numeric
+silk_specter_easy,168,C:\ProgramData\Asteron\EngineeringSync\outbound\,case_insensitive
+silk_specter_easy,169,C:\Program Files\Asteron\EngineeringSync\engsync.exe,case_insensitive
+silk_specter_easy,170,US\svc-engsync,case_insensitive
+silk_specter_easy,171,regional_engineering_package.pdf,exact
+silk_specter_easy,172,4688;1;11,set
+silk_specter_easy,173,engineering_applications.xlsx,exact
+silk_specter_easy,174,sync-update.example,exact
+silk_specter_easy,175,50.19.77.200,exact
+silk_specter_easy,176,734003200,numeric
+silk_specter_easy,177,C:\Program Files\Asteron\EngineeringSync\engsync.exe,case_insensitive
+silk_specter_easy,178,Engineering Sensitive - External Upload,case_insensitive
+silk_specter_easy,179,network_device_inventory.xlsx,exact
+silk_specter_easy,180,USHQ-WEB-02>USHQ-APP-07>USVA-ENG-APP-01,ordered_sequence

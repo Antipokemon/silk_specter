@@ -46,5 +46,20 @@
   "canonical_ingest_file": "hec/events.jsonl",
   "window_start": "2026-04-06T00:00:00Z",
   "window_end": "2026-04-10T23:59:59Z",
-  "status": "validated"
+  "status": "validated",
+  "notables": {
+    "scenario": "easy",
+    "events": 36,
+    "campaign_notables": 11,
+    "noise_notables": 25,
+    "sourcetype": "stash",
+    "source": "notable",
+    "canonical_ingest_file": "hec/events.jsonl",
+    "participant_filter": "index=notable source=notable sourcetype=stash scenario=easy"
+  },
+  "generation": {
+    "background_events": 5000,
+    "enterprise_background_events": 45000
+  },
+  "static_campaign": "scenario_data/easy/attack_events.jsonl"
 }

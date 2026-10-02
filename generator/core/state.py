@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 from pathlib import Path
 from collections import defaultdict
 import csv, hashlib, json, re, uuid
@@ -117,20 +117,8 @@ class EventStore:
                     'event':e.raw.rstrip('\n'),
                 }
                 f.write(json.dumps(envelope,separators=(',',':'))+'\n')
-        # Ground truth is intentionally separate from participant raw. Keep it
-        # scenario-scoped so future Medium/Hard or other APT builds cannot
-        # overwrite one another. The legacy Easy path is retained for v0.2.x
-        # compatibility with the validated test suite and instructor tooling.
-        fields=['event_id','activity_id','scenario','time','host','source','sourcetype','truth_label','technique','question_tags']
-        gt_dir=outdir.parent/'ground_truth'; gt_dir.mkdir(exist_ok=True)
-        targets=[gt_dir/f'{self.scenario}_events.csv']
-        if self.scenario == 'easy':
-            targets.append(outdir.parent/'ground_truth_events.csv')
-        for target in targets:
-            with target.open('w',newline='',encoding='utf-8') as f:
-                w=csv.DictWriter(f,fieldnames=fields); w.writeheader()
-                for e in sorted(self.events,key=lambda x:x.time):
-                    d=asdict(e); d.pop('raw'); w.writerow({k:d[k] for k in fields})
+        # Answer-bearing ground truth lives only in scenario_data/<track>/attack_events.jsonl.
+        # Generated participant datasets intentionally do not emit a duplicate ground-truth CSV.
         # Regenerate the expected sourcetype counts every time the corpus is rebuilt.
         # This file is user-facing validation data and must never drift from the
         # generated raw/HEC corpus when background volume changes.

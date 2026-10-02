@@ -11,7 +11,10 @@ HEC=ROOT/'dataset/easy/hec/events.jsonl'
 class TACompatibilityTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.events=[json.loads(line) for line in HEC.read_text(encoding='utf-8').splitlines() if line.strip()]
+        text=HEC.read_text(encoding='utf-8')
+        if text.startswith('version https://git-lfs.github.com/spec/v1'):
+            raise unittest.SkipTest('Easy LFS dataset is not materialized; run git lfs pull or make generate-easy')
+        cls.events=[json.loads(line) for line in text.splitlines() if line.strip()]
         cls.by={}
         for e in cls.events:
             cls.by.setdefault(e['sourcetype'],[]).append(e)

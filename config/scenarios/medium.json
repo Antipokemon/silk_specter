@@ -50,5 +50,8 @@
       "CLOUD-DNS": "10.100.0.2"
     }
   },
-  "static_campaign": "scenario_data/medium/attack_events.jsonl"
+  "static_campaign": "scenario_data/medium/attack_events.jsonl",
+  "notables": {
+    "noise_events": 60
+  }
 }

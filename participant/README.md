@@ -1,14 +1,13 @@
-# Asteron Participant Material
+# Participant material
 
-Participants need only the material in this directory plus access to the configured Splunk environment.
+Participant-facing context lives here; answer keys and reference searches do not.
 
 Start with:
 
 1. `environment/organization.md`
 2. `environment/network-reference.md`
-3. `environment/topology.svg`
-4. `scenarios/easy/briefing.md`
-5. `scenarios/easy/splunk-discovery-guide.md`
-6. the CTF question/hint interface or CSV exports provided by the instructor
+3. [`../docs/topology.svg`](../docs/topology.svg)
+4. the briefing for the assigned track under `scenarios/<track>/`
+5. the CTF application for questions and hints
 
-Instructor ground truth, reference SPL, scenario construction, ATT&CK mappings, expected finding dispositions, and generator configuration are intentionally excluded from participant material.
+Questions/hints are loaded into the CTF application from the canonical `question_bank/<track>/` files. Duplicate CSV exports are intentionally not stored in `participant/`.

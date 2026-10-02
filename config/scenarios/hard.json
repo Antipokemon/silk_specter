@@ -56,5 +56,8 @@
       "NZAK-MFT-GW-02": "10.62.20.27"
     }
   },
-  "static_campaign": "scenario_data/hard/attack_events.jsonl"
+  "static_campaign": "scenario_data/hard/attack_events.jsonl",
+  "notables": {
+    "noise_events": 120
+  }
 }

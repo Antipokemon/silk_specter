@@ -1,429 +1,58 @@
-# Generate and load the Asteron / SILK SPECTER dataset
+# Generation model
 
-This is the user-facing operational guide for building a scenario dataset and loading it into Splunk.
+## What is fixed
 
-`AGENTS.md` is an engineering handoff for coding agents. Normal users should start here.
-
-## What one generation run produces
-
-For a validated scenario, one generator run builds the **entire scenario corpus from scratch**. It does not append to the previous dataset.
-
-For Easy, the same run includes:
-
-- normal Asteron background activity;
-- source-diverse enterprise background/noise;
-- Microsoft Defender background detections;
-- the SILK SPECTER simulated campaign;
-- corroborating endpoint/network/cloud/security evidence for that campaign;
-- expanded campaign observations used by the Easy investigation;
-- source-native raw files;
-- the canonical HEC ingest stream;
-- ingest metadata and manifests;
-- instructor-only ground-truth metadata.
-
-There is no separate command required to "add the APT" after generating background data. `--scenario easy` generates background and SILK SPECTER together.
-
-## 1. Scenario configuration and timeframe
-
-Scenario settings are stored here:
+Each track has one canonical APT evidence file:
 
 ```text
-config/scenarios/easy.json
-config/scenarios/medium.json
-config/scenarios/hard.json
+scenario_data/<track>/attack_events.jsonl
 ```
 
-The Easy file currently contains values such as:
+Questions, answers, reference searches, and authored findings depend on these events. Normal generation must not modify them or shift the configured scenario window.
 
-```json
-{
-  "index": "asteron_easy",
-  "start": "2026-04-06T00:00:00Z",
-  "end": "2026-04-10T23:59:59Z",
-  "seed": 56017,
-  "generation": {
-    "background_events": 5000,
-    "enterprise_background_events": 45000
-  },
-  "status": "validated"
-}
-```
+## What is generated
 
-### Does the generator read this file automatically?
-
-Yes.
-
-When you run:
-
-```bash
-python3 generator/generate.py --scenario easy
-```
-
-`generator/generate.py` calls the scenario loader, which reads:
+`generator/generate.py` combines the static campaign with track-specific background/enterprise activity and writes:
 
 ```text
-config/scenarios/easy.json
+dataset/<track>/
+├── raw/
+├── hec/events.jsonl
+├── ingest_manifest.csv
+├── expected_counts.csv
+├── manifest.json
+└── notables/
+    ├── raw/notables.log
+    ├── hec/events.jsonl
+    ├── ingest_manifest.csv
+    ├── expected_counts.csv
+    └── manifest.json
 ```
 
-If you run the generator with no `--scenario`, `easy` is the default and the same Easy config is loaded.
+Generated participant data contains no truth labels or instructor dispositions. The static campaign file is the ground-truth source for answer-bearing activity.
 
-If `--start` and `--end` are omitted, the `start` and `end` values from the scenario JSON are used automatically. The generator also reads `generation.background_events` and `generation.enterprise_background_events` from the same scenario file when the matching CLI overrides are omitted.
-
-The precedence is:
-
-```text
-explicit CLI override > scenario JSON > internal fallback
-```
-
-The configured window controls both Splunk `_time` metadata and the timestamps embedded inside generated source-native records. The generator hard-fails if a generated event falls outside the declared scenario window.
-
-### Temporary timeframe override
-
-You can override the config without editing it:
-
-```bash
-python3 generator/generate.py \
-  --scenario easy \
-  --start 2026-05-04T00:00:00Z \
-  --end 2026-05-08T23:59:59Z \
-  --output dataset/easy
-```
-
-The override applies only to that invocation. If you want a new timeframe to become the scenario default, edit `config/scenarios/easy.json` and commit the config together with the regenerated dataset.
-
-## 2. Check scenario status
-
-Run:
-
-```bash
-python3 scripts/scenario_status.py
-```
-
-Easy is currently the validated scenario. Medium and Hard are scaffolds and intentionally remain `authoring` until their distinct campaign paths and question banks have been generated and validated in Splunk.
-
-The generator refuses to build a scenario whose status is not `validated`.
-
-## 3. Generate the current Easy baseline
-
-From the repository root:
+## Commands
 
 ```bash
 make generate-easy
+make generate-medium
+make generate-hard
 ```
 
-This is equivalent to:
+Direct equivalents:
 
 ```bash
-python3 generator/generate.py \
-  --scenario easy \
-  --output dataset/easy
+python3 generator/generate.py --scenario easy --output dataset/easy
+python3 generator/generate.py --scenario medium --allow-authoring --output dataset/medium
+python3 generator/generate.py --scenario hard --allow-authoring --output dataset/hard
 ```
 
-The timeframe, seed, and default background volumes all come from `config/scenarios/easy.json`; they do not need to be repeated on the command line.
-
-## 4. Generate more background/noise
-
-The background volume is controlled independently from the authored SILK SPECTER campaign.
-
-The two user-facing volume controls are:
-
-```text
---background-events
---enterprise-background-events
-```
-
-The default Easy baseline is defined in `config/scenarios/easy.json` as:
-
-```text
-5,000 basic/background events
-45,000 enterprise background events
-```
-
-The generator also creates other scenario/background records such as Defender detections, so the final event total is larger than the sum of those two arguments.
-
-### Example: generate about 250,000 base background events
-
-Using Make:
+Noise volume can be overridden without changing the attack chain:
 
 ```bash
-make generate-easy \
-  BACKGROUND_EVENTS=25000 \
-  ENTERPRISE_BACKGROUND_EVENTS=225000
+make generate-hard BACKGROUND_EVENTS=30000 ENTERPRISE_BACKGROUND_EVENTS=250000
 ```
 
-Equivalent Python command:
+Notable noise is deterministic and configured per track. The participant notable feed contains only event fields; expected dispositions remain under `instructor/findings/`.
 
-```bash
-python3 generator/generate.py \
-  --scenario easy \
-  --output dataset/easy \
-  --background-events 25000 \
-  --enterprise-background-events 225000
-```
-
-**Important:** these values describe the new generated corpus. They are not appended to the existing 50,000 background events. Generation replaces the previous generated dataset.
-
-The SILK SPECTER campaign remains part of the output and keeps its authored sequence while unrelated Asteron activity grows around it.
-
-## 5. Files regenerated by a run
-
-A successful Easy generation updates:
-
-```text
-dataset/easy/raw/                  source-native event shards
-dataset/easy/hec/events.jsonl     canonical Splunk ingest stream
-dataset/easy/ingest_manifest.csv  per-shard ingest metadata
-dataset/easy/manifest.json         corpus summary/time window
-dataset/easy/expected_counts.csv  sourcetype counts for validation
-dataset/ground_truth/easy_events.csv
-dataset/ground_truth_events.csv   legacy Easy instructor ground truth
-```
-
-Stale raw shards are removed before the new dataset is written.
-
-`expected_counts.csv` is regenerated from the same event store as the raw/HEC data, so changing background volume will not leave the sourcetype validation counts stale.
-
-## 6. Validate the generated files locally
-
-Run:
-
-```bash
-make validate
-```
-
-or:
-
-```bash
-python3 -m unittest discover -s tests -v
-```
-
-The tests validate the generator/data contracts rather than requiring one permanent background event count. They reconcile the generated HEC stream, manifest, and `expected_counts.csv` while preserving minimum Easy environment/campaign requirements.
-
-Review the generated manifest:
-
-```bash
-python3 -m json.tool dataset/easy/manifest.json
-```
-
-Review the expected sourcetype counts:
-
-```bash
-column -s, -t < dataset/easy/expected_counts.csv | less
-```
-
-Check the canonical HEC line count:
-
-```bash
-wc -l dataset/easy/hec/events.jsonl
-```
-
-That count must equal the `events` value in `dataset/easy/manifest.json`.
-
-## 7. Load the generated dataset into Splunk
-
-Use a **fresh index name** for every regenerated corpus. Do not load corrected/regenerated events into an old validation index.
-
-The preferred host-side workflow is:
-
-```bash
-./scripts/load_to_splunk.sh easy asteron_easy_vNEW
-```
-
-For example:
-
-```bash
-./scripts/load_to_splunk.sh easy asteron_easy_noise01
-```
-
-The script performs the following operations:
-
-1. reads `config/scenarios/easy.json` and confirms the scenario is validated;
-2. verifies generated `dataset/easy/hec/events.jsonl` and the manifest exist;
-3. copies/updates `TA-asteron-v3` in the Splunk container;
-4. restarts Splunk;
-5. verifies `[asteron:hec] INDEXED_EXTRACTIONS=HEC`;
-6. performs an **interactive Splunk CLI login**;
-7. refuses to reuse an existing index name;
-8. creates the fresh index;
-9. copies the generated dataset and loader into the container;
-10. submits the canonical HEC-envelope file for indexing.
-
-### Login is intentionally interactive
-
-The workflow runs:
-
-```bash
-podman exec -it --user splunk splunk \
-  /opt/splunk/bin/splunk login
-```
-
-Enter the Splunk application username/password when prompted.
-
-Do not place the password in the repository or use `-auth user:password` in shell history.
-
-## 8. Manual Splunk load workflow
-
-If you do not want to use the helper script, the equivalent manual steps are documented in:
-
-```text
-docs/SPLUNK_LOAD.md
-```
-
-The important sequence is:
-
-```text
-install/update TA-asteron-v3
-        ↓
-restart Splunk
-        ↓
-verify HEC indexed extraction
-        ↓
-interactive splunk login
-        ↓
-create a fresh index
-        ↓
-copy dataset/easy into container
-        ↓
-run load_hec.sh
-        ↓
-validate count/time/sourcetypes/CIM
-```
-
-## 9. Validate the loaded Splunk data
-
-### Total count
-
-Read the expected total:
-
-```bash
-python3 - <<'PY'
-import json
-print(json.load(open('dataset/easy/manifest.json'))['events'])
-PY
-```
-
-Then in Splunk:
-
-```spl
-| tstats count where index=asteron_easy_noise01
-```
-
-The values must match.
-
-### Time range
-
-```spl
-index=asteron_easy_noise01 earliest=0
-| stats min(_time) as first max(_time) as last
-| convert ctime(first) ctime(last)
-```
-
-Compare the result with `window_start` and `window_end` in `dataset/easy/manifest.json`.
-
-For the default Easy config, all generated events must remain inside:
-
-```text
-2026-04-06T00:00:00Z
-through
-2026-04-10T23:59:59Z
-```
-
-### Sourcetype counts
-
-```spl
-index=asteron_easy_noise01
-| stats count by sourcetype
-| sort sourcetype
-```
-
-Compare to:
-
-```text
-dataset/easy/expected_counts.csv
-```
-
-### Windows Security and Sysmon
-
-Both use the validated generic Windows sourcetype and are distinguished by `source`:
-
-```spl
-index=asteron_easy_noise01 sourcetype=XmlWinEventLog
-| stats count by source
-```
-
-Expected source families include:
-
-```text
-XmlWinEventLog:Security
-XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
-```
-
-### Corelight/Zeek network fields
-
-```spl
-index=asteron_easy_noise01 sourcetype=bro:conn:json
-| head 20
-| table _time uid src_ip src_port dest_ip dest_port transport action bytes_in bytes_out
-```
-
-### Network Traffic CIM
-
-```spl
-| tstats summariesonly=f count
-    from datamodel=Network_Traffic.All_Traffic
-    where index=asteron_easy_noise01
-    by All_Traffic.sourcetype
-```
-
-## 10. Generated data and the simulated campaign in Git
-
-This repository is intended to keep the generated scenario data together with the generator so a commit represents one internally consistent CTF state.
-
-When a generator/config change affects the corpus, commit together:
-
-```text
-generator/config changes
-dataset/<scenario>/raw/
-dataset/<scenario>/hec/events.jsonl
-dataset/<scenario>/manifest.json
-dataset/<scenario>/expected_counts.csv
-dataset/<scenario>/ingest_manifest.csv
-ground truth affected by the change
-questions/answers/hints if the evidence changes
-validation/test changes if required
-```
-
-Do not commit a changed generator while leaving an older generated dataset in the same commit.
-
-Git LFS is recommended for the large raw/HEC files once `git-lfs` is installed, but the generated data is part of the repository state rather than being treated as disposable output.
-
-## 11. Participant versus instructor material
-
-Generated telemetry is participant-facing evidence. Ground truth, answer keys, and reference SPL remain instructor-only.
-
-The participant should receive the assigned Splunk index and scenario briefing; they do not need the canonical Git repository containing instructor answers/ground truth.
-
-## 12. Medium and Hard
-
-The repository contains the shared framework/configuration scaffolding for Medium and Hard, but they are not currently validated campaigns.
-
-Medium now uses committed static answer-bearing events from `scenario_data/medium/attack_events.jsonl`; the generator only loads those events and surrounds them with generated background activity. To build a validation corpus while Medium remains `authoring`, use `python3 generator/generate.py --scenario medium --allow-authoring`. To load that authoring corpus intentionally, use `ALLOW_AUTHORING=1 ./scripts/load_to_splunk.sh medium <fresh_index>`.
-
-Do not change Medium/Hard `status` to `validated` merely to bypass the generator/load guard. Runtime TA/CIM validation and answer verification must complete first.
-
-
-## Hard validation corpus
-
-Hard answer-bearing APT events are static under `scenario_data/hard/attack_events.jsonl`. Generate only surrounding background/noise plus those committed records:
-
-```bash
-python3 generator/generate.py --scenario hard --allow-authoring
-```
-
-Load to a fresh validation index only explicitly:
-
-```bash
-ALLOW_AUTHORING=1 ./scripts/load_to_splunk.sh hard asteron_hard_v001
-```
-
-Do not mark Hard validated until TA/CIM parsing, sparse detections, and all 150 answers have been verified in Splunk.
+For the end-to-end operator sequence, use [`QUICKSTART.md`](QUICKSTART.md).

@@ -1,0 +1,10 @@
+{
+  "scenario": "easy",
+  "events": 36,
+  "campaign_notables": 11,
+  "noise_notables": 25,
+  "sourcetype": "stash",
+  "source": "notable",
+  "canonical_ingest_file": "hec/events.jsonl",
+  "participant_filter": "index=notable source=notable sourcetype=stash scenario=easy"
+}

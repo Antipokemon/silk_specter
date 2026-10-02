@@ -1,9 +1,8 @@
-# Hard question-bank status
+# Hard question bank
 
-- Status: **authoring**
-- Target questions: **150**
-- Current authored questions: **150**
-- Every Hard question has three strategic hints.
-- Answers are tied to committed static evidence in `scenario_data/hard/attack_events.jsonl`.
-- Hard intentionally uses sparse findings, legitimate administrative/MFT lookalikes, cross-region/OT-adjacent correlation, and approved-destination abuse.
-- Do not mark Hard validated until Splunk TA/CIM parsing and every answer/reference search have been runtime-verified.
+- **150 / 150 questions complete**
+- **450 hints** (3 per question)
+- Status: **authoring / target-Splunk validation pending**
+- Answers are tied to `scenario_data/hard/attack_events.jsonl`.
+- Hard uses sparse useful findings, legitimate lookalikes, global/OT-adjacent correlation, and approved-service abuse.
+- Promote only after TA/CIM parsing and every `ReferenceSPL` are validated in a fresh Splunk index.

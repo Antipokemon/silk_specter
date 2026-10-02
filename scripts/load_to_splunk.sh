@@ -34,7 +34,7 @@ if [[ "$STATUS" != "validated" ]]; then
 fi
 
 if [[ -z "$INDEX" ]]; then
-  INDEX="${BASE_INDEX}_v030"
+  INDEX="${BASE_INDEX}_v001"
 fi
 
 if [[ ! -f "$DATA/hec/events.jsonl" || ! -f "$DATA/manifest.json" ]]; then

@@ -1,171 +1,171 @@
-ctf_id,Number,Answer
-silk_specter_medium,1,18.170.44.73
-silk_specter_medium,2,EU\svc-fieldops
-silk_specter_medium,3,3
-silk_specter_medium,4,EAP-TLS
-silk_specter_medium,5,UKLO-RADIUS-01
-silk_specter_medium,6,UKLO-FW-01
-silk_specter_medium,7,203.0.113.52
-silk_specter_medium,8,10.52.50.21
-silk_specter_medium,9,UKLO-JMP-01
-silk_specter_medium,10,EU\adm-lchen
-silk_specter_medium,11,10.52.5.87
-silk_specter_medium,12,3
-silk_specter_medium,13,Kerberos
-silk_specter_medium,14,radius:auth;XmlWinEventLog:Security
-silk_specter_medium,15,UKLO-JMP-01
-silk_specter_medium,16,svc-fieldops
-silk_specter_medium,17,UKLO
-silk_specter_medium,18,Palo Alto
-silk_specter_medium,19,443
-silk_specter_medium,20,18.170.44.73;81.2.69.142
-silk_specter_medium,21,whoami /groups
-silk_specter_medium,22,nltest /dclist:EU.ASTERON.LOCAL
-silk_specter_medium,23,"net group ""Domain Admins"" /domain"
-silk_specter_medium,24,route print
-silk_specter_medium,25,C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-silk_specter_medium,26,XmlWinEventLog:Microsoft-Windows-Sysmon/Operational;XmlWinEventLog:Security
-silk_specter_medium,27,4688
-silk_specter_medium,28,EU\svc-fieldops
-silk_specter_medium,29,whoami.exe>nltest.exe>net.exe>route.exe
-silk_specter_medium,30,31
-silk_specter_medium,31,C:\Windows\System32\rundll32.exe
-silk_specter_medium,32,comsvcs.dll
-silk_specter_medium,33,684
-silk_specter_medium,34,C:\ProgramData\diag\lsass.dmp
-silk_specter_medium,35,EU\svc-fieldops
-silk_specter_medium,36,Suspicious process accessed LSASS memory
-silk_specter_medium,37,Medium
-silk_specter_medium,38,T1003.001
-silk_specter_medium,39,XmlWinEventLog;ms:defender:eventhub
-silk_specter_medium,40,C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-silk_specter_medium,41,UKLO-JMP-01
-silk_specter_medium,42,10.52.50.21
-silk_specter_medium,43,DEFR-ENG-APP-03
-silk_specter_medium,44,10.54.60.23
-silk_specter_medium,45,135
-silk_specter_medium,46,54912
-silk_specter_medium,47,IWbemLevel1Login
-silk_specter_medium,48,NTLMLogin
-silk_specter_medium,49,svc-engbuild
-silk_specter_medium,50,NTLM
-silk_specter_medium,51,3
-silk_specter_medium,52,C:\Windows\System32\wbem\WmiPrvSE.exe
-silk_specter_medium,53,cmd.exe /c hostname && whoami && dir \DEFR-FS-02\Engineering$
-silk_specter_medium,54,Zeek;Cisco ASA;Windows
-silk_specter_medium,55,DEFR-SCCM-01
-silk_specter_medium,56,svc-engbuild
-silk_specter_medium,57,repository_download
-silk_specter_medium,58,asteron/grid-analytics
-silk_specter_medium,59,personal_access_token
-silk_specter_medium,60,tar.gz
-silk_specter_medium,61,10.54.60.23
-silk_specter_medium,62,git.asteron.example
-silk_specter_medium,63,10.100.20.15
-silk_specter_medium,64,18422011
-silk_specter_medium,65,gitlab:audit;bro:conn:json
-silk_specter_medium,66,AssumeRole
-silk_specter_medium,67,GetCallerIdentity
-silk_specter_medium,68,ListBuckets
-silk_specter_medium,69,ListObjectsV2
-silk_specter_medium,70,GetObject
-silk_specter_medium,71,GetSecretValue
-silk_specter_medium,72,arn:aws:iam::444455556666:role/EngineeringDataReadOnly
-silk_specter_medium,73,444455556666
-silk_specter_medium,74,eu-central-1
-silk_specter_medium,75,aws-cli/2.17.4 Python/3.11 Linux/5.15
-silk_specter_medium,76,10.54.60.23
-silk_specter_medium,77,AssumeRole>GetCallerIdentity>ListBuckets>ListObjectsV2>GetObject>GetSecretValue
-silk_specter_medium,78,6
-silk_specter_medium,79,T1078.004;T1530
-silk_specter_medium,80,relay_settings.xlsx
-silk_specter_medium,81,protection_study.pdf
-silk_specter_medium,82,substation_inventory.csv
-silk_specter_medium,83,vpn_peer_matrix.xlsx
-silk_specter_medium,84,\\DEFR-FS-02\\Engineering$\\GridModernization
-silk_specter_medium,85,10.54.60.23
-silk_specter_medium,86,10.54.20.32
-silk_specter_medium,87,445
-silk_specter_medium,88,82377114
-silk_specter_medium,89,4
-silk_specter_medium,90,SMB2_READ
-silk_specter_medium,91,53318
-silk_specter_medium,92,DEFR-ENG-APP-03
-silk_specter_medium,93,bro:conn:json;bro:smb_files:json
-silk_specter_medium,94,C:\Program Files\7-Zip\7z.exe
-silk_specter_medium,95,C:\ProgramData\Support\eu-grid-review.7z
-silk_specter_medium,96,-mx=7
-silk_specter_medium,97,C:\ProgramData\Support\review\*
-silk_specter_medium,98,EU\svc-engbuild
-silk_specter_medium,99,C:\Windows\System32\cmd.exe
-silk_specter_medium,100,11
-silk_specter_medium,101,2
-silk_specter_medium,102,T1560.001
-silk_specter_medium,103,T1074.001
-silk_specter_medium,104,1;4688
-silk_specter_medium,105,eu-grid-review.7z
-silk_specter_medium,106,NLAM-OPS-LNX-04
-silk_specter_medium,107,SSH publickey
-silk_specter_medium,108,svc-transfer
-silk_specter_medium,109,EU\svc-fieldops
-silk_specter_medium,110,18.170.44.73
-silk_specter_medium,111,AUSY-RADIUS-01
-silk_specter_medium,112,AUSY-FW-01
-silk_specter_medium,113,fortigate_traffic
-silk_specter_medium,114,AUSY-ENG-APP-04
-silk_specter_medium,115,AUSY-FS-03
-silk_specter_medium,116,robocopy.exe
-silk_specter_medium,117,*.pdf;*.xlsx
-silk_specter_medium,118,C:\ProgramData\Cache\AU
-silk_specter_medium,119,10.54.60.23
-silk_specter_medium,120,publickey
-silk_specter_medium,121,55222
-silk_specter_medium,122,/usr/bin/tar
-silk_specter_medium,123,/var/tmp/.cache/sysdiag-20260409.tgz
-silk_specter_medium,124,/srv/transfer/incoming
-silk_specter_medium,125,svc-transfer
-silk_specter_medium,126,/bin/bash
-silk_specter_medium,127,/srv/transfer/incoming/eu-grid-review.7z
-silk_specter_medium,128,/srv/transfer/incoming/au-review
-silk_specter_medium,129,syslog;linux_audit
-silk_specter_medium,130,1007
-silk_specter_medium,131,29110
-silk_specter_medium,132,28770
-silk_specter_medium,133,3
-silk_specter_medium,134,NLAM-OPS-LNX-04
-silk_specter_medium,135,10.55.20.44
-silk_specter_medium,136,34.240.118.91
-silk_specter_medium,137,443
-silk_specter_medium,138,objects-eu-west.examplecdn.net
-silk_specter_medium,139,51182
-silk_specter_medium,140,148337920
-silk_specter_medium,141,9144
-silk_specter_medium,142,sysdiag-20260409.tgz
-silk_specter_medium,143,Engineering Sensitive - External Upload
-silk_specter_medium,144,allow_with_justification
-silk_specter_medium,145,medium
-silk_specter_medium,146,bro:conn:json;pan:traffic;dlp:events
-silk_specter_medium,147,partner-engineering.example
-silk_specter_medium,148,turbine-model-export.zip
-silk_specter_medium,149,linux_secure>syslog>bro:conn:json>dlp:events
-silk_specter_medium,150,DEFR-ENG-APP-03
-silk_specter_medium,151,"cmd.exe /c del /q ""C:\ProgramData\Support\eu-grid-review.7z"" & rmdir /s /q ""C:\ProgramData\Support\review"""
-silk_specter_medium,152,NLAM-OPS-LNX-04
-silk_specter_medium,153,/usr/bin/rm -f /var/tmp/.cache/sysdiag-20260409.tgz
-silk_specter_medium,154,T1070.004
-silk_specter_medium,155,UKLO>DEFR>AUSY>NLAM
-silk_specter_medium,156,Suspicious VPN Failure-to-Success Sequence
-silk_specter_medium,157,medium
-silk_specter_medium,158,Cross-Region WMI Administrative Pivot
-silk_specter_medium,159,high
-silk_specter_medium,160,Native LSASS Memory Access Corroborated
-silk_specter_medium,161,high
-silk_specter_medium,162,GitLab Repository Archive From Compromised Engineering Host
-silk_specter_medium,163,Cloud Role Used From On-Prem Engineering Host
-silk_specter_medium,164,Engineering Collection Archive Staging
-silk_specter_medium,165,Multi-Region Valid Account Reuse
-silk_specter_medium,166,Staged Archive Outbound Over HTTPS
-silk_specter_medium,167,critical
-silk_specter_medium,168,allow_with_justification
-silk_specter_medium,169,Approved MFT partner upload
-silk_specter_medium,170,8
+ctf_id,Number,Answer,AnswerType
+silk_specter_medium,1,18.170.44.73,exact
+silk_specter_medium,2,EU\svc-fieldops,exact
+silk_specter_medium,3,3,numeric
+silk_specter_medium,4,EAP-TLS,exact
+silk_specter_medium,5,UKLO-RADIUS-01,exact
+silk_specter_medium,6,UKLO-FW-01,exact
+silk_specter_medium,7,203.0.113.52,exact
+silk_specter_medium,8,10.52.50.21,exact
+silk_specter_medium,9,UKLO-JMP-01,exact
+silk_specter_medium,10,EU\adm-lchen,exact
+silk_specter_medium,11,10.52.5.87,exact
+silk_specter_medium,12,3,numeric
+silk_specter_medium,13,Kerberos,exact
+silk_specter_medium,14,radius;XmlWinEventLog:Security,set
+silk_specter_medium,15,UKLO-JMP-01,exact
+silk_specter_medium,16,svc-fieldops,exact
+silk_specter_medium,17,UKLO,exact
+silk_specter_medium,18,Palo Alto,exact
+silk_specter_medium,19,443,numeric
+silk_specter_medium,20,18.170.44.73;81.2.69.142,set
+silk_specter_medium,21,whoami /groups,exact
+silk_specter_medium,22,nltest /dclist:EU.ASTERON.LOCAL,exact
+silk_specter_medium,23,"net group ""Domain Admins"" /domain",exact
+silk_specter_medium,24,route print,exact
+silk_specter_medium,25,C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe,exact
+silk_specter_medium,26,XmlWinEventLog:Microsoft-Windows-Sysmon/Operational;XmlWinEventLog:Security,set
+silk_specter_medium,27,4688,numeric
+silk_specter_medium,28,EU\svc-fieldops,exact
+silk_specter_medium,29,whoami.exe>nltest.exe>net.exe>route.exe,ordered_sequence
+silk_specter_medium,30,31,numeric
+silk_specter_medium,31,C:\Windows\System32\rundll32.exe,exact
+silk_specter_medium,32,comsvcs.dll,exact
+silk_specter_medium,33,684,numeric
+silk_specter_medium,34,C:\ProgramData\diag\lsass.dmp,exact
+silk_specter_medium,35,EU\svc-fieldops,exact
+silk_specter_medium,36,Suspicious process accessed LSASS memory,exact
+silk_specter_medium,37,Medium,exact
+silk_specter_medium,38,T1003.001,exact
+silk_specter_medium,39,XmlWinEventLog;ms:defender:eventhub,set
+silk_specter_medium,40,C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe,exact
+silk_specter_medium,41,UKLO-JMP-01,exact
+silk_specter_medium,42,10.52.50.21,exact
+silk_specter_medium,43,DEFR-ENG-APP-03,exact
+silk_specter_medium,44,10.54.60.23,exact
+silk_specter_medium,45,135,numeric
+silk_specter_medium,46,54912,numeric
+silk_specter_medium,47,IWbemLevel1Login,exact
+silk_specter_medium,48,NTLMLogin,exact
+silk_specter_medium,49,svc-engbuild,exact
+silk_specter_medium,50,NTLM,exact
+silk_specter_medium,51,3,numeric
+silk_specter_medium,52,C:\Windows\System32\wbem\WmiPrvSE.exe,exact
+silk_specter_medium,53,cmd.exe /c hostname && whoami && dir \DEFR-FS-02\Engineering$,exact
+silk_specter_medium,54,Zeek;Cisco ASA;Windows,set
+silk_specter_medium,55,DEFR-SCCM-01,exact
+silk_specter_medium,56,svc-engbuild,exact
+silk_specter_medium,57,repository_download,exact
+silk_specter_medium,58,asteron/grid-analytics,exact
+silk_specter_medium,59,personal_access_token,exact
+silk_specter_medium,60,tar.gz,exact
+silk_specter_medium,61,10.54.60.23,exact
+silk_specter_medium,62,git.asteron.example,exact
+silk_specter_medium,63,10.100.20.15,exact
+silk_specter_medium,64,18422011,numeric
+silk_specter_medium,65,gitlab:audit;bro:conn:json,set
+silk_specter_medium,66,AssumeRole,exact
+silk_specter_medium,67,GetCallerIdentity,exact
+silk_specter_medium,68,ListBuckets,exact
+silk_specter_medium,69,ListObjectsV2,exact
+silk_specter_medium,70,GetObject,exact
+silk_specter_medium,71,GetSecretValue,exact
+silk_specter_medium,72,arn:aws:iam::444455556666:role/EngineeringDataReadOnly,exact
+silk_specter_medium,73,444455556666,exact
+silk_specter_medium,74,eu-central-1,exact
+silk_specter_medium,75,aws-cli/2.17.4 Python/3.11 Linux/5.15,exact
+silk_specter_medium,76,10.54.60.23,exact
+silk_specter_medium,77,AssumeRole>GetCallerIdentity>ListBuckets>ListObjectsV2>GetObject>GetSecretValue,ordered_sequence
+silk_specter_medium,78,6,numeric
+silk_specter_medium,79,T1078.004;T1530,set
+silk_specter_medium,80,relay_settings.xlsx,exact
+silk_specter_medium,81,protection_study.pdf,exact
+silk_specter_medium,82,substation_inventory.csv,exact
+silk_specter_medium,83,vpn_peer_matrix.xlsx,exact
+silk_specter_medium,84,\\DEFR-FS-02\\Engineering$\\GridModernization,exact
+silk_specter_medium,85,10.54.60.23,exact
+silk_specter_medium,86,10.54.20.32,exact
+silk_specter_medium,87,445,numeric
+silk_specter_medium,88,82377114,numeric
+silk_specter_medium,89,4,numeric
+silk_specter_medium,90,SMB2_READ,exact
+silk_specter_medium,91,53318,numeric
+silk_specter_medium,92,DEFR-ENG-APP-03,exact
+silk_specter_medium,93,bro:conn:json;bro:smb_files:json,set
+silk_specter_medium,94,C:\Program Files\7-Zip\7z.exe,exact
+silk_specter_medium,95,C:\ProgramData\Support\eu-grid-review.7z,exact
+silk_specter_medium,96,-mx=7,exact
+silk_specter_medium,97,C:\ProgramData\Support\review\*,exact
+silk_specter_medium,98,EU\svc-engbuild,exact
+silk_specter_medium,99,C:\Windows\System32\cmd.exe,exact
+silk_specter_medium,100,11,numeric
+silk_specter_medium,101,2,numeric
+silk_specter_medium,102,T1560.001,exact
+silk_specter_medium,103,T1074.001,exact
+silk_specter_medium,104,1;4688,set
+silk_specter_medium,105,eu-grid-review.7z,exact
+silk_specter_medium,106,NLAM-OPS-LNX-04,exact
+silk_specter_medium,107,SSH publickey,exact
+silk_specter_medium,108,svc-transfer,exact
+silk_specter_medium,109,EU\svc-fieldops,exact
+silk_specter_medium,110,18.170.44.73,exact
+silk_specter_medium,111,AUSY-RADIUS-01,exact
+silk_specter_medium,112,AUSY-FW-01,exact
+silk_specter_medium,113,fortigate_traffic,exact
+silk_specter_medium,114,AUSY-ENG-APP-04,exact
+silk_specter_medium,115,AUSY-FS-03,exact
+silk_specter_medium,116,robocopy.exe,exact
+silk_specter_medium,117,*.pdf;*.xlsx,set
+silk_specter_medium,118,C:\ProgramData\Cache\AU,exact
+silk_specter_medium,119,10.54.60.23,exact
+silk_specter_medium,120,publickey,exact
+silk_specter_medium,121,55222,numeric
+silk_specter_medium,122,/usr/bin/tar,exact
+silk_specter_medium,123,/var/tmp/.cache/sysdiag-20260409.tgz,exact
+silk_specter_medium,124,/srv/transfer/incoming,exact
+silk_specter_medium,125,svc-transfer,exact
+silk_specter_medium,126,/bin/bash,exact
+silk_specter_medium,127,/srv/transfer/incoming/eu-grid-review.7z,exact
+silk_specter_medium,128,/srv/transfer/incoming/au-review,exact
+silk_specter_medium,129,syslog;linux_audit,set
+silk_specter_medium,130,1007,numeric
+silk_specter_medium,131,29110,numeric
+silk_specter_medium,132,28770,numeric
+silk_specter_medium,133,3,numeric
+silk_specter_medium,134,NLAM-OPS-LNX-04,exact
+silk_specter_medium,135,10.55.20.44,exact
+silk_specter_medium,136,34.240.118.91,exact
+silk_specter_medium,137,443,numeric
+silk_specter_medium,138,objects-eu-west.examplecdn.net,exact
+silk_specter_medium,139,51182,numeric
+silk_specter_medium,140,148337920,numeric
+silk_specter_medium,141,9144,numeric
+silk_specter_medium,142,sysdiag-20260409.tgz,exact
+silk_specter_medium,143,Engineering Sensitive - External Upload,exact
+silk_specter_medium,144,allow_with_justification,exact
+silk_specter_medium,145,medium,exact
+silk_specter_medium,146,bro:conn:json;pan:traffic;dlp:events,set
+silk_specter_medium,147,partner-engineering.example,exact
+silk_specter_medium,148,turbine-model-export.zip,exact
+silk_specter_medium,149,linux_secure>syslog>bro:conn:json>dlp:events,ordered_sequence
+silk_specter_medium,150,DEFR-ENG-APP-03,exact
+silk_specter_medium,151,"cmd.exe /c del /q ""C:\ProgramData\Support\eu-grid-review.7z"" & rmdir /s /q ""C:\ProgramData\Support\review""",exact
+silk_specter_medium,152,NLAM-OPS-LNX-04,exact
+silk_specter_medium,153,/usr/bin/rm -f /var/tmp/.cache/sysdiag-20260409.tgz,exact
+silk_specter_medium,154,T1070.004,exact
+silk_specter_medium,155,UKLO>DEFR>AUSY>NLAM,ordered_sequence
+silk_specter_medium,156,Suspicious VPN Failure-to-Success Sequence,exact
+silk_specter_medium,157,medium,exact
+silk_specter_medium,158,Cross-Region WMI Administrative Pivot,exact
+silk_specter_medium,159,high,exact
+silk_specter_medium,160,Native LSASS Memory Access Corroborated,exact
+silk_specter_medium,161,high,exact
+silk_specter_medium,162,GitLab Repository Archive From Compromised Engineering Host,exact
+silk_specter_medium,163,Cloud Role Used From On-Prem Engineering Host,exact
+silk_specter_medium,164,Engineering Collection Archive Staging,exact
+silk_specter_medium,165,Multi-Region Valid Account Reuse,exact
+silk_specter_medium,166,Staged Archive Outbound Over HTTPS,exact
+silk_specter_medium,167,critical,exact
+silk_specter_medium,168,allow_with_justification,exact
+silk_specter_medium,169,Approved MFT partner upload,exact
+silk_specter_medium,170,8,numeric

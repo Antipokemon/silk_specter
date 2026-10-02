@@ -30,6 +30,16 @@ class RepoReadinessTests(unittest.TestCase):
         challenge_ids={q['ChallengeID'] for q in qs}
         self.assertEqual(len(challenge_ids),len(qs))
 
+
+    def test_canonical_question_bank_has_authoring_metadata(self):
+        required_q={"Subject","ChallengeID","PrimarySourcetype","LearningObjective","ReferenceSPL"}
+        required_a={"AnswerType"}
+        for slug in ["easy","medium","hard"]:
+            with (ROOT/"question_bank"/slug/"questions.csv").open() as f: q=list(csv.DictReader(f))
+            with (ROOT/"question_bank"/slug/"answers.csv").open() as f: a=list(csv.DictReader(f))
+            self.assertTrue(required_q <= set(q[0]),slug)
+            self.assertTrue(required_a <= set(a[0]),slug)
+
     def test_scenario_context_relative_window(self):
         from generator.core.scenario import load_scenario
         ctx=load_scenario(ROOT,'easy','2026-05-04T00:00:00Z','2026-05-08T23:59:59Z')
@@ -44,7 +54,7 @@ class RepoReadinessTests(unittest.TestCase):
         l=NetworkLedger(); l.add_flow(f); l.observe('test','zeek'); l.observe('test','firewall'); l.require_observations('test',{'zeek','firewall'})
 
     def test_required_repo_docs_exist(self):
-        for fn in ['AGENTS.md','README.md','docs/GENERATE_AND_LOAD.md','docs/SPLUNK_LOAD.md','docs/NETWORK_PURPOSE_AND_LAYOUT.md','docs/TA_COMPATIBILITY.md','docs/SCENARIO_AUTHORING.md','docs/QUESTION_BANK.md']:
+        for fn in ['AGENTS.md','README.md','CHANGELOG.md','docs/QUICKSTART.md','docs/GENERATE_AND_LOAD.md','docs/SPLUNK_LOAD.md','docs/NETWORK_PURPOSE_AND_LAYOUT.md','docs/TA_COMPATIBILITY.md','docs/SCENARIO_AUTHORING.md','docs/QUESTION_BANK.md']:
             self.assertTrue((ROOT/fn).exists(),fn)
 
 if __name__=='__main__': unittest.main()

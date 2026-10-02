@@ -1,181 +1,56 @@
-# Load Asteron data into Splunk with rootless Podman
+# Splunk load reference
 
-For the complete workflow that starts with scenario/time/noise configuration and regenerates both background activity and the simulated APT evidence, see [`GENERATE_AND_LOAD.md`](GENERATE_AND_LOAD.md). This document focuses on the Splunk ingest portion.
+Use [`QUICKSTART.md`](QUICKSTART.md) for the normal sequence.
 
-Validated lab assumptions:
-
-- Splunk container name: `splunk`
-- administrative Splunk CLI is executed as the container OS user `splunk`
-- project is on the host; data is copied into `/tmp` and removed after validation if desired
-- vendor TAs are installed separately and are **not** modified by this project
-- `splunk/app/TA-asteron-v3` only provides the HEC-envelope file parser used by the canonical dataset loader
-
-## 1. Work from the repository root
+## Main loader
 
 ```bash
-cd ~/silk-specter-v3-v0.3.0
+./scripts/load_to_splunk.sh easy asteron_easy_v001
+ALLOW_AUTHORING=1 ./scripts/load_to_splunk.sh medium asteron_medium_v001
+ALLOW_AUTHORING=1 ./scripts/load_to_splunk.sh hard asteron_hard_v001
 ```
 
-## 2. Validate the package before loading
+`load_to_splunk.sh`:
+
+1. verifies the track/build exists;
+2. installs/updates `splunk/app/TA-asteron-v3` in the rootless Podman Splunk container;
+3. restarts Splunk and verifies `INDEXED_EXTRACTIONS=HEC`;
+4. requests interactive Splunk CLI login;
+5. refuses to reuse an existing index;
+6. creates the fresh index;
+7. copies the dataset and loads `hec/events.jsonl`.
+
+Override the container name with `SPLUNK_CONTAINER=<name>` if needed.
+
+## Notable loader
 
 ```bash
-python3 -m unittest discover -s tests -v
+./scripts/load_notables.sh medium asteron_medium_v001 notable
 ```
 
-For the validated Easy snapshot, the canonical event count is recorded in:
+The second argument is the main track index and is substituted into the notable drilldown searches. Splunk ES normally provides `index=notable`.
 
-```text
-dataset/easy/manifest.json
-```
-
-## 3. Install/update the Asteron ingest helper
+Without ES:
 
 ```bash
-podman cp \
-  splunk/app/TA-asteron-v3 \
-  splunk:/opt/splunk/etc/apps/TA-asteron-v3
-
-podman restart splunk
+CREATE_NOTABLE_INDEX=1 \
+./scripts/load_notables.sh medium asteron_medium_v001 asteron_notable
 ```
 
-Verify the parser after Splunk is running:
-
-```bash
-podman exec --user splunk splunk \
-  /opt/splunk/bin/splunk btool props list asteron:hec --debug
-```
-
-Expected setting:
-
-```text
-INDEXED_EXTRACTIONS = HEC
-```
-
-## 4. Login to the Splunk CLI
-
-This step is required. Do not put the password on the command line.
-
-```bash
-podman exec -it --user splunk splunk \
-  /opt/splunk/bin/splunk login
-```
-
-Enter the Splunk application credentials interactively.
-
-## 5. Create a fresh index
-
-Never reload a corrected generator build into an old validation index. Already indexed events retain their previous `_raw` and metadata.
-
-Example:
-
-```bash
-podman exec --user splunk splunk \
-  /opt/splunk/bin/splunk add index asteron_easy_v030
-```
-
-## 6. Copy the generated dataset and loader
-
-```bash
-podman exec --user 0 splunk \
-  rm -rf /tmp/silk-specter-v3-easy
-
-podman cp \
-  dataset/easy \
-  splunk:/tmp/silk-specter-v3-easy
-
-podman cp \
-  splunk/ingest/load_hec.sh \
-  splunk:/tmp/silk-specter-v3-easy/load_hec.sh
-```
-
-The loader writes any temporary remap file under `/tmp`, not inside the copied dataset directory, so it does not depend on the copied directory being owned by the `splunk` OS user.
-
-## 7. Load the dataset
-
-```bash
-podman exec --user splunk splunk bash \
-  /tmp/silk-specter-v3-easy/load_hec.sh \
-  /tmp/silk-specter-v3-easy \
-  asteron_easy_v030
-```
-
-## 8. Validate event count and time range
+## Verification
 
 ```spl
-| tstats count where index=asteron_easy_v030
-```
-
-Compare against `dataset/easy/manifest.json`.
-
-```spl
-index=asteron_easy_v030 earliest=0
-| eval event_date=strftime(_time,"%Y-%m-%d")
-| stats count by event_date
-| sort event_date
-```
-
-For the default Easy window, only April 6–10, 2026 should appear.
-
-## 9. Reconcile sourcetypes
-
-```spl
-index=asteron_easy_v030
-| stats count by sourcetype
-| sort sourcetype
-```
-
-Compare against:
-
-```text
-dataset/easy/expected_counts.csv
-```
-
-## 10. Windows channel validation
-
-```spl
-index=asteron_easy_v030 sourcetype=XmlWinEventLog
-| stats count by source
-```
-
-Expected Windows source families include:
-
-```text
-XmlWinEventLog:Security
-XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
-```
-
-## 11. Corelight/Zeek CIM validation
-
-```spl
-index=asteron_easy_v030 sourcetype=bro:conn:json
-| head 20
-| table _time uid src_ip src_port dest_ip dest_port transport action bytes_in bytes_out
+| tstats count where index=asteron_medium_v001
 ```
 
 ```spl
-| tstats summariesonly=f count
-    from datamodel=Network_Traffic.All_Traffic
-    where index=asteron_easy_v030
-    by All_Traffic.sourcetype
+| tstats count where index=asteron_medium_v001 by sourcetype
+| sort - count
 ```
 
-## 12. Optional cleanup after successful indexing
-
-Once the index is validated, remove the copied source data from the container:
-
-```bash
-podman exec --user 0 splunk \
-  rm -rf /tmp/silk-specter-v3-easy
+```spl
+index=notable source=notable sourcetype=stash scenario=medium
+| stats count by rule_name urgency
 ```
 
-The host copy can also be removed if the repository/generator is retained and the generated release is archived elsewhere.
-
-## Automated host-side workflow
-
-The repository includes:
-
-```bash
-./scripts/load_to_splunk.sh easy asteron_easy_v030
-```
-
-It performs the same TA copy/check, restart, interactive `splunk login`, fresh-index guard, data copy, and loader execution. It intentionally refuses to load scenarios whose config status is not `validated`.
+Compare indexed counts with the generated `manifest.json`/`expected_counts.csv`. Parser contracts are documented in [`TA_COMPATIBILITY.md`](TA_COMPATIBILITY.md).

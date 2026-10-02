@@ -1,4 +1,4 @@
 dataset/*/hec/*.jsonl filter=lfs diff=lfs merge=lfs -text
 dataset/*/raw/** filter=lfs diff=lfs merge=lfs -text
-dataset/ground_truth_events.csv filter=lfs diff=lfs merge=lfs -text
-dataset/ground_truth/*.csv filter=lfs diff=lfs merge=lfs -text
+dataset/*/notables/hec/*.jsonl filter=lfs diff=lfs merge=lfs -text
+dataset/*/notables/raw/** filter=lfs diff=lfs merge=lfs -text

@@ -85,5 +85,9 @@
   "status": "validated",
   "difficulty": "easy",
   "question_target": 180,
-  "validated_release": "v0.2.3"
+  "validated_release": "v0.2.3",
+  "static_campaign": "scenario_data/easy/attack_events.jsonl",
+  "notables": {
+    "noise_events": 25
+  }
 }
