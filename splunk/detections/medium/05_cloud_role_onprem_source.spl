@@ -1,0 +1,3 @@
+index=asteron_medium sourcetype=aws:cloudtrail sourceIPAddress=10.54.60.23 userIdentity.arn="*EngineeringDataReadOnly*"
+| stats earliest(_time) as first_seen latest(_time) as last_seen values(eventName) as actions values(awsRegion) as regions by userIdentity.arn sourceIPAddress
+| eval finding_title="Cloud Role Used From On-Prem Engineering Host", severity="high"

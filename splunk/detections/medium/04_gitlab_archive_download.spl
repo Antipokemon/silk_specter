@@ -1,0 +1,3 @@
+index=asteron_medium sourcetype=gitlab:audit action=repository_download source_ip=10.54.60.23
+| stats earliest(_time) as first_seen values(author_name) as user values(target_details) as project values(details.auth_method) as auth_method by host
+| eval finding_title="GitLab Repository Archive From Compromised Engineering Host", severity="medium"

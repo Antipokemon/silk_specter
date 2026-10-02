@@ -1,0 +1,3 @@
+index=asteron_medium host=UKLO-JMP-01 sourcetype=XmlWinEventLog source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1 CommandLine="*comsvcs.dll*MiniDump*"
+| stats earliest(_time) as first_seen values(User) as user values(Image) as image values(CommandLine) as command by host
+| eval finding_title="Native LSASS Memory Access Corroborated", severity="high"

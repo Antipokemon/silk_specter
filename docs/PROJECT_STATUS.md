@@ -13,7 +13,7 @@
 
 - Status: **authoring**
 - Scenario config/time window/site scope exists.
-- Distinct attack path, detection pack, generated corpus, and 170-question bank are not yet authored/validated.
+- Static multi-region attack path, 170-question bank, three-hint coverage, and an 8-search reduced detection pack are authored. Runtime Splunk TA/CIM and answer validation are still pending.
 
 ## Hard
 

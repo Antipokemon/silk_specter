@@ -407,4 +407,6 @@ The participant should receive the assigned Splunk index and scenario briefing; 
 
 The repository contains the shared framework/configuration scaffolding for Medium and Hard, but they are not currently validated campaigns.
 
-Do not change their `status` to `validated` merely to bypass the generator/load guard. Their separate attack paths, data, question pools, detections, and runtime TA/CIM validation must be completed first.
+Medium now uses committed static answer-bearing events from `scenario_data/medium/attack_events.jsonl`; the generator only loads those events and surrounds them with generated background activity. To build a validation corpus while Medium remains `authoring`, use `python3 generator/generate.py --scenario medium --allow-authoring`. To load that authoring corpus intentionally, use `ALLOW_AUTHORING=1 ./scripts/load_to_splunk.sh medium <fresh_index>`.
+
+Do not change Medium/Hard `status` to `validated` merely to bypass the generator/load guard. Runtime TA/CIM validation and answer verification must complete first.

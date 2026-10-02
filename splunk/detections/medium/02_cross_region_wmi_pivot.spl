@@ -1,0 +1,3 @@
+index=asteron_medium sourcetype=bro:dce_rpc:json endpoint=IWbemLevel1Login operation=NTLMLogin
+| stats earliest(_time) as first_seen values(host) as sensors values(id.orig_h) as src_ip values(id.resp_h) as dest_ip by uid
+| eval finding_title="Cross-Region WMI Administrative Pivot", severity="high"

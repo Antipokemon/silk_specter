@@ -23,10 +23,12 @@ class RepoReadinessTests(unittest.TestCase):
         with (ROOT/'question_bank/easy/questions.csv').open() as f: qs=list(csv.DictReader(f))
         with (ROOT/'question_bank/easy/answers.csv').open() as f: ans=list(csv.DictReader(f))
         with (ROOT/'question_bank/easy/hints.csv').open() as f: hints=list(csv.DictReader(f))
-        qids={q['question_id'] for q in qs}
-        self.assertEqual(qids,{a['question_id'] for a in ans})
-        hinted={h['question_id'] for h in hints}
-        self.assertTrue(qids <= hinted)
+        numbers={q['Number'] for q in qs}
+        self.assertEqual(numbers,{a['Number'] for a in ans})
+        hinted={h['Number'] for h in hints}
+        self.assertTrue(numbers <= hinted)
+        challenge_ids={q['ChallengeID'] for q in qs}
+        self.assertEqual(len(challenge_ids),len(qs))
 
     def test_scenario_context_relative_window(self):
         from generator.core.scenario import load_scenario

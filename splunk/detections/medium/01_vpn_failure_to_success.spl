@@ -1,0 +1,5 @@
+index=asteron_medium sourcetype=radius host=UKLO-RADIUS-01
+| sort 0 calling_station user _time
+| stats count(eval(result="Access-Reject")) as failures count(eval(result="Access-Accept")) as successes earliest(_time) as first_seen latest(_time) as last_seen values(auth_method) as auth_method by calling_station user
+| where failures>=3 AND successes>=1
+| eval finding_title="Suspicious VPN Failure-to-Success Sequence", severity="medium"

@@ -5,7 +5,7 @@ Final target: **500 questions** across one persistent Asteron environment.
 | Tier | Target | Current | Training model |
 |---|---:|---:|---|
 | Easy | 180 | **180** | discovery-first, 2 progressive hints, clearer pivots/notables |
-| Medium | 170 | 0 | multi-source/multi-region correlation, 3 hints normally, staging and partial detection coverage |
+| Medium | 170 | **170** | multi-source/multi-region correlation, 3 hints normally, staging and partial detection coverage |
 | Hard | 150 | 0 | global heterogeneous environment, sparse/ambiguous findings, legitimate lookalikes, 3 strategic hints |
 
 ## Authoring rules
@@ -22,4 +22,4 @@ Final target: **500 questions** across one persistent Asteron environment.
 
 ## Current state
 
-Easy contains the complete **180-question** bank tied to the validated Easy dataset. Medium and Hard intentionally remain schema-only until their separate campaigns are authored and validated.
+Easy contains the complete **180-question** validated bank. Medium now contains **170 authored questions** tied to committed static attack evidence and remains authoring-gated until runtime Splunk validation. Hard remains schema-only.

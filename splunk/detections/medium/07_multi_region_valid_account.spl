@@ -1,0 +1,4 @@
+index=asteron_medium sourcetype=radius user="EU\\svc-fieldops" result="Access-Accept"
+| stats dc(host) as radius_servers values(host) as hosts values(calling_station) as sources earliest(_time) as first_seen latest(_time) as last_seen by user
+| where radius_servers>=2
+| eval finding_title="Multi-Region Valid Account Reuse", severity="high"

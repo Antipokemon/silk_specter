@@ -1,0 +1,4 @@
+index=asteron_medium sourcetype=bro:conn:json id.orig_h=10.55.20.44 id.resp_p=443 local_orig=true local_resp=false
+| stats sum(orig_bytes) as bytes_out values(id.resp_h) as destinations values(duration) as duration by id.orig_h
+| where bytes_out>100000000
+| eval finding_title="Staged Archive Outbound Over HTTPS", severity="critical"

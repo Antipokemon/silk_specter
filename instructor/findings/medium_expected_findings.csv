@@ -1,0 +1,9 @@
+finding_id,detection_name,expected_disposition,activity_id,notes
+MF-001,Suspicious VPN Failure-to-Success Sequence,malicious,MED-ACCESS-001,Useful access pivot; does not prove downstream compromise alone
+MF-002,Cross-Region WMI Administrative Pivot,malicious,MED-LATERAL-001,"Corroborate with firewall, Windows logon, and remote process"
+MF-003,Native LSASS Memory Access Corroborated,malicious,MED-CRED-001,Native tooling; Defender also observes related behavior
+MF-004,GitLab Repository Archive From Compromised Engineering Host,malicious,MED-CLOUD-001,Valid token; application audit plus Zeek
+MF-005,Cloud Role Used From On-Prem Engineering Host,malicious,MED-CLOUD-002,Requires context linking source IP to compromised DE host
+MF-006,Engineering Collection Archive Staging,malicious,MED-STAGE-001,Archive staging prior to cross-region transfer
+MF-007,Multi-Region Valid Account Reuse,malicious,MED-LATERAL-002,Same account/source appears in UK and Australia
+MF-008,Staged Archive Outbound Over HTTPS,malicious,MED-EXFIL-001,Final high-confidence exfil finding

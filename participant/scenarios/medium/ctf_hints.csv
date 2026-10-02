@@ -1,0 +1,511 @@
+HintNumber,Number,Hint,HintCost
+1,M001,Start with UKLO RADIUS authentication events.,3
+2,M001,"Group attempts by calling station and user, then compare failures and successes.",7
+3,M001,"Filter `sourcetype=radius host=UKLO-RADIUS-01` and inspect `calling_station`, `user`, and `result`.",12
+1,M002,Pivot from the suspicious external IP into RADIUS.,3
+2,M002,The same account appears in the failed and successful attempts.,7
+3,M002,Search the suspicious `calling_station` and inspect `user`.,12
+1,M003,Order the RADIUS attempts from the suspicious source by time.,3
+2,M003,Count only `Access-Reject` records before the `Access-Accept`.,7
+3,M003,"Use `stats count(eval(result=""Access-Reject""))` for the suspicious calling station.",12
+1,M004,The successful event differs from the preceding rejects.,3
+2,M004,Filter to `result=Access-Accept`.,7
+3,M004,Inspect `auth_method` for the successful event.,12
+1,M005,The event-producing host is the RADIUS server.,3
+2,M005,Use the suspicious external address to isolate the sequence.,7
+3,M005,Inspect `host` after filtering the suspicious calling station.,12
+1,M006,RADIUS records identify the NAS handling the request.,3
+2,M006,The NAS should line up with the UKLO firewall telemetry.,7
+3,M006,Inspect `nas` in the suspicious authentication events.,12
+1,M007,Pivot from the RADIUS NAS to the UKLO firewall.,3
+2,M007,Look for the same external source at the successful authentication time.,7
+3,M007,Inspect destination/NAT fields in the matching `pan:traffic` event.,12
+1,M008,Use the firewall event at the VPN success time.,3
+2,M008,The translated target is not the public VPN address.,7
+3,M008,Inspect the NAT destination field in the matching Palo Alto traffic record.,12
+1,M009,Correlate the firewall NAT target with Windows logons shortly afterward.,3
+2,M009,The first internal host is a privileged jump system.,7
+3,M009,Search Security 4624 events around 18:14 UTC and match the translated address to the destination host.,12
+1,M010,There is a successful UKLO VPN session shortly before the suspicious sequence.,3
+2,M010,Compare user and calling station values for successful sessions.,7
+3,M010,The benign lookalike uses a different account and source address before 18:00 UTC.,12
+1,M011,Start with successful Security 4624 events on the jump host.,3
+2,M011,Use the service account identified from RADIUS.,7
+3,M011,Inspect `IpAddress` on the first matching 4624 after the VPN success.,12
+1,M012,The logon is remote/network based rather than interactive.,3
+2,M012,Filter Security 4624 to the service account.,7
+3,M012,Inspect `LogonType`.,12
+1,M013,Stay on the first jump-host 4624.,3
+2,M013,The field is typically `AuthenticationPackageName`.,7
+3,M013,Inspect that field for the `svc-fieldops` logon.,12
+1,M014,One source records remote-access authentication; the other records Windows logon.,3
+2,M014,"Use `source`, not just `sourcetype`, to distinguish Windows Security from other XML logs.",7
+3,M014,Look for `radius` and Windows Security events carrying the same service identity.,12
+1,M015,The VPN NAT target and first successful 4624 should agree.,3
+2,M015,Search the service account across Windows Security logs.,7
+3,M015,Sort matching 4624 events by time and inspect `host`.,12
+1,M016,Normalize the domain-qualified RADIUS user and Windows target username mentally.,3
+2,M016,The same base account name appears in both sources.,7
+3,M016,Compare RADIUS `user` with Security `TargetUserName`.,12
+1,M017,The earliest suspicious records are all from one site prefix.,3
+2,M017,"Look at the prefix shared by the RADIUS server, firewall, and jump host.",7
+3,M017,The four-character site code is at the beginning of those host names.,12
+1,M018,Use the sourcetype of the UKLO VPN firewall event.,3
+2,M018,`pan:traffic` is the vendor-specific clue.,7
+3,M018,Identify the firewall platform associated with PAN-OS traffic records.,12
+1,M019,The session is TLS-based VPN traffic.,3
+2,M019,Inspect the matching Palo Alto record.,7
+3,M019,Read the destination port field for the suspicious session.,12
+1,M020,Compare both successful VPN authentications in the same time window.,3
+2,M020,One belongs to `svc-fieldops`; the other to `adm-lchen`.,7
+3,M020,Return both `calling_station` values from successful UKLO RADIUS events.,12
+1,M021,Focus on Sysmon process creation on the jump host.,3
+2,M021,The activity occurs within minutes of the first suspicious logon.,7
+3,M021,Inspect `CommandLine` for native Windows discovery utilities.,12
+1,M022,Focus on Sysmon process creation on the jump host.,3
+2,M022,The activity occurs within minutes of the first suspicious logon.,7
+3,M022,Inspect `CommandLine` for native Windows discovery utilities.,12
+1,M023,Focus on Sysmon process creation on the jump host.,3
+2,M023,The activity occurs within minutes of the first suspicious logon.,7
+3,M023,Inspect `CommandLine` for native Windows discovery utilities.,12
+1,M024,Focus on Sysmon process creation on the jump host.,3
+2,M024,The activity occurs within minutes of the first suspicious logon.,7
+3,M024,Inspect `CommandLine` for native Windows discovery utilities.,12
+1,M025,Correlate the four discovery processes rather than treating them independently.,3
+2,M025,They share the same parent.,7
+3,M025,Inspect `ParentImage` across the discovery Event ID 1 records.,12
+1,M026,The static campaign records each discovery command twice.,3
+2,M026,One source is Sysmon Operational and one is Security.,7
+3,M026,Compare `source` for EventCode 1 and 4688 during the discovery window.,12
+1,M027,Search Security logs for one of the known discovery command lines.,3
+2,M027,The event is Windows process creation auditing.,7
+3,M027,Inspect `EventCode` for the Security event matching the Sysmon command.,12
+1,M028,The same identity used for VPN access continues into process execution.,3
+2,M028,Use Sysmon Event ID 1 on the jump host.,7
+3,M028,Inspect `User` for the four discovery processes.,12
+1,M029,Use the timestamps of the four native discovery processes.,3
+2,M029,Reduce `Image` values to their executable names.,7
+3,M029,Sort the matching Sysmon Event ID 1 records by `_time` and read the executable sequence.,12
+1,M030,Use only the four malicious discovery processes.,3
+2,M030,Calculate deltas after sorting by time.,7
+3,M030,`streamstats` can compare each process time with the previous one.,12
+1,M031,Pivot from the jump-host discovery into later process creation.,3
+2,M031,Search for `MiniDump` or `comsvcs.dll`.,7
+3,M031,"Inspect the Sysmon process event and parse the requested value from `Image`, `User`, or `CommandLine`.",12
+1,M032,Pivot from the jump-host discovery into later process creation.,3
+2,M032,Search for `MiniDump` or `comsvcs.dll`.,7
+3,M032,"Inspect the Sysmon process event and parse the requested value from `Image`, `User`, or `CommandLine`.",12
+1,M033,Pivot from the jump-host discovery into later process creation.,3
+2,M033,Search for `MiniDump` or `comsvcs.dll`.,7
+3,M033,"Inspect the Sysmon process event and parse the requested value from `Image`, `User`, or `CommandLine`.",12
+1,M034,Pivot from the jump-host discovery into later process creation.,3
+2,M034,Search for `MiniDump` or `comsvcs.dll`.,7
+3,M034,"Inspect the Sysmon process event and parse the requested value from `Image`, `User`, or `CommandLine`.",12
+1,M035,Pivot from the jump-host discovery into later process creation.,3
+2,M035,Search for `MiniDump` or `comsvcs.dll`.,7
+3,M035,"Inspect the Sysmon process event and parse the requested value from `Image`, `User`, or `CommandLine`.",12
+1,M036,Do not start with Defender; first identify the LSASS access from process data.,3
+2,M036,Then pivot to Defender on the same host and time.,7
+3,M036,Inspect the AlertInfo-style record `Title`.,12
+1,M037,Filter Defender to the LSASS alert.,3
+2,M037,The severity is in the alert information event.,7
+3,M037,Inspect `Severity`.,12
+1,M038,Use the Defender alert associated with credential access.,3
+2,M038,Look for the ATT&CK field rather than deriving the technique yourself.,7
+3,M038,Inspect the alert information record for `AttackTechniques`.,12
+1,M039,One source records the actual process; the other records detection context.,3
+2,M039,Search the same host/time for both execution and Defender evidence.,7
+3,M039,Return the two sourcetypes present around the MiniDump activity.,12
+1,M040,Use the Sysmon process event containing `comsvcs.dll`.,3
+2,M040,The process was launched from the same shell family used during discovery.,7
+3,M040,Inspect `ParentImage`.,12
+1,M041,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M041,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M041,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M042,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M042,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M042,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M043,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M043,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M043,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M044,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M044,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M044,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M045,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M045,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M045,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M046,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M046,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M046,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M047,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M047,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M047,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M048,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M048,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M048,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M049,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M049,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M049,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M050,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M050,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M050,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M051,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M051,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M051,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M052,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M052,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M052,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M053,Start from the cross-region network connection around Apr 7 07:26 UTC.,3
+2,M053,Correlate the Zeek session with DEFR Security/Sysmon records within seconds.,7
+3,M053,Use the shared endpoint tuple and timestamp to extract the requested field.,12
+1,M054,"Think network sensor, firewall, and endpoint authentication/process telemetry.",3
+2,M054,All three occur within seconds of the same WMI tuple.,7
+3,M054,Search the UK/DE endpoint IP pair across sourcetypes and identify the evidence families.,12
+1,M055,Do not assume all WMI-like administration in DEFR is malicious.,3
+2,M055,Look for SCCM activity later than the cross-region pivot.,7
+3,M055,Inspect the SCCM event around 09:05 UTC and return its host.,12
+1,M056,"Begin with the GitLab audit event, then corroborate it with DEFR network telemetry.",3
+2,M056,Use the DE engineering host as the common pivot.,7
+3,M056,Inspect the application action/details and the matching Zeek connection/TLS records.,12
+1,M057,"Begin with the GitLab audit event, then corroborate it with DEFR network telemetry.",3
+2,M057,Use the DE engineering host as the common pivot.,7
+3,M057,Inspect the application action/details and the matching Zeek connection/TLS records.,12
+1,M058,"Begin with the GitLab audit event, then corroborate it with DEFR network telemetry.",3
+2,M058,Use the DE engineering host as the common pivot.,7
+3,M058,Inspect the application action/details and the matching Zeek connection/TLS records.,12
+1,M059,"Begin with the GitLab audit event, then corroborate it with DEFR network telemetry.",3
+2,M059,Use the DE engineering host as the common pivot.,7
+3,M059,Inspect the application action/details and the matching Zeek connection/TLS records.,12
+1,M060,"Begin with the GitLab audit event, then corroborate it with DEFR network telemetry.",3
+2,M060,Use the DE engineering host as the common pivot.,7
+3,M060,Inspect the application action/details and the matching Zeek connection/TLS records.,12
+1,M061,"Begin with the GitLab audit event, then corroborate it with DEFR network telemetry.",3
+2,M061,Use the DE engineering host as the common pivot.,7
+3,M061,Inspect the application action/details and the matching Zeek connection/TLS records.,12
+1,M062,"Begin with the GitLab audit event, then corroborate it with DEFR network telemetry.",3
+2,M062,Use the DE engineering host as the common pivot.,7
+3,M062,Inspect the application action/details and the matching Zeek connection/TLS records.,12
+1,M063,"Begin with the GitLab audit event, then corroborate it with DEFR network telemetry.",3
+2,M063,Use the DE engineering host as the common pivot.,7
+3,M063,Inspect the application action/details and the matching Zeek connection/TLS records.,12
+1,M064,"Begin with the GitLab audit event, then corroborate it with DEFR network telemetry.",3
+2,M064,Use the DE engineering host as the common pivot.,7
+3,M064,Inspect the application action/details and the matching Zeek connection/TLS records.,12
+1,M065,"Begin with the GitLab audit event, then corroborate it with DEFR network telemetry.",3
+2,M065,Use the DE engineering host as the common pivot.,7
+3,M065,Inspect the application action/details and the matching Zeek connection/TLS records.,12
+1,M066,Filter CloudTrail to the compromised DE source address.,3
+2,M066,Sort the six suspicious records by time.,7
+3,M066,Read `eventName` at the requested position.,12
+1,M067,Filter CloudTrail to the compromised DE source address.,3
+2,M067,Sort the six suspicious records by time.,7
+3,M067,Read `eventName` at the requested position.,12
+1,M068,Filter CloudTrail to the compromised DE source address.,3
+2,M068,Sort the six suspicious records by time.,7
+3,M068,Read `eventName` at the requested position.,12
+1,M069,Filter CloudTrail to the compromised DE source address.,3
+2,M069,Sort the six suspicious records by time.,7
+3,M069,Read `eventName` at the requested position.,12
+1,M070,Filter CloudTrail to the compromised DE source address.,3
+2,M070,Sort the six suspicious records by time.,7
+3,M070,Read `eventName` at the requested position.,12
+1,M071,Filter CloudTrail to the compromised DE source address.,3
+2,M071,Sort the six suspicious records by time.,7
+3,M071,Read `eventName` at the requested position.,12
+1,M072,Use the on-prem DE host IP as the CloudTrail source pivot.,3
+2,M072,All six events use the same role.,7
+3,M072,Inspect `userIdentity.arn`.,12
+1,M073,Stay within the six suspicious events.,3
+2,M073,The account is constant across the sequence.,7
+3,M073,Inspect `recipientAccountId`.,12
+1,M074,Use the DE engineering source IP.,3
+2,M074,All suspicious API calls occur in one AWS region.,7
+3,M074,Inspect `awsRegion`.,12
+1,M075,The client string is identical across the six calls.,3
+2,M075,This is not a browser user agent.,7
+3,M075,Inspect `userAgent` in the suspicious CloudTrail records.,12
+1,M076,First identify the destination of the UK-to-DE WMI pivot.,3
+2,M076,Use that same IP as a CloudTrail source.,7
+3,M076,The repeated IP is the DE engineering application host.,12
+1,M077,Use only CloudTrail from the compromised DE host.,3
+2,M077,"Order events by `_time`, not alphabetically.",7
+3,M077,Return the six `eventName` values in chronological order.,12
+1,M078,Filter on the DE engineering host IP.,3
+2,M078,The static campaign has a short burst of API activity.,7
+3,M078,Use `stats count` on those CloudTrail events.,12
+1,M079,Separate the identity-establishment calls from data-access calls.,3
+2,M079,AssumeRole/GetCallerIdentity map differently from bucket/object/secret access.,7
+3,M079,Use the scenario evidence mapping to identify the two technique IDs represented by this sequence.,12
+1,M080,Focus on Zeek SMB file records for DEFR-FS-02.,3
+2,M080,All four suspicious reads share the same SMB session.,7
+3,M080,Inspect the SMB file name field for the GridModernization path.,12
+1,M081,Focus on Zeek SMB file records for DEFR-FS-02.,3
+2,M081,All four suspicious reads share the same SMB session.,7
+3,M081,Inspect the SMB file name field for the GridModernization path.,12
+1,M082,Focus on Zeek SMB file records for DEFR-FS-02.,3
+2,M082,All four suspicious reads share the same SMB session.,7
+3,M082,Inspect the SMB file name field for the GridModernization path.,12
+1,M083,Focus on Zeek SMB file records for DEFR-FS-02.,3
+2,M083,All four suspicious reads share the same SMB session.,7
+3,M083,Inspect the SMB file name field for the GridModernization path.,12
+1,M084,Use the SMB file events rather than the later archive command.,3
+2,M084,The same path is repeated for all four reads.,7
+3,M084,Inspect the `path` field on the SMB records.,12
+1,M085,The collector is the same DE host compromised through WMI.,3
+2,M085,Use the SMB session endpoint fields.,7
+3,M085,Inspect `id.orig_h`.,12
+1,M086,Pivot from the SMB file records to the matching connection.,3
+2,M086,The destination host is DEFR-FS-02.,7
+3,M086,Inspect `id.resp_h` for the SMB connection.,12
+1,M087,Use the matching Zeek connection.,3
+2,M087,The service is SMB.,7
+3,M087,Inspect `id.resp_p`.,12
+1,M088,Use the single large SMB connection associated with the four file reads.,3
+2,M088,Look at responder-to-originator bytes.,7
+3,M088,Inspect `resp_bytes`.,12
+1,M089,Filter to the GridModernization path.,3
+2,M089,"Count unique file names, not connection records.",7
+3,M089,Use `dc(name)` or list the SMB file events.,12
+1,M090,The actor is reading rather than writing the share files.,3
+2,M090,All four records use the same action.,7
+3,M090,Inspect `action`.,12
+1,M091,Find the Zeek connection carrying the SMB file events.,3
+2,M091,"Use the source/originator port, not destination port 445.",7
+3,M091,Inspect `id.orig_p`.,12
+1,M092,Correlate the SMB source with the subsequent 7-Zip process.,3
+2,M092,The network source IP maps to the same host that executes 7z.exe.,7
+3,M092,Return the DE engineering host name common to both stages.,12
+1,M093,One sourcetype gives the network tuple/bytes; another gives file actions.,3
+2,M093,Both come from Zeek/Corelight-compatible telemetry.,7
+3,M093,Return the connection and SMB-file sourcetypes used for the DE collection.,12
+1,M094,Pivot from SMB collection into process/file creation on the same host.,3
+2,M094,Search the staged archive name or 7-Zip executable.,7
+3,M094,Inspect process and file-create Sysmon events for the requested value.,12
+1,M095,Pivot from SMB collection into process/file creation on the same host.,3
+2,M095,Search the staged archive name or 7-Zip executable.,7
+3,M095,Inspect process and file-create Sysmon events for the requested value.,12
+1,M096,Pivot from SMB collection into process/file creation on the same host.,3
+2,M096,Search the staged archive name or 7-Zip executable.,7
+3,M096,Inspect process and file-create Sysmon events for the requested value.,12
+1,M097,Pivot from SMB collection into process/file creation on the same host.,3
+2,M097,Search the staged archive name or 7-Zip executable.,7
+3,M097,Inspect process and file-create Sysmon events for the requested value.,12
+1,M098,Pivot from SMB collection into process/file creation on the same host.,3
+2,M098,Search the staged archive name or 7-Zip executable.,7
+3,M098,Inspect process and file-create Sysmon events for the requested value.,12
+1,M099,Pivot from SMB collection into process/file creation on the same host.,3
+2,M099,Search the staged archive name or 7-Zip executable.,7
+3,M099,Inspect process and file-create Sysmon events for the requested value.,12
+1,M100,Search the archive path in Sysmon.,3
+2,M100,One event records process start; another records the file creation.,7
+3,M100,Inspect the Sysmon event name/type associated with `TargetFilename`.,12
+1,M101,Use the two events carrying the archive path.,3
+2,M101,Compare their `_time` values.,7
+3,M101,The file-create record follows the process event almost immediately.,12
+1,M102,Recognize archive-collected-data behavior.,3
+2,M102,The sub-technique is for archive via utility.,7
+3,M102,Use the instructor ground-truth mapping for the 7-Zip process event.,12
+1,M103,"Focus on the created staged file, not the compression process.",3
+2,M103,This is local data staging.,7
+3,M103,Use the instructor mapping for the archive file-create event.,12
+1,M104,The helper records process creation in both Sysmon and Security.,3
+2,M104,Filter on the 7-Zip command line.,7
+3,M104,Return the Sysmon process-create and Security process-create EventCodes.,12
+1,M105,Track the archive name after it is created in DEFR.,3
+2,M105,The same `.7z` filename appears inside the later Linux tar command.,7
+3,M105,Search the archive basename across both DEFR and NLAM hosts.,12
+1,M106,Follow the archive into the next region.,3
+2,M106,Look for SSH authentication and subsequent tar activity.,7
+3,M106,The next host is a Linux operations system in NLAM.,12
+1,M107,Use the authentication record preceding the Linux tar process.,3
+2,M107,The log records both the service and authentication method.,7
+3,M107,Combine the service context (SSH) with `method=publickey`.,12
+1,M108,Inspect the accepted SSH authentication.,3
+2,M108,This account later executes the tar process.,7
+3,M108,Return the `user` from the accepted NLAM authentication.,12
+1,M109,"Correlate Australia authentication, firewall, and endpoint process events.",3
+2,M109,The same valid service identity used in the UK reappears in AUSY.,7
+3,M109,Follow the AUSY RADIUS success into FortiGate traffic and then Sysmon process creation.,12
+1,M110,"Correlate Australia authentication, firewall, and endpoint process events.",3
+2,M110,The same valid service identity used in the UK reappears in AUSY.,7
+3,M110,Follow the AUSY RADIUS success into FortiGate traffic and then Sysmon process creation.,12
+1,M111,"Correlate Australia authentication, firewall, and endpoint process events.",3
+2,M111,The same valid service identity used in the UK reappears in AUSY.,7
+3,M111,Follow the AUSY RADIUS success into FortiGate traffic and then Sysmon process creation.,12
+1,M112,"Correlate Australia authentication, firewall, and endpoint process events.",3
+2,M112,The same valid service identity used in the UK reappears in AUSY.,7
+3,M112,Follow the AUSY RADIUS success into FortiGate traffic and then Sysmon process creation.,12
+1,M113,"Correlate Australia authentication, firewall, and endpoint process events.",3
+2,M113,The same valid service identity used in the UK reappears in AUSY.,7
+3,M113,Follow the AUSY RADIUS success into FortiGate traffic and then Sysmon process creation.,12
+1,M114,"Correlate Australia authentication, firewall, and endpoint process events.",3
+2,M114,The same valid service identity used in the UK reappears in AUSY.,7
+3,M114,Follow the AUSY RADIUS success into FortiGate traffic and then Sysmon process creation.,12
+1,M115,"Correlate Australia authentication, firewall, and endpoint process events.",3
+2,M115,The same valid service identity used in the UK reappears in AUSY.,7
+3,M115,Follow the AUSY RADIUS success into FortiGate traffic and then Sysmon process creation.,12
+1,M116,"Correlate Australia authentication, firewall, and endpoint process events.",3
+2,M116,The same valid service identity used in the UK reappears in AUSY.,7
+3,M116,Follow the AUSY RADIUS success into FortiGate traffic and then Sysmon process creation.,12
+1,M117,"Correlate Australia authentication, firewall, and endpoint process events.",3
+2,M117,The same valid service identity used in the UK reappears in AUSY.,7
+3,M117,Follow the AUSY RADIUS success into FortiGate traffic and then Sysmon process creation.,12
+1,M118,"Correlate Australia authentication, firewall, and endpoint process events.",3
+2,M118,The same valid service identity used in the UK reappears in AUSY.,7
+3,M118,Follow the AUSY RADIUS success into FortiGate traffic and then Sysmon process creation.,12
+1,M119,Start with the accepted SSH event and follow activity on the same host.,3
+2,M119,Audit records corroborate authentication and exec activity; syslog carries the Linux Sysmon-like process.,7
+3,M119,"Search the NLAM host for `svc-transfer`, `tar`, or the staging archive path.",12
+1,M120,Start with the accepted SSH event and follow activity on the same host.,3
+2,M120,Audit records corroborate authentication and exec activity; syslog carries the Linux Sysmon-like process.,7
+3,M120,"Search the NLAM host for `svc-transfer`, `tar`, or the staging archive path.",12
+1,M121,Start with the accepted SSH event and follow activity on the same host.,3
+2,M121,Audit records corroborate authentication and exec activity; syslog carries the Linux Sysmon-like process.,7
+3,M121,"Search the NLAM host for `svc-transfer`, `tar`, or the staging archive path.",12
+1,M122,Start with the accepted SSH event and follow activity on the same host.,3
+2,M122,Audit records corroborate authentication and exec activity; syslog carries the Linux Sysmon-like process.,7
+3,M122,"Search the NLAM host for `svc-transfer`, `tar`, or the staging archive path.",12
+1,M123,Start with the accepted SSH event and follow activity on the same host.,3
+2,M123,Audit records corroborate authentication and exec activity; syslog carries the Linux Sysmon-like process.,7
+3,M123,"Search the NLAM host for `svc-transfer`, `tar`, or the staging archive path.",12
+1,M124,Start with the accepted SSH event and follow activity on the same host.,3
+2,M124,Audit records corroborate authentication and exec activity; syslog carries the Linux Sysmon-like process.,7
+3,M124,"Search the NLAM host for `svc-transfer`, `tar`, or the staging archive path.",12
+1,M125,Start with the accepted SSH event and follow activity on the same host.,3
+2,M125,Audit records corroborate authentication and exec activity; syslog carries the Linux Sysmon-like process.,7
+3,M125,"Search the NLAM host for `svc-transfer`, `tar`, or the staging archive path.",12
+1,M126,Start with the accepted SSH event and follow activity on the same host.,3
+2,M126,Audit records corroborate authentication and exec activity; syslog carries the Linux Sysmon-like process.,7
+3,M126,"Search the NLAM host for `svc-transfer`, `tar`, or the staging archive path.",12
+1,M127,Start with the accepted SSH event and follow activity on the same host.,3
+2,M127,Audit records corroborate authentication and exec activity; syslog carries the Linux Sysmon-like process.,7
+3,M127,"Search the NLAM host for `svc-transfer`, `tar`, or the staging archive path.",12
+1,M128,Start with the accepted SSH event and follow activity on the same host.,3
+2,M128,Audit records corroborate authentication and exec activity; syslog carries the Linux Sysmon-like process.,7
+3,M128,"Search the NLAM host for `svc-transfer`, `tar`, or the staging archive path.",12
+1,M129,The process appears in Linux Sysmon-style syslog and auditd.,3
+2,M129,Search the final archive name on the NLAM host.,7
+3,M129,Return the two sourcetypes containing the tar execution evidence.,12
+1,M130,Use the audit authentication records.,3
+2,M130,The numeric UID is repeated in the authentication and exec evidence.,7
+3,M130,Inspect `uid` for the `svc-transfer` records.,12
+1,M131,Filter auditd to `/usr/bin/tar`.,3
+2,M131,"Use the process ID, not the parent process ID.",7
+3,M131,Inspect `pid`.,12
+1,M132,Use the same audit exec records as the prior question.,3
+2,M132,The parent ID is distinct from tar PID 29110.,7
+3,M132,Inspect `ppid`.,12
+1,M133,Limit the count to the three evidence families named in the question.,3
+2,M133,"Treat linux_secure, linux_audit, and syslog as distinct corroborating families.",7
+3,M133,Confirm each appears around the SSH and tar sequence.,12
+1,M134,"Begin with the staged archive on NLAM, then pivot to nearby network/DLP events.",3
+2,M134,"Zeek, Palo Alto, and DLP records independently describe the same transfer.",7
+3,M134,Use the shared IP/domain/byte count/file name to extract the requested field.,12
+1,M135,"Begin with the staged archive on NLAM, then pivot to nearby network/DLP events.",3
+2,M135,"Zeek, Palo Alto, and DLP records independently describe the same transfer.",7
+3,M135,Use the shared IP/domain/byte count/file name to extract the requested field.,12
+1,M136,"Begin with the staged archive on NLAM, then pivot to nearby network/DLP events.",3
+2,M136,"Zeek, Palo Alto, and DLP records independently describe the same transfer.",7
+3,M136,Use the shared IP/domain/byte count/file name to extract the requested field.,12
+1,M137,"Begin with the staged archive on NLAM, then pivot to nearby network/DLP events.",3
+2,M137,"Zeek, Palo Alto, and DLP records independently describe the same transfer.",7
+3,M137,Use the shared IP/domain/byte count/file name to extract the requested field.,12
+1,M138,"Begin with the staged archive on NLAM, then pivot to nearby network/DLP events.",3
+2,M138,"Zeek, Palo Alto, and DLP records independently describe the same transfer.",7
+3,M138,Use the shared IP/domain/byte count/file name to extract the requested field.,12
+1,M139,"Begin with the staged archive on NLAM, then pivot to nearby network/DLP events.",3
+2,M139,"Zeek, Palo Alto, and DLP records independently describe the same transfer.",7
+3,M139,Use the shared IP/domain/byte count/file name to extract the requested field.,12
+1,M140,"Begin with the staged archive on NLAM, then pivot to nearby network/DLP events.",3
+2,M140,"Zeek, Palo Alto, and DLP records independently describe the same transfer.",7
+3,M140,Use the shared IP/domain/byte count/file name to extract the requested field.,12
+1,M141,"Begin with the staged archive on NLAM, then pivot to nearby network/DLP events.",3
+2,M141,"Zeek, Palo Alto, and DLP records independently describe the same transfer.",7
+3,M141,Use the shared IP/domain/byte count/file name to extract the requested field.,12
+1,M142,"Begin with the staged archive on NLAM, then pivot to nearby network/DLP events.",3
+2,M142,"Zeek, Palo Alto, and DLP records independently describe the same transfer.",7
+3,M142,Use the shared IP/domain/byte count/file name to extract the requested field.,12
+1,M143,"Begin with the staged archive on NLAM, then pivot to nearby network/DLP events.",3
+2,M143,"Zeek, Palo Alto, and DLP records independently describe the same transfer.",7
+3,M143,Use the shared IP/domain/byte count/file name to extract the requested field.,12
+1,M144,"Begin with the staged archive on NLAM, then pivot to nearby network/DLP events.",3
+2,M144,"Zeek, Palo Alto, and DLP records independently describe the same transfer.",7
+3,M144,Use the shared IP/domain/byte count/file name to extract the requested field.,12
+1,M145,"Begin with the staged archive on NLAM, then pivot to nearby network/DLP events.",3
+2,M145,"Zeek, Palo Alto, and DLP records independently describe the same transfer.",7
+3,M145,Use the shared IP/domain/byte count/file name to extract the requested field.,12
+1,M146,Use the destination IP and archive name as pivots.,3
+2,M146,"You need one network sensor, one firewall, and one content-control source.",7
+3,M146,"Return the Zeek connection, Palo Alto traffic, and DLP sourcetypes.",12
+1,M147,Look at the managed file-transfer event before the suspicious outbound session.,3
+2,M147,"The approved destination is a partner domain, not the CDN-like exfil domain.",7
+3,M147,Inspect `destination` on the successful MFT upload.,12
+1,M148,Compare the approved MFT event with the DLP-observed suspicious upload.,3
+2,M148,The benign transfer has more bytes than the malicious one.,7
+3,M148,Inspect the MFT `file` and `bytes` values.,12
+1,M149,Start with access to the NLAM host and follow time forward.,3
+2,M149,"Identify accepted SSH, archive creation, outbound connection, then DLP observation.",7
+3,M149,Return the four sourcetypes in chronological attack-stage order.,12
+1,M150,Search after the exfiltration window.,3
+2,M150,Look for deletion commands referencing the staged archive names.,7
+3,M150,Correlate Windows process creation and Linux process/syslog cleanup evidence.,12
+1,M151,Search after the exfiltration window.,3
+2,M151,Look for deletion commands referencing the staged archive names.,7
+3,M151,Correlate Windows process creation and Linux process/syslog cleanup evidence.,12
+1,M152,Search after the exfiltration window.,3
+2,M152,Look for deletion commands referencing the staged archive names.,7
+3,M152,Correlate Windows process creation and Linux process/syslog cleanup evidence.,12
+1,M153,Search after the exfiltration window.,3
+2,M153,Look for deletion commands referencing the staged archive names.,7
+3,M153,Correlate Windows process creation and Linux process/syslog cleanup evidence.,12
+1,M154,Search after the exfiltration window.,3
+2,M154,Look for deletion commands referencing the staged archive names.,7
+3,M154,Correlate Windows process creation and Linux process/syslog cleanup evidence.,12
+1,M155,Build a timeline of the major authenticated footholds and pivots.,3
+2,M155,"The campaign begins in London, moves to Germany, later reaches Australia, and finally stages/exfiltrates from the Netherlands.",7
+3,M155,Return the four site codes in chronological order.,12
+1,M156,Medium intentionally has partial notable coverage.,3
+2,M156,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M156,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M157,Medium intentionally has partial notable coverage.,3
+2,M157,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M157,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M158,Medium intentionally has partial notable coverage.,3
+2,M158,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M158,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M159,Medium intentionally has partial notable coverage.,3
+2,M159,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M159,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M160,Medium intentionally has partial notable coverage.,3
+2,M160,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M160,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M161,Medium intentionally has partial notable coverage.,3
+2,M161,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M161,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M162,Medium intentionally has partial notable coverage.,3
+2,M162,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M162,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M163,Medium intentionally has partial notable coverage.,3
+2,M163,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M163,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M164,Medium intentionally has partial notable coverage.,3
+2,M164,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M164,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M165,Medium intentionally has partial notable coverage.,3
+2,M165,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M165,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M166,Medium intentionally has partial notable coverage.,3
+2,M166,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M166,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M167,Medium intentionally has partial notable coverage.,3
+2,M167,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M167,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M168,Medium intentionally has partial notable coverage.,3
+2,M168,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M168,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M169,Medium intentionally has partial notable coverage.,3
+2,M169,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M169,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+1,M170,Medium intentionally has partial notable coverage.,3
+2,M170,"Use a finding as a starting pivot, then verify it against raw sources.",7
+3,M170,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12

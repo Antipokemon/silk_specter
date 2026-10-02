@@ -1,1 +1,171 @@
-question_id,category,question,answer,answer_type,points,primary_sourcetype,learning_objective,reference_spl
+ctf_id,Number,Question,StartTime,EndTime,BasePoints,AdditionalBonusPoints,AdditionalBonusInstructions,Subject,ChallengeID
+silk_specter_medium,1,"After correlating UKLO RADIUS failures with the successful VPN session, which external IP is associated with the suspicious sequence?",,,45,0,,initial_access,M001
+silk_specter_medium,2,Which account is used in the suspicious UKLO VPN authentication sequence?,,,45,0,,initial_access,M002
+silk_specter_medium,3,How many failed RADIUS authentications precede the successful UKLO VPN authentication from the suspicious source?,,,50,0,,initial_access,M003
+silk_specter_medium,4,What authentication method is recorded on the successful suspicious UKLO VPN authentication?,,,45,0,,initial_access,M004
+silk_specter_medium,5,Which RADIUS server records the suspicious UKLO VPN authentication sequence?,,,40,0,,initial_access,M005
+silk_specter_medium,6,Which network access server is named in the suspicious UKLO RADIUS events?,,,45,0,,initial_access,M006
+silk_specter_medium,7,What public VPN address is contacted in the firewall event associated with the suspicious UKLO authentication?,,,55,0,,initial_access,M007
+silk_specter_medium,8,Which internal host IP is the UKLO VPN traffic translated toward?,,,60,0,,initial_access,M008
+silk_specter_medium,9,Which internal host name corresponds to the translated UKLO VPN target?,,,60,0,,initial_access,M009
+silk_specter_medium,10,Which legitimate administrator account provides the nearby benign UKLO VPN lookalike?,,,55,0,,initial_access,M010
+silk_specter_medium,11,"On the first Windows logon after the suspicious VPN session, what source IP is recorded by UKLO-JMP-01?",,,55,0,,vpn_and_foothold,M011
+silk_specter_medium,12,What Windows logon type is used for the suspicious service-account logon to UKLO-JMP-01?,,,50,0,,vpn_and_foothold,M012
+silk_specter_medium,13,Which authentication package is used by the suspicious logon to UKLO-JMP-01?,,,50,0,,vpn_and_foothold,M013
+silk_specter_medium,14,Which two sources should be correlated to connect the external VPN success to the internal jump-host logon? Answer format example: value1;value2 (use semicolons; spaces are optional; order does not matter).,,,55,0,,vpn_and_foothold,M014
+silk_specter_medium,15,What is the destination host of the first suspicious Windows logon after UKLO VPN access?,,,45,0,,vpn_and_foothold,M015
+silk_specter_medium,16,Which service account appears both in the suspicious UKLO RADIUS success and the first internal Windows logon?,,,55,0,,vpn_and_foothold,M016
+silk_specter_medium,17,What country/site code marks the first region involved in the Medium intrusion?,,,40,0,,vpn_and_foothold,M017
+silk_specter_medium,18,Which firewall vendor telemetry is used to observe the first suspicious VPN session?,,,50,0,,vpn_and_foothold,M018
+silk_specter_medium,19,What destination port is used by the suspicious external VPN firewall session?,,,45,0,,vpn_and_foothold,M019
+silk_specter_medium,20,Which pair of external source IPs separates the suspicious UKLO VPN sequence from the nearby benign administrator VPN session? Answer format example: value1;value2 (use semicolons; spaces are optional; order does not matter).,,,60,0,,vpn_and_foothold,M020
+silk_specter_medium,21,Which command first enumerates the group memberships of the compromised identity on UKLO-JMP-01?,,,55,0,,discovery,M021
+silk_specter_medium,22,Which command queries the EU domain controller list?,,,55,0,,discovery,M022
+silk_specter_medium,23,Which command enumerates Domain Admins from the domain?,,,55,0,,discovery,M023
+silk_specter_medium,24,Which command prints the local routing table?,,,55,0,,discovery,M024
+silk_specter_medium,25,What parent process launches the sequence of discovery commands on UKLO-JMP-01?,,,60,0,,discovery,M025
+silk_specter_medium,26,Which two Windows event sources provide duplicate visibility for the discovery process executions? Answer format example: value1;value2 (use semicolons; spaces are optional; order does not matter).,,,65,0,,discovery,M026
+silk_specter_medium,27,Which Windows Security EventCode corroborates the Sysmon process-creation events used for discovery?,,,50,0,,discovery,M027
+silk_specter_medium,28,What user context executes the UKLO discovery sequence?,,,55,0,,discovery,M028
+silk_specter_medium,29,What is the ordered sequence of discovery utilities executed on UKLO-JMP-01? Answer format example: value1>value2>value3 (use > between values; spaces are optional; order matters).,,,70,0,,discovery,M029
+silk_specter_medium,30,Approximately how many seconds separate successive discovery commands in the UKLO sequence?,,,70,0,,discovery,M030
+silk_specter_medium,31,Which executable is used to access LSASS memory on UKLO-JMP-01?,,,60,0,,credential_access,M031
+silk_specter_medium,32,Which Windows DLL is invoked by the credential-access command?,,,60,0,,credential_access,M032
+silk_specter_medium,33,What process ID is supplied to the MiniDump invocation?,,,60,0,,credential_access,M033
+silk_specter_medium,34,What dump path is specified for the LSASS memory capture?,,,60,0,,credential_access,M034
+silk_specter_medium,35,What user executes the credential-access process?,,,60,0,,credential_access,M035
+silk_specter_medium,36,What Microsoft Defender alert title corroborates the LSASS memory-access activity?,,,60,0,,credential_access,M036
+silk_specter_medium,37,What severity does Defender assign to the LSASS memory-access alert?,,,50,0,,credential_access,M037
+silk_specter_medium,38,Which MITRE ATT&CK technique does Defender associate with the LSASS alert?,,,55,0,,credential_access,M038
+silk_specter_medium,39,Which two sourcetypes corroborate the credential-access stage? Answer format example: value1;value2 (use semicolons; spaces are optional; order does not matter).,,,65,0,,credential_access,M039
+silk_specter_medium,40,What parent process launched rundll32.exe for the LSASS dump?,,,60,0,,credential_access,M040
+silk_specter_medium,41,What source host initiates the cross-region WMI session into Germany?,,,65,0,,lateral_movement,M041
+silk_specter_medium,42,What source IP initiates that WMI session?,,,65,0,,lateral_movement,M042
+silk_specter_medium,43,What destination host receives the WMI session?,,,65,0,,lateral_movement,M043
+silk_specter_medium,44,What destination IP receives the WMI session?,,,65,0,,lateral_movement,M044
+silk_specter_medium,45,What destination port is used to initiate WMI/DCOM?,,,65,0,,lateral_movement,M045
+silk_specter_medium,46,What source port is recorded for the WMI/DCOM session?,,,65,0,,lateral_movement,M046
+silk_specter_medium,47,Which DCE/RPC endpoint is observed by Zeek for the WMI session?,,,65,0,,lateral_movement,M047
+silk_specter_medium,48,Which DCE/RPC operation is observed for that session?,,,65,0,,lateral_movement,M048
+silk_specter_medium,49,Which account authenticates to DEFR-ENG-APP-03 after the WMI connection?,,,65,0,,lateral_movement,M049
+silk_specter_medium,50,Which authentication package is used by the DEFR Windows logon?,,,65,0,,lateral_movement,M050
+silk_specter_medium,51,What logon type is recorded on DEFR-ENG-APP-03 for the WMI-related authentication?,,,65,0,,lateral_movement,M051
+silk_specter_medium,52,Which parent process launches the remote command on DEFR-ENG-APP-03?,,,65,0,,lateral_movement,M052
+silk_specter_medium,53,What remote command is executed through WMI on DEFR-ENG-APP-03?,,,65,0,,lateral_movement,M053
+silk_specter_medium,54,Which three evidence families independently observe the UK-to-DE WMI pivot? Answer format example: value1;value2 (use semicolons; spaces are optional; order does not matter).,,,75,0,,lateral_movement,M054
+silk_specter_medium,55,Which SCCM host creates the benign WMI/admin lookalike later in the same region?,,,65,0,,lateral_movement,M055
+silk_specter_medium,56,Which user downloads a GitLab repository archive from the compromised DE engineering host?,,,60,0,,gitlab_collection,M056
+silk_specter_medium,57,What GitLab action is recorded for the suspicious project access?,,,60,0,,gitlab_collection,M057
+silk_specter_medium,58,Which project is downloaded?,,,60,0,,gitlab_collection,M058
+silk_specter_medium,59,What authentication method is recorded for the GitLab download?,,,60,0,,gitlab_collection,M059
+silk_specter_medium,60,What archive format is requested from GitLab?,,,60,0,,gitlab_collection,M060
+silk_specter_medium,61,What source IP is recorded by GitLab for the repository download?,,,60,0,,gitlab_collection,M061
+silk_specter_medium,62,Which TLS server name corroborates the GitLab connection?,,,60,0,,gitlab_collection,M062
+silk_specter_medium,63,What destination IP is used for the GitLab TLS connection?,,,60,0,,gitlab_collection,M063
+silk_specter_medium,64,Approximately how many response bytes are transferred in the GitLab Zeek connection?,,,60,0,,gitlab_collection,M064
+silk_specter_medium,65,Which two sourcetypes provide the strongest direct evidence of the GitLab repository collection? Answer format example: value1;value2 (use semicolons; spaces are optional; order does not matter).,,,60,0,,gitlab_collection,M065
+silk_specter_medium,66,Which AWS API action appears first in the suspicious DE-originating CloudTrail sequence?,,,60,0,,cloud,M066
+silk_specter_medium,67,Which AWS API action appears at position 2 in the suspicious DE-originating CloudTrail sequence?,,,60,0,,cloud,M067
+silk_specter_medium,68,Which AWS API action appears at position 3 in the suspicious DE-originating CloudTrail sequence?,,,60,0,,cloud,M068
+silk_specter_medium,69,Which AWS API action appears at position 4 in the suspicious DE-originating CloudTrail sequence?,,,60,0,,cloud,M069
+silk_specter_medium,70,Which AWS API action appears at position 5 in the suspicious DE-originating CloudTrail sequence?,,,60,0,,cloud,M070
+silk_specter_medium,71,Which AWS API action appears at position 6 in the suspicious DE-originating CloudTrail sequence?,,,60,0,,cloud,M071
+silk_specter_medium,72,What IAM role is used throughout the suspicious AWS CloudTrail sequence?,,,65,0,,cloud,M072
+silk_specter_medium,73,What AWS account ID appears in the suspicious CloudTrail sequence?,,,55,0,,cloud,M073
+silk_specter_medium,74,Which AWS region contains the suspicious cloud activity?,,,55,0,,cloud,M074
+silk_specter_medium,75,What user agent identifies the client used for the suspicious AWS calls?,,,65,0,,cloud,M075
+silk_specter_medium,76,What on-prem IP links the WMI-compromised DE host to the AWS CloudTrail activity?,,,70,0,,cloud,M076
+silk_specter_medium,77,What is the ordered AWS API sequence after the role is assumed? Answer format example: value1>value2>value3 (use > between values; spaces are optional; order matters).,,,80,0,,cloud,M077
+silk_specter_medium,78,How many suspicious CloudTrail events originate from the compromised DE engineering IP in this static campaign?,,,65,0,,cloud,M078
+silk_specter_medium,79,Which two ATT&CK technique IDs are represented across the AWS sequence in instructor ground truth? Answer format example: value1;value2 (use semicolons; spaces are optional; order does not matter).,,,75,0,,cloud,M079
+silk_specter_medium,80,Which SMB-collected file named in the DE engineering-share activity matches `relay_settings`?,,,55,0,,collection,M080
+silk_specter_medium,81,Which SMB-collected file named in the DE engineering-share activity matches `protection_study`?,,,55,0,,collection,M081
+silk_specter_medium,82,Which SMB-collected file named in the DE engineering-share activity matches `substation_inventory`?,,,55,0,,collection,M082
+silk_specter_medium,83,Which SMB-collected file named in the DE engineering-share activity matches `vpn_peer_matrix`?,,,55,0,,collection,M083
+silk_specter_medium,84,What SMB share/path contains the four suspiciously read engineering files?,,,65,0,,collection,M084
+silk_specter_medium,85,What source IP reads the engineering files over SMB?,,,55,0,,collection,M085
+silk_specter_medium,86,What destination IP serves the engineering files over SMB?,,,55,0,,collection,M086
+silk_specter_medium,87,What destination port is used for the engineering-share SMB collection?,,,50,0,,collection,M087
+silk_specter_medium,88,Approximately how many response bytes are transferred in the DE SMB collection session?,,,65,0,,collection,M088
+silk_specter_medium,89,How many distinct suspicious SMB file reads are tied to the GridModernization path?,,,60,0,,collection,M089
+silk_specter_medium,90,What SMB action is recorded for each of the four engineering files?,,,55,0,,collection,M090
+silk_specter_medium,91,What source port is used by the DE engineering host for the SMB collection session?,,,60,0,,collection,M091
+silk_specter_medium,92,Which host performed the collection and later created the first staged archive?,,,70,0,,collection,M092
+silk_specter_medium,93,Which two sourcetypes should be correlated to prove both the SMB network transfer and the individual file names? Answer format example: value1;value2 (use semicolons; spaces are optional; order does not matter).,,,65,0,,collection,M093
+silk_specter_medium,94,Which executable creates the DE staged archive?,,,60,0,,staging,M094
+silk_specter_medium,95,What archive path is created on DEFR-ENG-APP-03?,,,60,0,,staging,M095
+silk_specter_medium,96,What compression switch is used by 7-Zip?,,,60,0,,staging,M096
+silk_specter_medium,97,What source directory is archived by the 7-Zip command?,,,60,0,,staging,M097
+silk_specter_medium,98,Which user executes the 7-Zip staging command?,,,60,0,,staging,M098
+silk_specter_medium,99,What parent process launches 7z.exe?,,,60,0,,staging,M099
+silk_specter_medium,100,Which Sysmon EventCode corroborates that the archive file was actually created after the 7-Zip process?,,,55,0,,staging,M100
+silk_specter_medium,101,How many seconds after the 7-Zip process start is the archive file-create event recorded?,,,65,0,,staging,M101
+silk_specter_medium,102,Which ATT&CK technique ID describes the archive/compress action in the static campaign?,,,60,0,,staging,M102
+silk_specter_medium,103,Which ATT&CK technique ID describes the local staging/file placement represented by the created archive?,,,65,0,,staging,M103
+silk_specter_medium,104,Which two Windows Security/Sysmon EventCodes together show the 7-Zip process through both telemetry channels? Answer format example: value1;value2 (use semicolons; spaces are optional; order does not matter).,,,65,0,,staging,M104
+silk_specter_medium,105,What staged archive name later appears as an input to the Linux tar command in NLAM?,,,75,0,,staging,M105
+silk_specter_medium,106,Which host is the next staging hop after DEFR-ENG-APP-03?,,,70,0,,staging,M106
+silk_specter_medium,107,Which protocol/authentication evidence establishes the move into the NLAM staging host?,,,70,0,,staging,M107
+silk_specter_medium,108,What account is used on the NLAM Linux staging host?,,,60,0,,staging,M108
+silk_specter_medium,109,Which service account appears in the later Australia VPN access?,,,65,0,,australia_pivot,M109
+silk_specter_medium,110,Which external IP is reused for the Australia VPN access?,,,65,0,,australia_pivot,M110
+silk_specter_medium,111,Which RADIUS server records the Australia access?,,,65,0,,australia_pivot,M111
+silk_specter_medium,112,Which firewall host records the Australia VPN session?,,,65,0,,australia_pivot,M112
+silk_specter_medium,113,Which firewall sourcetype provides Australia network evidence?,,,65,0,,australia_pivot,M113
+silk_specter_medium,114,Which Australia engineering host receives the follow-on collection command?,,,65,0,,australia_pivot,M114
+silk_specter_medium,115,Which Australia file server is targeted by robocopy?,,,65,0,,australia_pivot,M115
+silk_specter_medium,116,Which utility performs the Australia file collection?,,,65,0,,australia_pivot,M116
+silk_specter_medium,117,Which file extensions are selected by the robocopy command? Answer format example: value1;value2 (use semicolons; spaces are optional; order does not matter).,,,65,0,,australia_pivot,M117
+silk_specter_medium,118,What local directory receives the Australia collection?,,,65,0,,australia_pivot,M118
+silk_specter_medium,119,What source IP connects to NLAM-OPS-LNX-04 via SSH?,,,60,0,,linux_staging,M119
+silk_specter_medium,120,Which authentication method is accepted on the NLAM host?,,,60,0,,linux_staging,M120
+silk_specter_medium,121,What source port is recorded in the NLAM secure-auth event?,,,60,0,,linux_staging,M121
+silk_specter_medium,122,Which executable creates the final Linux staging archive?,,,60,0,,linux_staging,M122
+silk_specter_medium,123,What final archive path is created on the NLAM host?,,,60,0,,linux_staging,M123
+silk_specter_medium,124,What working directory is recorded for the tar process?,,,60,0,,linux_staging,M124
+silk_specter_medium,125,Which user executes the tar process?,,,60,0,,linux_staging,M125
+silk_specter_medium,126,What parent process launches the tar command?,,,60,0,,linux_staging,M126
+silk_specter_medium,127,Which DE archive is included as input to the Linux tar command?,,,60,0,,linux_staging,M127
+silk_specter_medium,128,Which Australia staging directory is also included in the tar command?,,,60,0,,linux_staging,M128
+silk_specter_medium,129,Which two Linux sourcetypes corroborate execution of the tar staging command? Answer format example: value1;value2 (use semicolons; spaces are optional; order does not matter).,,,70,0,,linux_staging,M129
+silk_specter_medium,130,What Linux UID is associated with the `svc-transfer` audit records?,,,60,0,,linux_staging,M130
+silk_specter_medium,131,What audit PID is associated with the tar execution?,,,65,0,,linux_staging,M131
+silk_specter_medium,132,What audit PPID is associated with the tar execution?,,,65,0,,linux_staging,M132
+silk_specter_medium,133,"How many distinct evidence families on NLAM corroborate the SSH-to-staging transition: secure auth, auditd, and process/syslog?",,,70,0,,linux_staging,M133
+silk_specter_medium,134,What source host performs the suspicious HTTPS exfiltration?,,,65,0,,exfiltration,M134
+silk_specter_medium,135,What source IP performs the suspicious HTTPS exfiltration?,,,65,0,,exfiltration,M135
+silk_specter_medium,136,What destination IP receives the suspicious HTTPS transfer?,,,65,0,,exfiltration,M136
+silk_specter_medium,137,What destination port is used for the exfiltration?,,,65,0,,exfiltration,M137
+silk_specter_medium,138,What TLS server name is associated with the exfiltration destination?,,,65,0,,exfiltration,M138
+silk_specter_medium,139,What source port is used by the suspicious HTTPS session?,,,65,0,,exfiltration,M139
+silk_specter_medium,140,How many bytes are sent outbound in the exfiltration session?,,,65,0,,exfiltration,M140
+silk_specter_medium,141,How many response bytes are recorded for the exfiltration session?,,,65,0,,exfiltration,M141
+silk_specter_medium,142,What staged filename does the DLP event associate with the upload?,,,65,0,,exfiltration,M142
+silk_specter_medium,143,Which DLP policy matches the suspicious upload?,,,65,0,,exfiltration,M143
+silk_specter_medium,144,What DLP action is recorded for the suspicious upload?,,,65,0,,exfiltration,M144
+silk_specter_medium,145,What DLP severity is recorded for the suspicious upload?,,,65,0,,exfiltration,M145
+silk_specter_medium,146,Which three sourcetypes directly corroborate the network/DLP aspects of the suspicious exfiltration? Answer format example: value1;value2 (use semicolons; spaces are optional; order does not matter).,,,75,0,,exfiltration,M146
+silk_specter_medium,147,What legitimate large-transfer destination provides the benign comparison immediately before exfiltration?,,,65,0,,exfiltration,M147
+silk_specter_medium,148,"Which benign transfer file is larger than the malicious staged archive, showing that size alone is insufficient?",,,70,0,,exfiltration,M148
+silk_specter_medium,149,What is the ordered evidence chain from final staging to exfiltration? Answer format example: value1>value2>value3 (use > between values; spaces are optional; order matters).,,,85,0,,exfiltration,M149
+silk_specter_medium,150,Which Windows host deletes the first staged archive during cleanup?,,,65,0,,cleanup,M150
+silk_specter_medium,151,What Windows command deletes the DE archive and review directory?,,,65,0,,cleanup,M151
+silk_specter_medium,152,Which Linux host deletes the final staged archive?,,,65,0,,cleanup,M152
+silk_specter_medium,153,What Linux command removes the final staging archive?,,,65,0,,cleanup,M153
+silk_specter_medium,154,Which ATT&CK technique ID maps to both cleanup actions?,,,65,0,,cleanup,M154
+silk_specter_medium,155,What is the ordered regional progression of the actor from initial access through the later staging/exfiltration path? Answer format example: value1>value2>value3 (use > between values; spaces are optional; order matters).,,,90,0,,campaign_reconstruction,M155
+silk_specter_medium,156,Which Medium detection is intended to surface repeated UKLO VPN failures followed by a success?,,,70,0,,notable_triage,M156
+silk_specter_medium,157,What severity is assigned by the Medium detection pack to the VPN failure-to-success finding?,,,70,0,,notable_triage,M157
+silk_specter_medium,158,Which Medium detection targets the cross-region WMI/DCOM pivot?,,,70,0,,notable_triage,M158
+silk_specter_medium,159,What severity is assigned to the cross-region WMI finding?,,,70,0,,notable_triage,M159
+silk_specter_medium,160,Which Medium detection surfaces the LSASS access already seen by Defender?,,,70,0,,notable_triage,M160
+silk_specter_medium,161,What severity is assigned to the LSASS corroboration finding?,,,70,0,,notable_triage,M161
+silk_specter_medium,162,Which Medium detection covers the GitLab repository archive download from the DE host?,,,70,0,,notable_triage,M162
+silk_specter_medium,163,Which Medium detection covers the burst of AWS API activity from the DE engineering IP?,,,70,0,,notable_triage,M163
+silk_specter_medium,164,Which Medium detection surfaces deliberate archive staging with 7-Zip?,,,70,0,,notable_triage,M164
+silk_specter_medium,165,Which Medium detection is designed to catch reuse of the same VPN identity/source across UK and Australia?,,,70,0,,notable_triage,M165
+silk_specter_medium,166,Which Medium detection covers the final outbound transfer from NLAM?,,,70,0,,notable_triage,M166
+silk_specter_medium,167,What severity is assigned to the final outbound HTTPS finding?,,,70,0,,notable_triage,M167
+silk_specter_medium,168,Which DLP action prevents the DLP event from being treated as definitive blocking evidence?,,,70,0,,notable_triage,M168
+silk_specter_medium,169,Which benign activity is expected to resemble large outbound data transfer during triage?,,,70,0,,notable_triage,M169
+silk_specter_medium,170,How many detection SPL files are included in the Medium pack?,,,70,0,,notable_triage,M170
