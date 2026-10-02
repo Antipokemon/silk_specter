@@ -24,14 +24,10 @@ PY
 STATUS="${META[0]}"
 BASE_INDEX="${META[1]}"
 
-if [[ "$STATUS" != "validated" && "${ALLOW_AUTHORING:-0}" != "1" ]]; then
-  echo "Refusing to load scenario=$SCENARIO because status=$STATUS." >&2
-  echo "For an explicit validation build, rerun with ALLOW_AUTHORING=1." >&2
-  echo "Do not treat an authoring build as validated until the runtime TA/CIM checks pass." >&2
-  exit 3
-fi
 if [[ "$STATUS" != "validated" ]]; then
-  echo "WARNING: loading authoring-status scenario=$SCENARIO for validation only." >&2
+  echo "Refusing to load scenario=$SCENARIO because status=$STATUS." >&2
+  echo "Author and Splunk-validate the distinct campaign/question bank first." >&2
+  exit 3
 fi
 
 if [[ -z "$INDEX" ]]; then
