@@ -10,7 +10,7 @@ Run local checks with:
 make validate
 ```
 
-The suite verifies the canonical question bank, static-campaign integrity, TA-sensitive event shapes, track layout, notable-noise scaling, and operator-script behavior across Easy/Medium/Hard.
+The suite verifies the canonical question bank, normalized static-campaign counts and signal ratios, instructor ground-truth reconciliation, TA-sensitive event shapes, track layout, notable-noise scaling, and operator-script behavior across Easy/Medium/Hard.
 
 For Medium/Hard promotion, use a fresh index and verify:
 

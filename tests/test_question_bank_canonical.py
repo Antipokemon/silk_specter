@@ -46,6 +46,27 @@ class CanonicalQuestionBankTests(unittest.TestCase):
         row = questions["M014"]
         self.assertEqual(answers[row["Number"]]["Answer"], "radius;XmlWinEventLog:Security")
 
+    def test_participant_questions_and_hints_do_not_reference_instructor_only_artifacts(self):
+        forbidden = ("instructor ground", "instructor mapping", "expected-findings matrix", "instructor/findings/")
+        for track in ("easy", "medium", "hard"):
+            for filename in ("questions.csv", "hints.csv"):
+                text = (ROOT / "question_bank" / track / filename).read_text(encoding="utf-8").lower()
+                for phrase in forbidden:
+                    self.assertNotIn(phrase, text, f"{track}/{filename} leaks instructor-only guidance: {phrase}")
+
+    def test_medium_and_hard_notable_questions_use_ingested_notables(self):
+        import csv
+        for track in ("medium", "hard"):
+            with (ROOT / "question_bank" / track / "questions.csv").open(newline="", encoding="utf-8") as handle:
+                rows = list(csv.DictReader(handle))
+            notable_rows = [row for row in rows if row.get("Subject") == "notable_triage"]
+            self.assertTrue(notable_rows, track)
+            for row in notable_rows:
+                # A few Medium questions intentionally pivot from a finding into raw DLP/MFT evidence.
+                ref = row.get("ReferenceSPL", "")
+                self.assertTrue("index=notable" in ref or "index=<index>" in ref, (track, row.get("Number"), ref))
+                self.assertNotIn("| noop", ref, (track, row.get("Number")))
+
 
 if __name__ == "__main__":
     unittest.main()

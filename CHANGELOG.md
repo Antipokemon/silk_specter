@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+### Medium/Hard static normalization
+
+- Expanded Medium static evidence from 65 to 1,250 events while preserving the original answer-bearing spine.
+- Expanded Hard static evidence from 75 to 1,500 events while preserving the original answer-bearing spine.
+- Medium now contains 650 malicious/corroborating events and 600 fixed benign lookalikes; Hard contains 450 malicious/corroborating events and 1,050 fixed benign/admin lookalikes.
+- Broadened Hard to 31 static sourcetypes so difficulty comes from heterogeneous evidence and authorization context rather than missing telemetry.
+- Added Medium/Hard instructor scenario, evidence-matrix, and tactic-summary ground truth.
+- Re-authored Hard hints and reference pivots for the normalized decoy-rich corpus without changing canonical answers.
+- Updated Medium ATT&CK/notable-triage questions and hints so participant-facing content uses ingested raw/notable evidence instead of instructor-only files.
+
+
 ### Canonical-source cleanup
 
 - Made `question_bank/<track>/` the single committed question/answer/hint source and merged instructor metadata/answer types into those files.

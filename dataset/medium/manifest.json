@@ -1,7 +1,7 @@
 {
   "scenario": "medium",
-  "events": 74505,
-  "files": 4057,
+  "events": 75690,
+  "files": 4106,
   "sourcetypes": [
     "XmlWinEventLog",
     "aws:cloudtrail",
@@ -12,6 +12,7 @@
     "bro:http:json",
     "bro:smb_files:json",
     "bro:ssl:json",
+    "bro:x509:json",
     "cisco:asa",
     "cisco:ios",
     "dlp:events",
@@ -37,7 +38,7 @@
     "vdi:session",
     "wsus:client"
   ],
-  "hosts": 1273,
+  "hosts": 1302,
   "first_time": "2026-04-06T00:00:03.977221Z",
   "last_time": "2026-04-10T23:59:56.509505Z",
   "canonical_ingest_file": "hec/events.jsonl",
@@ -57,6 +58,5 @@
     "source": "notable",
     "canonical_ingest_file": "hec/events.jsonl",
     "participant_filter": "index=notable source=notable sourcetype=stash scenario=medium"
-  },
-  "static_campaign": "scenario_data/medium/attack_events.jsonl"
+  }
 }

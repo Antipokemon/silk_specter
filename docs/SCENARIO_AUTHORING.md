@@ -19,6 +19,8 @@ Once questions are authored, the static campaign is immutable unless the affecte
 
 **Hard** uses sparse useful findings, substantial benign overlap, global/OT-adjacent pivots, approved-service abuse, and proof-by-correlation rather than obvious IOCs.
 
+Current normalized static targets are Easy 1,113 events, Medium 1,250 events, and Hard 1,500 events. Difficulty is not created by withholding logs: Medium and Hard add progressively more fixed legitimate lookalikes while preserving realistic cross-source telemetry.
+
 ## Time
 
 The committed CTF tracks have fixed UTC windows in `config/scenarios/<track>.json`. Static campaign tracks must not be shifted with `--start` or `--end`, because questions and reference searches depend on their exact chronology.

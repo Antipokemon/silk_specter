@@ -233,9 +233,9 @@ silk_specter_medium,77,3,Return the six `eventName` values in chronological orde
 silk_specter_medium,78,1,Filter on the DE engineering host IP.,3
 silk_specter_medium,78,2,The static campaign has a short burst of API activity.,7
 silk_specter_medium,78,3,Use `stats count` on those CloudTrail events.,12
-silk_specter_medium,79,1,Separate the identity-establishment calls from data-access calls.,3
-silk_specter_medium,79,2,AssumeRole/GetCallerIdentity map differently from bucket/object/secret access.,7
-silk_specter_medium,79,3,Use the scenario evidence mapping to identify the two technique IDs represented by this sequence.,12
+silk_specter_medium,79,1,Separate the identity-establishment calls from the later data-access calls in the suspicious CloudTrail sequence.,3
+silk_specter_medium,79,2,"AssumeRole/GetCallerIdentity represent account or role use; bucket, object, and secret access represent cloud-data access.",7
+silk_specter_medium,79,3,Map those two behavior families to ATT&CK Enterprise cloud techniques; return the two technique IDs separated by semicolons.,12
 silk_specter_medium,80,1,Focus on Zeek SMB file records for DEFR-FS-02.,3
 silk_specter_medium,80,2,All four suspicious reads share the same SMB session.,7
 silk_specter_medium,80,3,Inspect the SMB file name field for the GridModernization path.,12
@@ -302,12 +302,12 @@ silk_specter_medium,100,3,Inspect the Sysmon event name/type associated with `Ta
 silk_specter_medium,101,1,Use the two events carrying the archive path.,3
 silk_specter_medium,101,2,Compare their `_time` values.,7
 silk_specter_medium,101,3,The file-create record follows the process event almost immediately.,12
-silk_specter_medium,102,1,Recognize archive-collected-data behavior.,3
-silk_specter_medium,102,2,The sub-technique is for archive via utility.,7
-silk_specter_medium,102,3,Use the instructor ground-truth mapping for the 7-Zip process event.,12
-silk_specter_medium,103,1,"Focus on the created staged file, not the compression process.",3
-silk_specter_medium,103,2,This is local data staging.,7
-silk_specter_medium,103,3,Use the instructor mapping for the archive file-create event.,12
+silk_specter_medium,102,1,Focus on the 7-Zip process behavior rather than the file-create event that follows it.,3
+silk_specter_medium,102,2,The command packages collected data into an archive before transfer.,7
+silk_specter_medium,102,3,Map the observed archive operation to the ATT&CK sub-technique for archiving collected data.,12
+silk_specter_medium,103,1,"Focus on the staged archive file after it is created, not on the compression utility itself.",3
+silk_specter_medium,103,2,The file is placed locally so it can be moved later in the campaign.,7
+silk_specter_medium,103,3,Map that behavior to the ATT&CK sub-technique for local data staging.,12
 silk_specter_medium,104,1,The helper records process creation in both Sysmon and Security.,3
 silk_specter_medium,104,2,Filter on the 7-Zip command line.,7
 silk_specter_medium,104,3,Return the Sysmon process-create and Security process-create EventCodes.,12
@@ -464,48 +464,48 @@ silk_specter_medium,154,3,Correlate Windows process creation and Linux process/s
 silk_specter_medium,155,1,Build a timeline of the major authenticated footholds and pivots.,3
 silk_specter_medium,155,2,"The campaign begins in London, moves to Germany, later reaches Australia, and finally stages/exfiltrates from the Netherlands.",7
 silk_specter_medium,155,3,Return the four site codes in chronological order.,12
-silk_specter_medium,156,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,156,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,156,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,157,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,157,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,157,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,158,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,158,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,158,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,159,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,159,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,159,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,160,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,160,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,160,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,161,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,161,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,161,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,162,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,162,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,162,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,163,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,163,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,163,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,164,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,164,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,164,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,165,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,165,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,165,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,166,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,166,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,166,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,167,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,167,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,167,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,168,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,168,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,168,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,169,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,169,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,169,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
-silk_specter_medium,170,1,Medium intentionally has partial notable coverage.,3
-silk_specter_medium,170,2,"Use a finding as a starting pivot, then verify it against raw sources.",7
-silk_specter_medium,170,3,Review the Medium detection SPL files and expected-findings matrix for the requested title/severity/context.,12
+silk_specter_medium,156,1,Start in the Medium notable index and group findings by `search_name`.,3
+silk_specter_medium,156,2,"Find the access-oriented finding near the UKLO VPN failure-to-success window, then pivot to RADIUS raw events.",7
+silk_specter_medium,156,3,The useful finding describes repeated VPN failures followed by a success; return its `search_name`.,12
+silk_specter_medium,157,1,Locate the Medium VPN failure-to-success finding in the notable index.,3
+silk_specter_medium,157,2,Inspect the `severity` value for that specific `search_name` rather than all VPN-related noise.,7
+silk_specter_medium,157,3,"Validate the same finding against UKLO RADIUS events, then report the notable severity.",12
+silk_specter_medium,158,1,Group Medium notables by `search_name` and focus on the DEFR cross-region pivot.,3
+silk_specter_medium,158,2,Pivot the candidate finding to Zeek DCE/RPC and Windows WMI evidence around Apr 7 07:26 UTC.,7
+silk_specter_medium,158,3,Return the finding title whose raw evidence describes administrative WMI/DCOM movement.,12
+silk_specter_medium,159,1,First identify the WMI/DCOM campaign finding in the Medium notable set.,3
+silk_specter_medium,159,2,"Read the `severity` attached to that exact finding, not to unrelated remote-administration noise.",7
+silk_specter_medium,159,3,"Corroborate it with DEFR WMI raw events, then report the finding severity.",12
+silk_specter_medium,160,1,Search Medium findings around the UKLO credential-access phase.,3
+silk_specter_medium,160,2,Pivot candidate endpoint findings to the `rundll32.exe` + `comsvcs.dll` MiniDump raw evidence.,7
+silk_specter_medium,160,3,Return the finding title that corroborates native LSASS memory access.,12
+silk_specter_medium,161,1,Identify the LSASS corroboration finding before looking at severity.,3
+silk_specter_medium,161,2,Separate it from other endpoint alert noise by confirming the MiniDump command on UKLO-JMP-01.,7
+silk_specter_medium,161,3,Read and return the severity on that campaign-relevant finding.,12
+silk_specter_medium,162,1,Review Medium findings after the DEFR pivot and before the AWS sequence.,3
+silk_specter_medium,162,2,Pivot likely GitLab findings to `gitlab:audit` plus Zeek TLS/connection evidence from 10.54.60.23.,7
+silk_specter_medium,162,3,Return the finding title tied to repository archive collection from the compromised engineering host.,12
+silk_specter_medium,163,1,Look for a Medium finding tied to cloud role use from the DE engineering address.,3
+silk_specter_medium,163,2,Validate candidate findings against the six CloudTrail calls sourced from 10.54.60.23.,7
+silk_specter_medium,163,3,Return the finding title associated with that on-prem-to-cloud activity.,12
+silk_specter_medium,164,1,Search Medium findings near the DE archive-staging phase.,3
+silk_specter_medium,164,2,Confirm the candidate by finding `7z.exe` and `eu-grid-review.7z` on DEFR-ENG-APP-03.,7
+silk_specter_medium,164,3,Return the finding title for deliberate engineering collection archive staging.,12
+silk_specter_medium,165,1,Compare VPN-related Medium findings across UKLO and AUSY rather than treating each region independently.,3
+silk_specter_medium,165,2,"Correlate account, external source, and timing across both RADIUS servers.",7
+silk_specter_medium,165,3,Return the finding title designed to surface multi-region reuse of the valid account/source.,12
+silk_specter_medium,166,1,Start with Medium findings near the NLAM exfiltration window.,3
+silk_specter_medium,166,2,"Pivot the candidate to Zeek, Palo Alto, and DLP records for the large outbound HTTPS transfer.",7
+silk_specter_medium,166,3,Return the finding title that surfaces the staged archive leaving NLAM.,12
+silk_specter_medium,167,1,Identify the final outbound HTTPS campaign finding first.,3
+silk_specter_medium,167,2,Use its exact `search_name` to isolate the notable from transfer-related noise.,7
+silk_specter_medium,167,3,Read the `severity` field on that finding and report it.,12
+silk_specter_medium,168,1,This answer is in raw DLP telemetry rather than the notable title.,3
+silk_specter_medium,168,2,Filter NLAM-DLP-01 for the staged archive and inspect the action/disposition field.,7
+silk_specter_medium,168,3,The DLP record permits the transfer conditionally instead of blocking it; report the exact action value.,12
+silk_specter_medium,169,1,"Large transfers are common noise in Medium, so compare the suspicious NLAM flow with legitimate transfer telemetry.",3
+silk_specter_medium,169,2,Search MFT records for the approved engineering-partner upload close to the exfiltration period.,7
+silk_specter_medium,169,3,Identify the benign transfer activity that resembles outbound collection traffic without matching the attack lineage.,12
+silk_specter_medium,170,1,Do not count every Medium notable; the track intentionally includes many synthetic alert-noise findings.,3
+silk_specter_medium,170,2,"Group by `search_name`, pivot each candidate to raw telemetry, and retain only findings that map to the canonical campaign chain.",7
+silk_specter_medium,170,3,Count the distinct campaign-relevant detection findings after triage; this is smaller than the total notable count.,12

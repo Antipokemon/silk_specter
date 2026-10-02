@@ -31,6 +31,23 @@ class HardStaticCampaignTests(unittest.TestCase):
         for row in h: counts[row['Number']]=counts.get(row['Number'],0)+1
         self.assertTrue(all(counts.get(x['Number'])==3 for x in q))
         self.assertTrue(all(x['Subject'].strip() for x in q))
+
+    def test_hard_hints_and_reference_pivots_are_track_specific(self):
+        with (ROOT/'question_bank/hard/questions.csv').open() as f:
+            questions=list(csv.DictReader(f))
+        with (ROOT/'question_bank/hard/hints.csv').open() as f:
+            hints=list(csv.DictReader(f))
+
+        self.assertGreaterEqual(len({row['Hint'] for row in hints}), 40)
+        old_generic={
+            'Start from the evidence family named in the question and constrain the time window.',
+            'Correlate identity, host, and network context rather than treating a single IOC as decisive.',
+            'Use the instructor reference fields implied by the question and inspect the exact matching records.',
+        }
+        self.assertFalse(old_generic & {row['Hint'] for row in hints})
+        self.assertTrue(all(row['ReferenceSPL'].strip() for row in questions))
+        self.assertTrue(any('index=notable' in row['ReferenceSPL'] for row in questions if row['Subject']=='notable_triage'))
+
     def test_hard_remains_authoring(self):
         self.assertEqual(load_scenario(ROOT,'hard').status,'authoring')
 

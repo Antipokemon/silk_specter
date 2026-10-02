@@ -49,6 +49,61 @@ class TrackLayoutTests(unittest.TestCase):
             self.assertEqual(len(rows), manifest["events"], track)
 
 
+
+    def test_static_difficulty_normalization(self):
+        stats = {}
+        for track in ("easy", "medium", "hard"):
+            path = ROOT / "scenario_data" / track / "attack_events.jsonl"
+            rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+            stats[track] = {
+                "events": len(rows),
+                "malicious": sum(r.get("truth_label") == "malicious" for r in rows),
+                "benign": sum(r.get("truth_label") == "benign" for r in rows),
+                "sourcetypes": len({r.get("sourcetype") for r in rows}),
+            }
+
+        self.assertEqual(stats["easy"]["events"], 1113)
+        self.assertEqual(stats["medium"]["events"], 1250)
+        self.assertEqual(stats["hard"]["events"], 1500)
+
+        self.assertLess(stats["easy"]["benign"], stats["medium"]["benign"])
+        self.assertLess(stats["medium"]["benign"], stats["hard"]["benign"])
+
+        easy_ratio = stats["easy"]["malicious"] / stats["easy"]["events"]
+        medium_ratio = stats["medium"]["malicious"] / stats["medium"]["events"]
+        hard_ratio = stats["hard"]["malicious"] / stats["hard"]["events"]
+        self.assertGreater(easy_ratio, medium_ratio)
+        self.assertGreater(medium_ratio, hard_ratio)
+
+        self.assertGreaterEqual(stats["medium"]["sourcetypes"], stats["easy"]["sourcetypes"])
+        self.assertGreater(stats["hard"]["sourcetypes"], stats["medium"]["sourcetypes"])
+
+    def test_instructor_static_ground_truth_reconciles(self):
+        for track in ("medium", "hard"):
+            static_path = ROOT / "scenario_data" / track / "attack_events.jsonl"
+            rows = [json.loads(line) for line in static_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+            malicious = sum(r.get("truth_label") == "malicious" for r in rows)
+
+            matrix_path = ROOT / "instructor" / "ground_truth" / f"{track}_evidence_matrix.csv"
+            tactic_path = ROOT / "instructor" / "ground_truth" / f"{track}_tactic_summary.csv"
+            scenario_path = ROOT / "instructor" / "ground_truth" / f"{track}_scenario.md"
+
+            self.assertTrue(matrix_path.is_file(), track)
+            self.assertTrue(tactic_path.is_file(), track)
+            self.assertTrue(scenario_path.is_file(), track)
+
+            with matrix_path.open() as f:
+                matrix = list(csv.DictReader(f))
+            self.assertEqual(sum(int(r["event_count"]) for r in matrix), len(rows), track)
+
+            with tactic_path.open() as f:
+                tactics = list(csv.DictReader(f))
+            self.assertEqual(sum(int(r["malicious_observations"]) for r in tactics), malicious, track)
+
+            scenario_text = scenario_path.read_text(encoding="utf-8")
+            self.assertIn(f"Static events: **{len(rows)}**", scenario_text)
+            self.assertIn("Instructor Only", scenario_text)
+
     def test_redundant_exports_are_not_committed(self):
         self.assertFalse((ROOT / "dataset/ground_truth").exists())
         self.assertFalse((ROOT / "dataset/ground_truth_events.csv").exists())

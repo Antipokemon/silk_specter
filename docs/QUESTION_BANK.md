@@ -34,3 +34,8 @@ Do not create synchronized copies under `instructor/` or `participant/`; those c
 5. Multi-value answers must show the expected delimiter without revealing the answer. Use examples such as `value1;value2` for sets or `value1>value2>value3` for ordered sequences.
 6. Easy should explain unfamiliar sources/fields early. Medium and Hard should increasingly require correlation rather than IOC lookup.
 7. Do not promote Medium/Hard until their reference searches have been validated against the target Splunk field extractions.
+8. Participant-facing question text and hints must never require `instructor/` files. Instructor ground truth is validation material only.
+
+## Difficulty and hints
+
+Medium and Hard each use three progressive hints. Medium hints narrow source/time/field pivots more directly. Hard hints emphasize authorization context, artifact lineage, and cross-source correlation so that the larger fixed lookalike corpus remains difficult without becoming arbitrary.

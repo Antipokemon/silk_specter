@@ -1,451 +1,451 @@
 ctf_id,Number,HintNumber,Hint,HintCost
-silk_specter_hard,1,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,1,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,1,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,2,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,2,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,2,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,3,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,3,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,3,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,4,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,4,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,4,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,5,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,5,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,5,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,6,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,6,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,6,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,7,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,7,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,7,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,8,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,8,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,8,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,9,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,9,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,9,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,10,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,10,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,10,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,11,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,11,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,11,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,12,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,12,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,12,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,13,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,13,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,13,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,14,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,14,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,14,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,15,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,15,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,15,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,16,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,16,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,16,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,17,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,17,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,17,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,18,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,18,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,18,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,19,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,19,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,19,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,20,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,20,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,20,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,21,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,21,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,21,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,22,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,22,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,22,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,23,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,23,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,23,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,24,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,24,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,24,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,25,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,25,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,25,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,26,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,26,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,26,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,27,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,27,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,27,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,28,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,28,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,28,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,29,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,29,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,29,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,30,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,30,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,30,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,31,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,31,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,31,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,32,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,32,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,32,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,33,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,33,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,33,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,34,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,34,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,34,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,35,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,35,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,35,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,36,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,36,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,36,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,37,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,37,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,37,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,38,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,38,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,38,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,39,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,39,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,39,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,40,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,40,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,40,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,41,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,41,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,41,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,42,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,42,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,42,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,43,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,43,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,43,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,44,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,44,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,44,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,45,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,45,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,45,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,46,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,46,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,46,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,47,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,47,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,47,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,48,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,48,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,48,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,49,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,49,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,49,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,50,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,50,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,50,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,51,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,51,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,51,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,52,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,52,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,52,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,53,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,53,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,53,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,54,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,54,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,54,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,55,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,55,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,55,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,56,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,56,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,56,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,57,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,57,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,57,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,58,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,58,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,58,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,59,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,59,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,59,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,60,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,60,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,60,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,61,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,61,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,61,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,62,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,62,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,62,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,63,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,63,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,63,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,64,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,64,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,64,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,65,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,65,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,65,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,66,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,66,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,66,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,67,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,67,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,67,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,68,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,68,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,68,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,69,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,69,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,69,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,70,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,70,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,70,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,71,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,71,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,71,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,72,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,72,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,72,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,73,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,73,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,73,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,74,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,74,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,74,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,75,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,75,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,75,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,76,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,76,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,76,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,77,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,77,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,77,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,78,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,78,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,78,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,79,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,79,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,79,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,80,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,80,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,80,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,81,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,81,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,81,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,82,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,82,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,82,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,83,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,83,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,83,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,84,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,84,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,84,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,85,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,85,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,85,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,86,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,86,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,86,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,87,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,87,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,87,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,88,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,88,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,88,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,89,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,89,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,89,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,90,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,90,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,90,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,91,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,91,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,91,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,92,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,92,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,92,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,93,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,93,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,93,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,94,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,94,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,94,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,95,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,95,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,95,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,96,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,96,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,96,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,97,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,97,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,97,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,98,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,98,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,98,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,99,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,99,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,99,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,100,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,100,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,100,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,101,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,101,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,101,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,102,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,102,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,102,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,103,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,103,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,103,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,104,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,104,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,104,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,105,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,105,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,105,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,106,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,106,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,106,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,107,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,107,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,107,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,108,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,108,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,108,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,109,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,109,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,109,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,110,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,110,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,110,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,111,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,111,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,111,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,112,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,112,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,112,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,113,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,113,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,113,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,114,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,114,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,114,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,115,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,115,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,115,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,116,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,116,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,116,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,117,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,117,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,117,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,118,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,118,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,118,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,119,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,119,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,119,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,120,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,120,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,120,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,121,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,121,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,121,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,122,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,122,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,122,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,123,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,123,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,123,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,124,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,124,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,124,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,125,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,125,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,125,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,126,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,126,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,126,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,127,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,127,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,127,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,128,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,128,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,128,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,129,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,129,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,129,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,130,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,130,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,130,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,131,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,131,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,131,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,132,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,132,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,132,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,133,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,133,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,133,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,134,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,134,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,134,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,135,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,135,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,135,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,136,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,136,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,136,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,137,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,137,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,137,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,138,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,138,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,138,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,139,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,139,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,139,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,140,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,140,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,140,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,141,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,141,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,141,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,142,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,142,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,142,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,143,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,143,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,143,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,144,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,144,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,144,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,145,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,145,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,145,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,146,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,146,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,146,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,147,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,147,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,147,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,148,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,148,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,148,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,149,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,149,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,149,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
-silk_specter_hard,150,1,Start from the evidence family named in the question and constrain the time window.,4
-silk_specter_hard,150,2,"Correlate identity, host, and network context rather than treating a single IOC as decisive.",9
-silk_specter_hard,150,3,Use the instructor reference fields implied by the question and inspect the exact matching records.,15
+silk_specter_hard,1,1,"Start with the earliest SGSI VPN and firewall activity, but expect multiple successful vendor-style sessions.",4
+silk_specter_hard,1,2,"Correlate the RADIUS calling station, service account, NAS, NAT target, and nearby authorization context instead of trusting a successful VPN event by itself.",9
+silk_specter_hard,1,3,The suspicious session is the one whose identity/network path is not supported by the approved vendor-change context.,15
+silk_specter_hard,2,1,"Start with the earliest SGSI VPN and firewall activity, but expect multiple successful vendor-style sessions.",4
+silk_specter_hard,2,2,"Correlate the RADIUS calling station, service account, NAS, NAT target, and nearby authorization context instead of trusting a successful VPN event by itself.",9
+silk_specter_hard,2,3,The suspicious session is the one whose identity/network path is not supported by the approved vendor-change context.,15
+silk_specter_hard,3,1,"Start with the earliest SGSI VPN and firewall activity, but expect multiple successful vendor-style sessions.",4
+silk_specter_hard,3,2,"Correlate the RADIUS calling station, service account, NAS, NAT target, and nearby authorization context instead of trusting a successful VPN event by itself.",9
+silk_specter_hard,3,3,The suspicious session is the one whose identity/network path is not supported by the approved vendor-change context.,15
+silk_specter_hard,4,1,"Start with the earliest SGSI VPN and firewall activity, but expect multiple successful vendor-style sessions.",4
+silk_specter_hard,4,2,"Correlate the RADIUS calling station, service account, NAS, NAT target, and nearby authorization context instead of trusting a successful VPN event by itself.",9
+silk_specter_hard,4,3,The suspicious session is the one whose identity/network path is not supported by the approved vendor-change context.,15
+silk_specter_hard,5,1,"Start with the earliest SGSI VPN and firewall activity, but expect multiple successful vendor-style sessions.",4
+silk_specter_hard,5,2,"Correlate the RADIUS calling station, service account, NAS, NAT target, and nearby authorization context instead of trusting a successful VPN event by itself.",9
+silk_specter_hard,5,3,The suspicious session is the one whose identity/network path is not supported by the approved vendor-change context.,15
+silk_specter_hard,6,1,"Start with the earliest SGSI VPN and firewall activity, but expect multiple successful vendor-style sessions.",4
+silk_specter_hard,6,2,"Correlate the RADIUS calling station, service account, NAS, NAT target, and nearby authorization context instead of trusting a successful VPN event by itself.",9
+silk_specter_hard,6,3,The suspicious session is the one whose identity/network path is not supported by the approved vendor-change context.,15
+silk_specter_hard,7,1,"Start with the earliest SGSI VPN and firewall activity, but expect multiple successful vendor-style sessions.",4
+silk_specter_hard,7,2,"Correlate the RADIUS calling station, service account, NAS, NAT target, and nearby authorization context instead of trusting a successful VPN event by itself.",9
+silk_specter_hard,7,3,The suspicious session is the one whose identity/network path is not supported by the approved vendor-change context.,15
+silk_specter_hard,8,1,"Start with the earliest SGSI VPN and firewall activity, but expect multiple successful vendor-style sessions.",4
+silk_specter_hard,8,2,"Correlate the RADIUS calling station, service account, NAS, NAT target, and nearby authorization context instead of trusting a successful VPN event by itself.",9
+silk_specter_hard,8,3,The suspicious session is the one whose identity/network path is not supported by the approved vendor-change context.,15
+silk_specter_hard,9,1,"Start with the earliest SGSI VPN and firewall activity, but expect multiple successful vendor-style sessions.",4
+silk_specter_hard,9,2,"Correlate the RADIUS calling station, service account, NAS, NAT target, and nearby authorization context instead of trusting a successful VPN event by itself.",9
+silk_specter_hard,9,3,The suspicious session is the one whose identity/network path is not supported by the approved vendor-change context.,15
+silk_specter_hard,10,1,"Start with the earliest SGSI VPN and firewall activity, but expect multiple successful vendor-style sessions.",4
+silk_specter_hard,10,2,"Correlate the RADIUS calling station, service account, NAS, NAT target, and nearby authorization context instead of trusting a successful VPN event by itself.",9
+silk_specter_hard,10,3,The suspicious session is the one whose identity/network path is not supported by the approved vendor-change context.,15
+silk_specter_hard,11,1,"Treat ServiceNow as evidence, not decoration: an approved source, user, system, and time window should line up with the access it authorizes.",4
+silk_specter_hard,11,2,Compare change records with SGSI RADIUS successes and look for sessions that reuse expected tooling or accounts but come from a different context.,9
+silk_specter_hard,11,3,"Use `documentkey`, `details`, `source_ip`, `calling_station`, and event time to separate the authorized lookalikes from the intrusion.",15
+silk_specter_hard,12,1,"Treat ServiceNow as evidence, not decoration: an approved source, user, system, and time window should line up with the access it authorizes.",4
+silk_specter_hard,12,2,Compare change records with SGSI RADIUS successes and look for sessions that reuse expected tooling or accounts but come from a different context.,9
+silk_specter_hard,12,3,"Use `documentkey`, `details`, `source_ip`, `calling_station`, and event time to separate the authorized lookalikes from the intrusion.",15
+silk_specter_hard,13,1,"Treat ServiceNow as evidence, not decoration: an approved source, user, system, and time window should line up with the access it authorizes.",4
+silk_specter_hard,13,2,Compare change records with SGSI RADIUS successes and look for sessions that reuse expected tooling or accounts but come from a different context.,9
+silk_specter_hard,13,3,"Use `documentkey`, `details`, `source_ip`, `calling_station`, and event time to separate the authorized lookalikes from the intrusion.",15
+silk_specter_hard,14,1,"Treat ServiceNow as evidence, not decoration: an approved source, user, system, and time window should line up with the access it authorizes.",4
+silk_specter_hard,14,2,Compare change records with SGSI RADIUS successes and look for sessions that reuse expected tooling or accounts but come from a different context.,9
+silk_specter_hard,14,3,"Use `documentkey`, `details`, `source_ip`, `calling_station`, and event time to separate the authorized lookalikes from the intrusion.",15
+silk_specter_hard,15,1,"Treat ServiceNow as evidence, not decoration: an approved source, user, system, and time window should line up with the access it authorizes.",4
+silk_specter_hard,15,2,Compare change records with SGSI RADIUS successes and look for sessions that reuse expected tooling or accounts but come from a different context.,9
+silk_specter_hard,15,3,"Use `documentkey`, `details`, `source_ip`, `calling_station`, and event time to separate the authorized lookalikes from the intrusion.",15
+silk_specter_hard,16,1,"Treat ServiceNow as evidence, not decoration: an approved source, user, system, and time window should line up with the access it authorizes.",4
+silk_specter_hard,16,2,Compare change records with SGSI RADIUS successes and look for sessions that reuse expected tooling or accounts but come from a different context.,9
+silk_specter_hard,16,3,"Use `documentkey`, `details`, `source_ip`, `calling_station`, and event time to separate the authorized lookalikes from the intrusion.",15
+silk_specter_hard,17,1,"Treat ServiceNow as evidence, not decoration: an approved source, user, system, and time window should line up with the access it authorizes.",4
+silk_specter_hard,17,2,Compare change records with SGSI RADIUS successes and look for sessions that reuse expected tooling or accounts but come from a different context.,9
+silk_specter_hard,17,3,"Use `documentkey`, `details`, `source_ip`, `calling_station`, and event time to separate the authorized lookalikes from the intrusion.",15
+silk_specter_hard,18,1,"Treat ServiceNow as evidence, not decoration: an approved source, user, system, and time window should line up with the access it authorizes.",4
+silk_specter_hard,18,2,Compare change records with SGSI RADIUS successes and look for sessions that reuse expected tooling or accounts but come from a different context.,9
+silk_specter_hard,18,3,"Use `documentkey`, `details`, `source_ip`, `calling_station`, and event time to separate the authorized lookalikes from the intrusion.",15
+silk_specter_hard,19,1,"Treat ServiceNow as evidence, not decoration: an approved source, user, system, and time window should line up with the access it authorizes.",4
+silk_specter_hard,19,2,Compare change records with SGSI RADIUS successes and look for sessions that reuse expected tooling or accounts but come from a different context.,9
+silk_specter_hard,19,3,"Use `documentkey`, `details`, `source_ip`, `calling_station`, and event time to separate the authorized lookalikes from the intrusion.",15
+silk_specter_hard,20,1,"Treat ServiceNow as evidence, not decoration: an approved source, user, system, and time window should line up with the access it authorizes.",4
+silk_specter_hard,20,2,Compare change records with SGSI RADIUS successes and look for sessions that reuse expected tooling or accounts but come from a different context.,9
+silk_specter_hard,20,3,"Use `documentkey`, `details`, `source_ip`, `calling_station`, and event time to separate the authorized lookalikes from the intrusion.",15
+silk_specter_hard,21,1,"Focus on process creation from SGSI-NET-JMP-02 after the suspicious access, but do not assume every native administration command is malicious.",4
+silk_specter_hard,21,2,Pair Sysmon Event 1 with Security 4688 and order the utilities by time under the compromised service-account context.,9
+silk_specter_hard,21,3,"The attacker sequence is low-and-slow; compare command line, parent process, user, and spacing rather than searching only for one tool name.",15
+silk_specter_hard,22,1,"Focus on process creation from SGSI-NET-JMP-02 after the suspicious access, but do not assume every native administration command is malicious.",4
+silk_specter_hard,22,2,Pair Sysmon Event 1 with Security 4688 and order the utilities by time under the compromised service-account context.,9
+silk_specter_hard,22,3,"The attacker sequence is low-and-slow; compare command line, parent process, user, and spacing rather than searching only for one tool name.",15
+silk_specter_hard,23,1,"Focus on process creation from SGSI-NET-JMP-02 after the suspicious access, but do not assume every native administration command is malicious.",4
+silk_specter_hard,23,2,Pair Sysmon Event 1 with Security 4688 and order the utilities by time under the compromised service-account context.,9
+silk_specter_hard,23,3,"The attacker sequence is low-and-slow; compare command line, parent process, user, and spacing rather than searching only for one tool name.",15
+silk_specter_hard,24,1,"Focus on process creation from SGSI-NET-JMP-02 after the suspicious access, but do not assume every native administration command is malicious.",4
+silk_specter_hard,24,2,Pair Sysmon Event 1 with Security 4688 and order the utilities by time under the compromised service-account context.,9
+silk_specter_hard,24,3,"The attacker sequence is low-and-slow; compare command line, parent process, user, and spacing rather than searching only for one tool name.",15
+silk_specter_hard,25,1,"Focus on process creation from SGSI-NET-JMP-02 after the suspicious access, but do not assume every native administration command is malicious.",4
+silk_specter_hard,25,2,Pair Sysmon Event 1 with Security 4688 and order the utilities by time under the compromised service-account context.,9
+silk_specter_hard,25,3,"The attacker sequence is low-and-slow; compare command line, parent process, user, and spacing rather than searching only for one tool name.",15
+silk_specter_hard,26,1,"Focus on process creation from SGSI-NET-JMP-02 after the suspicious access, but do not assume every native administration command is malicious.",4
+silk_specter_hard,26,2,Pair Sysmon Event 1 with Security 4688 and order the utilities by time under the compromised service-account context.,9
+silk_specter_hard,26,3,"The attacker sequence is low-and-slow; compare command line, parent process, user, and spacing rather than searching only for one tool name.",15
+silk_specter_hard,27,1,"Focus on process creation from SGSI-NET-JMP-02 after the suspicious access, but do not assume every native administration command is malicious.",4
+silk_specter_hard,27,2,Pair Sysmon Event 1 with Security 4688 and order the utilities by time under the compromised service-account context.,9
+silk_specter_hard,27,3,"The attacker sequence is low-and-slow; compare command line, parent process, user, and spacing rather than searching only for one tool name.",15
+silk_specter_hard,28,1,"Focus on process creation from SGSI-NET-JMP-02 after the suspicious access, but do not assume every native administration command is malicious.",4
+silk_specter_hard,28,2,Pair Sysmon Event 1 with Security 4688 and order the utilities by time under the compromised service-account context.,9
+silk_specter_hard,28,3,"The attacker sequence is low-and-slow; compare command line, parent process, user, and spacing rather than searching only for one tool name.",15
+silk_specter_hard,29,1,"Focus on process creation from SGSI-NET-JMP-02 after the suspicious access, but do not assume every native administration command is malicious.",4
+silk_specter_hard,29,2,Pair Sysmon Event 1 with Security 4688 and order the utilities by time under the compromised service-account context.,9
+silk_specter_hard,29,3,"The attacker sequence is low-and-slow; compare command line, parent process, user, and spacing rather than searching only for one tool name.",15
+silk_specter_hard,30,1,"Focus on process creation from SGSI-NET-JMP-02 after the suspicious access, but do not assume every native administration command is malicious.",4
+silk_specter_hard,30,2,Pair Sysmon Event 1 with Security 4688 and order the utilities by time under the compromised service-account context.,9
+silk_specter_hard,30,3,"The attacker sequence is low-and-slow; compare command line, parent process, user, and spacing rather than searching only for one tool name.",15
+silk_specter_hard,31,1,Look for a forwarding configuration that changes how traffic reaches a remote management service.,4
+silk_specter_hard,31,2,Correlate `netsh interface portproxy` process evidence with SGSI Zeek/firewall traffic toward JPTY; authorized proxy maintenance exists elsewhere in the data.,9
+silk_specter_hard,31,3,The malicious rule is distinguished by its listen/connect values and its destination toward the JPTY OT-adjacent management path.,15
+silk_specter_hard,32,1,Look for a forwarding configuration that changes how traffic reaches a remote management service.,4
+silk_specter_hard,32,2,Correlate `netsh interface portproxy` process evidence with SGSI Zeek/firewall traffic toward JPTY; authorized proxy maintenance exists elsewhere in the data.,9
+silk_specter_hard,32,3,The malicious rule is distinguished by its listen/connect values and its destination toward the JPTY OT-adjacent management path.,15
+silk_specter_hard,33,1,Look for a forwarding configuration that changes how traffic reaches a remote management service.,4
+silk_specter_hard,33,2,Correlate `netsh interface portproxy` process evidence with SGSI Zeek/firewall traffic toward JPTY; authorized proxy maintenance exists elsewhere in the data.,9
+silk_specter_hard,33,3,The malicious rule is distinguished by its listen/connect values and its destination toward the JPTY OT-adjacent management path.,15
+silk_specter_hard,34,1,Look for a forwarding configuration that changes how traffic reaches a remote management service.,4
+silk_specter_hard,34,2,Correlate `netsh interface portproxy` process evidence with SGSI Zeek/firewall traffic toward JPTY; authorized proxy maintenance exists elsewhere in the data.,9
+silk_specter_hard,34,3,The malicious rule is distinguished by its listen/connect values and its destination toward the JPTY OT-adjacent management path.,15
+silk_specter_hard,35,1,Look for a forwarding configuration that changes how traffic reaches a remote management service.,4
+silk_specter_hard,35,2,Correlate `netsh interface portproxy` process evidence with SGSI Zeek/firewall traffic toward JPTY; authorized proxy maintenance exists elsewhere in the data.,9
+silk_specter_hard,35,3,The malicious rule is distinguished by its listen/connect values and its destination toward the JPTY OT-adjacent management path.,15
+silk_specter_hard,36,1,Look for a forwarding configuration that changes how traffic reaches a remote management service.,4
+silk_specter_hard,36,2,Correlate `netsh interface portproxy` process evidence with SGSI Zeek/firewall traffic toward JPTY; authorized proxy maintenance exists elsewhere in the data.,9
+silk_specter_hard,36,3,The malicious rule is distinguished by its listen/connect values and its destination toward the JPTY OT-adjacent management path.,15
+silk_specter_hard,37,1,Look for a forwarding configuration that changes how traffic reaches a remote management service.,4
+silk_specter_hard,37,2,Correlate `netsh interface portproxy` process evidence with SGSI Zeek/firewall traffic toward JPTY; authorized proxy maintenance exists elsewhere in the data.,9
+silk_specter_hard,37,3,The malicious rule is distinguished by its listen/connect values and its destination toward the JPTY OT-adjacent management path.,15
+silk_specter_hard,38,1,Look for a forwarding configuration that changes how traffic reaches a remote management service.,4
+silk_specter_hard,38,2,Correlate `netsh interface portproxy` process evidence with SGSI Zeek/firewall traffic toward JPTY; authorized proxy maintenance exists elsewhere in the data.,9
+silk_specter_hard,38,3,The malicious rule is distinguished by its listen/connect values and its destination toward the JPTY OT-adjacent management path.,15
+silk_specter_hard,39,1,Look for a forwarding configuration that changes how traffic reaches a remote management service.,4
+silk_specter_hard,39,2,Correlate `netsh interface portproxy` process evidence with SGSI Zeek/firewall traffic toward JPTY; authorized proxy maintenance exists elsewhere in the data.,9
+silk_specter_hard,39,3,The malicious rule is distinguished by its listen/connect values and its destination toward the JPTY OT-adjacent management path.,15
+silk_specter_hard,40,1,Look for a forwarding configuration that changes how traffic reaches a remote management service.,4
+silk_specter_hard,40,2,Correlate `netsh interface portproxy` process evidence with SGSI Zeek/firewall traffic toward JPTY; authorized proxy maintenance exists elsewhere in the data.,9
+silk_specter_hard,40,3,The malicious rule is distinguished by its listen/connect values and its destination toward the JPTY OT-adjacent management path.,15
+silk_specter_hard,41,1,Reconstruct the SGSI-to-JPTY remote-management path across network and endpoint telemetry.,4
+silk_specter_hard,41,2,"Use port 5985, the remote account, JPTY firewall/Zeek events, and the receiving host's Windows logon/process records.",9
+silk_specter_hard,41,3,Approved WinRM maintenance is present; isolate the chain tied to the compromised SGSI foothold rather than treating WinRM itself as malicious.,15
+silk_specter_hard,42,1,Reconstruct the SGSI-to-JPTY remote-management path across network and endpoint telemetry.,4
+silk_specter_hard,42,2,"Use port 5985, the remote account, JPTY firewall/Zeek events, and the receiving host's Windows logon/process records.",9
+silk_specter_hard,42,3,Approved WinRM maintenance is present; isolate the chain tied to the compromised SGSI foothold rather than treating WinRM itself as malicious.,15
+silk_specter_hard,43,1,Reconstruct the SGSI-to-JPTY remote-management path across network and endpoint telemetry.,4
+silk_specter_hard,43,2,"Use port 5985, the remote account, JPTY firewall/Zeek events, and the receiving host's Windows logon/process records.",9
+silk_specter_hard,43,3,Approved WinRM maintenance is present; isolate the chain tied to the compromised SGSI foothold rather than treating WinRM itself as malicious.,15
+silk_specter_hard,44,1,Reconstruct the SGSI-to-JPTY remote-management path across network and endpoint telemetry.,4
+silk_specter_hard,44,2,"Use port 5985, the remote account, JPTY firewall/Zeek events, and the receiving host's Windows logon/process records.",9
+silk_specter_hard,44,3,Approved WinRM maintenance is present; isolate the chain tied to the compromised SGSI foothold rather than treating WinRM itself as malicious.,15
+silk_specter_hard,45,1,Reconstruct the SGSI-to-JPTY remote-management path across network and endpoint telemetry.,4
+silk_specter_hard,45,2,"Use port 5985, the remote account, JPTY firewall/Zeek events, and the receiving host's Windows logon/process records.",9
+silk_specter_hard,45,3,Approved WinRM maintenance is present; isolate the chain tied to the compromised SGSI foothold rather than treating WinRM itself as malicious.,15
+silk_specter_hard,46,1,Reconstruct the SGSI-to-JPTY remote-management path across network and endpoint telemetry.,4
+silk_specter_hard,46,2,"Use port 5985, the remote account, JPTY firewall/Zeek events, and the receiving host's Windows logon/process records.",9
+silk_specter_hard,46,3,Approved WinRM maintenance is present; isolate the chain tied to the compromised SGSI foothold rather than treating WinRM itself as malicious.,15
+silk_specter_hard,47,1,Reconstruct the SGSI-to-JPTY remote-management path across network and endpoint telemetry.,4
+silk_specter_hard,47,2,"Use port 5985, the remote account, JPTY firewall/Zeek events, and the receiving host's Windows logon/process records.",9
+silk_specter_hard,47,3,Approved WinRM maintenance is present; isolate the chain tied to the compromised SGSI foothold rather than treating WinRM itself as malicious.,15
+silk_specter_hard,48,1,Reconstruct the SGSI-to-JPTY remote-management path across network and endpoint telemetry.,4
+silk_specter_hard,48,2,"Use port 5985, the remote account, JPTY firewall/Zeek events, and the receiving host's Windows logon/process records.",9
+silk_specter_hard,48,3,Approved WinRM maintenance is present; isolate the chain tied to the compromised SGSI foothold rather than treating WinRM itself as malicious.,15
+silk_specter_hard,49,1,Reconstruct the SGSI-to-JPTY remote-management path across network and endpoint telemetry.,4
+silk_specter_hard,49,2,"Use port 5985, the remote account, JPTY firewall/Zeek events, and the receiving host's Windows logon/process records.",9
+silk_specter_hard,49,3,Approved WinRM maintenance is present; isolate the chain tied to the compromised SGSI foothold rather than treating WinRM itself as malicious.,15
+silk_specter_hard,50,1,Reconstruct the SGSI-to-JPTY remote-management path across network and endpoint telemetry.,4
+silk_specter_hard,50,2,"Use port 5985, the remote account, JPTY firewall/Zeek events, and the receiving host's Windows logon/process records.",9
+silk_specter_hard,50,3,Approved WinRM maintenance is present; isolate the chain tied to the compromised SGSI foothold rather than treating WinRM itself as malicious.,15
+silk_specter_hard,51,1,Stay on JPTY-HIST-MGMT-01 after the remote session and inspect native discovery utilities in chronological order.,4
+silk_specter_hard,51,2,"The behavior is OT-adjacent reconnaissance/pre-positioning, not direct PLC or SCADA manipulation.",9
+silk_specter_hard,51,3,Correlate Sysmon/Security process creation under the same remote service-account and parent-process lineage.,15
+silk_specter_hard,52,1,Stay on JPTY-HIST-MGMT-01 after the remote session and inspect native discovery utilities in chronological order.,4
+silk_specter_hard,52,2,"The behavior is OT-adjacent reconnaissance/pre-positioning, not direct PLC or SCADA manipulation.",9
+silk_specter_hard,52,3,Correlate Sysmon/Security process creation under the same remote service-account and parent-process lineage.,15
+silk_specter_hard,53,1,Stay on JPTY-HIST-MGMT-01 after the remote session and inspect native discovery utilities in chronological order.,4
+silk_specter_hard,53,2,"The behavior is OT-adjacent reconnaissance/pre-positioning, not direct PLC or SCADA manipulation.",9
+silk_specter_hard,53,3,Correlate Sysmon/Security process creation under the same remote service-account and parent-process lineage.,15
+silk_specter_hard,54,1,Stay on JPTY-HIST-MGMT-01 after the remote session and inspect native discovery utilities in chronological order.,4
+silk_specter_hard,54,2,"The behavior is OT-adjacent reconnaissance/pre-positioning, not direct PLC or SCADA manipulation.",9
+silk_specter_hard,54,3,Correlate Sysmon/Security process creation under the same remote service-account and parent-process lineage.,15
+silk_specter_hard,55,1,Stay on JPTY-HIST-MGMT-01 after the remote session and inspect native discovery utilities in chronological order.,4
+silk_specter_hard,55,2,"The behavior is OT-adjacent reconnaissance/pre-positioning, not direct PLC or SCADA manipulation.",9
+silk_specter_hard,55,3,Correlate Sysmon/Security process creation under the same remote service-account and parent-process lineage.,15
+silk_specter_hard,56,1,Stay on JPTY-HIST-MGMT-01 after the remote session and inspect native discovery utilities in chronological order.,4
+silk_specter_hard,56,2,"The behavior is OT-adjacent reconnaissance/pre-positioning, not direct PLC or SCADA manipulation.",9
+silk_specter_hard,56,3,Correlate Sysmon/Security process creation under the same remote service-account and parent-process lineage.,15
+silk_specter_hard,57,1,Stay on JPTY-HIST-MGMT-01 after the remote session and inspect native discovery utilities in chronological order.,4
+silk_specter_hard,57,2,"The behavior is OT-adjacent reconnaissance/pre-positioning, not direct PLC or SCADA manipulation.",9
+silk_specter_hard,57,3,Correlate Sysmon/Security process creation under the same remote service-account and parent-process lineage.,15
+silk_specter_hard,58,1,Stay on JPTY-HIST-MGMT-01 after the remote session and inspect native discovery utilities in chronological order.,4
+silk_specter_hard,58,2,"The behavior is OT-adjacent reconnaissance/pre-positioning, not direct PLC or SCADA manipulation.",9
+silk_specter_hard,58,3,Correlate Sysmon/Security process creation under the same remote service-account and parent-process lineage.,15
+silk_specter_hard,59,1,Stay on JPTY-HIST-MGMT-01 after the remote session and inspect native discovery utilities in chronological order.,4
+silk_specter_hard,59,2,"The behavior is OT-adjacent reconnaissance/pre-positioning, not direct PLC or SCADA manipulation.",9
+silk_specter_hard,59,3,Correlate Sysmon/Security process creation under the same remote service-account and parent-process lineage.,15
+silk_specter_hard,60,1,Stay on JPTY-HIST-MGMT-01 after the remote session and inspect native discovery utilities in chronological order.,4
+silk_specter_hard,60,2,"The behavior is OT-adjacent reconnaissance/pre-positioning, not direct PLC or SCADA manipulation.",9
+silk_specter_hard,60,3,Correlate Sysmon/Security process creation under the same remote service-account and parent-process lineage.,15
+silk_specter_hard,61,1,Follow the JPTY historian-management host to engineering file-share activity rather than searching globally for SMB.,4
+silk_specter_hard,61,2,Correlate Zeek SMB metadata with Windows activity and distinguish support/engineering files from routine backup traffic.,9
+silk_specter_hard,61,3,"Use source/destination host, share/path, filename, account, and the preceding WinRM foothold to establish which reads belong to the campaign.",15
+silk_specter_hard,62,1,Follow the JPTY historian-management host to engineering file-share activity rather than searching globally for SMB.,4
+silk_specter_hard,62,2,Correlate Zeek SMB metadata with Windows activity and distinguish support/engineering files from routine backup traffic.,9
+silk_specter_hard,62,3,"Use source/destination host, share/path, filename, account, and the preceding WinRM foothold to establish which reads belong to the campaign.",15
+silk_specter_hard,63,1,Follow the JPTY historian-management host to engineering file-share activity rather than searching globally for SMB.,4
+silk_specter_hard,63,2,Correlate Zeek SMB metadata with Windows activity and distinguish support/engineering files from routine backup traffic.,9
+silk_specter_hard,63,3,"Use source/destination host, share/path, filename, account, and the preceding WinRM foothold to establish which reads belong to the campaign.",15
+silk_specter_hard,64,1,Follow the JPTY historian-management host to engineering file-share activity rather than searching globally for SMB.,4
+silk_specter_hard,64,2,Correlate Zeek SMB metadata with Windows activity and distinguish support/engineering files from routine backup traffic.,9
+silk_specter_hard,64,3,"Use source/destination host, share/path, filename, account, and the preceding WinRM foothold to establish which reads belong to the campaign.",15
+silk_specter_hard,65,1,Follow the JPTY historian-management host to engineering file-share activity rather than searching globally for SMB.,4
+silk_specter_hard,65,2,Correlate Zeek SMB metadata with Windows activity and distinguish support/engineering files from routine backup traffic.,9
+silk_specter_hard,65,3,"Use source/destination host, share/path, filename, account, and the preceding WinRM foothold to establish which reads belong to the campaign.",15
+silk_specter_hard,66,1,Follow the JPTY historian-management host to engineering file-share activity rather than searching globally for SMB.,4
+silk_specter_hard,66,2,Correlate Zeek SMB metadata with Windows activity and distinguish support/engineering files from routine backup traffic.,9
+silk_specter_hard,66,3,"Use source/destination host, share/path, filename, account, and the preceding WinRM foothold to establish which reads belong to the campaign.",15
+silk_specter_hard,67,1,Follow the JPTY historian-management host to engineering file-share activity rather than searching globally for SMB.,4
+silk_specter_hard,67,2,Correlate Zeek SMB metadata with Windows activity and distinguish support/engineering files from routine backup traffic.,9
+silk_specter_hard,67,3,"Use source/destination host, share/path, filename, account, and the preceding WinRM foothold to establish which reads belong to the campaign.",15
+silk_specter_hard,68,1,Follow the JPTY historian-management host to engineering file-share activity rather than searching globally for SMB.,4
+silk_specter_hard,68,2,Correlate Zeek SMB metadata with Windows activity and distinguish support/engineering files from routine backup traffic.,9
+silk_specter_hard,68,3,"Use source/destination host, share/path, filename, account, and the preceding WinRM foothold to establish which reads belong to the campaign.",15
+silk_specter_hard,69,1,Follow the JPTY historian-management host to engineering file-share activity rather than searching globally for SMB.,4
+silk_specter_hard,69,2,Correlate Zeek SMB metadata with Windows activity and distinguish support/engineering files from routine backup traffic.,9
+silk_specter_hard,69,3,"Use source/destination host, share/path, filename, account, and the preceding WinRM foothold to establish which reads belong to the campaign.",15
+silk_specter_hard,70,1,Follow the JPTY historian-management host to engineering file-share activity rather than searching globally for SMB.,4
+silk_specter_hard,70,2,Correlate Zeek SMB metadata with Windows activity and distinguish support/engineering files from routine backup traffic.,9
+silk_specter_hard,70,3,"Use source/destination host, share/path, filename, account, and the preceding WinRM foothold to establish which reads belong to the campaign.",15
+silk_specter_hard,71,1,Look for native Windows archive creation on the compromised JPTY management host.,4
+silk_specter_hard,71,2,Correlate the PowerShell `Compress-Archive` process with the resulting Sysmon file-create event and parent remote-management process.,9
+silk_specter_hard,71,3,Routine archive/backup jobs exist on other systems; the campaign staging is tied to the JPTY collection lineage and its specific output artifact.,15
+silk_specter_hard,72,1,Look for native Windows archive creation on the compromised JPTY management host.,4
+silk_specter_hard,72,2,Correlate the PowerShell `Compress-Archive` process with the resulting Sysmon file-create event and parent remote-management process.,9
+silk_specter_hard,72,3,Routine archive/backup jobs exist on other systems; the campaign staging is tied to the JPTY collection lineage and its specific output artifact.,15
+silk_specter_hard,73,1,Look for native Windows archive creation on the compromised JPTY management host.,4
+silk_specter_hard,73,2,Correlate the PowerShell `Compress-Archive` process with the resulting Sysmon file-create event and parent remote-management process.,9
+silk_specter_hard,73,3,Routine archive/backup jobs exist on other systems; the campaign staging is tied to the JPTY collection lineage and its specific output artifact.,15
+silk_specter_hard,74,1,Look for native Windows archive creation on the compromised JPTY management host.,4
+silk_specter_hard,74,2,Correlate the PowerShell `Compress-Archive` process with the resulting Sysmon file-create event and parent remote-management process.,9
+silk_specter_hard,74,3,Routine archive/backup jobs exist on other systems; the campaign staging is tied to the JPTY collection lineage and its specific output artifact.,15
+silk_specter_hard,75,1,Look for native Windows archive creation on the compromised JPTY management host.,4
+silk_specter_hard,75,2,Correlate the PowerShell `Compress-Archive` process with the resulting Sysmon file-create event and parent remote-management process.,9
+silk_specter_hard,75,3,Routine archive/backup jobs exist on other systems; the campaign staging is tied to the JPTY collection lineage and its specific output artifact.,15
+silk_specter_hard,76,1,Look for native Windows archive creation on the compromised JPTY management host.,4
+silk_specter_hard,76,2,Correlate the PowerShell `Compress-Archive` process with the resulting Sysmon file-create event and parent remote-management process.,9
+silk_specter_hard,76,3,Routine archive/backup jobs exist on other systems; the campaign staging is tied to the JPTY collection lineage and its specific output artifact.,15
+silk_specter_hard,77,1,Look for native Windows archive creation on the compromised JPTY management host.,4
+silk_specter_hard,77,2,Correlate the PowerShell `Compress-Archive` process with the resulting Sysmon file-create event and parent remote-management process.,9
+silk_specter_hard,77,3,Routine archive/backup jobs exist on other systems; the campaign staging is tied to the JPTY collection lineage and its specific output artifact.,15
+silk_specter_hard,78,1,Look for native Windows archive creation on the compromised JPTY management host.,4
+silk_specter_hard,78,2,Correlate the PowerShell `Compress-Archive` process with the resulting Sysmon file-create event and parent remote-management process.,9
+silk_specter_hard,78,3,Routine archive/backup jobs exist on other systems; the campaign staging is tied to the JPTY collection lineage and its specific output artifact.,15
+silk_specter_hard,79,1,Look for native Windows archive creation on the compromised JPTY management host.,4
+silk_specter_hard,79,2,Correlate the PowerShell `Compress-Archive` process with the resulting Sysmon file-create event and parent remote-management process.,9
+silk_specter_hard,79,3,Routine archive/backup jobs exist on other systems; the campaign staging is tied to the JPTY collection lineage and its specific output artifact.,15
+silk_specter_hard,80,1,Look for native Windows archive creation on the compromised JPTY management host.,4
+silk_specter_hard,80,2,Correlate the PowerShell `Compress-Archive` process with the resulting Sysmon file-create event and parent remote-management process.,9
+silk_specter_hard,80,3,Routine archive/backup jobs exist on other systems; the campaign staging is tied to the JPTY collection lineage and its specific output artifact.,15
+silk_specter_hard,81,1,Move forward from the JPTY archive and identify where that artifact next appears on a Linux transfer system.,4
+silk_specter_hard,81,2,Correlate accepted SSH authentication with auditd/syslog execution and the file-movement utility used on NZAK-MFT-GW-02.,9
+silk_specter_hard,81,3,"The suspicious pivot is linked by account, source host, filename, and rsync lineage—not by SSH or rsync alone.",15
+silk_specter_hard,82,1,Move forward from the JPTY archive and identify where that artifact next appears on a Linux transfer system.,4
+silk_specter_hard,82,2,Correlate accepted SSH authentication with auditd/syslog execution and the file-movement utility used on NZAK-MFT-GW-02.,9
+silk_specter_hard,82,3,"The suspicious pivot is linked by account, source host, filename, and rsync lineage—not by SSH or rsync alone.",15
+silk_specter_hard,83,1,Move forward from the JPTY archive and identify where that artifact next appears on a Linux transfer system.,4
+silk_specter_hard,83,2,Correlate accepted SSH authentication with auditd/syslog execution and the file-movement utility used on NZAK-MFT-GW-02.,9
+silk_specter_hard,83,3,"The suspicious pivot is linked by account, source host, filename, and rsync lineage—not by SSH or rsync alone.",15
+silk_specter_hard,84,1,Move forward from the JPTY archive and identify where that artifact next appears on a Linux transfer system.,4
+silk_specter_hard,84,2,Correlate accepted SSH authentication with auditd/syslog execution and the file-movement utility used on NZAK-MFT-GW-02.,9
+silk_specter_hard,84,3,"The suspicious pivot is linked by account, source host, filename, and rsync lineage—not by SSH or rsync alone.",15
+silk_specter_hard,85,1,Move forward from the JPTY archive and identify where that artifact next appears on a Linux transfer system.,4
+silk_specter_hard,85,2,Correlate accepted SSH authentication with auditd/syslog execution and the file-movement utility used on NZAK-MFT-GW-02.,9
+silk_specter_hard,85,3,"The suspicious pivot is linked by account, source host, filename, and rsync lineage—not by SSH or rsync alone.",15
+silk_specter_hard,86,1,Move forward from the JPTY archive and identify where that artifact next appears on a Linux transfer system.,4
+silk_specter_hard,86,2,Correlate accepted SSH authentication with auditd/syslog execution and the file-movement utility used on NZAK-MFT-GW-02.,9
+silk_specter_hard,86,3,"The suspicious pivot is linked by account, source host, filename, and rsync lineage—not by SSH or rsync alone.",15
+silk_specter_hard,87,1,Move forward from the JPTY archive and identify where that artifact next appears on a Linux transfer system.,4
+silk_specter_hard,87,2,Correlate accepted SSH authentication with auditd/syslog execution and the file-movement utility used on NZAK-MFT-GW-02.,9
+silk_specter_hard,87,3,"The suspicious pivot is linked by account, source host, filename, and rsync lineage—not by SSH or rsync alone.",15
+silk_specter_hard,88,1,Move forward from the JPTY archive and identify where that artifact next appears on a Linux transfer system.,4
+silk_specter_hard,88,2,Correlate accepted SSH authentication with auditd/syslog execution and the file-movement utility used on NZAK-MFT-GW-02.,9
+silk_specter_hard,88,3,"The suspicious pivot is linked by account, source host, filename, and rsync lineage—not by SSH or rsync alone.",15
+silk_specter_hard,89,1,Move forward from the JPTY archive and identify where that artifact next appears on a Linux transfer system.,4
+silk_specter_hard,89,2,Correlate accepted SSH authentication with auditd/syslog execution and the file-movement utility used on NZAK-MFT-GW-02.,9
+silk_specter_hard,89,3,"The suspicious pivot is linked by account, source host, filename, and rsync lineage—not by SSH or rsync alone.",15
+silk_specter_hard,90,1,Move forward from the JPTY archive and identify where that artifact next appears on a Linux transfer system.,4
+silk_specter_hard,90,2,Correlate accepted SSH authentication with auditd/syslog execution and the file-movement utility used on NZAK-MFT-GW-02.,9
+silk_specter_hard,90,3,"The suspicious pivot is linked by account, source host, filename, and rsync lineage—not by SSH or rsync alone.",15
+silk_specter_hard,91,1,"After the Linux pivot, inspect archive creation under the same transfer-account context.",4
+silk_specter_hard,91,2,"Use auditd and syslog together to recover executable, command line, working path, PID/PPID, and final output file.",9
+silk_specter_hard,91,3,Benign backup/tar jobs exist; the campaign tarball is the one that contains the earlier JPTY artifact and sits in the outbound MFT path.,15
+silk_specter_hard,92,1,"After the Linux pivot, inspect archive creation under the same transfer-account context.",4
+silk_specter_hard,92,2,"Use auditd and syslog together to recover executable, command line, working path, PID/PPID, and final output file.",9
+silk_specter_hard,92,3,Benign backup/tar jobs exist; the campaign tarball is the one that contains the earlier JPTY artifact and sits in the outbound MFT path.,15
+silk_specter_hard,93,1,"After the Linux pivot, inspect archive creation under the same transfer-account context.",4
+silk_specter_hard,93,2,"Use auditd and syslog together to recover executable, command line, working path, PID/PPID, and final output file.",9
+silk_specter_hard,93,3,Benign backup/tar jobs exist; the campaign tarball is the one that contains the earlier JPTY artifact and sits in the outbound MFT path.,15
+silk_specter_hard,94,1,"After the Linux pivot, inspect archive creation under the same transfer-account context.",4
+silk_specter_hard,94,2,"Use auditd and syslog together to recover executable, command line, working path, PID/PPID, and final output file.",9
+silk_specter_hard,94,3,Benign backup/tar jobs exist; the campaign tarball is the one that contains the earlier JPTY artifact and sits in the outbound MFT path.,15
+silk_specter_hard,95,1,"After the Linux pivot, inspect archive creation under the same transfer-account context.",4
+silk_specter_hard,95,2,"Use auditd and syslog together to recover executable, command line, working path, PID/PPID, and final output file.",9
+silk_specter_hard,95,3,Benign backup/tar jobs exist; the campaign tarball is the one that contains the earlier JPTY artifact and sits in the outbound MFT path.,15
+silk_specter_hard,96,1,"After the Linux pivot, inspect archive creation under the same transfer-account context.",4
+silk_specter_hard,96,2,"Use auditd and syslog together to recover executable, command line, working path, PID/PPID, and final output file.",9
+silk_specter_hard,96,3,Benign backup/tar jobs exist; the campaign tarball is the one that contains the earlier JPTY artifact and sits in the outbound MFT path.,15
+silk_specter_hard,97,1,"After the Linux pivot, inspect archive creation under the same transfer-account context.",4
+silk_specter_hard,97,2,"Use auditd and syslog together to recover executable, command line, working path, PID/PPID, and final output file.",9
+silk_specter_hard,97,3,Benign backup/tar jobs exist; the campaign tarball is the one that contains the earlier JPTY artifact and sits in the outbound MFT path.,15
+silk_specter_hard,98,1,"After the Linux pivot, inspect archive creation under the same transfer-account context.",4
+silk_specter_hard,98,2,"Use auditd and syslog together to recover executable, command line, working path, PID/PPID, and final output file.",9
+silk_specter_hard,98,3,Benign backup/tar jobs exist; the campaign tarball is the one that contains the earlier JPTY artifact and sits in the outbound MFT path.,15
+silk_specter_hard,99,1,"After the Linux pivot, inspect archive creation under the same transfer-account context.",4
+silk_specter_hard,99,2,"Use auditd and syslog together to recover executable, command line, working path, PID/PPID, and final output file.",9
+silk_specter_hard,99,3,Benign backup/tar jobs exist; the campaign tarball is the one that contains the earlier JPTY artifact and sits in the outbound MFT path.,15
+silk_specter_hard,100,1,"After the Linux pivot, inspect archive creation under the same transfer-account context.",4
+silk_specter_hard,100,2,"Use auditd and syslog together to recover executable, command line, working path, PID/PPID, and final output file.",9
+silk_specter_hard,100,3,Benign backup/tar jobs exist; the campaign tarball is the one that contains the earlier JPTY artifact and sits in the outbound MFT path.,15
+silk_specter_hard,101,1,"The destination is legitimate, so destination reputation will not solve this phase.",4
+silk_specter_hard,101,2,Compare MFT transfers with ServiceNow authorization and trace the uploaded file back to the earlier staging activity.,9
+silk_specter_hard,101,3,The malicious transfer is the successful approved-destination upload that lacks a matching authorized change for its user/file lineage.,15
+silk_specter_hard,102,1,"The destination is legitimate, so destination reputation will not solve this phase.",4
+silk_specter_hard,102,2,Compare MFT transfers with ServiceNow authorization and trace the uploaded file back to the earlier staging activity.,9
+silk_specter_hard,102,3,The malicious transfer is the successful approved-destination upload that lacks a matching authorized change for its user/file lineage.,15
+silk_specter_hard,103,1,"The destination is legitimate, so destination reputation will not solve this phase.",4
+silk_specter_hard,103,2,Compare MFT transfers with ServiceNow authorization and trace the uploaded file back to the earlier staging activity.,9
+silk_specter_hard,103,3,The malicious transfer is the successful approved-destination upload that lacks a matching authorized change for its user/file lineage.,15
+silk_specter_hard,104,1,"The destination is legitimate, so destination reputation will not solve this phase.",4
+silk_specter_hard,104,2,Compare MFT transfers with ServiceNow authorization and trace the uploaded file back to the earlier staging activity.,9
+silk_specter_hard,104,3,The malicious transfer is the successful approved-destination upload that lacks a matching authorized change for its user/file lineage.,15
+silk_specter_hard,105,1,"The destination is legitimate, so destination reputation will not solve this phase.",4
+silk_specter_hard,105,2,Compare MFT transfers with ServiceNow authorization and trace the uploaded file back to the earlier staging activity.,9
+silk_specter_hard,105,3,The malicious transfer is the successful approved-destination upload that lacks a matching authorized change for its user/file lineage.,15
+silk_specter_hard,106,1,"The destination is legitimate, so destination reputation will not solve this phase.",4
+silk_specter_hard,106,2,Compare MFT transfers with ServiceNow authorization and trace the uploaded file back to the earlier staging activity.,9
+silk_specter_hard,106,3,The malicious transfer is the successful approved-destination upload that lacks a matching authorized change for its user/file lineage.,15
+silk_specter_hard,107,1,"The destination is legitimate, so destination reputation will not solve this phase.",4
+silk_specter_hard,107,2,Compare MFT transfers with ServiceNow authorization and trace the uploaded file back to the earlier staging activity.,9
+silk_specter_hard,107,3,The malicious transfer is the successful approved-destination upload that lacks a matching authorized change for its user/file lineage.,15
+silk_specter_hard,108,1,"The destination is legitimate, so destination reputation will not solve this phase.",4
+silk_specter_hard,108,2,Compare MFT transfers with ServiceNow authorization and trace the uploaded file back to the earlier staging activity.,9
+silk_specter_hard,108,3,The malicious transfer is the successful approved-destination upload that lacks a matching authorized change for its user/file lineage.,15
+silk_specter_hard,109,1,"The destination is legitimate, so destination reputation will not solve this phase.",4
+silk_specter_hard,109,2,Compare MFT transfers with ServiceNow authorization and trace the uploaded file back to the earlier staging activity.,9
+silk_specter_hard,109,3,The malicious transfer is the successful approved-destination upload that lacks a matching authorized change for its user/file lineage.,15
+silk_specter_hard,110,1,"The destination is legitimate, so destination reputation will not solve this phase.",4
+silk_specter_hard,110,2,Compare MFT transfers with ServiceNow authorization and trace the uploaded file back to the earlier staging activity.,9
+silk_specter_hard,110,3,The malicious transfer is the successful approved-destination upload that lacks a matching authorized change for its user/file lineage.,15
+silk_specter_hard,111,1,"Treat the MFT record as one view of the transfer and corroborate it with network, TLS, firewall, and DLP telemetry.",4
+silk_specter_hard,111,2,"Match source host/IP, destination IP/hostname, ports, bytes, filename, and time across NZAK sensors.",9
+silk_specter_hard,111,3,Many approved transfers use the same destination; the campaign transfer is identified by staging lineage and missing change-control support.,15
+silk_specter_hard,112,1,"Treat the MFT record as one view of the transfer and corroborate it with network, TLS, firewall, and DLP telemetry.",4
+silk_specter_hard,112,2,"Match source host/IP, destination IP/hostname, ports, bytes, filename, and time across NZAK sensors.",9
+silk_specter_hard,112,3,Many approved transfers use the same destination; the campaign transfer is identified by staging lineage and missing change-control support.,15
+silk_specter_hard,113,1,"Treat the MFT record as one view of the transfer and corroborate it with network, TLS, firewall, and DLP telemetry.",4
+silk_specter_hard,113,2,"Match source host/IP, destination IP/hostname, ports, bytes, filename, and time across NZAK sensors.",9
+silk_specter_hard,113,3,Many approved transfers use the same destination; the campaign transfer is identified by staging lineage and missing change-control support.,15
+silk_specter_hard,114,1,"Treat the MFT record as one view of the transfer and corroborate it with network, TLS, firewall, and DLP telemetry.",4
+silk_specter_hard,114,2,"Match source host/IP, destination IP/hostname, ports, bytes, filename, and time across NZAK sensors.",9
+silk_specter_hard,114,3,Many approved transfers use the same destination; the campaign transfer is identified by staging lineage and missing change-control support.,15
+silk_specter_hard,115,1,"Treat the MFT record as one view of the transfer and corroborate it with network, TLS, firewall, and DLP telemetry.",4
+silk_specter_hard,115,2,"Match source host/IP, destination IP/hostname, ports, bytes, filename, and time across NZAK sensors.",9
+silk_specter_hard,115,3,Many approved transfers use the same destination; the campaign transfer is identified by staging lineage and missing change-control support.,15
+silk_specter_hard,116,1,"Treat the MFT record as one view of the transfer and corroborate it with network, TLS, firewall, and DLP telemetry.",4
+silk_specter_hard,116,2,"Match source host/IP, destination IP/hostname, ports, bytes, filename, and time across NZAK sensors.",9
+silk_specter_hard,116,3,Many approved transfers use the same destination; the campaign transfer is identified by staging lineage and missing change-control support.,15
+silk_specter_hard,117,1,"Treat the MFT record as one view of the transfer and corroborate it with network, TLS, firewall, and DLP telemetry.",4
+silk_specter_hard,117,2,"Match source host/IP, destination IP/hostname, ports, bytes, filename, and time across NZAK sensors.",9
+silk_specter_hard,117,3,Many approved transfers use the same destination; the campaign transfer is identified by staging lineage and missing change-control support.,15
+silk_specter_hard,118,1,"Treat the MFT record as one view of the transfer and corroborate it with network, TLS, firewall, and DLP telemetry.",4
+silk_specter_hard,118,2,"Match source host/IP, destination IP/hostname, ports, bytes, filename, and time across NZAK sensors.",9
+silk_specter_hard,118,3,Many approved transfers use the same destination; the campaign transfer is identified by staging lineage and missing change-control support.,15
+silk_specter_hard,119,1,"Treat the MFT record as one view of the transfer and corroborate it with network, TLS, firewall, and DLP telemetry.",4
+silk_specter_hard,119,2,"Match source host/IP, destination IP/hostname, ports, bytes, filename, and time across NZAK sensors.",9
+silk_specter_hard,119,3,Many approved transfers use the same destination; the campaign transfer is identified by staging lineage and missing change-control support.,15
+silk_specter_hard,120,1,"Treat the MFT record as one view of the transfer and corroborate it with network, TLS, firewall, and DLP telemetry.",4
+silk_specter_hard,120,2,"Match source host/IP, destination IP/hostname, ports, bytes, filename, and time across NZAK sensors.",9
+silk_specter_hard,120,3,Many approved transfers use the same destination; the campaign transfer is identified by staging lineage and missing change-control support.,15
+silk_specter_hard,121,1,Search after the exfiltration window for removal of access mechanisms and staged artifacts.,4
+silk_specter_hard,121,2,Correlate Windows process creation on SGSI/JPTY with Linux removal activity on NZAK.,9
+silk_specter_hard,121,3,The cleanup chain removes the covert forwarding rule and both Windows/Linux staging artifacts tied to the campaign.,15
+silk_specter_hard,122,1,Search after the exfiltration window for removal of access mechanisms and staged artifacts.,4
+silk_specter_hard,122,2,Correlate Windows process creation on SGSI/JPTY with Linux removal activity on NZAK.,9
+silk_specter_hard,122,3,The cleanup chain removes the covert forwarding rule and both Windows/Linux staging artifacts tied to the campaign.,15
+silk_specter_hard,123,1,Search after the exfiltration window for removal of access mechanisms and staged artifacts.,4
+silk_specter_hard,123,2,Correlate Windows process creation on SGSI/JPTY with Linux removal activity on NZAK.,9
+silk_specter_hard,123,3,The cleanup chain removes the covert forwarding rule and both Windows/Linux staging artifacts tied to the campaign.,15
+silk_specter_hard,124,1,Search after the exfiltration window for removal of access mechanisms and staged artifacts.,4
+silk_specter_hard,124,2,Correlate Windows process creation on SGSI/JPTY with Linux removal activity on NZAK.,9
+silk_specter_hard,124,3,The cleanup chain removes the covert forwarding rule and both Windows/Linux staging artifacts tied to the campaign.,15
+silk_specter_hard,125,1,Search after the exfiltration window for removal of access mechanisms and staged artifacts.,4
+silk_specter_hard,125,2,Correlate Windows process creation on SGSI/JPTY with Linux removal activity on NZAK.,9
+silk_specter_hard,125,3,The cleanup chain removes the covert forwarding rule and both Windows/Linux staging artifacts tied to the campaign.,15
+silk_specter_hard,126,1,Search after the exfiltration window for removal of access mechanisms and staged artifacts.,4
+silk_specter_hard,126,2,Correlate Windows process creation on SGSI/JPTY with Linux removal activity on NZAK.,9
+silk_specter_hard,126,3,The cleanup chain removes the covert forwarding rule and both Windows/Linux staging artifacts tied to the campaign.,15
+silk_specter_hard,127,1,Search after the exfiltration window for removal of access mechanisms and staged artifacts.,4
+silk_specter_hard,127,2,Correlate Windows process creation on SGSI/JPTY with Linux removal activity on NZAK.,9
+silk_specter_hard,127,3,The cleanup chain removes the covert forwarding rule and both Windows/Linux staging artifacts tied to the campaign.,15
+silk_specter_hard,128,1,Search after the exfiltration window for removal of access mechanisms and staged artifacts.,4
+silk_specter_hard,128,2,Correlate Windows process creation on SGSI/JPTY with Linux removal activity on NZAK.,9
+silk_specter_hard,128,3,The cleanup chain removes the covert forwarding rule and both Windows/Linux staging artifacts tied to the campaign.,15
+silk_specter_hard,129,1,Search after the exfiltration window for removal of access mechanisms and staged artifacts.,4
+silk_specter_hard,129,2,Correlate Windows process creation on SGSI/JPTY with Linux removal activity on NZAK.,9
+silk_specter_hard,129,3,The cleanup chain removes the covert forwarding rule and both Windows/Linux staging artifacts tied to the campaign.,15
+silk_specter_hard,130,1,Search after the exfiltration window for removal of access mechanisms and staged artifacts.,4
+silk_specter_hard,130,2,Correlate Windows process creation on SGSI/JPTY with Linux removal activity on NZAK.,9
+silk_specter_hard,130,3,The cleanup chain removes the covert forwarding rule and both Windows/Linux staging artifacts tied to the campaign.,15
+silk_specter_hard,131,1,Hard intentionally contains many more notable lookalikes than useful campaign findings.,4
+silk_specter_hard,131,2,"Use the `notable` index to identify candidate detections, then validate each one against raw track data and authorization context.",9
+silk_specter_hard,131,3,Do not treat a notable title as proof; the Hard track is designed so several alert families also occur during legitimate administration.,15
+silk_specter_hard,132,1,Hard intentionally contains many more notable lookalikes than useful campaign findings.,4
+silk_specter_hard,132,2,"Use the `notable` index to identify candidate detections, then validate each one against raw track data and authorization context.",9
+silk_specter_hard,132,3,Do not treat a notable title as proof; the Hard track is designed so several alert families also occur during legitimate administration.,15
+silk_specter_hard,133,1,Hard intentionally contains many more notable lookalikes than useful campaign findings.,4
+silk_specter_hard,133,2,"Use the `notable` index to identify candidate detections, then validate each one against raw track data and authorization context.",9
+silk_specter_hard,133,3,Do not treat a notable title as proof; the Hard track is designed so several alert families also occur during legitimate administration.,15
+silk_specter_hard,134,1,Hard intentionally contains many more notable lookalikes than useful campaign findings.,4
+silk_specter_hard,134,2,"Use the `notable` index to identify candidate detections, then validate each one against raw track data and authorization context.",9
+silk_specter_hard,134,3,Do not treat a notable title as proof; the Hard track is designed so several alert families also occur during legitimate administration.,15
+silk_specter_hard,135,1,Hard intentionally contains many more notable lookalikes than useful campaign findings.,4
+silk_specter_hard,135,2,"Use the `notable` index to identify candidate detections, then validate each one against raw track data and authorization context.",9
+silk_specter_hard,135,3,Do not treat a notable title as proof; the Hard track is designed so several alert families also occur during legitimate administration.,15
+silk_specter_hard,136,1,Hard intentionally contains many more notable lookalikes than useful campaign findings.,4
+silk_specter_hard,136,2,"Use the `notable` index to identify candidate detections, then validate each one against raw track data and authorization context.",9
+silk_specter_hard,136,3,Do not treat a notable title as proof; the Hard track is designed so several alert families also occur during legitimate administration.,15
+silk_specter_hard,137,1,Hard intentionally contains many more notable lookalikes than useful campaign findings.,4
+silk_specter_hard,137,2,"Use the `notable` index to identify candidate detections, then validate each one against raw track data and authorization context.",9
+silk_specter_hard,137,3,Do not treat a notable title as proof; the Hard track is designed so several alert families also occur during legitimate administration.,15
+silk_specter_hard,138,1,Hard intentionally contains many more notable lookalikes than useful campaign findings.,4
+silk_specter_hard,138,2,"Use the `notable` index to identify candidate detections, then validate each one against raw track data and authorization context.",9
+silk_specter_hard,138,3,Do not treat a notable title as proof; the Hard track is designed so several alert families also occur during legitimate administration.,15
+silk_specter_hard,139,1,Hard intentionally contains many more notable lookalikes than useful campaign findings.,4
+silk_specter_hard,139,2,"Use the `notable` index to identify candidate detections, then validate each one against raw track data and authorization context.",9
+silk_specter_hard,139,3,Do not treat a notable title as proof; the Hard track is designed so several alert families also occur during legitimate administration.,15
+silk_specter_hard,140,1,Hard intentionally contains many more notable lookalikes than useful campaign findings.,4
+silk_specter_hard,140,2,"Use the `notable` index to identify candidate detections, then validate each one against raw track data and authorization context.",9
+silk_specter_hard,140,3,Do not treat a notable title as proof; the Hard track is designed so several alert families also occur during legitimate administration.,15
+silk_specter_hard,141,1,Build a timeline from the strongest phase anchors rather than attempting to follow every individual event.,4
+silk_specter_hard,141,2,"Link SGSI access/proxy activity to JPTY WinRM/collection/staging, then to NZAK transfer/exfiltration by shared accounts and artifacts.",9
+silk_specter_hard,141,3,"Your final reconstruction should explain region/host order, identity transitions, artifact lineage, legitimate-service abuse, and cleanup.",15
+silk_specter_hard,142,1,Build a timeline from the strongest phase anchors rather than attempting to follow every individual event.,4
+silk_specter_hard,142,2,"Link SGSI access/proxy activity to JPTY WinRM/collection/staging, then to NZAK transfer/exfiltration by shared accounts and artifacts.",9
+silk_specter_hard,142,3,"Your final reconstruction should explain region/host order, identity transitions, artifact lineage, legitimate-service abuse, and cleanup.",15
+silk_specter_hard,143,1,Build a timeline from the strongest phase anchors rather than attempting to follow every individual event.,4
+silk_specter_hard,143,2,"Link SGSI access/proxy activity to JPTY WinRM/collection/staging, then to NZAK transfer/exfiltration by shared accounts and artifacts.",9
+silk_specter_hard,143,3,"Your final reconstruction should explain region/host order, identity transitions, artifact lineage, legitimate-service abuse, and cleanup.",15
+silk_specter_hard,144,1,Build a timeline from the strongest phase anchors rather than attempting to follow every individual event.,4
+silk_specter_hard,144,2,"Link SGSI access/proxy activity to JPTY WinRM/collection/staging, then to NZAK transfer/exfiltration by shared accounts and artifacts.",9
+silk_specter_hard,144,3,"Your final reconstruction should explain region/host order, identity transitions, artifact lineage, legitimate-service abuse, and cleanup.",15
+silk_specter_hard,145,1,Build a timeline from the strongest phase anchors rather than attempting to follow every individual event.,4
+silk_specter_hard,145,2,"Link SGSI access/proxy activity to JPTY WinRM/collection/staging, then to NZAK transfer/exfiltration by shared accounts and artifacts.",9
+silk_specter_hard,145,3,"Your final reconstruction should explain region/host order, identity transitions, artifact lineage, legitimate-service abuse, and cleanup.",15
+silk_specter_hard,146,1,Build a timeline from the strongest phase anchors rather than attempting to follow every individual event.,4
+silk_specter_hard,146,2,"Link SGSI access/proxy activity to JPTY WinRM/collection/staging, then to NZAK transfer/exfiltration by shared accounts and artifacts.",9
+silk_specter_hard,146,3,"Your final reconstruction should explain region/host order, identity transitions, artifact lineage, legitimate-service abuse, and cleanup.",15
+silk_specter_hard,147,1,Build a timeline from the strongest phase anchors rather than attempting to follow every individual event.,4
+silk_specter_hard,147,2,"Link SGSI access/proxy activity to JPTY WinRM/collection/staging, then to NZAK transfer/exfiltration by shared accounts and artifacts.",9
+silk_specter_hard,147,3,"Your final reconstruction should explain region/host order, identity transitions, artifact lineage, legitimate-service abuse, and cleanup.",15
+silk_specter_hard,148,1,Build a timeline from the strongest phase anchors rather than attempting to follow every individual event.,4
+silk_specter_hard,148,2,"Link SGSI access/proxy activity to JPTY WinRM/collection/staging, then to NZAK transfer/exfiltration by shared accounts and artifacts.",9
+silk_specter_hard,148,3,"Your final reconstruction should explain region/host order, identity transitions, artifact lineage, legitimate-service abuse, and cleanup.",15
+silk_specter_hard,149,1,Build a timeline from the strongest phase anchors rather than attempting to follow every individual event.,4
+silk_specter_hard,149,2,"Link SGSI access/proxy activity to JPTY WinRM/collection/staging, then to NZAK transfer/exfiltration by shared accounts and artifacts.",9
+silk_specter_hard,149,3,"Your final reconstruction should explain region/host order, identity transitions, artifact lineage, legitimate-service abuse, and cleanup.",15
+silk_specter_hard,150,1,Build a timeline from the strongest phase anchors rather than attempting to follow every individual event.,4
+silk_specter_hard,150,2,"Link SGSI access/proxy activity to JPTY WinRM/collection/staging, then to NZAK transfer/exfiltration by shared accounts and artifacts.",9
+silk_specter_hard,150,3,"Your final reconstruction should explain region/host order, identity transitions, artifact lineage, legitimate-service abuse, and cleanup.",15

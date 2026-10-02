@@ -24,7 +24,8 @@ question_bank/<track>/answers.csv           canonical answers + answer types
 question_bank/<track>/hints.csv             canonical hints
 dataset/<track>/                             generated/ingest-ready participant data
 splunk/detections/<track>/                   track detection searches
-instructor/findings/                         expected finding dispositions
+instructor/ground_truth/                     instructor static-evidence summaries
+instructor/findings/                         instructor notable dispositions
 ```
 
 There is only one committed question/answer/hint source: `question_bank/<track>/`. Participant CSV copies and separate instructor question copies are intentionally not stored.
@@ -34,16 +35,16 @@ There is only one committed question/answer/hint source: `question_bank/<track>/
 | Track | Status | Questions | Hints | Static APT events | Notable noise |
 |---|---|---:|---:|---:|---:|
 | Easy | validated | 180 | 360 | 1,113 | 25 |
-| Medium | authoring | 170 | 510 | 65 | 60 |
-| Hard | authoring | 150 | 450 | 75 | 120 |
+| Medium | authoring | 170 | 510 | 1,250 | 60 |
+| Hard | authoring | 150 | 450 | 1,500 | 120 |
 
 The Medium/Hard static campaigns are intentionally fixed, but still need target-Splunk parser/CIM/reference-query validation before promotion to `validated`.
 
 ## Difficulty model
 
 - **Easy:** clearer pivots and more useful detection coverage.
-- **Medium:** multi-region correlation, staging, partial finding coverage, and more alert noise.
-- **Hard:** sparse useful findings, legitimate lookalikes, global/OT-adjacent pivots, and heavy alert noise.
+- **Medium:** multi-region correlation with 600 fixed benign lookalikes, deliberate staging, partial finding coverage, and more alert noise.
+- **Hard:** 1,050 fixed benign/admin lookalikes, sparse useful findings, global/OT-adjacent pivots, approved-service abuse, and heavy alert noise.
 
 ## Documentation
 

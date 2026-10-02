@@ -1,0 +1,10 @@
+tactic,malicious_observations
+Initial Access,38
+Execution / Discovery,87
+Credential Access,4
+Persistence / Proxy,35
+Lateral Movement,103
+Collection,68
+Collection / Staging,51
+Exfiltration,59
+Defense Evasion / Cleanup,5
