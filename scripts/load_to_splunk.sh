@@ -7,15 +7,12 @@ INDEX="${2:-}"
 CONTAINER="${SPLUNK_CONTAINER:-splunk}"
 CFG="$ROOT/config/scenarios/$SCENARIO.json"
 DATA="$ROOT/dataset/$SCENARIO"
-REMOTE="/tmp/silk-specter-v3-$SCENARIO"
 TA_SRC="$ROOT/splunk/app/TA-asteron-v3"
 TA_DST="/opt/splunk/etc/apps/TA-asteron-v3"
 RESTART_TIMEOUT="${SPLUNK_RESTART_TIMEOUT:-60}"
-READY_TIMEOUT="${SPLUNK_READY_TIMEOUT:-120}"
+READY_TIMEOUT="${SPLUNK_READY_TIMEOUT:-300}"
+INGEST_TIMEOUT="${SPLUNK_INGEST_TIMEOUT:-600}"
 PROBE_TIMEOUT="${SPLUNK_READY_PROBE_TIMEOUT:-5}"
-SPLUNK_CLI_USER="${SPLUNK_CLI_USER:-admin}"
-REST_TIMEOUT="${SPLUNK_REST_TIMEOUT:-15}"
-REST_COMMAND_TIMEOUT="${SPLUNK_REST_COMMAND_TIMEOUT:-20}"
 
 if [[ ! -f "$CFG" ]]; then
   echo "Unknown scenario: $SCENARIO" >&2
@@ -45,221 +42,304 @@ if [[ -z "$INDEX" ]]; then
   INDEX="${BASE_INDEX}_v001"
 fi
 
-if [[ ! -f "$DATA/hec/events.jsonl" || ! -f "$DATA/manifest.json" ]]; then
-  echo "Generated dataset missing under $DATA. Run generator/generate.py first." >&2
+# Keep the generated Splunk stanza, app path, and temporary path safe and simple.
+if [[ ! "$INDEX" =~ ^[A-Za-z0-9][A-Za-z0-9_-]*$ ]]; then
+  echo "ERROR: index name contains unsupported characters: $INDEX" >&2
+  echo "Use only letters, digits, underscore, and hyphen." >&2
+  exit 2
+fi
+
+HEC_SRC="$DATA/hec/events.jsonl"
+MANIFEST="$DATA/manifest.json"
+if [[ ! -f "$HEC_SRC" || ! -f "$MANIFEST" ]]; then
+  echo "Generated dataset missing under $DATA. Run the scenario generator first." >&2
   exit 4
 fi
 
-EXPECTED="$(python3 - "$DATA/manifest.json" <<'PY'
+if [[ "$(head -n 1 "$HEC_SRC" 2>/dev/null || true)" == "version https://git-lfs.github.com/spec/v1" ]]; then
+  echo "ERROR: $HEC_SRC is still a Git LFS pointer, not the dataset." >&2
+  echo "Run 'git lfs pull' or regenerate the $SCENARIO dataset, then retry." >&2
+  exit 4
+fi
+
+EXPECTED="$(python3 - "$MANIFEST" <<'PY'
 import json,sys
 print(json.load(open(sys.argv[1],encoding='utf-8'))['events'])
 PY
 )"
 
+REMOTE="/tmp/silk-specter-${SCENARIO}-${INDEX}"
+HEC_REMOTE="$REMOTE/hec/events.jsonl"
+APP_NAME="SA-silk-specter-${SCENARIO}-${INDEX}"
+APP_DST="/opt/splunk/etc/apps/$APP_NAME"
+
+STAGE="$(mktemp -d /tmp/silk-specter-load.XXXXXX)"
+trap 'rm -rf "$STAGE"' EXIT
+PREPARED_HEC="$STAGE/events.jsonl"
+APP_STAGE="$STAGE/$APP_NAME"
+mkdir -p "$APP_STAGE/default" "$APP_STAGE/local"
+
 bounded() {
-  # Bound Podman probes so a wedged container/runtime cannot trap the loader.
   timeout --signal=TERM --kill-after=1s "${PROBE_TIMEOUT}s" "$@"
 }
 
-splunk_rest() {
-  local action="$1"
-  timeout --signal=TERM --kill-after=2s "${REST_COMMAND_TIMEOUT}s" \
-    podman exec --user splunk \
-      --env "SILK_SPLUNK_CLI_USER=$SPLUNK_CLI_USER" \
-      --env "SILK_SPLUNK_INDEX=$INDEX" \
-      --env "SILK_SPLUNK_REST_TIMEOUT=$REST_TIMEOUT" \
-      --env "SILK_SPLUNK_REST_ACTION=$action" \
-      "$CONTAINER" bash -lc '
-        if [[ -z "${SPLUNK_PASSWORD:-}" ]]; then
-          echo "ERROR:SPLUNK_PASSWORD_MISSING"
-          exit 86
-        fi
-        if ! command -v curl >/dev/null 2>&1; then
-          echo "ERROR:CURL_MISSING"
-          exit 87
-        fi
-        common=(
-          -skS
-          --connect-timeout 5
-          --max-time "$SILK_SPLUNK_REST_TIMEOUT"
-          -u "${SILK_SPLUNK_CLI_USER}:${SPLUNK_PASSWORD}"
-          -o /dev/null
-          -w "%{http_code}"
-        )
-        case "$SILK_SPLUNK_REST_ACTION" in
-          check)
-            exec curl "${common[@]}" \
-              "https://127.0.0.1:8089/services/data/indexes/${SILK_SPLUNK_INDEX}?output_mode=json"
-            ;;
-          create)
-            exec curl "${common[@]}" \
-              -X POST \
-              --data-urlencode "name=${SILK_SPLUNK_INDEX}" \
-              "https://127.0.0.1:8089/services/data/indexes?output_mode=json"
-            ;;
-          *)
-            echo "ERROR:UNKNOWN_REST_ACTION"
-            exit 88
-            ;;
-        esac
-      '
+podman_exec_bounded() {
+  bounded podman exec "$@"
 }
 
-
-wait_for_splunk() {
+wait_for_container() {
   local started=$SECONDS
   local deadline=$((started + READY_TIMEOUT))
   local next_report=10
-  local state_file="/tmp/silk-specter-state.$$"
-  local top_file="/tmp/silk-specter-top.$$"
+  local running=""
+  local health=""
 
   while (( SECONDS < deadline )); do
-    : >"$state_file"
-    : >"$top_file"
-
-    if bounded podman inspect --format '{{.State.Running}}' "$CONTAINER" \
-        >"$state_file" 2>/dev/null \
-        && grep -qx 'true' "$state_file"; then
-
-      # Do not use `podman exec ... splunk status` as a readiness probe.
-      # That command can block indefinitely while Splunk is recovering after a
-      # container restart. `podman top` checks the container process list without
-      # starting another process inside the container.
-      if bounded podman top "$CONTAINER" pid args >"$top_file" 2>/dev/null \
-          && grep -qiE '(^|[[:space:]/])splunkd([[:space:]]|$)' "$top_file"; then
-        rm -f "$state_file" "$top_file"
-        return 0
-      fi
+    running="$(bounded podman inspect --format '{{.State.Running}}' "$CONTAINER" 2>/dev/null || true)"
+    if [[ "$running" == "true" ]]; then
+      health="$(bounded podman inspect --format '{{.State.Health.Status}}' "$CONTAINER" 2>/dev/null || true)"
+      case "$health" in
+        healthy)
+          return 0
+          ;;
+        starting|unhealthy)
+          ;;
+        *)
+          # Some containers have no healthcheck. In that case, a running
+          # splunkd process is enough to continue; batch ingestion below is the
+          # final readiness gate and will wait until Splunk consumes the file.
+          if bounded podman top "$CONTAINER" pid args 2>/dev/null \
+              | grep -qiE '(^|[[:space:]/])splunkd([[:space:]]|$)'; then
+            return 0
+          fi
+          ;;
+      esac
     fi
 
     if (( SECONDS - started >= next_report )); then
-      echo "      Still waiting for splunkd ($((SECONDS - started))s elapsed) ..."
+      [[ -n "$health" ]] || health="unknown"
+      echo "      Still waiting for container readiness ($((SECONDS - started))s elapsed; health=$health) ..."
       next_report=$((next_report + 10))
     fi
     sleep 2
   done
 
-  rm -f "$state_file" "$top_file"
   return 1
 }
 
-echo "[1/7] Installing/updating TA-asteron-v3 in container=$CONTAINER"
-# Remove the existing destination first. Copying a source directory onto an
-# existing destination directory can create a nested TA-asteron-v3/TA-asteron-v3.
+wait_for_batch_consumption() {
+  local started=$SECONDS
+  local deadline=$((started + INGEST_TIMEOUT))
+  local next_report=15
+
+  while (( SECONDS < deadline )); do
+    if bounded podman exec --user splunk "$CONTAINER" test ! -e "$HEC_REMOTE"; then
+      return 0
+    fi
+
+    if (( SECONDS - started >= next_report )); then
+      echo "      Still waiting for Splunk to consume the batch file ($((SECONDS - started))s elapsed) ..."
+      next_report=$((next_report + 15))
+    fi
+    sleep 2
+  done
+
+  return 1
+}
+
+echo "[1/7] Preflight: validating source data and fresh index=$INDEX"
+
+# Make sure the container itself is available before mutating anything.
+if ! bounded podman inspect "$CONTAINER" >/dev/null 2>&1; then
+  echo "ERROR: Splunk container '$CONTAINER' is not available." >&2
+  exit 5
+fi
+
+# btool reads local configuration files only. It does not use splunkd REST,
+# require a published management port, or require an interactive CLI login.
+BTOOL_INDEXES="$STAGE/indexes.before"
+set +e
+bounded podman exec --user splunk "$CONTAINER" \
+  /opt/splunk/bin/splunk btool indexes list >"$BTOOL_INDEXES" 2>&1
+btool_rc=$?
+set -e
+if (( btool_rc != 0 )); then
+  echo "ERROR: unable to read Splunk index configuration with btool (rc=$btool_rc)." >&2
+  cat "$BTOOL_INDEXES" >&2
+  exit 5
+fi
+if grep -Fqx "[$INDEX]" "$BTOOL_INDEXES"; then
+  echo "ERROR: index $INDEX already exists in Splunk configuration. Use a fresh index name." >&2
+  exit 6
+fi
+
+# Also reject a leftover data directory even if its stanza was removed.
+set +e
+bounded podman exec --user splunk --env "SILK_INDEX=$INDEX" "$CONTAINER" bash -lc \
+  'db="${SPLUNK_DB:-/opt/splunk/var/lib/splunk}"; test -d "$db/$SILK_INDEX"'
+data_dir_rc=$?
+set -e
+case "$data_dir_rc" in
+  0)
+    echo "ERROR: data directory for index $INDEX already exists. Use a fresh index name." >&2
+    exit 6
+    ;;
+  1)
+    ;;
+  *)
+    echo "ERROR: unable to verify whether index data directory exists (rc=$data_dir_rc)." >&2
+    exit 5
+    ;;
+esac
+
+# Prepare the canonical HEC envelope locally. This preserves the old Zeek ->
+# Corelight metadata compatibility without invoking Splunk CLI or HEC over a
+# network socket inside or outside the container.
+python3 - "$HEC_SRC" "$PREPARED_HEC" "$EXPECTED" <<'PY'
+import collections, json, sys
+src, dst, expected_s = sys.argv[1:4]
+expected = int(expected_s)
+map_st = {
+    'zeek:conn':'bro:conn:json',
+    'zeek:dns':'bro:dns:json',
+    'zeek:http':'bro:http:json',
+    'zeek:tls':'bro:ssl:json',
+    'zeek:ssl':'bro:ssl:json',
+    'zeek:smb_files':'bro:smb_files:json',
+    'zeek:dce_rpc':'bro:dce_rpc:json',
+    'zeek:files':'bro:files:json',
+    'zeek:x509':'bro:x509:json',
+}
+count = 0
+changed = 0
+seen = collections.Counter()
+with open(src, encoding='utf-8') as fin, open(dst, 'w', encoding='utf-8', newline='\n') as fout:
+    for lineno, line in enumerate(fin, 1):
+        if not line.strip():
+            continue
+        try:
+            obj = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise SystemExit(f'ERROR: invalid HEC JSON at {src}:{lineno}: {exc}')
+        old = obj.get('sourcetype', '')
+        new = map_st.get(old, old)
+        if new != old:
+            obj['sourcetype'] = new
+            changed += 1
+        seen[new] += 1
+        fout.write(json.dumps(obj, separators=(',', ':')) + '\n')
+        count += 1
+if count != expected:
+    raise SystemExit(f'ERROR: HEC stream contains {count} events but manifest expects {expected}.')
+legacy = sorted(st for st in seen if st in map_st)
+if legacy:
+    raise SystemExit('ERROR: legacy Zeek sourcetypes remain after remap: ' + ', '.join(legacy))
+print(f'      Prepared {count} events; remapped {changed} legacy Zeek metadata records.')
+PY
+
+cat >"$APP_STAGE/default/app.conf" <<EOF_APP
+[install]
+is_configured = 1
+
+[ui]
+is_visible = 0
+
+[launcher]
+author = SILK SPECTER
+description = Static loader configuration for $SCENARIO / $INDEX
+version = 1.0.0
+EOF_APP
+
+cat >"$APP_STAGE/local/indexes.conf" <<EOF_INDEXES
+[$INDEX]
+homePath = \$SPLUNK_DB/$INDEX/db
+coldPath = \$SPLUNK_DB/$INDEX/colddb
+thawedPath = \$SPLUNK_DB/$INDEX/thaweddb
+EOF_INDEXES
+
+cat >"$APP_STAGE/local/inputs.conf" <<EOF_INPUTS
+[batch://$HEC_REMOTE]
+disabled = 0
+index = $INDEX
+sourcetype = asteron:hec
+host = ASTERON-INGEST
+move_policy = sinkhole
+crcSalt = <SOURCE>
+EOF_INPUTS
+
+echo "[2/7] Copying TA-asteron-v3 into container=$CONTAINER"
 podman exec --user 0 "$CONTAINER" rm -rf "$TA_DST"
 podman exec --user 0 "$CONTAINER" mkdir -p "$TA_DST"
 podman cp "$TA_SRC/." "$CONTAINER:$TA_DST"
 podman exec --user 0 "$CONTAINER" chown -R splunk:splunk "$TA_DST"
 
-echo "[2/7] Restarting Splunk container (stop timeout=${RESTART_TIMEOUT}s)"
-# Podman may report a non-zero status when SIGTERM times out and it has to use
-# SIGKILL, even though the container subsequently starts successfully. Do not
-# let `set -e` abort here; verify the actual container/Splunk state instead.
+echo "[3/7] Copying dataset and static loader app into the container"
+podman exec --user 0 "$CONTAINER" rm -rf "$REMOTE" "$APP_DST"
+podman exec --user 0 "$CONTAINER" mkdir -p "$REMOTE" "$APP_DST"
+podman cp "$DATA/." "$CONTAINER:$REMOTE"
+# Overwrite the canonical stream with the validated/remapped copy prepared above.
+podman cp "$PREPARED_HEC" "$CONTAINER:$HEC_REMOTE"
+podman cp "$APP_STAGE/." "$CONTAINER:$APP_DST"
+podman exec --user 0 "$CONTAINER" chown -R splunk:splunk "$REMOTE" "$APP_DST"
+
+echo "[4/7] Restarting Splunk container (stop timeout=${RESTART_TIMEOUT}s)"
 restart_rc=0
 podman restart --time "$RESTART_TIMEOUT" "$CONTAINER" >/dev/null || restart_rc=$?
 if (( restart_rc != 0 )); then
-  echo "WARNING: podman restart returned rc=$restart_rc; checking whether Splunk recovered." >&2
+  echo "WARNING: podman restart returned rc=$restart_rc; waiting for container recovery." >&2
 fi
 
-echo "      Waiting up to ${READY_TIMEOUT}s for splunkd process (probe timeout=${PROBE_TIMEOUT}s) ..."
-if ! wait_for_splunk; then
-  echo "ERROR: Splunk did not become ready within ${READY_TIMEOUT}s after restart." >&2
+echo "      Waiting up to ${READY_TIMEOUT}s for container health (no port checks) ..."
+if ! wait_for_container; then
+  echo "ERROR: Splunk container did not become ready within ${READY_TIMEOUT}s." >&2
   echo "Container state:" >&2
-  podman inspect --format '{{.State.Status}}' "$CONTAINER" 2>/dev/null >&2 || true
+  podman inspect --format '{{.State.Status}} {{.State.Health.Status}}' "$CONTAINER" 2>/dev/null >&2 || true
   echo "Recent container logs:" >&2
-  podman logs --tail 80 "$CONTAINER" 2>/dev/null >&2 || true
-  exit 5
+  podman logs --tail 100 "$CONTAINER" 2>/dev/null >&2 || true
+  exit 7
 fi
-echo "      splunkd is running."
+echo "      Container is ready."
 
-echo "[3/7] Verifying [asteron:hec] INDEXED_EXTRACTIONS=HEC"
-if ! podman exec --user splunk "$CONTAINER" \
+echo "[5/7] Verifying effective Splunk configuration with btool"
+if ! bounded podman exec --user splunk "$CONTAINER" \
     /opt/splunk/bin/splunk btool props list asteron:hec --debug 2>/dev/null \
     | grep -Eq 'INDEXED_EXTRACTIONS\s*=\s*HEC'; then
   echo "ERROR: TA-asteron-v3 parser is not active after restart." >&2
-  echo "Check: podman exec --user splunk $CONTAINER /opt/splunk/bin/splunk btool props list asteron:hec --debug" >&2
-  exit 5
+  exit 8
 fi
 
-echo "[4/7] Verifying REST credentials and fresh index name: $INDEX"
-echo "      REST timeout=${REST_TIMEOUT}s; podman command timeout=${REST_COMMAND_TIMEOUT}s"
-REST_RESULT="$(mktemp)"
-trap 'rm -f "$REST_RESULT"' EXIT
-
+INDEX_CFG="$STAGE/index.after"
 set +e
-splunk_rest check >"$REST_RESULT" 2>&1
-rest_rc=$?
+bounded podman exec --user splunk "$CONTAINER" \
+  /opt/splunk/bin/splunk btool indexes list "$INDEX" --debug >"$INDEX_CFG" 2>&1
+index_cfg_rc=$?
 set -e
-INDEX_HTTP_CODE="$(tr -d '\r\n' <"$REST_RESULT")"
-
-if (( rest_rc != 0 )); then
-  echo "ERROR: Splunk REST index check failed or timed out (rc=$rest_rc)." >&2
-  cat "$REST_RESULT" >&2
-  echo >&2
-  echo "Check port 8089 directly with:" >&2
-  echo "  podman exec --user splunk $CONTAINER curl -sk --connect-timeout 5 --max-time 10 -o /dev/null -w '%{http_code}\\n' https://127.0.0.1:8089/services/server/info" >&2
-  exit 6
+if (( index_cfg_rc != 0 )) || ! grep -Eq 'homePath\s*=' "$INDEX_CFG"; then
+  echo "ERROR: index stanza [$INDEX] is not active after restart." >&2
+  cat "$INDEX_CFG" >&2
+  exit 8
 fi
 
-case "$INDEX_HTTP_CODE" in
-  200)
-    echo "ERROR: index $INDEX already exists. Use a fresh index name." >&2
-    exit 7
-    ;;
-  404)
-    ;;
-  401|403)
-    echo "ERROR: Splunk REST authentication failed (HTTP $INDEX_HTTP_CODE)." >&2
-    exit 6
-    ;;
-  *)
-    echo "ERROR: unexpected HTTP response while checking index $INDEX: $INDEX_HTTP_CODE" >&2
-    exit 6
-    ;;
-esac
-
-echo "      Creating index $INDEX through splunkd REST"
-: >"$REST_RESULT"
-set +e
-splunk_rest create >"$REST_RESULT" 2>&1
-create_rc=$?
-set -e
-CREATE_HTTP_CODE="$(tr -d '\r\n' <"$REST_RESULT")"
-
-if (( create_rc != 0 )); then
-  echo "ERROR: Splunk REST index creation failed or timed out (rc=$create_rc)." >&2
-  cat "$REST_RESULT" >&2
-  exit 6
+echo "[6/7] Waiting for Splunk batch input to consume $EXPECTED events"
+echo "      Ingest timeout=${INGEST_TIMEOUT}s; no HEC or management port is required."
+if ! wait_for_batch_consumption; then
+  echo "ERROR: Splunk did not consume $HEC_REMOTE within ${INGEST_TIMEOUT}s." >&2
+  echo "The loader app remains at $APP_DST for inspection." >&2
+  echo "Recent container logs:" >&2
+  podman logs --tail 120 "$CONTAINER" 2>/dev/null >&2 || true
+  exit 9
 fi
 
-case "$CREATE_HTTP_CODE" in
-  200|201)
-    echo "      Index created (HTTP $CREATE_HTTP_CODE)."
-    ;;
-  *)
-    echo "ERROR: index creation returned HTTP $CREATE_HTTP_CODE." >&2
-    exit 6
-    ;;
-esac
-
-rm -f "$REST_RESULT"
-trap - EXIT
-
-echo "[5/7] Copying dataset to $REMOTE"
-podman exec --user 0 "$CONTAINER" rm -rf "$REMOTE"
-podman cp "$DATA" "$CONTAINER:$REMOTE"
-podman cp "$ROOT/splunk/ingest/load_hec.sh" "$CONTAINER:$REMOTE/load_hec.sh"
-podman exec --user 0 "$CONTAINER" chmod 755 "$REMOTE/load_hec.sh"
-
-echo "[6/7] Loading $EXPECTED events into $INDEX"
-podman exec --user splunk "$CONTAINER" bash \
-  "$REMOTE/load_hec.sh" "$REMOTE" "$INDEX"
-
-echo "[7/7] Load submitted"
+echo "[7/7] Batch source consumed"
 echo
 echo "Expected event count: $EXPECTED"
-echo "Validate in Splunk with:"
+echo "Index: $INDEX"
+echo "Loader app: $APP_DST"
+echo "No host-published Splunk management or HEC port was used."
+echo
+echo "Validate in Splunk Web with:"
 echo "  | tstats count where index=$INDEX"
 echo "  index=$INDEX | stats count by sourcetype | sort sourcetype"
 echo
-echo "After validation you may remove: $REMOTE"
+echo "The remote staging directory can be removed after validation:"
+echo "  podman exec --user 0 $CONTAINER rm -rf $REMOTE"
