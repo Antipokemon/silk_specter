@@ -12,6 +12,7 @@ TA_SRC="$ROOT/splunk/app/TA-asteron-v3"
 TA_DST="/opt/splunk/etc/apps/TA-asteron-v3"
 RESTART_TIMEOUT="${SPLUNK_RESTART_TIMEOUT:-60}"
 READY_TIMEOUT="${SPLUNK_READY_TIMEOUT:-120}"
+PROBE_TIMEOUT="${SPLUNK_READY_PROBE_TIMEOUT:-5}"
 
 if [[ ! -f "$CFG" ]]; then
   echo "Unknown scenario: $SCENARIO" >&2
@@ -52,22 +53,45 @@ print(json.load(open(sys.argv[1],encoding='utf-8'))['events'])
 PY
 )"
 
+bounded() {
+  # Bound Podman probes so a wedged container/runtime cannot trap the loader.
+  timeout --signal=TERM --kill-after=1s "${PROBE_TIMEOUT}s" "$@"
+}
+
 wait_for_splunk() {
-  local deadline=$((SECONDS + READY_TIMEOUT))
-  local status=""
+  local started=$SECONDS
+  local deadline=$((started + READY_TIMEOUT))
+  local next_report=10
+  local state_file="/tmp/silk-specter-state.$$"
+  local top_file="/tmp/silk-specter-top.$$"
 
   while (( SECONDS < deadline )); do
-    if podman inspect --format '{{.State.Running}}' "$CONTAINER" 2>/dev/null \
-        | grep -qx 'true'; then
-      status="$(podman exec --user splunk "$CONTAINER" \
-        /opt/splunk/bin/splunk status 2>/dev/null || true)"
-      if grep -qi 'splunkd is running' <<<"$status"; then
+    : >"$state_file"
+    : >"$top_file"
+
+    if bounded podman inspect --format '{{.State.Running}}' "$CONTAINER" \
+        >"$state_file" 2>/dev/null \
+        && grep -qx 'true' "$state_file"; then
+
+      # Do not use `podman exec ... splunk status` as a readiness probe.
+      # That command can block indefinitely while Splunk is recovering after a
+      # container restart. `podman top` checks the container process list without
+      # starting another process inside the container.
+      if bounded podman top "$CONTAINER" pid args >"$top_file" 2>/dev/null \
+          && grep -qiE '(^|[[:space:]/])splunkd([[:space:]]|$)' "$top_file"; then
+        rm -f "$state_file" "$top_file"
         return 0
       fi
+    fi
+
+    if (( SECONDS - started >= next_report )); then
+      echo "      Still waiting for splunkd ($((SECONDS - started))s elapsed) ..."
+      next_report=$((next_report + 10))
     fi
     sleep 2
   done
 
+  rm -f "$state_file" "$top_file"
   return 1
 }
 
@@ -89,7 +113,7 @@ if (( restart_rc != 0 )); then
   echo "WARNING: podman restart returned rc=$restart_rc; checking whether Splunk recovered." >&2
 fi
 
-echo "      Waiting up to ${READY_TIMEOUT}s for splunkd ..."
+echo "      Waiting up to ${READY_TIMEOUT}s for splunkd process (probe timeout=${PROBE_TIMEOUT}s) ..."
 if ! wait_for_splunk; then
   echo "ERROR: Splunk did not become ready within ${READY_TIMEOUT}s after restart." >&2
   echo "Container state:" >&2

@@ -37,6 +37,16 @@ if [[ "${1:-}" == "logs" ]]; then
   exit 0
 fi
 
+if [[ "${1:-}" == "top" ]]; then
+  if [[ "${FAKE_SPLUNK_READY:-1}" == "1" ]]; then
+    echo "PID ARGS"
+    echo "1459 splunkd --under-systemd"
+    exit 0
+  fi
+  echo "PID ARGS"
+  exit 0
+fi
+
 if [[ "$args" == *"btool props list asteron:hec"* ]]; then
   echo 'INDEXED_EXTRACTIONS = HEC'
   exit 0
@@ -122,6 +132,14 @@ class OperatorWorkflowTests(unittest.TestCase):
             commands = log.read_text(encoding="utf-8")
             self.assertIn("restart --time 60 fake-splunk", commands)
             self.assertIn("inspect --format {{.State.Running}} fake-splunk", commands)
+
+    def test_restart_readiness_does_not_use_blocking_splunk_status(self):
+        text = (ROOT / "scripts/load_to_splunk.sh").read_text(encoding="utf-8")
+        wait_block = text.split("wait_for_splunk() {", 1)[1].split("\n}", 1)[0]
+        self.assertNotIn("/opt/splunk/bin/splunk status", wait_block)
+        self.assertIn('podman top "$CONTAINER" pid args', wait_block)
+        self.assertIn('timeout --signal=TERM --kill-after=1s', text)
+
 
     def test_ta_install_replaces_destination_instead_of_nesting(self):
         with tempfile.TemporaryDirectory() as td:
