@@ -13,6 +13,7 @@ TA_DST="/opt/splunk/etc/apps/TA-asteron-v3"
 RESTART_TIMEOUT="${SPLUNK_RESTART_TIMEOUT:-60}"
 READY_TIMEOUT="${SPLUNK_READY_TIMEOUT:-120}"
 PROBE_TIMEOUT="${SPLUNK_READY_PROBE_TIMEOUT:-5}"
+SPLUNK_CLI_USER="${SPLUNK_CLI_USER:-admin}"
 
 if [[ ! -f "$CFG" ]]; then
   echo "Unknown scenario: $SCENARIO" >&2
@@ -56,6 +57,22 @@ PY
 bounded() {
   # Bound Podman probes so a wedged container/runtime cannot trap the loader.
   timeout --signal=TERM --kill-after=1s "${PROBE_TIMEOUT}s" "$@"
+}
+
+splunk_cli() {
+  # Run authenticated Splunk CLI commands without `splunk login`. The password
+  # remains inside the container environment and is not expanded into the host
+  # process list or shell history.
+  podman exec --user splunk \
+    --env "SILK_SPLUNK_CLI_USER=$SPLUNK_CLI_USER" \
+    "$CONTAINER" bash -lc '
+      if [[ -z "${SPLUNK_PASSWORD:-}" ]]; then
+        echo "ERROR: SPLUNK_PASSWORD is not set in the running Splunk container." >&2
+        exit 86
+      fi
+      exec /opt/splunk/bin/splunk "$@" \
+        -auth "${SILK_SPLUNK_CLI_USER}:${SPLUNK_PASSWORD}"
+    ' _ "$@"
 }
 
 wait_for_splunk() {
@@ -133,32 +150,41 @@ if ! podman exec --user splunk "$CONTAINER" \
   exit 5
 fi
 
-echo "[4/8] Splunk CLI login is required"
-podman exec -it --user splunk "$CONTAINER" \
-  /opt/splunk/bin/splunk login
+echo "[4/7] Verifying non-interactive Splunk CLI credentials and fresh index name: $INDEX"
+set +e
+INDEX_LIST="$(splunk_cli list index 2>&1)"
+cli_rc=$?
+set -e
 
-echo "[5/8] Verifying fresh index name: $INDEX"
-if podman exec --user splunk "$CONTAINER" \
-    /opt/splunk/bin/splunk list index 2>/dev/null \
-    | grep -Eq "(^|[[:space:]])${INDEX}([[:space:]]|$)"; then
-  echo "ERROR: index $INDEX already exists. Use a fresh index name." >&2
+if (( cli_rc != 0 )); then
+  echo "ERROR: authenticated Splunk CLI check failed (rc=$cli_rc)." >&2
+  echo "$INDEX_LIST" >&2
+  echo >&2
+  echo "The running container must provide SPLUNK_PASSWORD." >&2
+  echo "Check with:" >&2
+  echo "  podman inspect $CONTAINER --format '{{range .Config.Env}}{{println .}}{{end}}' | grep '^SPLUNK_PASSWORD='" >&2
   exit 6
 fi
 
-podman exec --user splunk "$CONTAINER" \
-  /opt/splunk/bin/splunk add index "$INDEX"
+if grep -Eq "(^|[[:space:]])${INDEX}([[:space:]]|$)" <<<"$INDEX_LIST"; then
+  echo "ERROR: index $INDEX already exists. Use a fresh index name." >&2
+  exit 7
+fi
 
-echo "[6/8] Copying dataset to $REMOTE"
+echo "      Creating index $INDEX"
+splunk_cli add index "$INDEX"
+
+echo "[5/7] Copying dataset to $REMOTE"
 podman exec --user 0 "$CONTAINER" rm -rf "$REMOTE"
 podman cp "$DATA" "$CONTAINER:$REMOTE"
 podman cp "$ROOT/splunk/ingest/load_hec.sh" "$CONTAINER:$REMOTE/load_hec.sh"
 podman exec --user 0 "$CONTAINER" chmod 755 "$REMOTE/load_hec.sh"
 
-echo "[7/8] Loading $EXPECTED events into $INDEX"
+echo "[6/7] Loading $EXPECTED events into $INDEX"
 podman exec --user splunk "$CONTAINER" bash \
   "$REMOTE/load_hec.sh" "$REMOTE" "$INDEX"
 
-echo "[8/8] Load submitted"
+echo "[7/7] Load submitted"
 echo
 echo "Expected event count: $EXPECTED"
 echo "Validate in Splunk with:"

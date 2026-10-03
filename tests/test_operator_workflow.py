@@ -141,6 +141,14 @@ class OperatorWorkflowTests(unittest.TestCase):
         self.assertIn('timeout --signal=TERM --kill-after=1s', text)
 
 
+    def test_loader_uses_noninteractive_container_credentials(self):
+        text = (ROOT / "scripts/load_to_splunk.sh").read_text(encoding="utf-8")
+        self.assertNotIn("/opt/splunk/bin/splunk login", text)
+        self.assertIn("SPLUNK_PASSWORD", text)
+        self.assertIn("-auth", text)
+        self.assertIn("splunk_cli list index", text)
+        self.assertIn("splunk_cli add index", text)
+
     def test_ta_install_replaces_destination_instead_of_nesting(self):
         with tempfile.TemporaryDirectory() as td:
             bindir = Path(td)
