@@ -14,6 +14,8 @@ RESTART_TIMEOUT="${SPLUNK_RESTART_TIMEOUT:-60}"
 READY_TIMEOUT="${SPLUNK_READY_TIMEOUT:-120}"
 PROBE_TIMEOUT="${SPLUNK_READY_PROBE_TIMEOUT:-5}"
 SPLUNK_CLI_USER="${SPLUNK_CLI_USER:-admin}"
+REST_TIMEOUT="${SPLUNK_REST_TIMEOUT:-15}"
+REST_COMMAND_TIMEOUT="${SPLUNK_REST_COMMAND_TIMEOUT:-20}"
 
 if [[ ! -f "$CFG" ]]; then
   echo "Unknown scenario: $SCENARIO" >&2
@@ -59,21 +61,50 @@ bounded() {
   timeout --signal=TERM --kill-after=1s "${PROBE_TIMEOUT}s" "$@"
 }
 
-splunk_cli() {
-  # Run authenticated Splunk CLI commands without `splunk login`. The password
-  # remains inside the container environment and is not expanded into the host
-  # process list or shell history.
-  podman exec --user splunk \
-    --env "SILK_SPLUNK_CLI_USER=$SPLUNK_CLI_USER" \
-    "$CONTAINER" bash -lc '
-      if [[ -z "${SPLUNK_PASSWORD:-}" ]]; then
-        echo "ERROR: SPLUNK_PASSWORD is not set in the running Splunk container." >&2
-        exit 86
-      fi
-      exec /opt/splunk/bin/splunk "$@" \
-        -auth "${SILK_SPLUNK_CLI_USER}:${SPLUNK_PASSWORD}"
-    ' _ "$@"
+splunk_rest() {
+  local action="$1"
+  timeout --signal=TERM --kill-after=2s "${REST_COMMAND_TIMEOUT}s" \
+    podman exec --user splunk \
+      --env "SILK_SPLUNK_CLI_USER=$SPLUNK_CLI_USER" \
+      --env "SILK_SPLUNK_INDEX=$INDEX" \
+      --env "SILK_SPLUNK_REST_TIMEOUT=$REST_TIMEOUT" \
+      --env "SILK_SPLUNK_REST_ACTION=$action" \
+      "$CONTAINER" bash -lc '
+        if [[ -z "${SPLUNK_PASSWORD:-}" ]]; then
+          echo "ERROR:SPLUNK_PASSWORD_MISSING"
+          exit 86
+        fi
+        if ! command -v curl >/dev/null 2>&1; then
+          echo "ERROR:CURL_MISSING"
+          exit 87
+        fi
+        common=(
+          -skS
+          --connect-timeout 5
+          --max-time "$SILK_SPLUNK_REST_TIMEOUT"
+          -u "${SILK_SPLUNK_CLI_USER}:${SPLUNK_PASSWORD}"
+          -o /dev/null
+          -w "%{http_code}"
+        )
+        case "$SILK_SPLUNK_REST_ACTION" in
+          check)
+            exec curl "${common[@]}" \
+              "https://127.0.0.1:8089/services/data/indexes/${SILK_SPLUNK_INDEX}?output_mode=json"
+            ;;
+          create)
+            exec curl "${common[@]}" \
+              -X POST \
+              --data-urlencode "name=${SILK_SPLUNK_INDEX}" \
+              "https://127.0.0.1:8089/services/data/indexes?output_mode=json"
+            ;;
+          *)
+            echo "ERROR:UNKNOWN_REST_ACTION"
+            exit 88
+            ;;
+        esac
+      '
 }
+
 
 wait_for_splunk() {
   local started=$SECONDS
@@ -112,7 +143,7 @@ wait_for_splunk() {
   return 1
 }
 
-echo "[1/8] Installing/updating TA-asteron-v3 in container=$CONTAINER"
+echo "[1/7] Installing/updating TA-asteron-v3 in container=$CONTAINER"
 # Remove the existing destination first. Copying a source directory onto an
 # existing destination directory can create a nested TA-asteron-v3/TA-asteron-v3.
 podman exec --user 0 "$CONTAINER" rm -rf "$TA_DST"
@@ -120,7 +151,7 @@ podman exec --user 0 "$CONTAINER" mkdir -p "$TA_DST"
 podman cp "$TA_SRC/." "$CONTAINER:$TA_DST"
 podman exec --user 0 "$CONTAINER" chown -R splunk:splunk "$TA_DST"
 
-echo "[2/8] Restarting Splunk container (stop timeout=${RESTART_TIMEOUT}s)"
+echo "[2/7] Restarting Splunk container (stop timeout=${RESTART_TIMEOUT}s)"
 # Podman may report a non-zero status when SIGTERM times out and it has to use
 # SIGKILL, even though the container subsequently starts successfully. Do not
 # let `set -e` abort here; verify the actual container/Splunk state instead.
@@ -141,7 +172,7 @@ if ! wait_for_splunk; then
 fi
 echo "      splunkd is running."
 
-echo "[3/8] Verifying [asteron:hec] INDEXED_EXTRACTIONS=HEC"
+echo "[3/7] Verifying [asteron:hec] INDEXED_EXTRACTIONS=HEC"
 if ! podman exec --user splunk "$CONTAINER" \
     /opt/splunk/bin/splunk btool props list asteron:hec --debug 2>/dev/null \
     | grep -Eq 'INDEXED_EXTRACTIONS\s*=\s*HEC'; then
@@ -150,29 +181,69 @@ if ! podman exec --user splunk "$CONTAINER" \
   exit 5
 fi
 
-echo "[4/7] Verifying non-interactive Splunk CLI credentials and fresh index name: $INDEX"
-set +e
-INDEX_LIST="$(splunk_cli list index 2>&1)"
-cli_rc=$?
-set -e
+echo "[4/7] Verifying REST credentials and fresh index name: $INDEX"
+echo "      REST timeout=${REST_TIMEOUT}s; podman command timeout=${REST_COMMAND_TIMEOUT}s"
+REST_RESULT="$(mktemp)"
+trap 'rm -f "$REST_RESULT"' EXIT
 
-if (( cli_rc != 0 )); then
-  echo "ERROR: authenticated Splunk CLI check failed (rc=$cli_rc)." >&2
-  echo "$INDEX_LIST" >&2
+set +e
+splunk_rest check >"$REST_RESULT" 2>&1
+rest_rc=$?
+set -e
+INDEX_HTTP_CODE="$(tr -d '\r\n' <"$REST_RESULT")"
+
+if (( rest_rc != 0 )); then
+  echo "ERROR: Splunk REST index check failed or timed out (rc=$rest_rc)." >&2
+  cat "$REST_RESULT" >&2
   echo >&2
-  echo "The running container must provide SPLUNK_PASSWORD." >&2
-  echo "Check with:" >&2
-  echo "  podman inspect $CONTAINER --format '{{range .Config.Env}}{{println .}}{{end}}' | grep '^SPLUNK_PASSWORD='" >&2
+  echo "Check port 8089 directly with:" >&2
+  echo "  podman exec --user splunk $CONTAINER curl -sk --connect-timeout 5 --max-time 10 -o /dev/null -w '%{http_code}\\n' https://127.0.0.1:8089/services/server/info" >&2
   exit 6
 fi
 
-if grep -Eq "(^|[[:space:]])${INDEX}([[:space:]]|$)" <<<"$INDEX_LIST"; then
-  echo "ERROR: index $INDEX already exists. Use a fresh index name." >&2
-  exit 7
+case "$INDEX_HTTP_CODE" in
+  200)
+    echo "ERROR: index $INDEX already exists. Use a fresh index name." >&2
+    exit 7
+    ;;
+  404)
+    ;;
+  401|403)
+    echo "ERROR: Splunk REST authentication failed (HTTP $INDEX_HTTP_CODE)." >&2
+    exit 6
+    ;;
+  *)
+    echo "ERROR: unexpected HTTP response while checking index $INDEX: $INDEX_HTTP_CODE" >&2
+    exit 6
+    ;;
+esac
+
+echo "      Creating index $INDEX through splunkd REST"
+: >"$REST_RESULT"
+set +e
+splunk_rest create >"$REST_RESULT" 2>&1
+create_rc=$?
+set -e
+CREATE_HTTP_CODE="$(tr -d '\r\n' <"$REST_RESULT")"
+
+if (( create_rc != 0 )); then
+  echo "ERROR: Splunk REST index creation failed or timed out (rc=$create_rc)." >&2
+  cat "$REST_RESULT" >&2
+  exit 6
 fi
 
-echo "      Creating index $INDEX"
-splunk_cli add index "$INDEX"
+case "$CREATE_HTTP_CODE" in
+  200|201)
+    echo "      Index created (HTTP $CREATE_HTTP_CODE)."
+    ;;
+  *)
+    echo "ERROR: index creation returned HTTP $CREATE_HTTP_CODE." >&2
+    exit 6
+    ;;
+esac
+
+rm -f "$REST_RESULT"
+trap - EXIT
 
 echo "[5/7] Copying dataset to $REMOTE"
 podman exec --user 0 "$CONTAINER" rm -rf "$REMOTE"
