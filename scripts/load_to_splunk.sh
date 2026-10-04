@@ -156,7 +156,8 @@ wait_for_index_data() {
   while (( SECONDS < deadline )); do
     if bounded podman exec --user splunk --env "SILK_INDEX=$INDEX" "$CONTAINER" bash -lc '
       db="${SPLUNK_DB:-/opt/splunk/var/lib/splunk}/$SILK_INDEX/db"
-      find "$db" -type f -path "*/rawdata/journal.gz" -size +0c -print -quit 2>/dev/null \
+      # POSTINGEST_INDEX_DATA_CHECK
+      find "$db" -type f -path "*/rawdata/journal.*" -size +0c -print -quit 2>/dev/null \
         | grep -q .
     '; then
       return 0
@@ -206,7 +207,7 @@ bounded podman exec --user splunk --env "SILK_INDEX=$INDEX" "$CONTAINER" bash -l
   # PREEXISTING_INDEX_DATA_CHECK
   db="${SPLUNK_DB:-/opt/splunk/var/lib/splunk}/$SILK_INDEX"
   find "$db/db" "$db/colddb" \
-    -type f -path "*/rawdata/journal.gz" -size +0c \
+    -type f -path "*/rawdata/journal.*" -size +0c \
     -print -quit 2>/dev/null | grep -q .
 '
 index_has_data_rc=$?

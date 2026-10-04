@@ -75,7 +75,7 @@ if [[ "${1:-}" == "exec" ]]; then
   fi
   if [[ "$args" == *"PREEXISTING_INDEX_DATA_CHECK"* ]]; then
     if [[ "${FAKE_PREEXISTING_INDEX_DATA:-0}" == "1" ]]; then
-      echo "/opt/splunk/var/lib/splunk/test/db/db_1_1_0/rawdata/journal.gz"
+      echo "/opt/splunk/var/lib/splunk/test/db/db_1_1_0/rawdata/journal.zst"
       exit 0
     fi
     exit 1
@@ -88,8 +88,8 @@ if [[ "${1:-}" == "exec" ]]; then
     # Simulate the batch input having consumed the copied HEC stream.
     exit 0
   fi
-  if [[ "$args" == *"rawdata/journal.gz"* ]]; then
-    echo "/opt/splunk/var/lib/splunk/test/db/hot_v1_1/rawdata/journal.gz"
+  if [[ "$args" == *"POSTINGEST_INDEX_DATA_CHECK"* ]]; then
+    echo "/opt/splunk/var/lib/splunk/test/db/hot_v1_1/rawdata/journal.zst"
     exit 0
   fi
   exit 0
@@ -195,7 +195,8 @@ class OperatorWorkflowTests(unittest.TestCase):
         self.assertIn("wait_for_batch_consumption", text)
         self.assertIn("wait_for_index_data", text)
         self.assertIn('test ! -e "$HEC_REMOTE"', text)
-        self.assertIn("rawdata/journal.gz", text)
+        self.assertIn("rawdata/journal.*", text)
+        self.assertNotIn("rawdata/journal.gz", text)
         self.assertIn("SPLUNK_READY_TIMEOUT:-300", text)
         self.assertIn("SPLUNK_INGEST_TIMEOUT:-600", text)
 
