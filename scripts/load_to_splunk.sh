@@ -193,26 +193,43 @@ if (( btool_rc != 0 )); then
   cat "$BTOOL_INDEXES" >&2
   exit 5
 fi
+INDEX_EXISTS=0
 if grep -Fqx "[$INDEX]" "$BTOOL_INDEXES"; then
-  echo "ERROR: index $INDEX already exists in Splunk configuration. Use a fresh index name." >&2
-  exit 6
+  INDEX_EXISTS=1
 fi
 
-# Also reject a leftover data directory even if its stanza was removed.
+# A previous failed load can leave behind an active index stanza and its empty
+# $SPLUNK_DB directory. Reuse that index if it contains no raw bucket data.
+# Refuse to load over an index that already contains events.
 set +e
-bounded podman exec --user splunk --env "SILK_INDEX=$INDEX" "$CONTAINER" bash -lc \
-  'db="${SPLUNK_DB:-/opt/splunk/var/lib/splunk}"; test -d "$db/$SILK_INDEX"'
-data_dir_rc=$?
+bounded podman exec --user splunk --env "SILK_INDEX=$INDEX" "$CONTAINER" bash -lc '
+  # PREEXISTING_INDEX_DATA_CHECK
+  db="${SPLUNK_DB:-/opt/splunk/var/lib/splunk}/$SILK_INDEX"
+  find "$db/db" "$db/colddb" \
+    -type f -path "*/rawdata/journal.gz" -size +0c \
+    -print -quit 2>/dev/null | grep -q .
+'
+index_has_data_rc=$?
 set -e
-case "$data_dir_rc" in
+
+case "$index_has_data_rc" in
   0)
-    echo "ERROR: data directory for index $INDEX already exists. Use a fresh index name." >&2
+    echo "ERROR: index $INDEX already contains indexed data. Use a fresh index name." >&2
     exit 6
     ;;
   1)
+    if (( INDEX_EXISTS == 1 )); then
+      echo "      Index $INDEX already exists but contains no raw bucket data; reusing it."
+    else
+      echo "      Index $INDEX does not exist yet; it will be created by the loader app."
+    fi
+    ;;
+  124|137)
+    echo "ERROR: timed out while checking whether index $INDEX contains data." >&2
+    exit 5
     ;;
   *)
-    echo "ERROR: unable to verify whether index data directory exists (rc=$data_dir_rc)." >&2
+    echo "ERROR: unable to determine whether index $INDEX contains data (rc=$index_has_data_rc)." >&2
     exit 5
     ;;
 esac

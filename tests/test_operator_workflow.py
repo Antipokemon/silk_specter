@@ -64,14 +64,24 @@ if [[ "${1:-}" == "exec" ]]; then
   fi
   if [[ "$args" == *"btool indexes list"* ]]; then
     echo '[main]'
+    if [[ "${FAKE_INDEX_EXISTS:-0}" == "1" ]]; then
+      echo "[${FAKE_INDEX_NAME:-test_easy_v001}]"
+    fi
     exit 0
   fi
   if [[ "$args" == *"btool props list asteron:hec"* ]]; then
     echo 'INDEXED_EXTRACTIONS = HEC'
     exit 0
   fi
+  if [[ "$args" == *"PREEXISTING_INDEX_DATA_CHECK"* ]]; then
+    if [[ "${FAKE_PREEXISTING_INDEX_DATA:-0}" == "1" ]]; then
+      echo "/opt/splunk/var/lib/splunk/test/db/db_1_1_0/rawdata/journal.gz"
+      exit 0
+    fi
+    exit 1
+  fi
   if [[ "$args" == *"test -d"* ]]; then
-    # Fresh index: no existing data directory.
+    # Legacy compatibility for older test paths.
     exit 1
   fi
   if [[ "$args" == *"test ! -e"* ]]; then
@@ -188,6 +198,60 @@ class OperatorWorkflowTests(unittest.TestCase):
         self.assertIn("rawdata/journal.gz", text)
         self.assertIn("SPLUNK_READY_TIMEOUT:-300", text)
         self.assertIn("SPLUNK_INGEST_TIMEOUT:-600", text)
+
+
+    def test_existing_empty_index_is_reused(self):
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            bindir = td / "bin"
+            bindir.mkdir()
+            env = self._fake_podman_env(bindir)
+            env["FAKE_INDEX_EXISTS"] = "1"
+            env["FAKE_INDEX_NAME"] = "test_easy_v001"
+            fixture = td / "repo-easy"
+            self._make_loader_fixture(fixture, "easy")
+
+            proc = subprocess.run(
+                [str(fixture / "scripts/load_to_splunk.sh"), "easy", "test_easy_v001"],
+                cwd=fixture,
+                env=env,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                timeout=15,
+            )
+            self.assertEqual(proc.returncode, 0, proc.stdout)
+            self.assertIn(
+                "Index test_easy_v001 already exists but contains no raw bucket data; reusing it.",
+                proc.stdout,
+            )
+
+    def test_existing_index_with_data_is_refused(self):
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            bindir = td / "bin"
+            bindir.mkdir()
+            env = self._fake_podman_env(bindir)
+            env["FAKE_INDEX_EXISTS"] = "1"
+            env["FAKE_INDEX_NAME"] = "test_easy_v001"
+            env["FAKE_PREEXISTING_INDEX_DATA"] = "1"
+            fixture = td / "repo-easy"
+            self._make_loader_fixture(fixture, "easy")
+
+            proc = subprocess.run(
+                [str(fixture / "scripts/load_to_splunk.sh"), "easy", "test_easy_v001"],
+                cwd=fixture,
+                env=env,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                timeout=15,
+            )
+            self.assertEqual(proc.returncode, 6, proc.stdout)
+            self.assertIn(
+                "index test_easy_v001 already contains indexed data",
+                proc.stdout,
+            )
 
     def test_nonzero_restart_is_tolerated_if_container_recovers(self):
         with tempfile.TemporaryDirectory() as td:
