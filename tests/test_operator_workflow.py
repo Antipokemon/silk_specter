@@ -78,6 +78,10 @@ if [[ "${1:-}" == "exec" ]]; then
     # Simulate the batch input having consumed the copied HEC stream.
     exit 0
   fi
+  if [[ "$args" == *"rawdata/journal.gz"* ]]; then
+    echo "/opt/splunk/var/lib/splunk/test/db/hot_v1_1/rawdata/journal.gz"
+    exit 0
+  fi
   exit 0
 fi
 
@@ -172,12 +176,16 @@ class OperatorWorkflowTests(unittest.TestCase):
         self.assertIn("btool indexes list", text)
         self.assertIn("batch://", text)
         self.assertIn("move_policy = sinkhole", text)
+        self.assertIn("/opt/splunk/var/spool/silk-specter-", text)
+        self.assertNotIn('REMOTE="/tmp/silk-specter-', text)
 
     def test_loader_uses_container_health_and_batch_consumption_as_gates(self):
         text = (ROOT / "scripts/load_to_splunk.sh").read_text(encoding="utf-8")
         self.assertIn(".State.Health.Status", text)
         self.assertIn("wait_for_batch_consumption", text)
+        self.assertIn("wait_for_index_data", text)
         self.assertIn('test ! -e "$HEC_REMOTE"', text)
+        self.assertIn("rawdata/journal.gz", text)
         self.assertIn("SPLUNK_READY_TIMEOUT:-300", text)
         self.assertIn("SPLUNK_INGEST_TIMEOUT:-600", text)
 
@@ -203,7 +211,7 @@ class OperatorWorkflowTests(unittest.TestCase):
             self.assertEqual(proc.returncode, 0, proc.stdout)
             self.assertIn("podman restart returned rc=125", proc.stdout)
 
-    def test_loader_copies_ta_dataset_and_generated_index_app(self):
+    def test_loader_copies_ingest_file_after_restart_and_uses_atomic_rename(self):
         with tempfile.TemporaryDirectory() as td:
             td = Path(td)
             bindir = td / "bin"
@@ -225,12 +233,29 @@ class OperatorWorkflowTests(unittest.TestCase):
             )
             self.assertEqual(proc.returncode, 0, proc.stdout)
             commands = log.read_text(encoding="utf-8")
-            self.assertIn("splunk/app/TA-asteron-v3/. fake-splunk:/opt/splunk/etc/apps/TA-asteron-v3", commands)
-            self.assertIn("dataset/easy/. fake-splunk:/tmp/silk-specter-easy-test_easy_copy_v001", commands)
+
+            self.assertIn(
+                "splunk/app/TA-asteron-v3/. fake-splunk:/opt/splunk/etc/apps/TA-asteron-v3",
+                commands,
+            )
             self.assertIn(
                 "fake-splunk:/opt/splunk/etc/apps/SA-silk-specter-easy-test_easy_copy_v001",
                 commands,
             )
+            self.assertIn(
+                "fake-splunk:/opt/splunk/var/spool/silk-specter-easy-test_easy_copy_v001/events.jsonl.upload",
+                commands,
+            )
+            self.assertIn(
+                "mv /opt/splunk/var/spool/silk-specter-easy-test_easy_copy_v001/events.jsonl.upload "
+                "/opt/splunk/var/spool/silk-specter-easy-test_easy_copy_v001/events.jsonl",
+                commands,
+            )
+
+            restart_pos = commands.index("restart --time")
+            upload_pos = commands.index("events.jsonl.upload")
+            self.assertLess(restart_pos, upload_pos, commands)
+
 
 
 if __name__ == "__main__":

@@ -68,8 +68,9 @@ print(json.load(open(sys.argv[1],encoding='utf-8'))['events'])
 PY
 )"
 
-REMOTE="/tmp/silk-specter-${SCENARIO}-${INDEX}"
-HEC_REMOTE="$REMOTE/hec/events.jsonl"
+REMOTE="/opt/splunk/var/spool/silk-specter-${SCENARIO}-${INDEX}"
+HEC_REMOTE="$REMOTE/events.jsonl"
+HEC_UPLOAD="$REMOTE/events.jsonl.upload"
 APP_NAME="SA-silk-specter-${SCENARIO}-${INDEX}"
 APP_DST="/opt/splunk/etc/apps/$APP_NAME"
 
@@ -147,7 +148,31 @@ wait_for_batch_consumption() {
   return 1
 }
 
-echo "[1/7] Preflight: validating source data and fresh index=$INDEX"
+wait_for_index_data() {
+  local started=$SECONDS
+  local deadline=$((started + INGEST_TIMEOUT))
+  local next_report=15
+
+  while (( SECONDS < deadline )); do
+    if bounded podman exec --user splunk --env "SILK_INDEX=$INDEX" "$CONTAINER" bash -lc '
+      db="${SPLUNK_DB:-/opt/splunk/var/lib/splunk}/$SILK_INDEX/db"
+      find "$db" -type f -path "*/rawdata/journal.gz" -size +0c -print -quit 2>/dev/null \
+        | grep -q .
+    '; then
+      return 0
+    fi
+
+    if (( SECONDS - started >= next_report )); then
+      echo "      Batch source is gone, but raw index data is not visible yet ($((SECONDS - started))s elapsed) ..."
+      next_report=$((next_report + 15))
+    fi
+    sleep 2
+  done
+
+  return 1
+}
+
+echo "[1/8] Preflight: validating source data and fresh index=$INDEX"
 
 # Make sure the container itself is available before mutating anything.
 if ! bounded podman inspect "$CONTAINER" >/dev/null 2>&1; then
@@ -264,32 +289,23 @@ index = $INDEX
 sourcetype = asteron:hec
 host = ASTERON-INGEST
 move_policy = sinkhole
-crcSalt = <SOURCE>
 EOF_INPUTS
 
-echo "[2/7] Copying TA-asteron-v3 into container=$CONTAINER"
-podman exec --user 0 "$CONTAINER" rm -rf "$TA_DST"
-podman exec --user 0 "$CONTAINER" mkdir -p "$TA_DST"
+echo "[2/8] Copying TA-asteron-v3 and static loader app into container=$CONTAINER"
+podman exec --user 0 "$CONTAINER" rm -rf "$TA_DST" "$APP_DST" "$REMOTE"
+podman exec --user 0 "$CONTAINER" mkdir -p "$TA_DST" "$APP_DST" "$REMOTE"
 podman cp "$TA_SRC/." "$CONTAINER:$TA_DST"
-podman exec --user 0 "$CONTAINER" chown -R splunk:splunk "$TA_DST"
-
-echo "[3/7] Copying dataset and static loader app into the container"
-podman exec --user 0 "$CONTAINER" rm -rf "$REMOTE" "$APP_DST"
-podman exec --user 0 "$CONTAINER" mkdir -p "$REMOTE" "$APP_DST"
-podman cp "$DATA/." "$CONTAINER:$REMOTE"
-# Overwrite the canonical stream with the validated/remapped copy prepared above.
-podman cp "$PREPARED_HEC" "$CONTAINER:$HEC_REMOTE"
 podman cp "$APP_STAGE/." "$CONTAINER:$APP_DST"
-podman exec --user 0 "$CONTAINER" chown -R splunk:splunk "$REMOTE" "$APP_DST"
+podman exec --user 0 "$CONTAINER" chown -R splunk:splunk "$TA_DST" "$APP_DST" "$REMOTE"
 
-echo "[4/7] Restarting Splunk container (stop timeout=${RESTART_TIMEOUT}s)"
+echo "[3/8] Restarting Splunk container (stop timeout=${RESTART_TIMEOUT}s)"
 restart_rc=0
 podman restart --time "$RESTART_TIMEOUT" "$CONTAINER" >/dev/null || restart_rc=$?
 if (( restart_rc != 0 )); then
   echo "WARNING: podman restart returned rc=$restart_rc; waiting for container recovery." >&2
 fi
 
-echo "      Waiting up to ${READY_TIMEOUT}s for container health (no port checks) ..."
+echo "[4/8] Waiting up to ${READY_TIMEOUT}s for container health (no port checks)"
 if ! wait_for_container; then
   echo "ERROR: Splunk container did not become ready within ${READY_TIMEOUT}s." >&2
   echo "Container state:" >&2
@@ -300,7 +316,7 @@ if ! wait_for_container; then
 fi
 echo "      Container is ready."
 
-echo "[5/7] Verifying effective Splunk configuration with btool"
+echo "[5/8] Verifying effective Splunk configuration with btool"
 if ! bounded podman exec --user splunk "$CONTAINER" \
     /opt/splunk/bin/splunk btool props list asteron:hec --debug 2>/dev/null \
     | grep -Eq 'INDEXED_EXTRACTIONS\s*=\s*HEC'; then
@@ -320,26 +336,54 @@ if (( index_cfg_rc != 0 )) || ! grep -Eq 'homePath\s*=' "$INDEX_CFG"; then
   exit 8
 fi
 
-echo "[6/7] Waiting for Splunk batch input to consume $EXPECTED events"
+# Do not stage the ingest file before restart. Container /tmp may be ephemeral,
+# and even other writable paths can be reset by image startup logic. Put the
+# final data into Splunk's own var/spool tree only after Splunk is healthy.
+#
+# Copy to an unwatched temporary name, then atomically rename it so Splunk's
+# batch input never sees a partially copied file.
+echo "[6/8] Copying $EXPECTED prepared events into the live container"
+podman exec --user 0 "$CONTAINER" mkdir -p "$REMOTE"
+podman exec --user 0 "$CONTAINER" rm -f "$HEC_UPLOAD" "$HEC_REMOTE"
+podman cp "$PREPARED_HEC" "$CONTAINER:$HEC_UPLOAD"
+podman exec --user 0 "$CONTAINER" chown splunk:splunk "$HEC_UPLOAD"
+podman exec --user 0 "$CONTAINER" mv "$HEC_UPLOAD" "$HEC_REMOTE"
+
+echo "[7/8] Waiting for Splunk to consume the batch source"
 echo "      Ingest timeout=${INGEST_TIMEOUT}s; no HEC or management port is required."
 if ! wait_for_batch_consumption; then
   echo "ERROR: Splunk did not consume $HEC_REMOTE within ${INGEST_TIMEOUT}s." >&2
-  echo "The loader app remains at $APP_DST for inspection." >&2
-  echo "Recent container logs:" >&2
-  podman logs --tail 120 "$CONTAINER" 2>/dev/null >&2 || true
+  echo "Effective input stanza:" >&2
+  podman exec --user splunk "$CONTAINER" \
+    /opt/splunk/bin/splunk btool inputs list --debug 2>/dev/null \
+    | grep -A10 -B2 -F "$HEC_REMOTE" >&2 || true
+  echo "Relevant splunkd.log entries:" >&2
+  podman exec --user splunk "$CONTAINER" \
+    grep -F "$HEC_REMOTE" /opt/splunk/var/log/splunk/splunkd.log 2>/dev/null >&2 || true
   exit 9
 fi
 
-echo "[7/7] Batch source consumed"
+echo "[8/8] Verifying that the target index contains raw bucket data"
+if ! wait_for_index_data; then
+  echo "ERROR: Splunk consumed the source file, but no raw index data appeared in $INDEX within ${INGEST_TIMEOUT}s." >&2
+  echo "Relevant splunkd.log entries:" >&2
+  podman exec --user splunk "$CONTAINER" bash -lc \
+    "grep -Ei '$INDEX|asteron:hec|silk-specter-${SCENARIO}-${INDEX}' /opt/splunk/var/log/splunk/splunkd.log | tail -200" \
+    2>/dev/null >&2 || true
+  exit 10
+fi
+
+echo "      Raw index data is present."
 echo
 echo "Expected event count: $EXPECTED"
 echo "Index: $INDEX"
 echo "Loader app: $APP_DST"
 echo "No host-published Splunk management or HEC port was used."
 echo
-echo "Validate in Splunk Web with:"
+echo "Validate the exact count in Splunk Web with:"
 echo "  | tstats count where index=$INDEX"
 echo "  index=$INDEX | stats count by sourcetype | sort sourcetype"
 echo
-echo "The remote staging directory can be removed after validation:"
+echo "The batch source was sinkholed after Splunk read it. The staging directory"
+echo "can be removed after validation:"
 echo "  podman exec --user 0 $CONTAINER rm -rf $REMOTE"
